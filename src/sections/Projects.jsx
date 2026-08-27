@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTransition } from '../components/PageTransition';
 import MagneticButton from '../components/MagneticButton';
 import { FadeUpText } from '../components/AnimatedText';
+import { ArrowRight } from '../components/Icons';
 
 const projectsData = [
   {
@@ -44,44 +45,44 @@ export default function Projects() {
   }, []);
 
   const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-63%']);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-60%']);
 
   return (
     <div
       ref={targetRef}
       id="projects"
-      className={`relative bg-bg-secondary border-b border-border-color ${isMobile ? '' : 'h-[320vh]'}`}
+      className={`relative bg-bg-secondary border-b border-border-color ${isMobile ? '' : 'h-[280vh]'}`}
     >
-      <div className={`${isMobile ? 'relative py-24 px-6 md:px-12' : 'sticky top-0 h-screen overflow-hidden flex flex-col justify-center px-6 md:px-12 lg:px-16'}`}>
+      <div className={`${isMobile ? 'relative py-16 px-6 md:px-12' : 'sticky top-0 h-screen overflow-hidden flex flex-col justify-center px-6 md:px-12 lg:px-16'}`}>
         <div className="w-full max-w-[1440px] mx-auto">
-
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 md:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8 md:mb-10">
             <div>
               <FadeUpText>
-                <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-accent-gold uppercase block mb-3">
+                <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-accent-gold uppercase block mb-2.5">
                   Featured Works
                 </span>
               </FadeUpText>
               <FadeUpText delay={0.1}>
-                <h2 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary uppercase">
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary uppercase">
                   Architectural Scale
                 </h2>
               </FadeUpText>
             </div>
             <MagneticButton
-              className="font-display text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 border border-text-primary rounded-full hover:bg-text-primary hover:text-white transition-all duration-300 self-start sm:self-auto shrink-0"
+              className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3 px-6 border border-text-primary rounded-full hover:bg-text-primary hover:text-white transition-all duration-300 self-start sm:self-auto shrink-0 flex items-center gap-2"
               onClick={() => navigateTo('/projects')}
             >
-              VIEW ALL WORKS
+              <span>VIEW ALL WORKS</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </MagneticButton>
           </div>
 
           {isMobile ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {projectsData.map((project) => (
-                <div key={project.num} className="flex flex-col gap-4 group">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-black/[0.05] bg-bg-tertiary">
-                    <div className="absolute inset-0 border border-accent-gold/15 m-3 z-10 pointer-events-none transition-all duration-500 group-hover:m-2 group-hover:border-accent-gold/35" />
+                <div key={project.num} className="flex flex-col gap-3 group">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-black/[0.06] bg-bg-tertiary">
+                    <div className="absolute inset-0 border border-accent-gold/20 m-3 z-10 pointer-events-none transition-all duration-500 group-hover:m-2 group-hover:border-accent-gold/45" />
                     <img
                       src={project.image}
                       alt={project.title}
@@ -89,8 +90,8 @@ export default function Projects() {
                     />
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] font-bold text-accent-gold block mb-1">{project.num} — {project.category}</span>
-                    <h3 className="font-display text-base font-bold text-text-primary uppercase tracking-tight">{project.title}</h3>
+                    <span className="font-mono text-[9px] font-bold text-accent-gold block mb-0.5">{project.num} — {project.category}</span>
+                    <h3 className="font-display text-sm sm:text-base font-bold text-text-primary uppercase tracking-tight">{project.title}</h3>
                   </div>
                 </div>
               ))}
@@ -98,17 +99,16 @@ export default function Projects() {
           ) : (
             <div className="overflow-visible">
               <motion.div
-                className="flex gap-6"
+                className="flex gap-5"
                 style={{ x }}
               >
                 {projectsData.map((project) => (
                   <div
                     key={project.num}
-                    className="flex flex-col gap-4 group shrink-0 w-[380px] lg:w-[440px]"
-                   
+                    className="flex flex-col gap-3 group shrink-0 w-[340px] lg:w-[400px]"
                   >
-                    <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-black/[0.05] bg-bg-tertiary">
-                      <div className="absolute inset-0 border border-accent-gold/15 m-3 z-10 pointer-events-none transition-all duration-500 group-hover:m-2 group-hover:border-accent-gold/35" />
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-black/[0.06] bg-bg-tertiary">
+                      <div className="absolute inset-0 border border-accent-gold/20 m-3 z-10 pointer-events-none transition-all duration-500 group-hover:m-2 group-hover:border-accent-gold/45" />
                       <img
                         src={project.image}
                         alt={project.title}
@@ -116,8 +116,8 @@ export default function Projects() {
                       />
                     </div>
                     <div>
-                      <span className="font-mono text-[10px] font-bold text-accent-gold block mb-1">{project.num} — {project.category}</span>
-                      <h3 className="font-display text-lg font-bold text-text-primary uppercase tracking-tight">{project.title}</h3>
+                      <span className="font-mono text-[9px] font-bold text-accent-gold block mb-0.5">{project.num} — {project.category}</span>
+                      <h3 className="font-display text-base font-bold text-text-primary uppercase tracking-tight">{project.title}</h3>
                     </div>
                   </div>
                 ))}

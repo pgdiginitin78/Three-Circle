@@ -8,6 +8,12 @@
   100% { background-position: 200% center; }
 }
 
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overflow: clip; }
@@ -18,8 +24,8 @@ body {
   background-color: #FAFAFA;
   color: #111111;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.55;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -33,7 +39,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.02em;
   color: #111111;
 }
@@ -67,7 +73,7 @@ input, textarea, select { font-family: inherit; outline: none; }
 .bg-bg-primary       { background-color: #FAFAFA !important; }
 .bg-bg-secondary     { background-color: #FFFFFF !important; }
 .bg-bg-tertiary      { background-color: #F5F5F3 !important; }
-.bg-bg-dark          { background-color: #111111 !important; }
+.bg-bg-dark          { background-color: #070A10 !important; }
 .bg-text-primary     { background-color: #111111 !important; }
 .bg-accent-gold      { background-color: #D4AF37 !important; }
 .bg-transparent      { background-color: transparent !important; }

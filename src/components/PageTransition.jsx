@@ -14,7 +14,6 @@ export const TransitionProvider = ({ children }) => {
   const lenis = useLenis();
 
   const navigateTo = (path, scrollTarget = null) => {
-    // If on same page and just scrolling to a section
     if (location.pathname === path && scrollTarget) {
       const el = document.getElementById(scrollTarget);
       if (el) {
@@ -30,7 +29,6 @@ export const TransitionProvider = ({ children }) => {
       return;
     }
 
-    // If navigating to home page with a scroll target from another page
     if (path === '/' && scrollTarget && location.pathname !== '/') {
       navigate('/');
       setTimeout(() => {
@@ -43,7 +41,6 @@ export const TransitionProvider = ({ children }) => {
       return;
     }
 
-    // Standard page navigation with clean transition
     setIsPending(true);
     setTimeout(() => {
       navigate(path);

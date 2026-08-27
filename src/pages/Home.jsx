@@ -3,6 +3,7 @@ import Hero from '../sections/Hero';
 import Intro from '../sections/Intro';
 import Services from '../sections/Services';
 import Projects from '../sections/Projects';
+import TransitionZone from '../components/TransitionZone';
 import Capabilities from '../sections/Capabilities';
 import About from '../sections/About';
 import Contact from '../sections/Contact';
@@ -14,6 +15,7 @@ export default function Home() {
       <Intro />
       <Services />
       <Projects />
+      <TransitionZone />
       <Capabilities />
       <About />
       <Contact />

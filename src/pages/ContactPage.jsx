@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import BlueprintGrid from '../components/BlueprintGrid';
-import MagneticButton from '../components/MagneticButton';
-import { WordReveal, FadeUpText } from '../components/AnimatedText';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import BlueprintGrid from "../components/BlueprintGrid";
+import MagneticButton from "../components/MagneticButton";
+import { WordReveal, FadeUpText } from "../components/AnimatedText";
 
-function FloatingInput({ label, id, name, type = 'text', value, onChange, required, placeholder }) {
+function FloatingInput({
+  label,
+  id,
+  name,
+  type = "text",
+  value,
+  onChange,
+  required,
+  placeholder,
+}) {
   const [focused, setFocused] = useState(false);
   const active = focused || value;
 
@@ -14,8 +23,8 @@ function FloatingInput({ label, id, name, type = 'text', value, onChange, requir
         htmlFor={id}
         className={`absolute left-0 font-display font-extrabold tracking-widest transition-all duration-200 pointer-events-none ${
           active
-            ? 'top-0 text-[8px] text-accent-gold'
-            : 'top-5 text-[10px] text-text-secondary'
+            ? "top-0 text-[8px] text-accent-gold"
+            : "top-5 text-[10px] text-text-secondary"
         } uppercase`}
       >
         {label}
@@ -29,14 +38,22 @@ function FloatingInput({ label, id, name, type = 'text', value, onChange, requir
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         required={required}
-        placeholder={active ? placeholder : ''}
+        placeholder={active ? placeholder : ""}
         className="w-full bg-transparent border-b border-black/15 py-2 text-sm text-text-primary focus:border-accent-gold outline-none transition-colors duration-300"
       />
     </div>
   );
 }
 
-function FloatingSelect({ label, id, name, value, onChange, required, options }) {
+function FloatingSelect({
+  label,
+  id,
+  name,
+  value,
+  onChange,
+  required,
+  options,
+}) {
   const [focused, setFocused] = useState(false);
   const active = focused || value;
 
@@ -46,8 +63,8 @@ function FloatingSelect({ label, id, name, value, onChange, required, options })
         htmlFor={id}
         className={`absolute left-0 font-display font-extrabold tracking-widest transition-all duration-200 pointer-events-none ${
           active
-            ? 'top-0 text-[8px] text-accent-gold'
-            : 'top-5 text-[10px] text-text-secondary'
+            ? "top-0 text-[8px] text-accent-gold"
+            : "top-5 text-[10px] text-text-secondary"
         } uppercase`}
       >
         {label}
@@ -64,14 +81,24 @@ function FloatingSelect({ label, id, name, value, onChange, required, options })
       >
         <option value="" disabled />
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>{opt.label}</option>
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
         ))}
       </select>
     </div>
   );
 }
 
-function FloatingTextarea({ label, id, name, value, onChange, required, rows = 4 }) {
+function FloatingTextarea({
+  label,
+  id,
+  name,
+  value,
+  onChange,
+  required,
+  rows = 4,
+}) {
   const [focused, setFocused] = useState(false);
   const active = focused || value;
 
@@ -81,8 +108,8 @@ function FloatingTextarea({ label, id, name, value, onChange, required, rows = 4
         htmlFor={id}
         className={`absolute left-0 font-display font-extrabold tracking-widest transition-all duration-200 pointer-events-none ${
           active
-            ? 'top-0 text-[8px] text-accent-gold'
-            : 'top-5 text-[10px] text-text-secondary'
+            ? "top-0 text-[8px] text-accent-gold"
+            : "top-5 text-[10px] text-text-secondary"
         } uppercase`}
       >
         {label}
@@ -96,7 +123,7 @@ function FloatingTextarea({ label, id, name, value, onChange, required, rows = 4
         onBlur={() => setFocused(false)}
         required={required}
         rows={rows}
-        placeholder={active ? 'Describe your project scope' : ''}
+        placeholder={active ? "Describe your project scope" : ""}
         className="w-full bg-transparent border-b border-black/15 py-2 text-sm text-text-primary focus:border-accent-gold outline-none transition-colors duration-300 resize-none"
       />
     </div>
@@ -104,27 +131,44 @@ function FloatingTextarea({ label, id, name, value, onChange, required, rows = 4
 }
 
 const requirementOptions = [
-  { value: 'building', label: 'Building Industry' },
-  { value: 'mining', label: 'Mining & Crushing' },
-  { value: 'infrastructure', label: 'Infrastructure' },
-  { value: 'excavation', label: 'Excavation' },
+  { value: "building", label: "Building Industry" },
+  { value: "mining", label: "Mining & Crushing" },
+  { value: "infrastructure", label: "Infrastructure" },
+  { value: "excavation", label: "Excavation" },
 ];
 
 const contactMeta = [
-  { label: 'Corporate Office', value: 'Sheikh Zayed Road, Dubai, UAE' },
-  { label: 'Direct Mail', value: 'info@3circles.ae' },
-  { label: 'Hotline', value: '+971 4 333 3333' },
+  { label: "Corporate Office", value: "xxxxxxx" },
+  { label: "Direct Mail", value: "info@3circles.ae" },
+  { label: "Hotline", value: "+971 4 333 3333" },
 ];
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ name: '', company: '', email: '', phone: '', requirement: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    requirement: "",
+    message: "",
+  });
 
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you. A representative from 3 Circles will reach out to you shortly.');
-    setFormData({ name: '', company: '', email: '', phone: '', requirement: '', message: '' });
+    alert(
+      "Thank you. A representative from 3 Circles will reach out to you shortly.",
+    );
+    setFormData({
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      requirement: "",
+      message: "",
+    });
   };
 
   return (
@@ -133,7 +177,6 @@ export default function ContactPage() {
 
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-14 lg:gap-24 items-start">
-
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -153,7 +196,10 @@ export default function ContactPage() {
 
             <div className="flex flex-col gap-0 mb-12">
               {contactMeta.map((item, i) => (
-                <div key={item.label} className="flex flex-col gap-1.5 py-6 border-b border-border-color first:border-t first:border-border-color">
+                <div
+                  key={item.label}
+                  className="flex flex-col gap-1.5 py-6 border-b border-border-color first:border-t first:border-border-color"
+                >
                   <span className="font-display text-[9px] font-extrabold tracking-widest text-text-secondary uppercase">
                     {item.label}
                   </span>
@@ -163,8 +209,6 @@ export default function ContactPage() {
                 </div>
               ))}
             </div>
-
-        
           </motion.div>
 
           <motion.form
@@ -175,15 +219,62 @@ export default function ContactPage() {
             className="flex flex-col gap-10 w-full"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
-              <FloatingInput label="Name" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="Your full name" />
-              <FloatingInput label="Company" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company name" />
+              <FloatingInput
+                label="Name"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Your full name"
+              />
+              <FloatingInput
+                label="Company"
+                id="company"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                placeholder="Your company name"
+              />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
-              <FloatingInput label="Email" id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="your@email.com" />
-              <FloatingInput label="Phone" id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} placeholder="+971 50 000 0000" />
+              <FloatingInput
+                label="Email"
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="your@email.com"
+              />
+              <FloatingInput
+                label="Phone"
+                id="phone"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+971 50 000 0000"
+              />
             </div>
-            <FloatingSelect label="Project Requirement" id="requirement" name="requirement" value={formData.requirement} onChange={handleChange} required options={requirementOptions} />
-            <FloatingTextarea label="Message" id="message" name="message" value={formData.message} onChange={handleChange} required />
+            <FloatingSelect
+              label="Project Requirement"
+              id="requirement"
+              name="requirement"
+              value={formData.requirement}
+              onChange={handleChange}
+              required
+              options={requirementOptions}
+            />
+            <FloatingTextarea
+              label="Message"
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
 
             <div>
               <MagneticButton
