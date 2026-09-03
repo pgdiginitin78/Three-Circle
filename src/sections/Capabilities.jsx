@@ -1,42 +1,42 @@
-import React from 'react';
-import { BentoGrid, BentoCard } from '../components/BentoGrid';
-import { BorderBeam } from '../components/BorderBeam';
-import { NumberTicker } from '../components/NumberTicker';
-import SpotlightCard from '../components/SpotlightCard';
-import RetroGrid from '../components/RetroGrid';
-import { FadeUpText } from '../components/AnimatedText';
+import React from "react";
+import { BentoGrid, BentoCard } from "../components/BentoGrid";
+import { BorderBeam } from "../components/BorderBeam";
+import { NumberTicker } from "../components/NumberTicker";
+import SpotlightCard from "../components/SpotlightCard";
+import RetroGrid from "../components/RetroGrid";
+import { FadeUpText } from "../pages/AboutUs/AnimatedText";
 
 const statsData = [
-  { 
-    value: 120, 
-    suffix: '+', 
-    label: 'PROJECTS COMPLETED', 
-    desc: 'Across GCC and MENA' 
+  {
+    value: 120,
+    suffix: "+",
+    label: "PROJECTS COMPLETED",
+    desc: "Across GCC and MENA",
   },
-  { 
-    value: 15, 
-    suffix: '+', 
-    label: 'YEARS EXPERIENCE', 
-    desc: 'In civil & industrial works' 
+  {
+    value: 15,
+    suffix: "+",
+    label: "YEARS EXPERIENCE",
+    desc: "In civil & industrial works",
   },
-  { 
-    value: 450, 
-    suffix: '+', 
-    label: 'TEAM MEMBERS', 
-    desc: 'Skilled professionals' 
+  {
+    value: 450,
+    suffix: "+",
+    label: "TEAM MEMBERS",
+    desc: "Skilled professionals",
   },
-  { 
-    value: 25, 
-    suffix: '+', 
-    label: 'PROJECT LOCATIONS', 
-    desc: 'UAE and regional sites' 
+  {
+    value: 25,
+    suffix: "+",
+    label: "PROJECT LOCATIONS",
+    desc: "UAE and regional sites",
   },
 ];
 
 export default function Capabilities() {
   return (
-    <section 
-      id="capabilities" 
+    <section
+      id="capabilities"
       className="relative bg-bg-primary border-b border-border-color py-16 md:py-24 overflow-hidden"
     >
       {/* 21st.dev Retro Grid Background */}
@@ -59,14 +59,13 @@ export default function Capabilities() {
           {statsData.map((stat, i) => (
             <BentoCard key={i} index={i} className="p-0">
               <SpotlightCard className="h-full w-full p-6 sm:p-8 flex flex-col justify-between">
-                
                 {/* 21st.dev Border Beam on Hover */}
-                <BorderBeam 
-                  size={180} 
-                  duration={10} 
-                  delay={i * 2.5} 
-                  colorFrom="#D4AF37" 
-                  colorTo="transparent" 
+                <BorderBeam
+                  size={180}
+                  duration={10}
+                  delay={i * 2.5}
+                  colorFrom="#D4AF37"
+                  colorTo="transparent"
                 />
 
                 {/* Card Header Index */}
@@ -96,7 +95,6 @@ export default function Capabilities() {
                     {stat.desc}
                   </span>
                 </div>
-
               </SpotlightCard>
             </BentoCard>
           ))}

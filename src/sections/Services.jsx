@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FadeUpText } from "../components/AnimatedText";
+import { FadeUpText } from "../pages/AboutUs/AnimatedText";
 import SpotlightCard from "../components/SpotlightCard";
 import { ArrowRight } from "../components/Icons";
 
@@ -77,7 +77,8 @@ export default function Services() {
             </FadeUpText>
             <FadeUpText delay={0.1}>
               <p className="text-xs sm:text-sm md:text-base text-text-secondary max-w-3xl leading-relaxed mt-2">
-                Integrated engineering and heavy industrial capabilities delivered with precision across the UAE and GCC.
+                Integrated engineering and heavy industrial capabilities
+                delivered with precision across the UAE and GCC.
               </p>
             </FadeUpText>
           </div>
@@ -105,8 +106,6 @@ export default function Services() {
                     className="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
                   <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/70 via-black/25 to-transparent z-10" />
-
-               
 
                   <div className="absolute bottom-3.5 left-4 right-4 z-20">
                     <span className="font-display text-[8px] font-bold tracking-[0.2em] text-accent-gold uppercase block mb-1">

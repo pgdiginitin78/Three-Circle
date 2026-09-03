@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ArchitecturalCanvas from "./ArchitecturalCanvas";
 import BlueprintGrid from "./BlueprintGrid";
 import { FadeUpText, WordReveal } from "./AnimatedText";
+import ArchitecturalCanvas from "./ArchitecturalCanvas";
 
 const narrativeSections = [
   {
@@ -58,7 +58,7 @@ export default function AboutUs() {
 
         <div className="w-full max-w-[1440px]  mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10">
           <div className="max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black tracking-tight text-text-primary uppercase leading-[0.95] mb-5 sm:mb-6 md:mb-7 lg:mb-8">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-5xl font-black tracking-tight text-text-primary uppercase leading-[0.95] mb-5 sm:mb-6 md:mb-7 lg:mb-8">
               <WordReveal text="ABOUT US" delay={0.05} />
             </h1>
 

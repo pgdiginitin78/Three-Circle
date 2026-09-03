@@ -95,31 +95,8 @@ export default function Footer() {
         <Marquee items={marqueeItems} speed={24} className="text-white/60 text-xs tracking-[0.2em]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-10">
-        <div className="mb-14 md:mb-20 pb-12 border-b border-white/10">
-          <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-accent-gold uppercase block mb-3">
-            Architectural Statement
-          </span>
-          <div className="overflow-hidden">
-            <motion.h2
-              className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight uppercase leading-[0.95] text-white"
-              initial={{ y: '100%', opacity: 0 }}
-              whileInView={{ y: '0%', opacity: 1 }}
-              viewport={{ once: true, amount: 'some' }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            >
-              LET'S BUILD <span className="shimmer-text">WHAT'S NEXT.</span>
-            </motion.h2>
-          </div>
-          <motion.div
-            className="h-[1px] bg-gradient-to-r from-accent-gold via-accent-gold/40 to-transparent mt-6 origin-left"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          />
-        </div>
-
+      <div className="relative z-10 w-full max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-10">
+       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-14 md:mb-16">
           <div className="flex flex-col gap-4">
             <button

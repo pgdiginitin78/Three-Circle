@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import MagneticButton from "../components/MagneticButton";
-import { WordReveal, FadeUpText } from "../components/AnimatedText";
+import { WordReveal, FadeUpText } from "../pages/AboutUs/AnimatedText";
 import {
   MapPinIcon,
   PhoneIcon,

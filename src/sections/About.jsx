@@ -1,19 +1,19 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { WordReveal, FadeUpText } from '../components/AnimatedText';
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { WordReveal, FadeUpText } from "../pages/AboutUs/AnimatedText";
 
 const capabilities = [
-  'BUILDING INDUSTRY',
-  'MINING & CRUSHING',
-  'INFRASTRUCTURE',
-  'EXCAVATION',
+  "BUILDING INDUSTRY",
+  "MINING & CRUSHING",
+  "INFRASTRUCTURE",
+  "EXCAVATION",
 ];
 
 export default function About() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
@@ -28,9 +28,9 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <motion.div
             className="relative w-full aspect-[4/5] overflow-hidden rounded-sm border border-black/[0.06] shadow-xl group order-2 lg:order-1"
-            initial={{ opacity: 0, clipPath: 'inset(10% 10% 10% 10%)' }}
-            whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
-            viewport={{ once: true, amount: 'some' }}
+            initial={{ opacity: 0, clipPath: "inset(10% 10% 10% 10%)" }}
+            whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+            viewport={{ once: true, amount: "some" }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="absolute inset-0 border border-accent-gold/20 m-3.5 pointer-events-none z-10 transition-all duration-500 group-hover:m-2.5 group-hover:border-accent-gold/45" />
@@ -57,14 +57,21 @@ export default function About() {
 
             <FadeUpText delay={0.12}>
               <p className="text-xs sm:text-sm md:text-base text-text-secondary leading-relaxed mb-8 max-w-lg">
-                3 Circles delivers precision civil engineering and industrial services. We provide fully integrated, large-scale capabilities designed to support major development projects across building construction, mining and crushing operations, public infrastructure, and heavy excavation.
+                3 Circles delivers precision civil engineering and industrial
+                services. We provide fully integrated, large-scale capabilities
+                designed to support major development projects across building
+                construction, mining and crushing operations, public
+                infrastructure, and heavy excavation.
               </p>
             </FadeUpText>
 
             <FadeUpText delay={0.2}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {capabilities.map((cap) => (
-                  <div key={cap} className="flex items-center gap-3 py-2.5 border-b border-border-color">
+                  <div
+                    key={cap}
+                    className="flex items-center gap-3 py-2.5 border-b border-border-color"
+                  >
                     <div className="w-1.5 h-1.5 rounded-full bg-accent-gold shrink-0" />
                     <span className="font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] text-text-primary uppercase">
                       {cap}

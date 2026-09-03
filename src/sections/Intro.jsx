@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { WordReveal } from "../components/AnimatedText";
+import { WordReveal } from "../pages/AboutUs/AnimatedText";
 
 export default function Intro() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   const imgY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
@@ -43,15 +43,17 @@ export default function Intro() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              3 Circles delivers integrated civil and infrastructure capabilities across building construction, mining and crushing, infrastructure development and excavation.
+              3 Circles delivers integrated civil and infrastructure
+              capabilities across building construction, mining and crushing,
+              infrastructure development and excavation.
             </motion.p>
           </div>
 
           <div className="flex flex-col">
             <motion.div
               className="relative w-full aspect-[16/10] overflow-hidden rounded-sm border border-black/[0.06] shadow-lg group"
-              initial={{ opacity: 0, clipPath: 'inset(10% 10% 10% 10%)' }}
-              whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+              initial={{ opacity: 0, clipPath: "inset(10% 10% 10% 10%)" }}
+              whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
               viewport={{ once: true, amount: "some" }}
               transition={{
                 duration: 0.9,

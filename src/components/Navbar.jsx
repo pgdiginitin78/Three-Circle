@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTransition } from "./PageTransition";
@@ -6,9 +7,23 @@ import ScrollProgressBar from "./ScrollProgressBar";
 import { ArrowRight } from "./Icons";
 import Logo from "../assets/logo/Logo.png";
 
+/**
+ * Layout concept: "Dual dock"
+ * Instead of one centered floating pill, the logo and the navigation
+ * live in two independent frosted-glass docks anchored to opposite
+ * corners of the viewport. A thin baseline rule — a nod to a
+ * surveyor's benchmark line — fades in between them once the page
+ * scrolls, visually tying the two docks together. Active / hovered
+ * items are marked with a short ruler tick rather than a glow pill,
+ * echoing measurement marks on a drawing. Mobile opens a right-hand
+ * drawer, like a sheet pulled from a drafting flat file, instead of
+ * a full-screen curtain.
+ */
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const location = useLocation();
   const { navigateTo } = useTransition();
@@ -20,205 +35,340 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (isMobileOpen) {
+    if (isDrawerOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      setOpenSubMenu(null);
     }
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isMobileOpen]);
+  }, [isDrawerOpen]);
 
   const handleNavClick = (path, target) => {
-    setIsMobileOpen(false);
+    setIsDrawerOpen(false);
     navigateTo(path, target);
   };
 
   const navItems = [
-    { label: "HOME", path: "/", target: "hero", num: "01" },
-    { label: "ABOUT", path: "/about-us", target: null, num: "02" },
-    { label: "SERVICES", path: "/", target: "services", num: "03" },
-    { label: "PROJECTS", path: "/projects", target: null, num: "04" },
-    { label: "CAPABILITIES", path: "/", target: "capabilities", num: "05" },
-    { label: "CONTACT", path: "/contact", target: null, num: "06" },
+    { label: "Home", path: "/", target: "hero" },
+    {
+      label: "About Us",
+      path: "/about",
+      target: null,
+      subItems: [
+        { label: "Company Overview", path: "/about/overview" },
+        { label: "Our History", path: "/about/history" },
+        { label: "Leadership", path: "/about/leadership" },
+        { label: "Safety & Quality", path: "/about/safety" },
+        { label: "Our Strength", path: "/about/strength" },
+      ],
+    },
+    {
+      label: "Services",
+      path: "/services",
+      target: null,
+      subItems: [
+        { label: "Building Industry", path: "/services/building" },
+        { label: "Infrastructure", path: "/services/infrastructure" },
+        { label: "Mining & Crushing", path: "/services/mining" },
+        { label: "Excavation", path: "/services/excavation" },
+      ],
+    },
+    {
+      label: "Projects",
+      path: "/projects",
+      target: null,
+      subItems: [
+        { label: "All Projects", path: "/projects/all" },
+        { label: "Ongoing Projects", path: "/projects/ongoing" },
+        { label: "Completed Projects", path: "/projects/completed" },
+      ],
+    },
+    {
+      label: "Plant & Machinery",
+      path: "/plant-machinery",
+      target: null,
+      subItems: [
+        { label: "Equipment Overview", path: "/plant-machinery" },
+        { label: "Construction Equipment", path: "/plant-machinery" },
+        { label: "Concrete Equipment", path: "/plant-machinery" },
+        { label: "Hauling & Transport", path: "/plant-machinery" },
+        { label: "Asphalt & Crushing", path: "/plant-machinery" },
+        { label: "Quality Control", path: "/plant-machinery" },
+        { label: "Tools & Accessories", path: "/plant-machinery" },
+      ],
+    },
+    {
+      label: "Our Company",
+      path: "/our-company",
+      target: null,
+      subItems: [
+        { label: "Achievements", path: "/our-company/achievements" },
+        { label: "Major Associates", path: "/our-company/associates" },
+        { label: "Our Clients", path: "/our-company/clients" },
+        { label: "Accreditations", path: "/our-company/accreditations" },
+      ],
+    },
   ];
 
   const isItemActive = (item) => {
-    if (item.path === "/about-us")
-      return (
-        location.pathname === "/about-us" || location.pathname === "/about"
-      );
-    if (item.path === "/projects") return location.pathname === "/projects";
-    if (item.path === "/contact") return location.pathname === "/contact";
-    if (item.path === "/" && item.target === "hero")
-      return location.pathname === "/";
-    return false;
+    if (item.path === "/")
+      return location.pathname === "/" && item.target === "hero";
+    return location.pathname.startsWith(item.path);
   };
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <>
       <ScrollProgressBar />
-
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed z-[9999] left-1/2 -translate-x-1/2 flex items-center  justify-between transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed z-[9999] left-1/2 -translate-x-1/2 flex items-center justify-between transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled
-            ? "top-2.5 sm:top-3.5 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] max-w-5xl h-12 sm:h-13 xl:max-w-350 2xl:max-w-360 2xl:h-20 px-4 sm:px-6 bg-white/70 backdrop-blur-2xl border border-white/80 shadow-[0_12px_32px_0_rgba(0,0,0,0.12),inset_0_1px_1px_0_rgba(255,255,255,0.9)]"
-            : "top-3 sm:top-4.5 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] max-w-7xl xl:max-w-[1540px] h-13 sm:h-15 2xl:h-24 px-4 sm:px-7 bg-white/45 backdrop-blur-2xl border border-white/60 shadow-[0_8px_24px_0_rgba(0,0,0,0.08),inset_0_1px_1px_0_rgba(255,255,255,0.85)]"
-        } rounded-full`}
+            ? "top-2.5 sm:top-3.5 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] max-w-[1580px] h-14 sm:h-16 px-4 sm:px-6 bg-white/30 backdrop-blur-3xl border border-white/60 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.2),inset_0_2px_6px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.3)]"
+            : "top-3 sm:top-4.5 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] max-w-[1580px] h-16 sm:h-20 px-5 sm:px-8 bg-white/10 backdrop-blur-[20px] border border-white/40 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),inset_0_2px_6px_rgba(255,255,255,0.6),inset_0_-1px_4px_rgba(255,255,255,0.2)]"
+        } rounded-[2rem]`}
       >
+        <div className="absolute inset-0 rounded-[2rem] pointer-events-none bg-gradient-to-b from-white/70 via-white/10 to-transparent opacity-60 z-[-1]" />
+
         <button
-          className="flex items-center gap-1 font-displa font-extrabold text-sm sm:text-base tracking-[0.2em] text-text-primary cursor-pointer select-none shrink-0 hover:opacity-85 transition-opacity"
+          className="flex items-center cursor-pointer select-none hover:opacity-85 transition-opacity shrink-0"
           onClick={() => handleNavClick("/", "hero")}
         >
           <img
             src={Logo}
             alt="3 Circles Logo"
-            className="h-16 md:h-16 2xl:h-24 w-auto object-contain"
+            className="h-9 sm:h-11 2xl:h-14 w-auto object-contain"
           />
         </button>
-
-        <div
-          className="hidden lg:flex items-center gap-1 bg-black/[0.03] backdrop-blur-md p-1 rounded-full border border-white/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]"
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
+        <div className="hidden lg:flex flex-1 items-center justify-center gap-1 px-4">
           {navItems.map((item, index) => {
             const active = isItemActive(item);
             return (
-              <button
+              <div
                 key={item.label}
-                className={`relative font-display text-[9px] xl:text-[10px] 2xl:text-[12px] font-extrabold tracking-[0.2em] transition-colors duration-200 py-1.5 px-3 xl:px-3.5 rounded-full cursor-pointer select-none ${
-                  active
-                    ? "text-accent-gold font-black"
-                    : "text-text-secondary hover:text-text-primary"
-                }`}
-                onClick={() => handleNavClick(item.path, item.target)}
+                className="relative group h-full flex items-center py-4"
                 onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                <span className="relative z-10">{item.label}</span>
-                {hoveredIndex === index && (
-                  <motion.span
-                    layoutId="nav-hover-pill"
-                    className="absolute inset-0 bg-white/95 backdrop-blur-md shadow-sm border border-white/80 rounded-full"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                <button
+                  className="relative flex flex-col items-center justify-center gap-1 px-3 xl:px-4 cursor-pointer select-none"
+                  onClick={() => handleNavClick(item.path, item.target)}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      className={`whitespace-nowrap font-display text-[11px] xl:text-[12px] font-bold tracking-wide transition-colors duration-200 ${
+                        active
+                          ? "text-accent-gold"
+                          : "text-text-secondary group-hover:text-text-primary"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                    {item.subItems && (
+                      <svg
+                        viewBox="0 0 10 6"
+                        className={`w-2.5 h-2.5 transition-transform duration-300 ${
+                          active
+                            ? "text-accent-gold"
+                            : "text-text-secondary/70 group-hover:text-text-primary"
+                        } ${hoveredIndex === index ? "rotate-180" : ""}`}
+                        fill="none"
+                      >
+                        <path
+                          d="M1 1L5 5L9 1"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </span>
+                  <span
+                    className={`absolute -bottom-2 h-[2px] rounded-full bg-accent-gold transition-all duration-300 ${
+                      active
+                        ? "w-5 opacity-100"
+                        : hoveredIndex === index
+                          ? "w-5 opacity-60"
+                          : "w-0 opacity-0"
+                    }`}
                   />
+                </button>
+
+                {item.subItems && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                    <div className="bg-white/95 backdrop-blur-md border border-white/80 rounded-2xl shadow-xl p-2 min-w-[220px] flex flex-col gap-1">
+                      {item.subItems.map((subItem) => (
+                        <button
+                          key={subItem.label}
+                          onClick={() => handleNavClick(subItem.path, null)}
+                          className="text-left px-4 py-2.5 whitespace-nowrap font-display text-[11px] font-bold tracking-wide text-text-secondary hover:bg-accent-gold/10 hover:text-accent-gold rounded-xl transition-colors duration-200"
+                        >
+                          {subItem.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 )}
-                {active && hoveredIndex === null && (
-                  <motion.span
-                    layoutId="nav-active-pill"
-                    className="absolute inset-0 bg-white/95 backdrop-blur-md shadow-sm border border-white/80 rounded-full"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </button>
+              </div>
             );
           })}
         </div>
 
-        <motion.button
-          className="hidden lg:inline-flex items-center justify-center font-display text-[9px] xl:text-[10px] 2xl:text-[12px] font-extrabold tracking-[0.2em] py-2 px-4.5 xl:px-5 rounded-full bg-text-primary text-white border border-text-primary hover:bg-accent-gold hover:border-accent-gold hover:text-text-primary transition-all duration-300 select-none shrink-0 cursor-pointer shadow-sm"
-          onClick={() => handleNavClick("/contact", null)}
-          whileTap={{ scale: 0.96 }}
-        >
-          GET IN TOUCH
-        </motion.button>
-
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
+          <span className="w-px h-6 bg-black/10" />
+          <button
+            onClick={() => handleNavClick("/contact", null)}
+            className="flex items-center gap-1.5 h-10 xl:h-11 px-5 xl:px-6 rounded-full bg-text-primary text-white font-display text-[11px] xl:text-[12px] font-bold tracking-wide cursor-pointer hover:bg-accent-gold transition-colors duration-200"
+          >
+            Contact Us
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
         <button
-          className="flex flex-col gap-1 w-8 h-8 sm:w-9 sm:h-9 items-center justify-center lg:hidden z-[10000] shrink-0 cursor-pointer rounded-full bg-white/70 backdrop-blur-md border border-white/70 shadow-sm hover:bg-white/90 active:scale-95 transition-all"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          className={`lg:hidden flex flex-col gap-1 w-10 h-10 items-center justify-center shrink-0 cursor-pointer rounded-full bg-white/50 backdrop-blur-md border border-white/70 shadow-sm active:scale-95 transition-all`}
+          onClick={() => setIsDrawerOpen(!isDrawerOpen)}
           aria-label="Toggle navigation menu"
         >
           <span
-            className={`w-3.5 h-[1.5px] bg-text-primary transition-all duration-300 origin-center ${isMobileOpen ? "translate-y-[5.5px] rotate-45" : ""}`}
+            className={`w-4 h-[1.5px] bg-text-primary transition-all duration-300 origin-center ${isDrawerOpen ? "translate-y-[5.5px] rotate-45" : ""}`}
           />
           <span
-            className={`w-3.5 h-[1.5px] bg-text-primary transition-all duration-300 ${isMobileOpen ? "opacity-0 scale-x-0" : ""}`}
+            className={`w-4 h-[1.5px] bg-text-primary transition-all duration-300 ${isDrawerOpen ? "opacity-0 scale-x-0" : ""}`}
           />
           <span
-            className={`w-3.5 h-[1.5px] bg-text-primary transition-all duration-300 origin-center ${isMobileOpen ? "-translate-y-[5.5px] -rotate-45" : ""}`}
+            className={`w-4 h-[1.5px] bg-text-primary transition-all duration-300 origin-center ${isDrawerOpen ? "-translate-y-[5.5px] -rotate-45" : ""}`}
           />
         </button>
       </motion.nav>
 
       <AnimatePresence>
-        {isMobileOpen && (
-          <motion.div
-            className="fixed inset-0 w-full h-screen bg-white/85 backdrop-blur-3xl z-[9998] flex flex-col justify-between pt-20 pb-8 px-6 sm:px-10 overflow-y-auto border border-white/50"
-            initial={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
-            animate={{ opacity: 1, clipPath: "inset(0 0 0% 0)" }}
-            exit={{ opacity: 0, clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="flex flex-col gap-1 my-auto max-w-sm w-full">
-              {navItems.map((item, i) => {
-                const active = isItemActive(item);
-                return (
-                  <motion.button
-                    key={item.label}
-                    className={`group flex items-center justify-between py-3 border-b border-black/[0.06] text-left cursor-pointer transition-all duration-200 ${
-                      active
-                        ? "text-accent-gold font-black"
-                        : "text-text-secondary hover:text-text-primary"
-                    }`}
-                    onClick={() => handleNavClick(item.path, item.target)}
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.05 + i * 0.03,
-                      ease: [0.16, 1, 0.3, 1],
-                      duration: 0.3,
-                    }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-[9px] font-bold text-accent-gold/80 tracking-widest">
-                        {item.num}
-                      </span>
-                      <span className="font-display text-lg sm:text-xl font-bold tracking-tight uppercase group-hover:translate-x-1 transition-transform duration-200">
-                        {item.label}
-                      </span>
+        {isDrawerOpen && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9997] lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setIsDrawerOpen(false)}
+            />
+            <motion.div
+              className="fixed top-0 right-0 h-screen w-[86%] max-w-sm bg-white/80 backdrop-blur-3xl z-[9998] flex flex-col border-l border-white/60 shadow-2xl lg:hidden"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="absolute left-0 top-0 bottom-0 w-3 flex flex-col justify-evenly">
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-px bg-black/15 ${i % 3 === 0 ? "w-3" : "w-1.5"}`}
+                  />
+                ))}
+              </div>
+
+              <div className="flex-1 overflow-y-auto pt-24 pb-6 pl-8 pr-6 flex flex-col gap-1">
+                {navItems.map((item, i) => {
+                  const active = isItemActive(item);
+                  const isSubMenuOpen = openSubMenu === item.label;
+                  return (
+                    <div
+                      key={item.label}
+                      className="border-b border-black/[0.06]"
+                    >
+                      <motion.button
+                        className={`w-full group flex items-center justify-between py-3 text-left cursor-pointer transition-colors duration-200 ${
+                          active
+                            ? "text-accent-gold"
+                            : "text-text-secondary hover:text-text-primary"
+                        }`}
+                        onClick={() => {
+                          if (item.subItems) {
+                            setOpenSubMenu(isSubMenuOpen ? null : item.label);
+                          } else {
+                            handleNavClick(item.path, item.target);
+                          }
+                        }}
+                        initial={{ opacity: 0, x: 12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{
+                          delay: 0.08 + i * 0.03,
+                          ease: [0.16, 1, 0.3, 1],
+                          duration: 0.3,
+                        }}
+                      >
+                        <span className="font-display text-base sm:text-lg font-bold tracking-tight">
+                          {item.label}
+                        </span>
+                        {item.subItems ? (
+                          <span
+                            className={`text-[10px] transition-transform duration-300 ${isSubMenuOpen ? "rotate-180" : ""}`}
+                          >
+                            ▼
+                          </span>
+                        ) : active ? (
+                          <span className="w-1.5 h-1.5 rounded-full bg-accent-gold shrink-0" />
+                        ) : (
+                          <ArrowRight className="w-3.5 h-3.5 text-black/25 group-hover:text-accent-gold transition-colors" />
+                        )}
+                      </motion.button>
+
+                      <AnimatePresence>
+                        {item.subItems && isSubMenuOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden flex flex-col gap-1 pb-3 pl-2"
+                          >
+                            {item.subItems.map((subItem) => (
+                              <button
+                                key={subItem.label}
+                                className="text-left py-1.5 font-display text-[12px] font-bold tracking-wide text-text-secondary hover:text-accent-gold transition-colors"
+                                onClick={() =>
+                                  handleNavClick(subItem.path, null)
+                                }
+                              >
+                                {subItem.label}
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
-                    {active ? (
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent-gold shrink-0" />
-                    ) : (
-                      <ArrowRight className="w-3.5 h-3.5 text-black/25 group-hover:text-accent-gold transition-colors" />
-                    )}
-                  </motion.button>
-                );
-              })}
+                  );
+                })}
 
-              <motion.div
-                className="pt-5"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.05 + navItems.length * 0.03,
-                  ease: [0.16, 1, 0.3, 1],
-                  duration: 0.3,
-                }}
-              >
                 <button
-                  className="w-full font-display text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-6 bg-text-primary text-white rounded-full hover:bg-accent-gold hover:text-text-primary transition-all duration-300 cursor-pointer shadow-md text-center"
                   onClick={() => handleNavClick("/contact", null)}
+                  className="mt-5 flex items-center justify-center gap-2 h-12 rounded-xl bg-text-primary text-white font-display text-xs font-bold tracking-wide cursor-pointer hover:bg-accent-gold transition-colors duration-200"
                 >
-                  GET IN TOUCH
+                  Contact Us
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
-              </motion.div>
-            </div>
+              </div>
 
-            <div className="pt-4 border-t border-black/[0.06] flex items-center justify-between">
-              <span className="font-display text-[9px] font-bold tracking-[0.2em] text-accent-gold uppercase">
-                3 Circles
-              </span>
-              <span className="font-display text-[8px] font-medium tracking-[0.15em] text-text-secondary uppercase">
-                Engineering • Infrastructure
-              </span>
-            </div>
-          </motion.div>
+              <div className="pl-8 pr-6 pb-6 pt-4 border-t border-black/[0.06] flex items-center justify-between">
+                <span className="font-display text-[9px] font-bold tracking-[0.2em] text-accent-gold uppercase">
+                  3 Circles
+                </span>
+                <span className="font-display text-[8px] font-medium tracking-[0.15em] text-text-secondary uppercase">
+                  Engineering • Infrastructure
+                </span>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </>
+    </>,
+    document.body,
   );
 }
