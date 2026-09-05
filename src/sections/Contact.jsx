@@ -28,7 +28,7 @@ function FloatingInput({
         htmlFor={id}
         className={`absolute left-0 font-display font-extrabold tracking-widest transition-all duration-200 pointer-events-none ${
           active
-            ? "top-0 text-[8px] 2xl:text-[12px] text-accent-gold"
+            ? "top-0 text-[8px] 2xl:text-[12px] text-brand-gold"
             : "top-4 text-[9px] 2xl:text-[12px] text-text-secondary"
         } uppercase`}
       >
@@ -44,7 +44,7 @@ function FloatingInput({
         onBlur={() => setFocused(false)}
         required={required}
         placeholder={active ? placeholder : ""}
-        className="w-full bg-transparent border-b border-black/15 py-1.5 text-xs sm:text-sm text-text-primary focus:border-accent-gold outline-none transition-colors duration-300"
+        className="w-full bg-transparent border-b border-brand-darkblue/15 py-1.5 text-xs sm:text-sm text-text-primary focus:border-brand-gold outline-none transition-colors duration-300"
       />
     </div>
   );
@@ -68,7 +68,7 @@ function FloatingSelect({
         htmlFor={id}
         className={`absolute left-0 font-display font-extrabold tracking-widest transition-all duration-200 pointer-events-none ${
           active
-            ? "top-0 text-[8px] 2xl:text-[12px] text-accent-gold"
+            ? "top-0 text-[8px] 2xl:text-[12px] text-brand-gold"
             : "top-4 text-[9px] 2xl:text-[12px] text-text-secondary"
         } uppercase`}
       >
@@ -82,7 +82,7 @@ function FloatingSelect({
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         required={required}
-        className="w-full bg-transparent border-b border-black/15 py-1.5 text-xs sm:text-sm text-text-primary focus:border-accent-gold outline-none transition-colors duration-300 cursor-pointer"
+        className="w-full bg-transparent border-b border-brand-darkblue/15 py-1.5 text-xs sm:text-sm text-text-primary focus:border-brand-gold outline-none transition-colors duration-300 cursor-pointer"
       >
         <option value="" disabled />
         {options.map((opt) => (
@@ -113,7 +113,7 @@ function FloatingTextarea({
         htmlFor={id}
         className={`absolute left-0 font-display font-extrabold tracking-widest transition-all duration-200 pointer-events-none ${
           active
-            ? "top-0 text-[8px] 2xl:text-[12px] text-accent-gold"
+            ? "top-0 text-[8px] 2xl:text-[12px] text-brand-gold"
             : "top-4 text-[9px] 2xl:text-[12px] text-text-secondary"
         } uppercase`}
       >
@@ -129,7 +129,7 @@ function FloatingTextarea({
         required={required}
         rows={rows}
         placeholder={active ? "Describe your project scope" : ""}
-        className="w-full bg-transparent border-b border-black/15 py-1.5 text-xs sm:text-sm text-text-primary focus:border-accent-gold outline-none transition-colors duration-300 resize-none"
+        className="w-full bg-transparent border-b border-brand-darkblue/15 py-1.5 text-xs sm:text-sm text-text-primary focus:border-brand-gold outline-none transition-colors duration-300 resize-none"
       />
     </div>
   );
@@ -185,7 +185,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-start">
           <div>
             <FadeUpText>
-              <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-accent-gold uppercase block mb-3">
+              <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-brand-gold uppercase block mb-3">
                 Get In Touch
               </span>
             </FadeUpText>
@@ -204,8 +204,8 @@ export default function Contact() {
                       key={item.label}
                       className="flex items-start gap-3 pb-5 border-b border-border-color last:border-b-0 last:pb-0"
                     >
-                      <div className="w-8 h-8 rounded-full bg-black/[0.03] border border-black/[0.06] flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon className="w-3.5 h-3.5 text-accent-gold" />
+                      <div className="w-8 h-8 rounded-full bg-brand-darkblue/[0.03] border border-brand-darkblue/[0.06] flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon className="w-3.5 h-3.5 text-brand-gold" />
                       </div>
                       <div className="flex flex-col">
                         <span className="font-display text-[8px] 2xl:text-[12px] font-extrabold tracking-[0.2em] text-text-secondary uppercase">
@@ -295,7 +295,7 @@ export default function Contact() {
             <div className="pt-2">
               <MagneticButton
                 type="submit"
-                className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-8 bg-text-primary text-white border border-text-primary rounded-full hover:bg-accent-gold hover:border-accent-gold hover:text-text-primary transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-8 bg-text-primary text-white border border-text-primary rounded-full hover:bg-brand-gold hover:border-brand-gold hover:text-text-primary transition-all duration-300 flex items-center gap-2 cursor-pointer"
               >
                 <span>START A CONVERSATION</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />

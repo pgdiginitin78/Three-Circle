@@ -14,7 +14,7 @@ const ongoingProjects = [
         className="w-6 h-6"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#B8860B"
+        stroke="var(--color-brand-gold)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -37,15 +37,15 @@ const ongoingProjects = [
         className="w-6 h-6"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#B8860B"
+        stroke="var(--color-brand-gold)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        <circle cx="9" cy="10" r="1" fill="#B8860B" />
-        <circle cx="12" cy="10" r="1" fill="#B8860B" />
-        <circle cx="15" cy="10" r="1" fill="#B8860B" />
+        <circle cx="9" cy="10" r="1" fill="var(--color-brand-gold)" />
+        <circle cx="12" cy="10" r="1" fill="var(--color-brand-gold)" />
+        <circle cx="15" cy="10" r="1" fill="var(--color-brand-gold)" />
       </svg>
     ),
   },
@@ -61,7 +61,7 @@ const ongoingProjects = [
         className="w-6 h-6"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#B8860B"
+        stroke="var(--color-brand-gold)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -83,7 +83,7 @@ const ongoingProjects = [
         className="w-6 h-6"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#B8860B"
+        stroke="var(--color-brand-gold)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -105,7 +105,7 @@ const ongoingProjects = [
         className="w-6 h-6"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#B8860B"
+        stroke="var(--color-brand-gold)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -124,7 +124,7 @@ function DiamondTile({ item, index }) {
     <div className="relative w-[92px] h-[92px] flex items-center justify-center shrink-0 cursor-pointer">
       {/* Animated Floor Glow */}
       <motion.div
-        className="absolute -bottom-2 w-16 h-8 bg-[#D4AF37]/50 rounded-full blur-lg"
+        className="absolute -bottom-2 w-16 h-8 bg-brand-gold/50 rounded-full blur-lg"
         animate={{
           scale: [1, 1.25, 1],
           opacity: [0.4, 0.7, 0.4],
@@ -139,7 +139,7 @@ function DiamondTile({ item, index }) {
 
       {/* Floating 3D Diamond Square with Alternate Up/Down Motion */}
       <motion.div
-        className="relative w-[68px] h-[68px] bg-white border-[1.5px] border-[#D4AF37]/70 shadow-[0_10px_22px_rgba(212,175,55,0.35)] flex items-center justify-center"
+        className="relative w-[68px] h-[68px] bg-white border-[1.5px] border-brand-gold/70 shadow-[0_10px_22px_rgba(212,175,55,0.35)] flex items-center justify-center"
         style={{ transform: "rotate(45deg)", borderRadius: "18px" }}
         animate={{
           y: isEven ? [4, -6, 4] : [-6, 4, -6],
@@ -166,14 +166,14 @@ export default function OngoingProjects() {
   return (
     <section
       id="ongoing-projects"
-      className="w-full bg-white border-b border-black/[0.06] py-16 sm:py-24 lg:py-28 overflow-hidden font-sans"
+      className="w-full bg-white border-b border-brand-darkblue/[0.06] py-16 sm:py-24 lg:py-28 overflow-hidden font-sans"
     >
       <div className="w-full max-w-[1280px] mx-auto px-6 md:px-10 lg:px-12">
         <div className="flex items-baseline gap-4 mb-16 lg:mb-24">
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#222222] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-brand-darkblue tracking-tight">
             Our Ongoing Projects
           </h2>
-          <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-[#B8860B] uppercase">
+          <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-brand-gold uppercase">
             3 Circle
           </span>
         </div>
@@ -199,7 +199,7 @@ export default function OngoingProjects() {
               </defs>
               <path
                 d="M100,84 L300,172 L500,84 L700,172 L900,84"
-                stroke="#D4AF37"
+                stroke="var(--color-brand-gold)"
                 strokeWidth="16"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -208,7 +208,7 @@ export default function OngoingProjects() {
               />
               {/* <path
                 d="M100,84 L300,172 L500,84 L700,172 L900,84"
-                stroke="#C9C9C9"
+                stroke="#0F172A"
                 strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -231,20 +231,20 @@ export default function OngoingProjects() {
                       transform: isLow ? "translateY(88px)" : "translateY(0px)",
                     }}
                   >
-                    <span className="w-full italic font-black text-2xl xl:text-[28px] text-[#B8860B] mb-1 leading-none pl-2">
+                    <span className="w-full italic font-black text-2xl xl:text-[28px] text-brand-gold mb-1 leading-none pl-2">
                       {item.num}
                     </span>
                     <DiamondTile item={item} index={index} />
 
                     <div className="w-full pl-2 pr-4 mt-4 flex flex-col items-start">
-                      <h3 className="text-xs xl:text-sm font-extrabold uppercase tracking-wide text-[#B8860B] leading-snug">
+                      <h3 className="text-xs xl:text-sm font-extrabold uppercase tracking-wide text-brand-gold leading-snug">
                         {item.title}
                       </h3>
-                      <span className="w-8 h-[3px] bg-[#D4AF37] rounded-full my-2" />
-                      <span className="text-[11px] font-bold text-[#111111] uppercase tracking-tight mb-1.5">
+                      <span className="w-8 h-[3px] bg-brand-gold rounded-full my-2" />
+                      <span className="text-[11px] font-bold text-brand-darkblue uppercase tracking-tight mb-1.5">
                         {item.clientFullName}
                       </span>
-                      <p className="text-[11px] xl:text-xs text-[#666666] leading-relaxed">
+                      <p className="text-[11px] xl:text-xs text-brand-darkblue/70 leading-relaxed">
                         {item.scope}
                       </p>
                     </div>
@@ -256,7 +256,7 @@ export default function OngoingProjects() {
         </div>
 
         <div className="lg:hidden relative">
-          <div className="absolute left-[45px] top-8 bottom-8 w-2 bg-[#EDEDED] rounded-full" />
+          <div className="absolute left-[45px] top-8 bottom-8 w-2 9090-brand-darkblue/10 rounded-full" />
           <div className="flex flex-col gap-10">
             {ongoingProjects.map((item, index) => (
               <div
@@ -264,21 +264,21 @@ export default function OngoingProjects() {
                 className="flex items-start gap-4 sm:gap-6 relative z-10"
               >
                 <div className="shrink-0 flex flex-col items-center">
-                  <span className="italic font-black text-lg text-[#B8860B] mb-1">
+                  <span className="italic font-black text-lg text-brand-gold mb-1">
                     {item.num}
                   </span>
                   <DiamondTile item={item} index={index} />
                 </div>
 
                 <div className="flex-1 pt-1">
-                  <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wide text-[#B8860B] leading-snug">
+                  <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wide text-brand-gold leading-snug">
                     {item.title}
                   </h3>
-                  <span className="block w-8 h-[3px] bg-[#D4AF37] rounded-full my-2" />
-                  <span className="text-[10px] font-bold text-[#111111] uppercase block mb-1.5">
+                  <span className="block w-8 h-[3px] bg-brand-gold rounded-full my-2" />
+                  <span className="text-[10px] font-bold text-brand-darkblue uppercase block mb-1.5">
                     {item.clientFullName}
                   </span>
-                  <p className="text-xs text-[#666666] leading-relaxed">
+                  <p className="text-xs text-brand-darkblue/70 leading-relaxed">
                     {item.scope}
                   </p>
                 </div>

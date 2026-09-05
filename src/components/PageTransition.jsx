@@ -14,13 +14,16 @@ export const TransitionProvider = ({ children }) => {
   const lenis = useLenis();
 
   const navigateTo = (path, scrollTarget = null) => {
-    if (location.pathname === path && scrollTarget) {
-      const el = document.getElementById(scrollTarget);
-      if (el) {
-        if (lenis) {
-          lenis.scrollTo(el, { offset: -70, duration: 1.2 });
-        } else {
-          el.scrollIntoView({ behavior: 'smooth' });
+    // If we're already on the same page
+    if (location.pathname === path) {
+      if (scrollTarget) {
+        const el = document.getElementById(scrollTarget);
+        if (el) {
+          if (lenis) {
+            lenis.scrollTo(el, { offset: -70, duration: 1.2 });
+          } else {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       } else {
         if (lenis) lenis.scrollTo(0, { duration: 0.8 });
@@ -29,23 +32,25 @@ export const TransitionProvider = ({ children }) => {
       return;
     }
 
-    if (path === '/' && scrollTarget && location.pathname !== '/') {
-      navigate('/');
-      setTimeout(() => {
-        const el = document.getElementById(scrollTarget);
-        if (el) {
-          if (lenis) lenis.scrollTo(el, { offset: -70, duration: 1 });
-          else el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 150);
-      return;
-    }
-
+    // Navigating to a different page
     setIsPending(true);
     setTimeout(() => {
       navigate(path);
-      if (lenis) lenis.scrollTo(0, { immediate: true });
-      else window.scrollTo({ top: 0, behavior: 'auto' });
+      
+      if (scrollTarget) {
+        // Wait a tick for React to render the new page
+        setTimeout(() => {
+          const el = document.getElementById(scrollTarget);
+          if (el) {
+            if (lenis) lenis.scrollTo(el, { offset: -70, immediate: true });
+            else el.scrollIntoView();
+          }
+        }, 100);
+      } else {
+        if (lenis) lenis.scrollTo(0, { immediate: true });
+        else window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+
       setTimeout(() => {
         setIsPending(false);
       }, 350);
@@ -106,7 +111,7 @@ const PageTransitionOverlay = () => {
         <div style={{
           width: '50px',
           height: '2px',
-          backgroundColor: '#D4AF37',
+          backgroundColor: 'var(--color-brand-gold)',
           marginTop: '12px'
         }} />
       </motion.div>

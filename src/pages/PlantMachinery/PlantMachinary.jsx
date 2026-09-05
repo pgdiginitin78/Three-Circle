@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
-import {
-  constructionData,
-  concreteData,
-  haulingData,
-  asphaltData,
-  qualityData,
-  toolsData,
-} from "../../data/plantMachineryData";
+import { BiCategory } from "react-icons/bi";
+import { FaTractor, FaHardHat, FaCheckCircle } from "react-icons/fa";
+import { MdPrecisionManufacturing } from "react-icons/md";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+import { allMachineryData } from "../../data/plantMachineryData";
 
 const fallbackImages = {
-  "Hydraulic Excavators": "/images/machinery/hero.jpg",
+  "Hydraulic Excavators": "/images/machinery/HeroBannerMobile.png",
   "Bull Dozers": "/images/machinery/Bull Dozers.png",
   "Vibro Rollers": "/images/machinery/VIBRO ROLLERS.png",
   "Motor Graders": "/images/machinery/Motor Graders.png",
@@ -22,10 +22,14 @@ const fallbackImages = {
   "Other Equipments": "/images/machinery/Welding Generator.png",
   "Concrete Equipment": "/images/machinery/Concrete Equipment.png",
   "Concrete Tools & Plants": "/images/machinery/Concrete Tools & Plants.png",
-  "Asphalt & Crushing": "/images/machinery/Asphalt & Crushing.png",
-  "Hauling & Transport": "/images/machinery/Hauling & Transport.png",
-  "Quality Control Equipment":
-    "/images/machinery/Quality Control Equipment.png",
+  // Map Asphalt & Crushing sub-categories to the image
+  "Asphalt Equipments": "/images/machinery/Asphalt & Crushing.png",
+  "Asphalt Equipments": "/images/machinery/Asphalt Equipments.png",
+  "Stone Crushers": "/images/machinery/Asphalt & Crushing.png",
+  // Map Hauling & Transport sub-categories to the image
+  "Hauling Equipment": "/images/machinery/Hauling & Transport.png",
+  "Transport": "/images/machinery/Hauling & Transport.png",
+  "Quality Control Equipment": "/images/machinery/Quality Control Equipment.png",
   "Other Accessories": "/images/machinery/Other Accessories.png",
 };
 
@@ -36,54 +40,106 @@ export default function PlantMachinary() {
     window.scrollTo(0, 0);
   }, []);
 
-  const flattenedCategories = [
-    ...constructionData.categories.map((c) => ({
-      ...c,
-      section: constructionData.title,
+  const containerRef = useRef(null);
+  const imgsRef = useRef([]);
+  const categories = allMachineryData.flatMap((section) =>
+    section.data.categories.map((cat) => ({
+      ...cat,
+      sectionTitle: section.data.title,
     })),
-    ...concreteData.categories.map((c) => ({
-      ...c,
-      section: concreteData.title,
-    })),
-    {
-      name: "Asphalt & Crushing",
-      section: asphaltData.title,
-      totalUnits: asphaltData.categories.reduce(
-        (acc, curr) => acc + curr.totalUnits,
-        0,
-      ),
-      items: [],
-      subcategories: asphaltData.categories,
-    },
-    {
-      name: "Hauling & Transport",
-      section: haulingData.title,
-      totalUnits: haulingData.categories.reduce(
-        (acc, curr) => acc + curr.totalUnits,
-        0,
-      ),
-      items: [],
-      subcategories: haulingData.categories,
-    },
-    ...qualityData.categories.map((c) => ({
-      ...c,
-      section: qualityData.title,
-    })),
-    ...toolsData.categories.map((c) => ({ ...c, section: toolsData.title })),
-  ];
+  );
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      const imgs = imgsRef.current;
+
+      ScrollTrigger.matchMedia({
+        "(min-width: 769px)": function () {
+          const mainTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: ".arch-section",
+              start: "top top ",
+              end: "bottom bottom",
+              pin: ".arch-right-pin",
+              scrub: true,
+            },
+          });
+
+          gsap.set(imgs, {
+            clipPath: "inset(0)",
+          });
+
+          imgs.forEach((_, index) => {
+            const currentImage = imgs[index];
+            const nextImage = imgs[index + 1] ? imgs[index + 1] : null;
+
+            const sectionTimeline = gsap.timeline();
+
+            if (nextImage) {
+              sectionTimeline.to(
+                currentImage,
+                {
+                  clipPath: "inset(0px 0px 100%)",
+                  duration: 1.5,
+                  ease: "none",
+                },
+                0,
+              );
+            }
+
+            mainTimeline.add(sectionTimeline);
+          });
+        },
+        "(max-width: 768px)": function () {
+          gsap.set(imgs, {
+            clipPath: "inset(0)",
+          });
+
+          imgs.forEach((image) => {
+            const innerTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: image,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            });
+
+            // Add a subtle scale effect for mobile 
+            innerTimeline.fromTo(
+              image,
+              { scale: 1 },
+              { scale: 1.15, ease: "none" },
+            );
+          });
+        },
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)] font-body selection:bg-[var(--brass-bright)] selection:text-white">
-      <section className="relative pt-40 pb-16 lg:pb-24 overflow-hidden">
-        <div className="absolute inset-0 z-0 flex justify-end">
+      <section className=" relative pt-14 lg:pt-44 pb-16 lg:pb-24 overflow-hidden">
+        <div className="hidden md:block absolute inset-0 z-0 md:flex justify-end">
           <div className="relative w-full h-full">
             <img
               src="/images/machinery/HeroImage.png"
               alt="Excavator Hero"
-              className="w-full h-full object-cover "
+              className="w-full h-full object-top "
             />
-            {/* Theme color glass frosted effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#F5F2EA]/95 via-[#F5F2EA]/10 to-transparent " />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-darkblue/45 via-brand-white/10 to-transparent " />
+          </div>
+        </div>
+        <div className="md:hidden absolute inset-0 z-0 ">
+          <div className="relative w-full h-full">
+            <img
+              src="/images/machinery/HeroBannerMobile.png"
+              alt="Excavator Hero"
+              className="w-full h-full object-top "
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-darkblue/45 via-brand-white/10 to-transparent " />
           </div>
         </div>
 
@@ -94,38 +150,26 @@ export default function PlantMachinary() {
             transition={{ duration: 0.8 }}
             className="w-full lg:w-[60%] pt-8"
           >
-            <h1 className="font-display text-5xl md:text-6xl lg:text-5xl font-black text-[#1e293b] leading-tight mb-4 uppercase">
-              Our <br />
-              <span className="text-[#D4AF37]">Machinery Fleet</span>
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl   leading-tight mb-4 uppercase">
+              <span className="text-brand-gold"> Our</span>
+              <br />
+              <span className="text-brand-gold">Machinery Fleet</span>
             </h1>
-            <p className="text-base md:text-lg text-gray-700 max-w-md mb-10 font-medium leading-relaxed">
+            <p className="text-base md:text-lg text-white/70 max-w-md mb-10 font-medium leading-relaxed">
               A comprehensive range of modern equipment to deliver excellence on
               every project.
             </p>
 
-            <div className="flex flex-wrap lg:flex-nowrap items-stretch gap-3 md:gap-4">
-              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 flex-1 min-w-[180px]">
-                <div className="w-10 h-10 shrink-0 rounded-lg bg-[#1e293b] text-[#D4AF37] flex items-center justify-center font-black">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                  </svg>
+            <div className="grid grid-cols-2 gap-2 md:flex md:flex-wrap lg:flex-nowrap md:items-stretch md:gap-4">
+              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 md:flex-1 md:min-w-[180px]">
+                <div className="w-10 h-10 shrink-0 rounded-lg bg-brand-darkblue text-brand-gold flex items-center justify-center font-black">
+                  <BiCategory size={22} />
                 </div>
                 <div>
-                  <div className="font-black text-lg text-[#1e293b] leading-none mb-1">
+                  <div className="font-black text-lg text-white/70 leading-none mb-1">
                     6
                   </div>
-                  <div className="text-[9px] font-bold uppercase leading-tight text-gray-600">
+                  <div className="text-[9px] font-bold uppercase leading-tight text-white/70">
                     Equipment
                     <br />
                     Categories
@@ -134,58 +178,27 @@ export default function PlantMachinary() {
               </div>
 
               {/* Card 2 */}
-              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 flex-1 min-w-[180px]">
-                <div className="w-10 h-10 shrink-0 text-[#D4AF37] flex items-center justify-center font-black">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect
-                      x="2"
-                      y="7"
-                      width="20"
-                      height="14"
-                      rx="2"
-                      ry="2"
-                    ></rect>
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                  </svg>
+              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 md:flex-1 md:min-w-[180px]">
+                <div className="w-10 h-10 shrink-0 bg-brand-darkblue rounded-lg text-brand-gold flex items-center justify-center font-black">
+                  <FaTractor size={22} />
                 </div>
                 <div>
-                  <div className="font-black text-lg text-[#1e293b] leading-none mb-1">
+                  <div className="font-black text-lg text-white/70 leading-none mb-1">
                     190+
                   </div>
-                  <div className="text-[9px] font-bold uppercase leading-tight text-gray-600">
+                  <div className="text-[9px] font-bold uppercase leading-tight text-white/70">
                     Total Units
                   </div>
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 flex-1 min-w-[180px]">
-                <div className="w-10 h-10 shrink-0 text-[#D4AF37] flex items-center justify-center font-black">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    <polyline points="9 12 11 14 15 10"></polyline>
-                  </svg>
+              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 md:flex-1 md:min-w-[180px]">
+                <div className="w-10 h-10 shrink-0 bg-brand-darkblue rounded-lg text-brand-gold flex items-center justify-center font-black">
+                  <FaCheckCircle size={22} />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-[#1e293b] leading-tight">
+                  <div className="text-[10px] font-bold text-white/70 leading-tight">
                     Well
                     <br />
                     Maintained
@@ -195,25 +208,12 @@ export default function PlantMachinary() {
               </div>
 
               {/* Card 4 */}
-              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 flex-1 min-w-[180px]">
-                <div className="w-10 h-10 shrink-0 text-[#D4AF37] flex items-center justify-center font-black">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                    <path d="M12 11v10"></path>
-                  </svg>
+              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 md:flex-1 md:min-w-[180px]">
+                <div className="w-10 h-10 shrink-0 bg-brand-darkblue rounded-lg text-brand-gold flex items-center justify-center font-black">
+                  <FaHardHat size={22} />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-[#1e293b] leading-tight">
+                  <div className="text-[10px] font-bold text-white/70 leading-tight">
                     Operator
                     <br />
                     Ready
@@ -222,24 +222,12 @@ export default function PlantMachinary() {
               </div>
 
               {/* Card 5 */}
-              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 flex-1 min-w-[180px]">
-                <div className="w-10 h-10 shrink-0 text-[#D4AF37] flex items-center justify-center font-black">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                  </svg>
+              <div className="bg-white/25 backdrop-blur-xl rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] border border-white/80 p-3 flex items-center gap-3 md:flex-1 md:min-w-[180px]">
+                <div className="w-10 h-10 shrink-0 bg-brand-darkblue rounded-lg text-brand-gold flex items-center justify-center font-black">
+                  <MdPrecisionManufacturing size={24} />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-[#1e293b] leading-tight">
+                  <div className="text-[10px] font-bold text-white/70 leading-tight">
                     Modern Fleet
                     <br />
                     For Every Need
@@ -251,117 +239,106 @@ export default function PlantMachinary() {
         </div>
       </section>
 
-      <section className="py-12 md:py-16 bg-[#f8fafc]">
-        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {flattenedCategories.map((cat, index) => {
-              const imageSrc =
-                fallbackImages[cat.name] || fallbackImages["Other Equipments"];
-
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.4, delay: (index % 2) * 0.1 }}
-                  className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden flex flex-col h-full"
+      <section className=" bg-brand-white" ref={containerRef}>
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 md:px-8">
+          <div className="arch-section flex flex-col md:flex-row gap-4 md:gap-8 justify-between max-w-[1100px] 2xl:max-w-[1200px] mx-auto relative">
+            <div className="arch__left contents md:block md:min-w-[250px] 2xl:max-w-[350px]">
+              {categories.map((cat, i) => (
+                <div
+                  className="arch__info h-auto md:h-[100vh] flex flex-col justify-center max-w-[320px] 2xl:max-w-[450px] py-8 md:py-0"
+                  key={i}
+                  style={{ order: i * 2 }}
                 >
-                  <div className="bg-[#D4AF37] text-white px-4 py-2 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded bg-white text-[#1e293b] font-black flex items-center justify-center text-sm">
-                        {index + 1}
-                      </div>
-                      <h2 className="font-display font-bold text-base md:text-lg uppercase tracking-wide">
-                        {cat.name}
-                      </h2>
-                    </div>
-                    <div className="bg-white text-[#D4AF37] px-3 py-1 rounded text-xs font-black uppercase tracking-wider">
-                      {cat.totalUnits}{" "}
-                      {typeof cat.totalUnits === "number" ? "Units" : ""}
-                    </div>
-                  </div>
-                  <div className="flex flex-col sm:flex-row flex-grow p-4 gap-6">
-                    <div className="sm:w-[40%] flex items-center justify-center bg-gray-50 rounded overflow-hidden">
-                      <img
-                        src={imageSrc}
-                        alt={cat.name}
-                        className="w-full h-48 sm:h-full object-cover mix-blend-multiply opacity-95"
-                      />
+                  <div className="w-full">
+                    <p className="text-brand-gold text-[10px] 2xl:text-sm  uppercase font-bold tracking-wider mb-1">
+                      {cat.sectionTitle}
+                    </p>
+                    <h2 className="font-display text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold tracking-tight text-brand-darkblue leading-tight mb-2">
+                      {cat.name}
+                    </h2>
+                    <div className="bg-brand-gold/10 border border-brand-gold/20 rounded p-2 mb-3 inline-block w-max">
+                      <span className="font-bold text-brand-gold uppercase text-[10px] tracking-wider">
+                        Total: {cat.totalUnits}
+                      </span>
                     </div>
 
-                    <div className="sm:w-[60%] flex flex-col justify-between flex-grow">
-                      {cat.subcategories && cat.subcategories.length > 0 ? (
-                        <div className="space-y-4 mb-4">
-                          {cat.subcategories.map((sub, sIdx) => (
-                            <div key={sIdx}>
-                              <h3 className="font-bold text-[#1e293b] text-[11px] uppercase mb-1">
-                                {sub.name}{" "}
-                                <span className="text-[#D4AF37] float-right">
-                                  {sub.totalUnits} Units
-                                </span>
-                              </h3>
-                              <ul className="space-y-1">
-                                {sub.items.map((item, iIdx) => (
-                                  <li
-                                    key={iIdx}
-                                    className="flex justify-between items-start text-xs border-b border-gray-100 pb-1 last:border-0"
-                                  >
-                                    <div className="flex items-start gap-2 pr-4">
-                                      <span className="text-[#D4AF37] mt-1 text-[8px]">
-                                        ■
-                                      </span>
-                                      <span className="font-medium text-gray-700">
-                                        {item.model}
-                                      </span>
-                                    </div>
-                                    <span className="font-bold text-gray-900 shrink-0">
-                                      {item.units}
-                                    </span>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <ul className="space-y-1 mb-4">
-                          {cat.items &&
-                            cat.items.map((item, iIdx) => (
-                              <li
-                                key={iIdx}
-                                className="flex justify-between items-start text-xs md:text-sm border-b border-gray-100 pb-1.5 last:border-0"
-                              >
-                                <div className="flex items-start gap-2 pr-4">
-                                  <span className="text-[#D4AF37] mt-1.5 text-[8px]">
-                                    ■
-                                  </span>
-                                  <span className="font-medium text-gray-700">
+                    {cat.subcategories ? (
+                      <div className="space-y-3 ">
+                        {cat.subcategories.map((sub, sIdx) => (
+                          <div key={sIdx}>
+                            <h3 className="font-bold text-brand-darkblue text-[9px] uppercase mb-1">
+                              {sub.name}{" "}
+                              <span className="text-brand-gold ml-1">
+                                ({sub.totalUnits})
+                              </span>
+                            </h3>
+                            <ul className="space-y-1">
+                              {sub.items.map((item, idx) => (
+                                <li
+                                  key={idx}
+                                  className="flex justify-between items-start text-[11px] border-b border-brand-darkblue/5 pb-1 last:border-0"
+                                >
+                                  <span className="font-medium text-brand-darkblue/80 pr-2">
                                     {item.model}
                                   </span>
-                                </div>
-                                <span className="font-bold text-gray-900 shrink-0">
-                                  {item.units}
-                                </span>
-                              </li>
-                            ))}
-                        </ul>
-                      )}
-
-                      <div className="mt-auto pt-2 border-t border-gray-200 flex justify-between items-center">
-                        <span className="font-bold text-[#1e293b] text-sm">
-                          Total Units
-                        </span>
-                        <span className="font-black text-[#D4AF37] text-base">
-                          {cat.totalUnits}
-                        </span>
+                                  <span className="font-bold text-brand-darkblue shrink-0">
+                                    {item.units}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
-                    </div>
+                    ) : (
+                      <ul className="space-y-1">
+                        {cat.items &&
+                          cat.items.map((item, idx) => (
+                            <li
+                              key={idx}
+                              className="flex justify-between items-start text-[11px] 2xl:text-sm  border-b border-brand-darkblue/5 pb-1 last:border-0"
+                            >
+                              <span className="font-medium text-brand-darkblue/80 pr-2">
+                                {item.model}
+                              </span>
+                              <span className="font-bold text-brand-darkblue shrink-0">
+                                {item.units}
+                              </span>
+                            </li>
+                          ))}
+                      </ul>
+                    )}
                   </div>
-                </motion.div>
-              );
-            })}
+                </div>
+              ))}
+            </div>
+
+            <div className="arch__right contents md:block flex-shrink md:h-[100vh] w-full md:max-w-[460px] 2xl:max-w-[500px] relative arch-right-pin">
+              {categories.map((cat, i) => (
+                <div
+                  className="img-wrapper static md:absolute md:top-1/2 md:left-0 md:-translate-y-1/2 h-[220px] md:h-[340px] xl:h-[400px] 2xl:h-[500px] w-full rounded-xl overflow-hidden mb-4 md:mb-0 shadow-md"
+                  style={{
+                    order: i * 2 + 1,
+                    zIndex: categories.length - i,
+                  }}
+                  key={i}
+                >
+                  <img
+                    ref={(el) => (imgsRef.current[i] = el)}
+                    src={
+                      fallbackImages[cat.name] ||
+                      fallbackImages["Other Equipments"]
+                    }
+                    alt={cat.name}
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darkblue/30 to-transparent pointer-events-none md:hidden"></div>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <div className="w-full h-[10vh] md:h-[20vh]"></div>
         </div>
       </section>
     </div>

@@ -72,10 +72,10 @@ function FooterScene() {
   return (
     <group ref={groupRef} position={[0, -2, -6]} scale={[0.85, 0.85, 0.85]}>
       <lineSegments geometry={buildingLines}>
-        <lineBasicMaterial color="#d4af37" transparent opacity={0.09} />
+        <lineBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.09} />
       </lineSegments>
       <points geometry={gridPoints}>
-        <pointsMaterial size={0.04} color="#d4af37" transparent opacity={0.35} sizeAttenuation />
+        <pointsMaterial size={0.04} color="var(--color-brand-gold)" transparent opacity={0.35} sizeAttenuation />
       </points>
     </group>
   );

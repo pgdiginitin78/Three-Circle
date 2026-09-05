@@ -55,15 +55,15 @@ function ThreeCirclesScene() {
     <group ref={groupRef}>
       <mesh ref={ring1Ref}>
         <ringGeometry args={[2.0, 2.015, 64]} />
-        <meshBasicMaterial color="#d4af37" transparent opacity={0.3} side={2} />
+        <meshBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.3} side={2} />
       </mesh>
       <mesh ref={ring2Ref}>
         <ringGeometry args={[2.4, 2.412, 64]} />
-        <meshBasicMaterial color="#111111" transparent opacity={0.15} side={2} />
+        <meshBasicMaterial color="#0F172A" transparent opacity={0.15} side={2} />
       </mesh>
       <mesh ref={ring3Ref}>
         <ringGeometry args={[2.8, 2.81, 64]} />
-        <meshBasicMaterial color="#111111" transparent opacity={0.08} side={2} />
+        <meshBasicMaterial color="#0F172A" transparent opacity={0.08} side={2} />
       </mesh>
       <points>
         <bufferGeometry>
@@ -72,7 +72,7 @@ function ThreeCirclesScene() {
             args={[pointsPosition, 3]}
           />
         </bufferGeometry>
-        <pointsMaterial size={0.035} color="#111111" transparent opacity={0.2} sizeAttenuation />
+        <pointsMaterial size={0.035} color="#0F172A" transparent opacity={0.2} sizeAttenuation />
       </points>
     </group>
   );

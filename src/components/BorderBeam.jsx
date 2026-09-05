@@ -6,7 +6,7 @@ export function BorderBeam({
   duration = 12,
   borderWidth = 1.5,
   anchor = 90,
-  colorFrom = "#D4AF37",
+  colorFrom = "var(--color-brand-gold)",
   colorTo = "transparent",
   delay = 0,
 }) {

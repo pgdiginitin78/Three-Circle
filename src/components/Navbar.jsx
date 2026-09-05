@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import Logo from "../assets/logo/Logo.png";
+import { ArrowRight } from "./Icons";
 import { useTransition } from "./PageTransition";
 import ScrollProgressBar from "./ScrollProgressBar";
-import { ArrowRight } from "./Icons";
-import Logo from "../assets/logo/Logo.png";
-
-/**
- * Layout concept: "Dual dock"
- * Instead of one centered floating pill, the logo and the navigation
- * live in two independent frosted-glass docks anchored to opposite
- * corners of the viewport. A thin baseline rule — a nod to a
- * surveyor's benchmark line — fades in between them once the page
- * scrolls, visually tying the two docks together. Active / hovered
- * items are marked with a short ruler tick rather than a glow pill,
- * echoing measurement marks on a drawing. Mobile opens a right-hand
- * drawer, like a sheet pulled from a drafting flat file, instead of
- * a full-screen curtain.
- */
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,35 +42,38 @@ export default function Navbar() {
     { label: "Home", path: "/", target: "hero" },
     {
       label: "About Us",
-      path: "/about",
-      target: null,
+      path: "/",
+      target: "about",
+      activePrefix: "/about",
       subItems: [
-        { label: "Company Overview", path: "/about/overview" },
-        { label: "Our History", path: "/about/history" },
-        { label: "Leadership", path: "/about/leadership" },
-        { label: "Safety & Quality", path: "/about/safety" },
-        { label: "Our Strength", path: "/about/strength" },
+        { label: "Company Overview", path: "/about", target: "overview" },
+        { label: "Our History", path: "/about", target: "history" },
+        { label: "Leadership", path: "/about", target: "leadership" },
+        { label: "Safety & Quality", path: "/about", target: "safety" },
+        { label: "Our Strength", path: "/about", target: "strength" },
       ],
     },
     {
       label: "Services",
-      path: "/services",
-      target: null,
+      path: "/",
+      target: "services",
+      activePrefix: "/services",
       subItems: [
-        { label: "Building Industry", path: "/services/building" },
-        { label: "Infrastructure", path: "/services/infrastructure" },
-        { label: "Mining & Crushing", path: "/services/mining" },
-        { label: "Excavation", path: "/services/excavation" },
+        { label: "Building Industry", path: "/services", target: "building" },
+        { label: "Infrastructure", path: "/services", target: "infrastructure" },
+        { label: "Mining & Crushing", path: "/services", target: "mining" },
+        { label: "Excavation", path: "/services", target: "excavation" },
       ],
     },
     {
       label: "Projects",
-      path: "/projects",
-      target: null,
+      path: "/",
+      target: "projects",
+      activePrefix: "/projects",
       subItems: [
-        { label: "All Projects", path: "/projects/all" },
-        { label: "Ongoing Projects", path: "/projects/ongoing" },
-        { label: "Completed Projects", path: "/projects/completed" },
+        { label: "All Projects", path: "/projects", target: "all-projects" },
+        { label: "Ongoing Projects", path: "/projects", target: "ongoing-projects" },
+        { label: "Completed Projects", path: "/projects", target: "completed-projects" },
       ],
     },
     {
@@ -91,13 +81,13 @@ export default function Navbar() {
       path: "/plant-machinery",
       target: null,
       subItems: [
-        { label: "Equipment Overview", path: "/plant-machinery" },
-        { label: "Construction Equipment", path: "/plant-machinery" },
-        { label: "Concrete Equipment", path: "/plant-machinery" },
-        { label: "Hauling & Transport", path: "/plant-machinery" },
-        { label: "Asphalt & Crushing", path: "/plant-machinery" },
-        { label: "Quality Control", path: "/plant-machinery" },
-        { label: "Tools & Accessories", path: "/plant-machinery" },
+        { label: "Equipment Overview", path: "/plant-machinery", target: "overview" },
+        { label: "Construction Equipment", path: "/plant-machinery", target: "construction" },
+        { label: "Concrete Equipment", path: "/plant-machinery", target: "concrete" },
+        { label: "Hauling & Transport", path: "/plant-machinery", target: "hauling" },
+        { label: "Asphalt & Crushing", path: "/plant-machinery", target: "asphalt" },
+        { label: "Quality Control", path: "/plant-machinery", target: "quality" },
+        { label: "Tools & Accessories", path: "/plant-machinery", target: "tools" },
       ],
     },
     {
@@ -105,15 +95,18 @@ export default function Navbar() {
       path: "/our-company",
       target: null,
       subItems: [
-        { label: "Achievements", path: "/our-company/achievements" },
-        { label: "Major Associates", path: "/our-company/associates" },
-        { label: "Our Clients", path: "/our-company/clients" },
-        { label: "Accreditations", path: "/our-company/accreditations" },
+        { label: "Achievements", path: "/our-company", target: "achievements" },
+        { label: "Major Associates", path: "/our-company", target: "associates" },
+        { label: "Our Clients", path: "/our-company", target: "clients" },
+        { label: "Accreditations", path: "/our-company", target: "accreditations" },
       ],
     },
   ];
 
   const isItemActive = (item) => {
+    if (item.activePrefix) {
+      return location.pathname.startsWith(item.activePrefix);
+    }
     if (item.path === "/")
       return location.pathname === "/" && item.target === "hero";
     return location.pathname.startsWith(item.path);
@@ -128,14 +121,12 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed z-[9999] left-1/2 -translate-x-1/2 flex items-center justify-between transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed top-0 left-0 w-full z-[9999] flex items-center justify-between transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isScrolled
-            ? "top-2.5 sm:top-3.5 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] max-w-[1580px] h-14 sm:h-16 px-4 sm:px-6 bg-white/30 backdrop-blur-3xl border border-white/60 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.2),inset_0_2px_6px_rgba(255,255,255,0.8),inset_0_-1px_4px_rgba(255,255,255,0.3)]"
-            : "top-3 sm:top-4.5 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] md:w-[calc(100%-4rem)] max-w-[1580px] h-16 sm:h-20 px-5 sm:px-8 bg-white/10 backdrop-blur-[20px] border border-white/40 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.15),inset_0_2px_6px_rgba(255,255,255,0.6),inset_0_-1px_4px_rgba(255,255,255,0.2)]"
-        } rounded-[2rem]`}
+            ? "h-14 sm:h-18 px-4 sm:px-8 lg:px-12 bg-white/95 backdrop-blur-2xl border-b border-brand-darkblue/5 shadow-sm"
+            : "h-16 sm:h-20 px-5 sm:px-10 lg:px-16 bg-white/90 backdrop-blur-xl border-b border-white/20 shadow-sm"
+        }`}
       >
-        <div className="absolute inset-0 rounded-[2rem] pointer-events-none bg-gradient-to-b from-white/70 via-white/10 to-transparent opacity-60 z-[-1]" />
-
         <button
           className="flex items-center cursor-pointer select-none hover:opacity-85 transition-opacity shrink-0"
           onClick={() => handleNavClick("/", "hero")}
@@ -143,12 +134,14 @@ export default function Navbar() {
           <img
             src={Logo}
             alt="3 Circles Logo"
-            className="h-9 sm:h-11 2xl:h-14 w-auto object-contain"
+            className="h-10 md:h-16 2xl:h-16 w-auto object-contain"
           />
         </button>
         <div className="hidden lg:flex flex-1 items-center justify-center gap-1 px-4">
           {navItems.map((item, index) => {
             const active = isItemActive(item);
+            const isHoveredSubmenu = hoveredIndex === index && item.subItems;
+
             return (
               <div
                 key={item.label}
@@ -157,15 +150,19 @@ export default function Navbar() {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <button
-                  className="relative flex flex-col items-center justify-center gap-1 px-3 xl:px-4 cursor-pointer select-none"
+                  className={`relative flex flex-col items-center justify-center gap-1 px-4 py-2 xl:px-5 rounded-full cursor-pointer select-none transition-all duration-300 ${
+                    isHoveredSubmenu ? "bg-brand-darkblue" : "hover:bg-brand-darkblue/5"
+                  }`}
                   onClick={() => handleNavClick(item.path, item.target)}
                 >
                   <span className="flex items-center gap-1.5">
                     <span
-                      className={`whitespace-nowrap font-display text-[11px] xl:text-[12px] font-bold tracking-wide transition-colors duration-200 ${
-                        active
-                          ? "text-accent-gold"
-                          : "text-text-secondary group-hover:text-text-primary"
+                      className={`whitespace-nowrap font-display text-[12px] xl:text-[13px] font-bold tracking-wide transition-colors duration-300 ${
+                        active && !isHoveredSubmenu
+                          ? "text-brand-gold"
+                          : isHoveredSubmenu
+                            ? "text-white"
+                            : "text-brand-darkblue group-hover:text-brand-darkblue/70"
                       }`}
                     >
                       {item.label}
@@ -173,11 +170,13 @@ export default function Navbar() {
                     {item.subItems && (
                       <svg
                         viewBox="0 0 10 6"
-                        className={`w-2.5 h-2.5 transition-transform duration-300 ${
-                          active
-                            ? "text-accent-gold"
-                            : "text-text-secondary/70 group-hover:text-text-primary"
-                        } ${hoveredIndex === index ? "rotate-180" : ""}`}
+                        className={`w-2.5 h-2.5 transition-all duration-300 ${
+                          active && !isHoveredSubmenu
+                            ? "text-brand-gold"
+                            : isHoveredSubmenu
+                              ? "text-white rotate-180"
+                              : "text-brand-darkblue group-hover:text-brand-darkblue/70"
+                        }`}
                         fill="none"
                       >
                         <path
@@ -191,7 +190,7 @@ export default function Navbar() {
                     )}
                   </span>
                   <span
-                    className={`absolute -bottom-2 h-[2px] rounded-full bg-accent-gold transition-all duration-300 ${
+                    className={`absolute -bottom-2 h-0.5 rounded-full bg-brand-gold transition-all duration-300 ${
                       active
                         ? "w-5 opacity-100"
                         : hoveredIndex === index
@@ -203,12 +202,12 @@ export default function Navbar() {
 
                 {item.subItems && (
                   <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                    <div className="bg-white/95 backdrop-blur-md border border-white/80 rounded-2xl shadow-xl p-2 min-w-[220px] flex flex-col gap-1">
+                    <div className="bg-white/95 backdrop-blur-md border border-white/80 rounded-2xl shadow-xl p-2 min-w-55 flex flex-col gap-1">
                       {item.subItems.map((subItem) => (
                         <button
                           key={subItem.label}
-                          onClick={() => handleNavClick(subItem.path, null)}
-                          className="text-left px-4 py-2.5 whitespace-nowrap font-display text-[11px] font-bold tracking-wide text-text-secondary hover:bg-accent-gold/10 hover:text-accent-gold rounded-xl transition-colors duration-200"
+                          onClick={() => handleNavClick(subItem.path, subItem.target)}
+                          className="text-left px-4 py-2.5 whitespace-nowrap font-display text-[11px] font-bold tracking-wide text-text-secondary hover:bg-brand-gold/10 hover:text-brand-gold rounded-xl transition-colors duration-200"
                         >
                           {subItem.label}
                         </button>
@@ -222,10 +221,10 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-4 shrink-0">
-          <span className="w-px h-6 bg-black/10" />
+          <span className="w-px h-6 bg-brand-darkblue/10" />
           <button
             onClick={() => handleNavClick("/contact", null)}
-            className="flex items-center gap-1.5 h-10 xl:h-11 px-5 xl:px-6 rounded-full bg-text-primary text-white font-display text-[11px] xl:text-[12px] font-bold tracking-wide cursor-pointer hover:bg-accent-gold transition-colors duration-200"
+            className="flex items-center gap-1.5 h-10 xl:h-11 px-5 xl:px-6 rounded-full bg-text-primary text-white font-display text-[11px] xl:text-[12px] font-bold tracking-wide cursor-pointer hover:bg-brand-gold transition-colors duration-200"
           >
             Contact Us
             <ArrowRight className="w-3.5 h-3.5" />
@@ -252,7 +251,7 @@ export default function Navbar() {
         {isDrawerOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9997] lg:hidden"
+              className="fixed inset-0 bg-brand-darkblue/20 backdrop-blur-sm z-9997 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -260,7 +259,7 @@ export default function Navbar() {
               onClick={() => setIsDrawerOpen(false)}
             />
             <motion.div
-              className="fixed top-0 right-0 h-screen w-[86%] max-w-sm bg-white/80 backdrop-blur-3xl z-[9998] flex flex-col border-l border-white/60 shadow-2xl lg:hidden"
+              className="fixed top-0 right-0 h-screen w-[86%] max-w-sm bg-white/80 backdrop-blur-3xl z-9998 flex flex-col border-l border-white/60 shadow-2xl lg:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -270,7 +269,7 @@ export default function Navbar() {
                 {Array.from({ length: 14 }).map((_, i) => (
                   <span
                     key={i}
-                    className={`h-px bg-black/15 ${i % 3 === 0 ? "w-3" : "w-1.5"}`}
+                    className={`h-px bg-brand-darkblue/15 ${i % 3 === 0 ? "w-3" : "w-1.5"}`}
                   />
                 ))}
               </div>
@@ -282,12 +281,12 @@ export default function Navbar() {
                   return (
                     <div
                       key={item.label}
-                      className="border-b border-black/[0.06]"
+                      className="border-b border-brand-darkblue/6"
                     >
                       <motion.button
                         className={`w-full group flex items-center justify-between py-3 text-left cursor-pointer transition-colors duration-200 ${
                           active
-                            ? "text-accent-gold"
+                            ? "text-brand-gold"
                             : "text-text-secondary hover:text-text-primary"
                         }`}
                         onClick={() => {
@@ -315,9 +314,9 @@ export default function Navbar() {
                             ▼
                           </span>
                         ) : active ? (
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent-gold shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />
                         ) : (
-                          <ArrowRight className="w-3.5 h-3.5 text-black/25 group-hover:text-accent-gold transition-colors" />
+                          <ArrowRight className="w-3.5 h-3.5 text-brand-darkblue/25 group-hover:text-brand-gold transition-colors" />
                         )}
                       </motion.button>
 
@@ -332,9 +331,9 @@ export default function Navbar() {
                             {item.subItems.map((subItem) => (
                               <button
                                 key={subItem.label}
-                                className="text-left py-1.5 font-display text-[12px] font-bold tracking-wide text-text-secondary hover:text-accent-gold transition-colors"
+                                className="text-left py-1.5 font-display text-[12px] font-bold tracking-wide text-text-secondary hover:text-brand-gold transition-colors"
                                 onClick={() =>
-                                  handleNavClick(subItem.path, null)
+                                  handleNavClick(subItem.path, subItem.target)
                                 }
                               >
                                 {subItem.label}
@@ -349,15 +348,15 @@ export default function Navbar() {
 
                 <button
                   onClick={() => handleNavClick("/contact", null)}
-                  className="mt-5 flex items-center justify-center gap-2 h-12 rounded-xl bg-text-primary text-white font-display text-xs font-bold tracking-wide cursor-pointer hover:bg-accent-gold transition-colors duration-200"
+                  className="mt-5 flex items-center justify-center gap-2 h-12 rounded-xl bg-text-primary text-white font-display text-xs font-bold tracking-wide cursor-pointer hover:bg-brand-gold transition-colors duration-200"
                 >
                   Contact Us
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
 
-              <div className="pl-8 pr-6 pb-6 pt-4 border-t border-black/[0.06] flex items-center justify-between">
-                <span className="font-display text-[9px] font-bold tracking-[0.2em] text-accent-gold uppercase">
+              <div className="pl-8 pr-6 pb-6 pt-4 border-t border-brand-darkblue/[0.06] flex items-center justify-between">
+                <span className="font-display text-[9px] font-bold tracking-[0.2em] text-brand-gold uppercase">
                   3 Circles
                 </span>
                 <span className="font-display text-[8px] font-medium tracking-[0.15em] text-text-secondary uppercase">

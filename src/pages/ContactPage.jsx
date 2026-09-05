@@ -72,7 +72,7 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#FAFAFA] text-[#111111] pt-28 sm:pt-36 lg:pt-40 pb-20 sm:pb-28 overflow-hidden font-body selection:bg-[#D4AF37] selection:text-white">
+    <section className="relative min-h-screen bg-brand-white text-brand-darkblue pt-28 sm:pt-36 lg:pt-40 pb-20 sm:pb-28 overflow-hidden font-body selection:bg-brand-gold selection:text-white">
       {/* Background blueprint subtle mesh */}
       <BlueprintGrid className="opacity-40" />
 
@@ -80,22 +80,22 @@ export default function ContactPage() {
         {/* Page Header Section */}
         <div className="max-w-3xl mb-12 sm:mb-16 lg:mb-20 text-left">
           <FadeUpText>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-              <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-[#B8860B] uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 mb-4">
+              <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+              <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-brand-gold uppercase">
                 Direct Inquiries & Tenders
               </span>
             </div>
           </FadeUpText>
 
           <FadeUpText delay={0.08}>
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black text-[#111111] tracking-tight uppercase leading-[1.06] mb-4">
-              Start A <span className="text-[#D4AF37]">Conversation.</span>
+            <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black text-brand-darkblue tracking-tight uppercase leading-[1.06] mb-4">
+              Start A <span className="text-brand-gold">Conversation.</span>
             </h1>
           </FadeUpText>
 
           <FadeUpText delay={0.14}>
-            <p className="font-body text-sm sm:text-base md:text-lg text-[#555552] leading-relaxed max-w-2xl">
+            <p className="font-body text-sm sm:text-base md:text-lg text-brand-darkblue/70 leading-relaxed max-w-2xl">
               Connect directly with 3 Circles for EPC delivery, civil
               construction, aggregate supply, and turnkey infrastructure
               projects.
@@ -112,8 +112,8 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-5 flex flex-col gap-6"
           >
-            <div className="bg-white border border-black/[0.08] rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] flex flex-col gap-6">
-              <h2 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-[#111111] border-b border-black/[0.06] pb-4">
+            <div className="bg-white border border-brand-darkblue/[0.08] rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] flex flex-col gap-6">
+              <h2 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-brand-darkblue border-b border-brand-darkblue/[0.06] pb-4">
                 Corporate Contacts
               </h2>
 
@@ -122,26 +122,26 @@ export default function ContactPage() {
                   const Icon = card.icon;
                   return (
                     <div key={i} className="flex items-start gap-4 group">
-                      <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/15 border border-[#D4AF37]/30 flex items-center justify-center text-[#B8860B] shrink-0 mt-0.5 group-hover:bg-[#D4AF37] group-hover:text-white transition-colors duration-200">
+                      <div className="w-10 h-10 rounded-xl bg-brand-gold/15 border border-brand-gold/30 flex items-center justify-center text-brand-gold shrink-0 mt-0.5 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-200">
                         <Icon className="w-5 h-5" />
                       </div>
                       <div className="flex flex-col text-left">
-                        <span className="font-display text-[10px] sm:text-[11px] font-bold tracking-wider text-[#B8860B] uppercase">
+                        <span className="font-display text-[10px] sm:text-[11px] font-bold tracking-wider text-brand-gold uppercase">
                           {card.label}
                         </span>
                         {card.href ? (
                           <a
                             href={card.href}
-                            className="font-display text-sm sm:text-base font-bold text-[#111111] hover:text-[#D4AF37] transition-colors leading-snug my-0.5"
+                            className="font-display text-sm sm:text-base font-bold text-brand-darkblue hover:text-brand-gold transition-colors leading-snug my-0.5"
                           >
                             {card.title}
                           </a>
                         ) : (
-                          <span className="font-display text-sm sm:text-base font-bold text-[#111111] leading-snug my-0.5">
+                          <span className="font-display text-sm sm:text-base font-bold text-brand-darkblue leading-snug my-0.5">
                             {card.title}
                           </span>
                         )}
-                        <p className="font-body text-xs text-[#666666] leading-relaxed">
+                        <p className="font-body text-xs text-brand-darkblue/70 leading-relaxed">
                           {card.details}
                         </p>
                       </div>
@@ -152,8 +152,8 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Assurance Box */}
-            <div className="bg-gradient-to-br from-[#111111] to-[#1c1c1c] text-white rounded-2xl p-6 sm:p-7 shadow-lg flex flex-col gap-2">
-              <span className="font-display text-[10px] font-extrabold tracking-[0.2em] text-[#D4AF37] uppercase">
+            <div className="bg-gradient-to-br from-brand-darkblue to-brand-darkblue text-white rounded-2xl p-6 sm:p-7 shadow-lg flex flex-col gap-2">
+              <span className="font-display text-[10px] font-extrabold tracking-[0.2em] text-brand-gold uppercase">
                 Execution Readiness
               </span>
               <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-tight text-white">
@@ -171,14 +171,14 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-7 bg-white border border-black/[0.08] rounded-2xl p-6 sm:p-10 lg:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.05)] text-left relative"
+            className="lg:col-span-7 bg-white border border-brand-darkblue/[0.08] rounded-2xl p-6 sm:p-10 lg:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.05)] text-left relative"
           >
             {/* Header in Card */}
-            <div className="mb-8 border-b border-black/[0.06] pb-5">
-              <h2 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-[#111111]">
+            <div className="mb-8 border-b border-brand-darkblue/[0.06] pb-5">
+              <h2 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-brand-darkblue">
                 Project Consultation Form
               </h2>
-              <p className="font-body text-xs sm:text-sm text-[#666666] mt-1">
+              <p className="font-body text-xs sm:text-sm text-brand-darkblue/70 mt-1">
                 Fill in the details below to submit your project requirement
                 directly to our team.
               </p>
@@ -188,12 +188,12 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="mb-8 p-4 bg-[#D4AF37]/15 border border-[#D4AF37] rounded-xl text-center"
+                className="mb-8 p-4 bg-brand-gold/15 border border-brand-gold rounded-xl text-center"
               >
-                <h4 className="font-display text-sm font-bold text-[#111111] uppercase tracking-wide">
+                <h4 className="font-display text-sm font-bold text-brand-darkblue uppercase tracking-wide">
                   Thank You for Reaching Out
                 </h4>
-                <p className="font-body text-xs text-[#555552] mt-1">
+                <p className="font-body text-xs text-brand-darkblue/70 mt-1">
                   Your inquiry has been received. A representative from 3
                   Circles will connect with you shortly.
                 </p>
@@ -206,9 +206,9 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="name"
-                    className="font-display text-xs font-bold text-[#222222] uppercase tracking-wide"
+                    className="font-display text-xs font-bold text-brand-darkblue uppercase tracking-wide"
                   >
-                    Full Name <span className="text-[#D4AF37]">*</span>
+                    Full Name <span className="text-brand-gold">*</span>
                   </label>
                   <input
                     type="text"
@@ -218,14 +218,14 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. Rahul Sharma"
-                    className="w-full bg-[#FAFAFA] border border-black/[0.12] rounded-xl px-4 py-3 text-sm text-[#111111] placeholder:text-[#999999] focus:bg-white focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all duration-200"
+                    className="w-full bg-brand-white border border-brand-darkblue/[0.12] rounded-xl px-4 py-3 text-sm text-brand-darkblue placeholder:text-brand-darkblue/70 focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all duration-200"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="company"
-                    className="font-display text-xs font-bold text-[#222222] uppercase tracking-wide"
+                    className="font-display text-xs font-bold text-brand-darkblue uppercase tracking-wide"
                   >
                     Company / Organization
                   </label>
@@ -236,7 +236,7 @@ export default function ContactPage() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="e.g. Larsen & Toubro / MIAL"
-                    className="w-full bg-[#FAFAFA] border border-black/[0.12] rounded-xl px-4 py-3 text-sm text-[#111111] placeholder:text-[#999999] focus:bg-white focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all duration-200"
+                    className="w-full bg-brand-white border border-brand-darkblue/[0.12] rounded-xl px-4 py-3 text-sm text-brand-darkblue placeholder:text-brand-darkblue/70 focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all duration-200"
                   />
                 </div>
               </div>
@@ -246,9 +246,9 @@ export default function ContactPage() {
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="email"
-                    className="font-display text-xs font-bold text-[#222222] uppercase tracking-wide"
+                    className="font-display text-xs font-bold text-brand-darkblue uppercase tracking-wide"
                   >
-                    Email Address <span className="text-[#D4AF37]">*</span>
+                    Email Address <span className="text-brand-gold">*</span>
                   </label>
                   <input
                     type="email"
@@ -258,14 +258,14 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     placeholder="name@company.com"
-                    className="w-full bg-[#FAFAFA] border border-black/[0.12] rounded-xl px-4 py-3 text-sm text-[#111111] placeholder:text-[#999999] focus:bg-white focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all duration-200"
+                    className="w-full bg-brand-white border border-brand-darkblue/[0.12] rounded-xl px-4 py-3 text-sm text-brand-darkblue placeholder:text-brand-darkblue/70 focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all duration-200"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label
                     htmlFor="phone"
-                    className="font-display text-xs font-bold text-[#222222] uppercase tracking-wide"
+                    className="font-display text-xs font-bold text-brand-darkblue uppercase tracking-wide"
                   >
                     Phone / WhatsApp Number
                   </label>
@@ -276,7 +276,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+91 98000 00000"
-                    className="w-full bg-[#FAFAFA] border border-black/[0.12] rounded-xl px-4 py-3 text-sm text-[#111111] placeholder:text-[#999999] focus:bg-white focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all duration-200"
+                    className="w-full bg-brand-white border border-brand-darkblue/[0.12] rounded-xl px-4 py-3 text-sm text-brand-darkblue placeholder:text-brand-darkblue/70 focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all duration-200"
                   />
                 </div>
               </div>
@@ -285,10 +285,10 @@ export default function ContactPage() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="requirement"
-                  className="font-display text-xs font-bold text-[#222222] uppercase tracking-wide"
+                  className="font-display text-xs font-bold text-brand-darkblue uppercase tracking-wide"
                 >
                   Project Requirement / Sector{" "}
-                  <span className="text-[#D4AF37]">*</span>
+                  <span className="text-brand-gold">*</span>
                 </label>
                 <select
                   id="requirement"
@@ -296,16 +296,16 @@ export default function ContactPage() {
                   value={formData.requirement}
                   onChange={handleChange}
                   required
-                  className="w-full bg-[#FAFAFA] border border-black/[0.12] rounded-xl px-4 py-3 text-sm text-[#111111] focus:bg-white focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all duration-200 cursor-pointer"
+                  className="w-full bg-brand-white border border-brand-darkblue/[0.12] rounded-xl px-4 py-3 text-sm text-brand-darkblue focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all duration-200 cursor-pointer"
                 >
-                  <option value="" disabled className="text-gray-400 bg-white">
+                  <option value="" disabled className="text-brand-darkblue/70 bg-white">
                     Select your project sector...
                   </option>
                   {requirementOptions.map((opt) => (
                     <option
                       key={opt.value}
                       value={opt.value}
-                      className="bg-white text-[#111111] py-1"
+                      className="bg-white text-brand-darkblue py-1"
                     >
                       {opt.label}
                     </option>
@@ -317,10 +317,10 @@ export default function ContactPage() {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="message"
-                  className="font-display text-xs font-bold text-[#222222] uppercase tracking-wide"
+                  className="font-display text-xs font-bold text-brand-darkblue uppercase tracking-wide"
                 >
                   Message / Project Scope{" "}
-                  <span className="text-[#D4AF37]">*</span>
+                  <span className="text-brand-gold">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -330,7 +330,7 @@ export default function ContactPage() {
                   required
                   rows={4}
                   placeholder="Provide brief details about location, scope of work, approximate quantity or project timeline..."
-                  className="w-full bg-[#FAFAFA] border border-black/[0.12] rounded-xl px-4 py-3 text-sm text-[#111111] placeholder:text-[#999999] focus:bg-white focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all duration-200 resize-none"
+                  className="w-full bg-brand-white border border-brand-darkblue/[0.12] rounded-xl px-4 py-3 text-sm text-brand-darkblue placeholder:text-brand-darkblue/70 focus:bg-white focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 outline-none transition-all duration-200 resize-none"
                 />
               </div>
 
@@ -338,7 +338,7 @@ export default function ContactPage() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 font-display text-xs font-extrabold tracking-[0.2em] py-4 px-8 bg-[#111111] text-white hover:bg-[#D4AF37] hover:text-[#111111] rounded-full transition-all duration-300 shadow-md uppercase cursor-pointer group"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 font-display text-xs font-extrabold tracking-[0.2em] py-4 px-8 bg-brand-darkblue text-white hover:bg-brand-gold hover:text-brand-darkblue rounded-full transition-all duration-300 shadow-md uppercase cursor-pointer group"
                 >
                   <span>SEND INQUIRY</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

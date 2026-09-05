@@ -11,7 +11,7 @@ import * as THREE from "three";
 import { Box, X } from "lucide-react";
 
 const THEME = {
-  gold: "#D4AF37",
+  gold: "var(--color-brand-gold)",
   goldGlow: "#F3E5AB",
   charcoal: "#0F172A",
   steel: "#1E293B",
@@ -102,7 +102,7 @@ const materials = {
     opacity: 0.35,
   }),
   ground: new THREE.MeshStandardMaterial({
-    color: "#070a10",
+    color: "#0F172A",
     roughness: 0.9,
     metalness: 0.1,
   }),
@@ -745,9 +745,9 @@ export default function TransitionZone() {
       ref={containerRef}
       id="transition-3d-zone"
       data-lenis-prevent={is3DActive ? "true" : undefined}
-      className={`relative w-full transition-[border-color,box-shadow] duration-500 bg-[#070a10] border-y ${
+      className={`relative w-full transition-[border-color,box-shadow] duration-500 bg-brand-darkblue border-y ${
         is3DActive
-          ? "border-accent-gold/50 shadow-[0_0_50px_rgba(212,175,55,0.15)]"
+          ? "border-brand-gold/50 shadow-[0_0_50px_rgba(212,175,55,0.15)]"
           : "border-white/10"
       } h-[420px] xs:h-[480px] sm:h-[540px] md:h-[600px] lg:h-[680px] overflow-hidden select-none`}
     >
@@ -761,20 +761,20 @@ export default function TransitionZone() {
           backgroundSize: "48px 48px",
         }}
       />
-      <div className="absolute inset-0 bg-radial from-[#D4AF37]/[0.08] via-transparent to-[#070a10] pointer-events-none" />
+      <div className="absolute inset-0 bg-radial from-brand-gold/[0.08] via-transparent to-brand-darkblue pointer-events-none" />
 
       {!is3DActive && (
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-4">
           <button
             onClick={handleEnter3D}
-            className="group pointer-events-auto relative flex items-center gap-2.5 sm:gap-3 px-5 py-3 sm:px-7 sm:py-3.5 rounded-full bg-black/85 hover:bg-black/95 backdrop-blur-md border border-accent-gold/60 hover:border-accent-gold transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.25)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] active:scale-95 hover:scale-105 cursor-pointer touch-manipulation"
+            className="group pointer-events-auto relative flex items-center gap-2.5 sm:gap-3 px-5 py-3 sm:px-7 sm:py-3.5 rounded-full bg-brand-darkblue/85 hover:bg-brand-darkblue/95 backdrop-blur-md border border-brand-gold/60 hover:border-brand-gold transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.25)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] active:scale-95 hover:scale-105 cursor-pointer touch-manipulation"
           >
-            <span className="absolute -inset-1 rounded-full border border-accent-gold/40 animate-ping opacity-40 pointer-events-none" />
-            <Box className="w-4 h-4 sm:w-5 sm:h-5 text-accent-gold group-hover:rotate-45 transition-transform duration-500 shrink-0" />
-            <span className="font-display font-bold text-xs sm:text-sm tracking-[0.18em] sm:tracking-[0.2em] text-white uppercase group-hover:text-accent-gold transition-colors">
+            <span className="absolute -inset-1 rounded-full border border-brand-gold/40 animate-ping opacity-40 pointer-events-none" />
+            <Box className="w-4 h-4 sm:w-5 sm:h-5 text-brand-gold group-hover:rotate-45 transition-transform duration-500 shrink-0" />
+            <span className="font-display font-bold text-xs sm:text-sm tracking-[0.18em] sm:tracking-[0.2em] text-white uppercase group-hover:text-brand-gold transition-colors">
               3D VIEW
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse shrink-0" />
           </button>
         </div>
       )}
@@ -782,9 +782,9 @@ export default function TransitionZone() {
       {is3DActive && (
         <>
           <div className="absolute top-3.5 sm:top-4 md:top-5 left-3.5 sm:left-4 md:left-5 right-3.5 sm:right-4 md:right-5 z-30 flex items-center justify-between pointer-events-none">
-            <div className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-accent-gold/40 shadow-md">
-              <span className="w-2 h-2 rounded-full bg-accent-gold animate-ping" />
-              <span className="font-mono text-[10px] sm:text-xs text-accent-gold font-medium tracking-wider">
+            <div className="flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-brand-darkblue/80 backdrop-blur-md border border-brand-gold/40 shadow-md">
+              <span className="w-2 h-2 rounded-full bg-brand-gold animate-ping" />
+              <span className="font-mono text-[10px] sm:text-xs text-brand-gold font-medium tracking-wider">
                 INTERACTIVE 3D
               </span>
             </div>
@@ -792,21 +792,21 @@ export default function TransitionZone() {
             <div className="flex items-center gap-2.5 pointer-events-auto">
               <button
                 onClick={handleExit3D}
-                className="group flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 rounded-full bg-accent-gold hover:bg-white text-black font-display font-bold text-[11px] sm:text-xs tracking-wider uppercase transition-all duration-200 shadow-lg shadow-accent-gold/25 hover:shadow-accent-gold/50 cursor-pointer active:scale-95 touch-manipulation"
+                className="group flex items-center gap-1.5 sm:gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 rounded-full bg-brand-gold hover:bg-white text-brand-darkblue font-display font-bold text-[11px] sm:text-xs tracking-wider uppercase transition-all duration-200 shadow-lg shadow-brand-gold/25 hover:shadow-brand-gold/50 cursor-pointer active:scale-95 touch-manipulation"
               >
-                <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black group-hover:rotate-90 transition-transform duration-300" />
+                <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-darkblue group-hover:rotate-90 transition-transform duration-300" />
                 <span>CLOSE</span>
               </button>
             </div>
           </div>
           <div className="absolute bottom-3.5 sm:bottom-4 md:bottom-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none w-max max-w-[94vw] px-2">
-            <div className="flex items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-4 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/15 text-white/80 font-mono text-[9px] xs:text-[10px] sm:text-[11px] tracking-wider shadow-lg">
-              <span className="text-accent-gold font-semibold whitespace-nowrap">
+            <div className="flex items-center justify-center gap-2 sm:gap-3 px-3.5 sm:px-4 py-1.5 rounded-full bg-brand-darkblue/85 backdrop-blur-md border border-white/15 text-white/80 font-mono text-[9px] xs:text-[10px] sm:text-[11px] tracking-wider shadow-lg">
+              <span className="text-brand-gold font-semibold whitespace-nowrap">
                 ✦ <span className="hidden md:inline">DRAG TO ROTATE 360°</span>
                 <span className="md:hidden">DRAG ROTATE</span>
               </span>
               <span className="text-white/30">•</span>
-              <span className="text-accent-gold font-semibold whitespace-nowrap">
+              <span className="text-brand-gold font-semibold whitespace-nowrap">
                 <span className="hidden md:inline">SCROLL TO ZOOM</span>
                 <span className="md:hidden">PINCH / SCROLL ZOOM</span>
               </span>

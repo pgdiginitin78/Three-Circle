@@ -73,7 +73,7 @@ export default function CustomCursor() {
           width: 32,
           height: 32,
           backgroundColor: 'rgba(212, 175, 55, 0.15)',
-          border: '1px solid var(--accent-gold)'
+          border: '1px solid var(--brand-gold)'
         };
       case 'view':
         return {
@@ -86,7 +86,7 @@ export default function CustomCursor() {
         return {
           width: 75,
           height: 75,
-          backgroundColor: 'var(--accent-gold)',
+          backgroundColor: 'var(--brand-gold)',
           border: 'none'
         };
       default:

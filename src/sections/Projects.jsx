@@ -11,16 +11,16 @@ function SvgLocation() {
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="inline-block mr-1 text-[#D4AF37] shrink-0"
+      className="inline-block mr-1 text-brand-gold shrink-0"
     >
       <path
         d="M12 21C16 17 20 13.4183 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 13.4183 8 17 12 21Z"
-        stroke="#D4AF37"
+        stroke="var(--color-brand-gold)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="12" cy="9" r="3" fill="#D4AF37" />
+      <circle cx="12" cy="9" r="3" fill="var(--color-brand-gold)" />
     </svg>
   );
 }
@@ -52,7 +52,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full bg-white border-b border-black/[0.06] text-[#111111] py-16 sm:py-24 lg:py-28 overflow-hidden font-body"
+      className="relative w-full bg-white border-b border-brand-darkblue/[0.06] text-brand-darkblue py-16 sm:py-24 lg:py-28 overflow-hidden font-body"
     >
       <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
         
@@ -64,25 +64,25 @@ export default function Projects() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
-              <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-[#B8860B] uppercase">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 mb-4">
+              <span className="w-2 h-2 rounded-full bg-brand-gold" />
+              <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-brand-gold uppercase">
                 Executed Track Record
               </span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#111111] uppercase leading-tight m-0">
-              Completed <span className="text-[#D4AF37]">Projects.</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-brand-darkblue uppercase leading-tight m-0">
+              Completed <span className="text-brand-gold">Projects.</span>
             </h2>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center p-1 bg-[#FAFAFA] border border-black/[0.08] rounded-full">
+            <div className="flex items-center p-1 bg-brand-white border border-brand-darkblue/[0.08] rounded-full">
               <button
                 onClick={() => setActiveTab("landmark")}
                 className={`px-4 py-2 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 ${
                   activeTab === "landmark"
-                    ? "bg-[#111111] text-white shadow-sm"
-                    : "text-[#666666] hover:text-[#111111]"
+                    ? "bg-brand-darkblue text-white shadow-sm"
+                    : "text-brand-darkblue/70 hover:text-brand-darkblue"
                 }`}
               >
                 Landmark Works (6)
@@ -91,8 +91,8 @@ export default function Projects() {
                 onClick={() => setActiveTab("infrastructure")}
                 className={`px-4 py-2 rounded-full text-xs font-display font-bold uppercase tracking-wider transition-all duration-300 ${
                   activeTab === "infrastructure"
-                    ? "bg-[#111111] text-white shadow-sm"
-                    : "text-[#666666] hover:text-[#111111]"
+                    ? "bg-brand-darkblue text-white shadow-sm"
+                    : "text-brand-darkblue/70 hover:text-brand-darkblue"
                 }`}
               >
                 Infrastructure Directory (24)
@@ -101,7 +101,7 @@ export default function Projects() {
 
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#D4AF37] text-[#111111] font-display text-xs font-extrabold uppercase tracking-wider hover:bg-[#111111] hover:text-white transition-all duration-300 shadow-sm group"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-gold text-brand-darkblue font-display text-xs font-extrabold uppercase tracking-wider hover:bg-brand-darkblue hover:text-white transition-all duration-300 shadow-sm group"
             >
               <span>View All</span>
               <SvgArrowUpRight />
@@ -125,22 +125,22 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group flex flex-col bg-[#FAFAFA] border border-black/[0.08] rounded-2xl overflow-hidden hover:border-[#D4AF37]/60 hover:shadow-[0_16px_40px_rgba(212,175,55,0.12)] transition-all duration-300"
+                  className="group flex flex-col bg-brand-white border border-brand-darkblue/[0.08] rounded-2xl overflow-hidden hover:border-brand-gold/60 hover:shadow-[0_16px_40px_rgba(212,175,55,0.12)] transition-all duration-300"
                 >
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-200">
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-brand-white">
                     <img
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20">
-                      <span className="font-mono text-xs font-bold text-[#D4AF37] tracking-wider">
+                    <div className="absolute top-3 left-3 bg-brand-darkblue/75 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/20">
+                      <span className="font-mono text-xs font-bold text-brand-gold tracking-wider">
                         {project.num}
                       </span>
                     </div>
-                    <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-black/[0.08]">
-                      <span className="font-mono text-[10px] font-bold text-[#111111] uppercase tracking-wider">
+                    <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-brand-darkblue/[0.08]">
+                      <span className="font-mono text-[10px] font-bold text-brand-darkblue uppercase tracking-wider">
                         {project.category}
                       </span>
                     </div>
@@ -148,21 +148,21 @@ export default function Projects() {
 
                   <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-4">
                     <div>
-                      <div className="flex items-center gap-1 text-xs text-[#777777] font-medium mb-2">
+                      <div className="flex items-center gap-1 text-xs text-brand-darkblue/70 font-medium mb-2">
                         <SvgLocation />
                         <span>{project.location}</span>
                       </div>
 
-                      <h3 className="font-display text-base sm:text-lg font-bold uppercase text-[#111111] leading-snug tracking-tight group-hover:text-[#D4AF37] transition-colors m-0">
+                      <h3 className="font-display text-base sm:text-lg font-bold uppercase text-brand-darkblue leading-snug tracking-tight group-hover:text-brand-gold transition-colors m-0">
                         {project.title}
                       </h3>
                     </div>
 
-                    <div className="pt-3 border-t border-black/[0.06]">
-                      <span className="text-[11px] font-mono text-[#888888] uppercase block mb-1">
+                    <div className="pt-3 border-t border-brand-darkblue/[0.06]">
+                      <span className="text-[11px] font-mono text-brand-darkblue/70 uppercase block mb-1">
                         Scope of Work:
                       </span>
-                      <p className="text-xs sm:text-sm text-[#555552] leading-relaxed m-0">
+                      <p className="text-xs sm:text-sm text-brand-darkblue/70 leading-relaxed m-0">
                         {project.scope}
                       </p>
                     </div>
@@ -185,46 +185,46 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: (index % 6) * 0.05 }}
-                  className="group bg-white border border-black/[0.08] rounded-xl p-4 sm:p-5 flex flex-col justify-between gap-3 hover:border-[#D4AF37]/60 hover:shadow-[0_12px_32px_rgba(212,175,55,0.12)] transition-all duration-300"
+                  className="group bg-white border border-brand-darkblue/[0.08] rounded-xl p-4 sm:p-5 flex flex-col justify-between gap-3 hover:border-brand-gold/60 hover:shadow-[0_12px_32px_rgba(212,175,55,0.12)] transition-all duration-300"
                 >
                   <div className="flex flex-col gap-2.5">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="font-display text-[11px] font-extrabold text-[#D4AF37] tracking-wider uppercase leading-snug">
+                      <span className="font-display text-[11px] font-extrabold text-brand-gold tracking-wider uppercase leading-snug">
                         {contract.client}
                       </span>
                       <div className="flex flex-wrap items-center justify-end gap-1 shrink-0">
-                        <span className="font-mono text-[9px] font-bold bg-[#D4AF37]/10 text-[#B8860B] border border-[#D4AF37]/25 px-2 py-0.5 rounded">
+                        <span className="font-mono text-[9px] font-bold bg-brand-gold/10 text-brand-gold border border-brand-gold/25 px-2 py-0.5 rounded">
                           {contract.category}
                         </span>
                         {contract.code && (
-                          <span className="font-mono text-[9px] font-medium bg-[#FAFAFA] border border-black/[0.08] text-[#666666] px-1.5 py-0.5 rounded">
+                          <span className="font-mono text-[9px] font-medium bg-brand-white border border-brand-darkblue/[0.08] text-brand-darkblue/70 px-1.5 py-0.5 rounded">
                             {contract.code}
                           </span>
                         )}
                       </div>
                     </div>
 
-                    <h3 className="font-display text-sm font-bold text-[#111111] leading-snug group-hover:text-[#D4AF37] transition-colors m-0">
+                    <h3 className="font-display text-sm font-bold text-brand-darkblue leading-snug group-hover:text-brand-gold transition-colors m-0">
                       {contract.title}
                     </h3>
 
-                    <div className="flex items-start gap-1 text-xs text-[#555552] leading-tight">
+                    <div className="flex items-start gap-1 text-xs text-brand-darkblue/70 leading-tight">
                       <SvgLocation />
                       <span className="font-normal">{contract.location}</span>
                     </div>
                   </div>
 
-                  <div className="pt-2.5 border-t border-black/[0.06] flex flex-col gap-1.5">
+                  <div className="pt-2.5 border-t border-brand-darkblue/[0.06] flex flex-col gap-1.5">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-[11px] text-[#777777] font-medium">Valuation:</span>
-                      <span className="font-mono text-xs font-bold text-[#B8860B] bg-[#D4AF37]/10 px-2 py-0.5 rounded">
+                      <span className="text-[11px] text-brand-darkblue/70 font-medium">Valuation:</span>
+                      <span className="font-mono text-xs font-bold text-brand-gold bg-brand-gold/10 px-2 py-0.5 rounded">
                         {contract.value}
                       </span>
                     </div>
 
                     <div className="flex items-start justify-between text-xs gap-2">
-                      <span className="text-[11px] text-[#777777] font-medium shrink-0">Authority:</span>
-                      <span className="font-medium text-[#222222] text-[11px] text-right leading-tight">
+                      <span className="text-[11px] text-brand-darkblue/70 font-medium shrink-0">Authority:</span>
+                      <span className="font-medium text-brand-darkblue text-[11px] text-right leading-tight">
                         {contract.authority}
                       </span>
                     </div>
@@ -235,29 +235,7 @@ export default function Projects() {
           )}
         </AnimatePresence>
 
-        <motion.div
-          className="mt-14 sm:mt-18 bg-[#111111] text-white rounded-2xl p-6 sm:p-8 lg:p-10 border border-white/10 flex flex-col lg:flex-row items-center justify-between gap-6 text-left"
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <span className="font-mono text-xs font-bold tracking-widest text-[#D4AF37] uppercase block mb-1">
-              National Infrastructure & Maritime Works
-            </span>
-            <h4 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-white m-0">
-              Over 24+ Government & Corporate Infrastructure Works Delivered
-            </h4>
-          </div>
-
-          <Link
-            to="/projects"
-            className="shrink-0 px-7 py-3.5 rounded-full bg-[#D4AF37] text-[#111111] font-display text-xs font-extrabold uppercase tracking-wider hover:bg-white transition-all duration-300 shadow-lg"
-          >
-            Explore Complete Directory
-          </Link>
-        </motion.div>
+       
 
       </div>
     </section>

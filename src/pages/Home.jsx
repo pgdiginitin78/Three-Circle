@@ -1,12 +1,10 @@
-import React from "react";
+import TransitionZone from "../components/TransitionZone";
+import About from "../sections/About";
+import Capabilities from "../sections/Capabilities";
 import Hero from "../sections/Hero";
 import Intro from "../sections/Intro";
-import Services from "../sections/Services";
 import Projects from "../sections/Projects";
-import TransitionZone from "../components/TransitionZone";
-import Capabilities from "../sections/Capabilities";
-import About from "../sections/About";
-import Contact from "../sections/Contact";
+import Services from "../sections/Services";
 import FeaturedProjects from "./FeaturedProjects/FeaturedProjects";
 
 export default function Home() {
@@ -20,7 +18,6 @@ export default function Home() {
       <TransitionZone />
       <Capabilities />
       <About />
-      <Contact />
     </>
   );
 }

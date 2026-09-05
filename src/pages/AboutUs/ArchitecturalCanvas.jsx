@@ -29,7 +29,7 @@ function TowerCrane({ position = [1.6, -1.8, -1.3], scale = 0.75 }) {
       <mesh position={[0, 3.4, 0]}>
         <boxGeometry args={[0.24, 6.8, 0.24]} />
         <meshBasicMaterial
-          color="#d4af37"
+          color="var(--color-brand-gold)"
           wireframe
           transparent
           opacity={0.7}
@@ -40,7 +40,7 @@ function TowerCrane({ position = [1.6, -1.8, -1.3], scale = 0.75 }) {
         <mesh position={[0.2, 0.1, 0.1]}>
           <boxGeometry args={[0.28, 0.4, 0.28]} />
           <meshBasicMaterial
-            color="#1e293b"
+            color="#0F172A"
             wireframe
             transparent
             opacity={0.6}
@@ -50,7 +50,7 @@ function TowerCrane({ position = [1.6, -1.8, -1.3], scale = 0.75 }) {
         <mesh position={[2.5, 0.15, 0]}>
           <boxGeometry args={[5.0, 0.2, 0.2]} />
           <meshBasicMaterial
-            color="#d4af37"
+            color="var(--color-brand-gold)"
             wireframe
             transparent
             opacity={0.85}
@@ -60,7 +60,7 @@ function TowerCrane({ position = [1.6, -1.8, -1.3], scale = 0.75 }) {
         <mesh position={[-1.2, 0.15, 0]}>
           <boxGeometry args={[2.4, 0.2, 0.2]} />
           <meshBasicMaterial
-            color="#d4af37"
+            color="var(--color-brand-gold)"
             wireframe
             transparent
             opacity={0.7}
@@ -68,13 +68,13 @@ function TowerCrane({ position = [1.6, -1.8, -1.3], scale = 0.75 }) {
         </mesh>
         <mesh position={[-2.1, -0.1, 0]}>
           <boxGeometry args={[0.65, 0.4, 0.4]} />
-          <meshBasicMaterial color="#0f172a" transparent opacity={0.6} />
+          <meshBasicMaterial color="#0F172A" transparent opacity={0.6} />
         </mesh>
 
         <mesh position={[0, 0.7, 0]}>
           <coneGeometry args={[0.24, 1.4, 4]} />
           <meshBasicMaterial
-            color="#d4af37"
+            color="var(--color-brand-gold)"
             wireframe
             transparent
             opacity={0.75}
@@ -82,17 +82,17 @@ function TowerCrane({ position = [1.6, -1.8, -1.3], scale = 0.75 }) {
         </mesh>
 
         <lineSegments geometry={cableGeom}>
-          <lineBasicMaterial color="#d4af37" transparent opacity={0.6} />
+          <lineBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.6} />
         </lineSegments>
 
         <mesh position={[2.8, -0.65, 0]}>
           <cylinderGeometry args={[0.008, 0.008, 1.3]} />
-          <meshBasicMaterial color="#d4af37" transparent opacity={0.8} />
+          <meshBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.8} />
         </mesh>
         <mesh position={[2.8, -1.35, 0]}>
           <octahedronGeometry args={[0.12]} />
           <meshBasicMaterial
-            color="#d4af37"
+            color="var(--color-brand-gold)"
             wireframe
             transparent
             opacity={0.95}
@@ -187,12 +187,12 @@ function Building3D() {
           <group key={idx} position={[0, y, 0]}>
             <mesh>
               <boxGeometry args={[width + 0.38, 0.08, depth + 0.38]} />
-              <meshBasicMaterial color="#cbd5e1" transparent opacity={0.35} />
+              <meshBasicMaterial color="#0F172A" transparent opacity={0.35} />
             </mesh>
             <mesh>
               <boxGeometry args={[width + 0.385, 0.085, depth + 0.385]} />
               <meshBasicMaterial
-                color="#d4af37"
+                color="var(--color-brand-gold)"
                 wireframe
                 transparent
                 opacity={0.65}
@@ -206,12 +206,12 @@ function Building3D() {
         <group key={idx} position={col.pos}>
           <mesh>
             <boxGeometry args={[0.16, col.h, 0.16]} />
-            <meshBasicMaterial color="#1e293b" transparent opacity={0.25} />
+            <meshBasicMaterial color="#0F172A" transparent opacity={0.25} />
           </mesh>
           <mesh>
             <boxGeometry args={[0.165, col.h + 0.01, 0.165]} />
             <meshBasicMaterial
-              color="#d4af37"
+              color="var(--color-brand-gold)"
               wireframe
               transparent
               opacity={0.7}
@@ -221,17 +221,17 @@ function Building3D() {
       ))}
 
       <lineSegments geometry={rebarLines}>
-        <lineBasicMaterial color="#d4af37" transparent opacity={0.9} />
+        <lineBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.9} />
       </lineSegments>
 
       <lineSegments geometry={perimeterLines}>
-        <lineBasicMaterial color="#1e293b" transparent opacity={0.4} />
+        <lineBasicMaterial color="#0F172A" transparent opacity={0.4} />
       </lineSegments>
 
       <mesh position={[0, baseY + (floors * floorHeight) / 2, 0]}>
         <boxGeometry args={[0.8, floors * floorHeight + 0.25, 0.8]} />
         <meshBasicMaterial
-          color="#0f172a"
+          color="#0F172A"
           wireframe
           transparent
           opacity={0.32}
@@ -407,7 +407,7 @@ function Scene3D() {
       >
         <planeGeometry args={[4.0, 4.0]} />
         <meshBasicMaterial
-          color="#d4af37"
+          color="var(--color-brand-gold)"
           transparent
           opacity={0.3}
           side={THREE.DoubleSide}
@@ -416,17 +416,17 @@ function Scene3D() {
       </mesh>
 
       <lineLoop geometry={ringGeom}>
-        <lineBasicMaterial color="#d4af37" transparent opacity={0.35} />
+        <lineBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.35} />
       </lineLoop>
 
       <lineSegments geometry={groundGrid}>
-        <lineBasicMaterial color="#c5a059" transparent opacity={0.14} />
+        <lineBasicMaterial color="var(--color-brand-gold)" transparent opacity={0.14} />
       </lineSegments>
 
       <points geometry={nodes}>
         <pointsMaterial
           size={0.05}
-          color="#d4af37"
+          color="var(--color-brand-gold)"
           transparent
           opacity={0.6}
           sizeAttenuation
@@ -436,7 +436,7 @@ function Scene3D() {
       <mesh position={[-4.2, -0.2, -4.2]}>
         <boxGeometry args={[1.6, 3.4, 1.6]} />
         <meshBasicMaterial
-          color="#94a3b8"
+          color="#0F172A"
           wireframe
           transparent
           opacity={0.08}
@@ -445,7 +445,7 @@ function Scene3D() {
       <mesh position={[4.8, 0.2, -3.6]}>
         <boxGeometry args={[1.8, 3.8, 1.8]} />
         <meshBasicMaterial
-          color="#94a3b8"
+          color="#0F172A"
           wireframe
           transparent
           opacity={0.08}

@@ -7,11 +7,11 @@ import {
 } from "../../data/completedProjectsData";
 
 const TOKENS = {
-  "--ink": "#15140F",
-  "--paper": "#F5F2EA",
-  "--brass": "#A9791C",
-  "--brass-bright": "#D4AF37",
-  "--steel": "#37454B",
+  "--ink": "#0F172A",
+  "--paper": "#FFFFFF",
+  "--brass": "var(--color-brand-gold)",
+  "--brass-bright": "var(--color-brand-gold)",
+  "--steel": "#0F172A",
   "--line": "rgba(21,20,15,0.12)",
   "--line-soft": "rgba(21,20,15,0.07)",
 };
@@ -160,7 +160,7 @@ function Hero({ reduced }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: reduced ? 0 : 0.32 }}
           className="mt-[clamp(0.75rem,1.5vw,1.25rem)] max-w-[18ch] font-display text-[clamp(2.6rem,7vw,6.4rem)] font-black leading-[0.98] tracking-tight"
-          style={{ color: "#F5F2EA" }}
+          style={{ color: "#FFFFFF" }}
         >
           Engineering the arteries
           <span className="block text-[var(--brass-bright)]">
@@ -188,7 +188,7 @@ function Hero({ reduced }) {
             <div key={stat.label} className="flex flex-col gap-1">
               <span
                 className="font-display text-[clamp(1.6rem,3vw,2.6rem)] font-bold"
-                style={{ color: "#F5F2EA" }}
+                style={{ color: "#FFFFFF" }}
               >
                 {stat.value}
               </span>
@@ -288,7 +288,6 @@ function ContractRow({ contract }) {
 
 export default function ProjectsPage() {
   const reduced = useReducedMotion();
-  useSmoothScroll();
 
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -299,12 +298,13 @@ export default function ProjectsPage() {
 
   return (
     <div
+      id="all-projects"
       style={TOKENS}
       className="min-h-screen bg-[var(--paper)] font-body text-[var(--ink)]"
     >
       <Hero reduced={reduced} />
 
-      <section className="mx-auto w-full max-w-[1800px] px-5 py-[clamp(3rem,6vw,6rem)] sm:px-8 md:px-12 lg:px-16">
+      <section id="ongoing-projects" className="mx-auto w-full max-w-[1800px] px-5 py-[clamp(3rem,6vw,6rem)] sm:px-8 md:px-12 lg:px-16">
         <h2 className="max-w-[24ch] font-display text-[clamp(1.6rem,3vw,2.6rem)] font-extrabold tracking-tight text-[var(--ink)]">
           Landmark works
         </h2>
@@ -320,7 +320,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] bg-[rgba(21,20,15,0.02)]">
+      <section id="completed-projects" className="border-t border-[var(--line)] bg-[rgba(21,20,15,0.02)]">
         <div className="mx-auto w-full max-w-[1800px] px-5 py-[clamp(3rem,6vw,6rem)] sm:px-8 md:px-12 lg:px-16">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>

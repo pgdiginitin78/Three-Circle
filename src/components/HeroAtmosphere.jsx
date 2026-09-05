@@ -100,13 +100,13 @@ export default function HeroAtmosphere() {
       <div className="absolute right-[32%] top-[31%] hidden md:block">
         {/* Rotating Crane Jib Arm Silhouette */}
         <motion.div
-          className="relative w-28 h-0.5 bg-accent-gold/60 origin-left"
+          className="relative w-28 h-0.5 bg-brand-gold/60 origin-left"
           animate={{ rotate: [-25, 20, -25] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         >
           {/* Hoist Line */}
-          <div className="absolute right-4 top-0 w-[1px] h-6 bg-accent-gold/40" />
-          <div className="absolute right-3.5 top-6 w-1 h-1 bg-accent-gold rounded-full shadow-[0_0_8px_#D4AF37]" />
+          <div className="absolute right-4 top-0 w-[1px] h-6 bg-brand-gold/40" />
+          <div className="absolute right-3.5 top-6 w-1 h-1 bg-brand-gold rounded-full shadow-[0_0_8px_var(--color-brand-gold)]" />
         </motion.div>
         {/* Red Aviation Warning Beacon on Crane Top */}
         <span className="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-red-500 animate-ping opacity-90" />
@@ -116,11 +116,11 @@ export default function HeroAtmosphere() {
       {/* Crane 2: Right Construction Skyscraper */}
       <div className="absolute right-[22%] top-[34%] hidden md:block">
         <motion.div
-          className="relative w-24 h-0.5 bg-accent-gold/50 origin-left"
+          className="relative w-24 h-0.5 bg-brand-gold/50 origin-left"
           animate={{ rotate: [15, -30, 15] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="absolute right-6 top-0 w-[1px] h-5 bg-accent-gold/40" />
+          <div className="absolute right-6 top-0 w-[1px] h-5 bg-brand-gold/40" />
         </motion.div>
         <span className="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-red-500 animate-ping opacity-90" />
         <span className="absolute -left-0.5 -top-0.5 w-1.5 h-1.5 rounded-full bg-red-400 shadow-[0_0_6px_#FF0000]" />
@@ -150,7 +150,7 @@ export default function HeroAtmosphere() {
 
       {/* 4. HORIZONTAL ATMOSPHERIC TWILIGHT LIGHT SWEEP (SWEEPING LEFT TO RIGHT) */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-gold/[0.08] to-transparent w-[35%] h-full pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-gold/[0.08] to-transparent w-[35%] h-full pointer-events-none"
         animate={{ x: ["-100%", "350%"] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", repeatDelay: 2 }}
       />

@@ -22,7 +22,7 @@ export function BentoCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-black/[0.08] p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(212,175,55,0.12)] hover:border-accent-gold/40 transition-all duration-500 ${className}`}
+      className={`group relative overflow-hidden rounded-2xl bg-white/95 backdrop-blur-sm border border-brand-darkblue/[0.08] p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(212,175,55,0.12)] hover:border-brand-gold/40 transition-all duration-500 ${className}`}
     >
       {children}
     </motion.div>

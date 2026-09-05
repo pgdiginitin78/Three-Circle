@@ -21,7 +21,7 @@ export default function Intro() {
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
           <div className="flex flex-col">
             <motion.div
-              className="w-8 h-[2px] bg-accent-gold mb-4"
+              className="w-8 h-[2px] bg-brand-gold mb-4"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -51,7 +51,7 @@ export default function Intro() {
 
           <div className="flex flex-col">
             <motion.div
-              className="relative w-full aspect-[16/10] overflow-hidden rounded-sm border border-black/[0.06] shadow-lg group"
+              className="relative w-full aspect-[16/10] overflow-hidden rounded-sm border border-brand-darkblue/[0.06] shadow-lg group"
               initial={{ opacity: 0, clipPath: "inset(10% 10% 10% 10%)" }}
               whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
               viewport={{ once: true, amount: "some" }}
@@ -61,7 +61,7 @@ export default function Intro() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <div className="absolute inset-0 border border-accent-gold/20 m-3 pointer-events-none z-10 transition-all duration-500 group-hover:m-2 group-hover:border-accent-gold/45" />
+              <div className="absolute inset-0 border border-brand-gold/20 m-3 pointer-events-none z-10 transition-all duration-500 group-hover:m-2 group-hover:border-brand-gold/45" />
               <motion.img
                 src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80"
                 alt="Heavy structural steel concrete framework"

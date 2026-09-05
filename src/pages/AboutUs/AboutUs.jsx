@@ -50,10 +50,10 @@ const directors = [
 
 export default function AboutUs() {
   return (
-    <div className="relative min-h-screen bg-bg-primary text-text-primary mx-auto selection:bg-accent-gold selection:text-white overflow-hidden">
+    <div className="relative min-h-screen bg-bg-primary text-text-primary mx-auto selection:bg-brand-gold selection:text-white overflow-hidden">
       <BlueprintGrid />
 
-      <section className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28 2xl:pt-60 2xl:pb-60 border-b border-black/[0.06] overflow-hidden">
+      <section className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28 2xl:pt-60 2xl:pb-60 border-b border-brand-darkblue/[0.06] overflow-hidden">
         <ArchitecturalCanvas />
 
         <div className="w-full max-w-[1440px]  mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10">
@@ -70,7 +70,7 @@ export default function AboutUs() {
                 delay: 0.2,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="origin-left h-0.5 w-20 sm:w-24 md:w-28 lg:w-32 bg-accent-gold mb-6 sm:mb-7 md:mb-8"
+              className="origin-left h-0.5 w-20 sm:w-24 md:w-28 lg:w-32 bg-brand-gold mb-6 sm:mb-7 md:mb-8"
             />
 
             <FadeUpText delay={0.25}>
@@ -87,10 +87,10 @@ export default function AboutUs() {
                 delay: 0.35,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 pt-6 sm:pt-7 md:pt-8 border-t border-black/[0.08]"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 pt-6 sm:pt-7 md:pt-8 border-t border-brand-darkblue/[0.08]"
             >
               <div>
-                <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-accent-gold block mb-1">
+                <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
                   1979
                 </span>
                 <span className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] text-text-secondary uppercase">
@@ -98,7 +98,7 @@ export default function AboutUs() {
                 </span>
               </div>
               <div>
-                <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-accent-gold block mb-1">
+                <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
                   45+ YRS
                 </span>
                 <span className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] text-text-secondary uppercase">
@@ -106,7 +106,7 @@ export default function AboutUs() {
                 </span>
               </div>
               <div className="col-span-2 sm:col-span-1">
-                <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-accent-gold block mb-1">
+                <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
                   MNC Tier
                 </span>
                 <span className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] text-text-secondary uppercase">
@@ -132,11 +132,11 @@ export default function AboutUs() {
                   delay: idx * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-start pt-8 sm:pt-9 md:pt-10 border-t border-black/[0.08]"
+                className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 md:gap-10 lg:gap-16 items-start pt-8 sm:pt-9 md:pt-10 border-t border-brand-darkblue/[0.08]"
               >
                 <div className="md:col-span-4 flex flex-col gap-2 sm:gap-3">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-accent-gold tracking-widest">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-brand-gold tracking-widest">
                       [{item.num}]
                     </span>
                     <span className="font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] sm:tracking-[0.25em] text-text-secondary uppercase">
@@ -157,7 +157,7 @@ export default function AboutUs() {
                       {p}
                     </p>
                   ))}
-                  <div className="w-10 sm:w-12 h-px bg-accent-gold/40 mt-1 sm:mt-2" />
+                  <div className="w-10 sm:w-12 h-px bg-brand-gold/40 mt-1 sm:mt-2" />
                 </div>
               </motion.div>
             ))}
@@ -165,14 +165,14 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 bg-bg-secondary border-t border-b border-black/[0.08] relative z-10">
+      <section className="py-14 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 bg-bg-secondary border-t border-b border-brand-darkblue/[0.08] relative z-10">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-14 md:mb-16 lg:mb-20">
             <div>
               <FadeUpText>
                 <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
-                  <span className="h-px w-6 sm:w-8 bg-accent-gold" />
-                  <span className="font-display text-[9px] sm:text-[10px] md:text-xs font-extrabold tracking-[0.2em] sm:tracking-[0.3em] text-accent-gold uppercase">
+                  <span className="h-px w-6 sm:w-8 bg-brand-gold" />
+                  <span className="font-display text-[9px] sm:text-[10px] md:text-xs font-extrabold tracking-[0.2em] sm:tracking-[0.3em] text-brand-gold uppercase">
                     Executive Leadership
                   </span>
                 </div>
@@ -202,17 +202,17 @@ export default function AboutUs() {
                   delay: i * 0.15,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative bg-white border border-black/[0.08] rounded-sm p-5 sm:p-6 md:p-8 lg:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)] hover:border-accent-gold/50 transition-all duration-500 flex flex-col justify-between"
+                className="group relative bg-white border border-brand-darkblue/[0.08] rounded-sm p-5 sm:p-6 md:p-8 lg:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_48px_rgba(0,0,0,0.08)] hover:border-brand-gold/50 transition-all duration-500 flex flex-col justify-between"
               >
                 <div className="absolute top-0 right-0 w-16 sm:w-20 h-16 sm:h-20 overflow-hidden pointer-events-none">
-                  <div className="absolute top-0 right-0 w-px h-8 sm:h-10 bg-accent-gold/40 transition-all duration-500 group-hover:h-14 sm:group-hover:h-16 group-hover:bg-accent-gold" />
-                  <div className="absolute top-0 right-0 h-px w-8 sm:w-10 bg-accent-gold/40 transition-all duration-500 group-hover:w-14 sm:group-hover:w-16 group-hover:bg-accent-gold" />
+                  <div className="absolute top-0 right-0 w-px h-8 sm:h-10 bg-brand-gold/40 transition-all duration-500 group-hover:h-14 sm:group-hover:h-16 group-hover:bg-brand-gold" />
+                  <div className="absolute top-0 right-0 h-px w-8 sm:w-10 bg-brand-gold/40 transition-all duration-500 group-hover:w-14 sm:group-hover:w-16 group-hover:bg-brand-gold" />
                 </div>
 
                 <div>
                   <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 md:gap-8 mb-5 sm:mb-6">
-                    <div className="relative shrink-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 rounded-full p-1 bg-gradient-to-b from-accent-gold/50 via-black/10 to-transparent shadow-lg group-hover:from-accent-gold group-hover:scale-105 transition-all duration-500">
-                      <div className="w-full h-full rounded-full overflow-hidden bg-bg-tertiary border border-black/10 relative">
+                    <div className="relative shrink-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40 rounded-full p-1 bg-gradient-to-b from-brand-gold/50 via-black/10 to-transparent shadow-lg group-hover:from-brand-gold group-hover:scale-105 transition-all duration-500">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-bg-tertiary border border-brand-darkblue/10 relative">
                         <img
                           src={director.image}
                           alt={`${director.name} - ${director.role}`}
@@ -223,16 +223,16 @@ export default function AboutUs() {
                     </div>
 
                     <div className="flex flex-col text-center sm:text-left justify-center sm:pt-2">
-                      <span className="font-mono text-[9px] sm:text-[10px] font-bold text-accent-gold uppercase tracking-widest mb-1 sm:mb-1.5">
+                      <span className="font-mono text-[9px] sm:text-[10px] font-bold text-brand-gold uppercase tracking-widest mb-1 sm:mb-1.5">
                         {director.period}
                       </span>
                       <h3 className="font-display text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold text-text-primary tracking-tight uppercase">
                         {director.name}
                       </h3>
-                      <p className="font-display text-xs sm:text-sm md:text-base font-bold text-accent-gold tracking-wide uppercase mt-1">
+                      <p className="font-display text-xs sm:text-sm md:text-base font-bold text-brand-gold tracking-wide uppercase mt-1">
                         {director.role}
                       </p>
-                      <div className="h-0.5 w-10 sm:w-12 bg-accent-gold/60 mt-2 sm:mt-3 mx-auto sm:mx-0 group-hover:w-16 sm:group-hover:w-20 transition-all duration-300" />
+                      <div className="h-0.5 w-10 sm:w-12 bg-brand-gold/60 mt-2 sm:mt-3 mx-auto sm:mx-0 group-hover:w-16 sm:group-hover:w-20 transition-all duration-300" />
                     </div>
                   </div>
 
@@ -241,11 +241,11 @@ export default function AboutUs() {
                   </p>
                 </div>
 
-                <div className="pt-5 sm:pt-6 border-t border-black/[0.06] flex items-center justify-between">
+                <div className="pt-5 sm:pt-6 border-t border-brand-darkblue/[0.06] flex items-center justify-between">
                   <span className="font-display text-[8px] sm:text-[9px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] text-text-primary uppercase">
                     3 Circles OPC P LTD
                   </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-gold" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
                 </div>
               </motion.div>
             ))}

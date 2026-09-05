@@ -1,8 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function Marquee({ items, speed = 30, className = '' }) {
-  const duplicated = [...items, ...items];
+
+
+const marqueeItems = [
+  <img src="/images/ourClients/Cidco.png" alt="Cidco" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/Hyundai.png" alt="Hyundai" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/LarsenAndToubro.png" alt="L&T" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/MIDC.png" alt="MIDC" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/MaharashtraStateRoad.png" alt="MSRDC" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/MazagaonDock.png" alt="Mazagaon Dock" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/NationalHighway.png" alt="National Highway" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/PradhanMantriGramSadakYojna.png" alt="PMGSY" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/Pwd.png" alt="PWD" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/Supreme.png" alt="Supreme" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+  <img src="/images/ourClients/TataProjects.png" alt="Tata Projects" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />,
+];
+
+export default function Marquee({ speed = 30, className = '' }) {
+  const duplicated = [...marqueeItems, ...marqueeItems];
 
   return (
     <div className={`overflow-hidden w-full ${className}`}>
@@ -18,10 +34,9 @@ export default function Marquee({ items, speed = 30, className = '' }) {
         {duplicated.map((item, i) => (
           <span
             key={i}
-            className="flex items-center gap-8 px-8 font-display text-[10px] font-extrabold tracking-[0.3em] uppercase shrink-0"
+            className={`flex items-center px-10 shrink-0 ${typeof item === 'string' ? 'font-display text-[16px] font-extrabold tracking-[0.3em] uppercase' : ''}`}
           >
             {item}
-            <span className="text-accent-gold opacity-60">✦</span>
           </span>
         ))}
       </motion.div>

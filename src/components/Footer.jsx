@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { useLenis } from 'lenis/react';
-import { useTransition } from './PageTransition';
-import Marquee from './Marquee';
-import FooterCanvas from './FooterCanvas';
-import { ArrowUp, ArrowUpRight, MapPinIcon, PhoneIcon, MailIcon } from './Icons';
 import Logo from "../assets/logo/Logo.png";
+import FooterCanvas from './FooterCanvas';
+import { ArrowUp, MailIcon, MapPinIcon, PhoneIcon } from './Icons';
+import Marquee from './Marquee';
+import { useTransition } from './PageTransition';
 
-const marqueeItems = [
-  'Engineering Excellence',
-  'Infrastructure',
-  'Mining & Crushing',
-  'Built For Scale',
-  'Civil Works',
-  'Excavation',
-  'RCC Works',
-  'Dubai, UAE',
-];
 
 const navLinks = [
   { label: 'HOME', path: '/', target: 'hero' },
@@ -49,10 +38,10 @@ function BackToTopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className="group relative flex items-center gap-3 p-2 text-white/80 hover:text-accent-gold transition-colors cursor-pointer select-none"
+      className="group relative flex items-center gap-3 p-2 text-white/80 hover:text-brand-gold transition-colors cursor-pointer select-none"
       aria-label="Back to top"
     >
-      <div className="relative w-11 h-11 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/10 group-hover:border-accent-gold/50 transition-all duration-300">
+      <div className="relative w-11 h-11 flex items-center justify-center rounded-full bg-white/[0.04] border border-white/10 group-hover:border-brand-gold/50 transition-all duration-300">
         <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 44 44">
           <circle
             cx="22"
@@ -66,7 +55,7 @@ function BackToTopButton() {
             cx="22"
             cy="22"
             r="19"
-            className="stroke-accent-gold"
+            className="stroke-brand-gold"
             strokeWidth="2"
             fill="none"
             style={{
@@ -75,7 +64,7 @@ function BackToTopButton() {
             }}
           />
         </svg>
-        <ArrowUp className="w-4 h-4 text-white group-hover:text-accent-gold transition-transform duration-300 group-hover:-translate-y-0.5" />
+        <ArrowUp className="w-4 h-4 text-white group-hover:text-brand-gold transition-transform duration-300 group-hover:-translate-y-0.5" />
       </div>
       <span className="font-display text-[9px] font-extrabold tracking-[0.2em] uppercase">
         BACK TO TOP
@@ -88,12 +77,8 @@ export default function Footer() {
   const { navigateTo } = useTransition();
 
   return (
-    <footer className="relative bg-[#070A10] text-white overflow-hidden border-t border-white/10">
+    <footer className="relative bg-brand-darkblue text-white overflow-hidden ">
       <FooterCanvas />
-
-      <div className="relative z-10 py-3.5 sm:py-4 border-b border-white/10 bg-black/50 backdrop-blur-md">
-        <Marquee items={marqueeItems} speed={24} className="text-white/60 text-xs tracking-[0.2em]" />
-      </div>
 
       <div className="relative z-10 w-full max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-10">
        
@@ -103,7 +88,7 @@ export default function Footer() {
               className="group flex items-center gap-1 font-display font-extrabold text-xl tracking-[0.2em] text-white cursor-pointer self-start transition-transform duration-300 hover:scale-[1.02]"
               onClick={() => navigateTo('/', 'hero')}
             >
-              <div className="p-2 sm:p-2.5 rounded-lg bg-white/[0.40] backdrop-blur-md border border-white/15 group-hover:border-accent-gold/50 shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300">
+              <div className="p-2 sm:p-2.5 rounded-lg bg-white/[0.40] backdrop-blur-md border border-white/15 group-hover:border-brand-gold/50 shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300">
                 <img 
                   src={Logo} 
                   alt="3 Circles Logo" 
@@ -111,7 +96,7 @@ export default function Footer() {
                 />
               </div>
             </button>
-            <p className="font-display text-[9px] font-bold tracking-[0.2em] text-accent-gold uppercase">
+            <p className="font-display text-[9px] font-bold tracking-[0.2em] text-brand-gold uppercase">
               ENGINEERING • INFRASTRUCTURE • MINING
             </p>
             <p className="text-xs sm:text-sm text-white/70 max-w-sm leading-relaxed">
@@ -120,17 +105,17 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-accent-gold uppercase mb-1">
+            <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-brand-gold uppercase mb-1">
               Navigation
             </span>
             <div className="flex flex-col gap-2.5">
               {navLinks.map(({ label, path, target }) => (
                 <button
                   key={label}
-                  className="group flex items-center gap-2 font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-accent-gold transition-colors duration-200 text-left w-max cursor-pointer"
+                  className="group flex items-center gap-2 font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-brand-gold transition-colors duration-200 text-left w-max cursor-pointer"
                   onClick={() => navigateTo(path, target)}
                 >
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-accent-gold transition-all duration-200" />
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-brand-gold transition-all duration-200" />
                   <span className="group-hover:translate-x-1 transition-transform duration-200">{label}</span>
                 </button>
               ))}
@@ -138,17 +123,17 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-accent-gold uppercase mb-1">
+            <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-brand-gold uppercase mb-1">
               Sectors
             </span>
             <div className="flex flex-col gap-2.5">
               {sectorLinks.map(({ label, path, target }) => (
                 <button
                   key={label}
-                  className="group flex items-center gap-2 font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-accent-gold transition-colors duration-200 text-left w-max cursor-pointer"
+                  className="group flex items-center gap-2 font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-brand-gold transition-colors duration-200 text-left w-max cursor-pointer"
                   onClick={() => navigateTo(path, target)}
                 >
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-accent-gold transition-all duration-200" />
+                  <span className="w-0 group-hover:w-2 h-[1px] bg-brand-gold transition-all duration-200" />
                   <span className="group-hover:translate-x-1 transition-transform duration-200">{label}</span>
                 </button>
               ))}
@@ -156,20 +141,20 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-accent-gold uppercase mb-1">
+            <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-brand-gold uppercase mb-1">
               Headquarters
             </span>
             <div className="flex flex-col gap-3 text-xs text-white/70">
               <div className="flex items-start gap-2.5">
-                <MapPinIcon className="w-3.5 h-3.5 text-accent-gold shrink-0 mt-0.5" />
+                <MapPinIcon className="w-3.5 h-3.5 text-brand-gold shrink-0 mt-0.5" />
                 <span>xxxxxxxxxxxxx</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <PhoneIcon className="w-3.5 h-3.5 text-accent-gold shrink-0" />
+                <PhoneIcon className="w-3.5 h-3.5 text-brand-gold shrink-0" />
                 <span>+971 4 333 3333</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <MailIcon className="w-3.5 h-3.5 text-accent-gold shrink-0" />
+                <MailIcon className="w-3.5 h-3.5 text-brand-gold shrink-0" />
                 <span>info@3circles.ae</span>
               </div>
             </div>

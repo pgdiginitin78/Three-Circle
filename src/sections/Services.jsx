@@ -66,7 +66,7 @@ export default function Services() {
         <div className="flex flex-col gap-4 mb-10 md:mb-14">
           <div>
             <FadeUpText>
-              <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-accent-gold uppercase block mb-2.5">
+              <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-brand-gold uppercase block mb-2.5">
                 Comprehensive Expertise
               </span>
             </FadeUpText>
@@ -97,9 +97,9 @@ export default function Services() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <SpotlightCard className="h-full flex flex-col bg-white border border-black/[0.07] rounded-sm overflow-hidden shadow-sm hover:shadow-xl hover:border-accent-gold/40 transition-all duration-500 group">
+              <SpotlightCard className="h-full flex flex-col bg-white border border-brand-darkblue/[0.07] rounded-sm overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-gold/40 transition-all duration-500 group">
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary">
-                  <div className="absolute inset-0 border border-accent-gold/20 m-3 pointer-events-none z-10 transition-all duration-500 group-hover:m-2 group-hover:border-accent-gold/50 rounded-sm" />
+                  <div className="absolute inset-0 border border-brand-gold/20 m-3 pointer-events-none z-10 transition-all duration-500 group-hover:m-2 group-hover:border-brand-gold/50 rounded-sm" />
                   <img
                     src={service.image}
                     alt={service.title}
@@ -108,7 +108,7 @@ export default function Services() {
                   <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/70 via-black/25 to-transparent z-10" />
 
                   <div className="absolute bottom-3.5 left-4 right-4 z-20">
-                    <span className="font-display text-[8px] font-bold tracking-[0.2em] text-accent-gold uppercase block mb-1">
+                    <span className="font-display text-[8px] font-bold tracking-[0.2em] text-brand-gold uppercase block mb-1">
                       {service.subtitle}
                     </span>
                     <h3 className="font-display text-lg sm:text-xl font-extrabold tracking-tight text-white uppercase drop-shadow-md">
@@ -122,9 +122,9 @@ export default function Services() {
                     {service.items.map((item, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-2.5 py-1.5 border-b border-black/[0.04] last:border-b-0"
+                        className="flex items-center gap-2.5 py-1.5 border-b border-brand-darkblue/[0.04] last:border-b-0"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-gold shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />
                         <span className="font-body text-xs sm:text-sm font-medium text-text-secondary group-hover:text-text-primary transition-colors">
                           {item}
                         </span>
@@ -132,8 +132,8 @@ export default function Services() {
                     ))}
                   </div>
 
-                  <div className="pt-4 mt-3 flex items-center justify-between border-t border-black/[0.06]">
-                    <span className="font-display text-[9px] font-extrabold tracking-[0.2em] text-accent-gold uppercase">
+                  <div className="pt-4 mt-3 flex items-center justify-between border-t border-brand-darkblue/[0.06]">
+                    <span className="font-display text-[9px] font-extrabold tracking-[0.2em] text-brand-gold uppercase">
                       Core Discipline
                     </span>
                     <span className="text-text-secondary group-hover:text-text-primary group-hover:translate-x-1 transition-all duration-200">
