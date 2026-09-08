@@ -19,7 +19,7 @@ export function WordReveal({ text, className = '', delay = 0 }) {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            {word}
+            <span>{word}</span>
           </motion.span>
         </span>
       ))}
@@ -45,7 +45,7 @@ export function CharReveal({ text, className = '', delay = 0 }) {
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            {char === ' ' ? '\u00A0' : char}
+            <span>{char === ' ' ? '\u00A0' : char}</span>
           </motion.span>
         </span>
       ))}

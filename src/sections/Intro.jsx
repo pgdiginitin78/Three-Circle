@@ -43,9 +43,9 @@ export default function Intro() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              3 Circles delivers integrated civil and infrastructure
+              <span>3 Circles delivers integrated civil and infrastructure
               capabilities across building construction, mining and crushing,
-              infrastructure development and excavation.
+              infrastructure development and excavation.</span>
             </motion.p>
           </div>
 

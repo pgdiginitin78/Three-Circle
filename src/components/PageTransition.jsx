@@ -1,120 +1,64 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useLenis } from 'lenis/react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const TransitionContext = createContext();
 
 export const useTransition = () => useContext(TransitionContext);
 
 export const TransitionProvider = ({ children }) => {
-  const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const lenis = useLenis();
 
+  // Use a ref so navigateTo always has the LATEST pathname (no stale closure)
+  const pathnameRef = useRef(location.pathname);
+  useEffect(() => {
+    pathnameRef.current = location.pathname;
+  }, [location.pathname]);
+
+  const lenisRef = useRef(lenis);
+  useEffect(() => {
+    lenisRef.current = lenis;
+  }, [lenis]);
+
+  const scrollToTarget = (target) => {
+    const lenisInstance = lenisRef.current;
+    if (!target) {
+      if (lenisInstance) lenisInstance.scrollTo(0, { duration: 0.8 });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const el = document.getElementById(target);
+    if (el) {
+      if (lenisInstance) lenisInstance.scrollTo(el, { offset: -80, duration: 1.2 });
+      else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const navigateTo = (path, scrollTarget = null) => {
-    // If we're already on the same page
-    if (location.pathname === path) {
-      if (scrollTarget) {
-        const el = document.getElementById(scrollTarget);
-        if (el) {
-          if (lenis) {
-            lenis.scrollTo(el, { offset: -70, duration: 1.2 });
-          } else {
-            el.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      } else {
-        if (lenis) lenis.scrollTo(0, { duration: 0.8 });
-        else window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+    const currentPath = pathnameRef.current;
+
+    if (currentPath === path) {
+      // Already on this page — just scroll to section
+      scrollToTarget(scrollTarget);
       return;
     }
 
-    // Navigating to a different page
-    setIsPending(true);
-    setTimeout(() => {
-      navigate(path);
-      
-      if (scrollTarget) {
-        // Wait a tick for React to render the new page
-        setTimeout(() => {
-          const el = document.getElementById(scrollTarget);
-          if (el) {
-            if (lenis) lenis.scrollTo(el, { offset: -70, immediate: true });
-            else el.scrollIntoView();
-          }
-        }, 100);
-      } else {
-        if (lenis) lenis.scrollTo(0, { immediate: true });
-        else window.scrollTo({ top: 0, behavior: 'auto' });
-      }
+    // Navigate to new page first
+    navigate(path);
 
-      setTimeout(() => {
-        setIsPending(false);
-      }, 350);
-    }, 300);
+    // Wait for React to finish rendering the new page, then scroll
+    if (scrollTarget) {
+      setTimeout(() => scrollToTarget(scrollTarget), 250);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
   };
 
   return (
-    <TransitionContext.Provider value={{ navigateTo, isPending }}>
+    <TransitionContext.Provider value={{ navigateTo, isPending: false }}>
       {children}
-      <AnimatePresence mode="wait">
-        {isPending && <PageTransitionOverlay />}
-      </AnimatePresence>
     </TransitionContext.Provider>
-  );
-};
-
-const PageTransitionOverlay = () => {
-  return (
-    <motion.div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100vh',
-        backgroundColor: '#111111',
-        zIndex: 99999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transformOrigin: 'top'
-      }}
-      initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
-      exit={{ scaleY: 0 }}
-      transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ delay: 0.1, duration: 0.2 }}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center'
-        }}
-      >
-        <span style={{
-          fontFamily: 'Outfit, sans-serif',
-          fontWeight: 800,
-          fontSize: '2rem',
-          letterSpacing: '0.25em',
-          color: '#FFFFFF'
-        }}>
-          3 CIRCLES
-        </span>
-        <div style={{
-          width: '50px',
-          height: '2px',
-          backgroundColor: 'var(--color-brand-gold)',
-          marginTop: '12px'
-        }} />
-      </motion.div>
-    </motion.div>
   );
 };

@@ -134,7 +134,7 @@ function HeroRoute({ reduced }) {
 
 function Hero({ reduced }) {
   return (
-    <section className="relative overflow-hidden bg-[var(--ink)] text-[var(--paper)]">
+    <section id="all-projects" className="relative overflow-hidden bg-[var(--ink)] text-[var(--paper)]">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
         style={{
@@ -152,7 +152,7 @@ function Hero({ reduced }) {
           transition={{ duration: 0.6, delay: reduced ? 0 : 0.2 }}
           className="font-mono text-[clamp(0.7rem,0.9vw,0.85rem)] tracking-wide text-[var(--brass-bright)]"
         >
-          Civil &amp; infrastructure contracting \u2014 India
+          <span>Civil &amp; infrastructure contracting \u2014 India</span>
         </motion.p>
 
         <motion.h1
@@ -162,7 +162,7 @@ function Hero({ reduced }) {
           className="mt-[clamp(0.75rem,1.5vw,1.25rem)] max-w-[18ch] font-display text-[clamp(2.6rem,7vw,6.4rem)] font-black leading-[0.98] tracking-tight"
           style={{ color: "#FFFFFF" }}
         >
-          Engineering the arteries
+          <span>Engineering the arteries</span>
           <span className="block text-[var(--brass-bright)]">
             of India&apos;s growth.
           </span>
@@ -174,8 +174,8 @@ function Hero({ reduced }) {
           transition={{ duration: 0.7, delay: reduced ? 0 : 0.46 }}
           className="mt-[clamp(1rem,2vw,1.75rem)] max-w-[46ch] font-body text-[clamp(0.95rem,1.15vw,1.15rem)] leading-relaxed text-[rgba(245,242,234,0.7)]"
         >
-          Highways, maritime docks, heavy industrial plants and civic works,
-          delivered to a single standard from survey to handover.
+          <span>Highways, maritime docks, heavy industrial plants and civic works,
+          delivered to a single standard from survey to handover.</span>
         </motion.p>
 
         <motion.div

@@ -42,8 +42,8 @@ export default function Navbar() {
     { label: "Home", path: "/", target: "hero" },
     {
       label: "About Us",
-      path: "/",
-      target: "about",
+      path: "/about",
+      target: null,
       activePrefix: "/about",
       subItems: [
         { label: "Company Overview", path: "/about", target: "overview" },
@@ -55,20 +55,20 @@ export default function Navbar() {
     },
     {
       label: "Services",
-      path: "/",
-      target: "services",
+      path: "/services/building",
+      target: null,
       activePrefix: "/services",
       subItems: [
-        { label: "Building Industry", path: "/services", target: "building" },
-        { label: "Infrastructure", path: "/services", target: "infrastructure" },
-        { label: "Mining & Crushing", path: "/services", target: "mining" },
-        { label: "Excavation", path: "/services", target: "excavation" },
+        { label: "Building Industry", path: "/services/building", target: null },
+        { label: "Infrastructure", path: "/services/infrastructure", target: null },
+        { label: "Mining & Crushing", path: "/services/mining", target: null },
+        { label: "Excavation", path: "/services/excavation", target: null },
       ],
     },
     {
       label: "Projects",
-      path: "/",
-      target: "projects",
+      path: "/projects",
+      target: null,
       activePrefix: "/projects",
       subItems: [
         { label: "All Projects", path: "/projects", target: "all-projects" },
@@ -80,25 +80,27 @@ export default function Navbar() {
       label: "Plant & Machinery",
       path: "/plant-machinery",
       target: null,
+      activePrefix: "/plant-machinery",
       subItems: [
         { label: "Equipment Overview", path: "/plant-machinery", target: "overview" },
         { label: "Construction Equipment", path: "/plant-machinery", target: "construction" },
-        { label: "Concrete Equipment", path: "/plant-machinery", target: "concrete" },
-        { label: "Hauling & Transport", path: "/plant-machinery", target: "hauling" },
-        { label: "Asphalt & Crushing", path: "/plant-machinery", target: "asphalt" },
-        { label: "Quality Control", path: "/plant-machinery", target: "quality" },
-        { label: "Tools & Accessories", path: "/plant-machinery", target: "tools" },
+        { label: "Concrete Equipment", path: "/plant-machinery", target: "construction" },
+        { label: "Hauling & Transport", path: "/plant-machinery", target: "construction" },
+        { label: "Asphalt & Crushing", path: "/plant-machinery", target: "construction" },
+        { label: "Quality Control", path: "/plant-machinery", target: "construction" },
+        { label: "Tools & Accessories", path: "/plant-machinery", target: "construction" },
       ],
     },
     {
       label: "Our Company",
       path: "/our-company",
       target: null,
+      activePrefix: "/our-company",
       subItems: [
-        { label: "Achievements", path: "/our-company", target: "achievements" },
-        { label: "Major Associates", path: "/our-company", target: "associates" },
-        { label: "Our Clients", path: "/our-company", target: "clients" },
-        { label: "Accreditations", path: "/our-company", target: "accreditations" },
+        { label: "Achievements", path: "/our-company/achievements", target: null },
+        { label: "Major Associates", path: "/our-company/associates", target: null },
+        { label: "Our Clients", path: "/our-company/clients", target: null },
+        { label: "Accreditations", path: "/our-company/accreditations", target: null },
       ],
     },
   ];
@@ -153,7 +155,7 @@ export default function Navbar() {
                   className={`relative flex flex-col items-center justify-center gap-1 px-4 py-2 xl:px-5 rounded-full cursor-pointer select-none transition-all duration-300 ${
                     isHoveredSubmenu ? "bg-brand-darkblue" : "hover:bg-brand-darkblue/5"
                   }`}
-                  onClick={() => handleNavClick(item.path, item.target)}
+                  onClick={() => !item.subItems && handleNavClick(item.path, item.target)}
                 >
                   <span className="flex items-center gap-1.5">
                     <span

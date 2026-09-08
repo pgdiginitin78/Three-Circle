@@ -86,18 +86,19 @@ export default function HeroScrollSequence({ triggerRef }) {
       scrollTrigger: {
         trigger: triggerRef.current,
         start: "top top",
-        end: `+=${window.innerHeight * 4}`, // Total scroll distance (4 screens height)
+        end: `+=${window.innerHeight * 2}`,
         scrub: 0.5,
-        pin: true,
+        // pin: true  ← REMOVED: pin physically moves the element to position:fixed
+        //               and injects spacer divs outside React's control, causing the
+        //               Hero to stay visible after navigating away from the home page.
       },
       onUpdate: render,
     });
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (st.scrollTrigger) {
-        st.scrollTrigger.kill();
-      }
+      // Kill all ScrollTriggers to remove any lingering pinned elements / spacers
+      ScrollTrigger.getAll().forEach((t) => t.kill());
       st.kill();
     };
   }, [images, triggerRef]);

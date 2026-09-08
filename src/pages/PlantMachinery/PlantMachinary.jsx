@@ -121,7 +121,7 @@ export default function PlantMachinary() {
 
   return (
     <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)] font-body selection:bg-[var(--brass-bright)] selection:text-white">
-      <section className=" relative pt-14 lg:pt-44 pb-16 lg:pb-24 overflow-hidden">
+      <section id="overview" className=" relative pt-14 lg:pt-44 pb-16 lg:pb-24 overflow-hidden">
         <div className="hidden md:block absolute inset-0 z-0 md:flex justify-end">
           <div className="relative w-full h-full">
             <img
@@ -239,7 +239,7 @@ export default function PlantMachinary() {
         </div>
       </section>
 
-      <section className=" bg-brand-white" ref={containerRef}>
+      <section id="construction" className=" bg-brand-white" ref={containerRef}>
         <div className="max-w-[1580px] mx-auto px-4 sm:px-6 md:px-8">
           <div className="arch-section flex flex-col md:flex-row gap-4 md:gap-8 justify-between max-w-[1100px] 2xl:max-w-[1200px] mx-auto relative">
             <div className="arch__left contents md:block md:min-w-[250px] 2xl:max-w-[350px]">
