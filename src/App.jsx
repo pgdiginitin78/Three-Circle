@@ -51,7 +51,7 @@ class ErrorBoundary extends React.Component {
 function AppContent() {
   const location = useLocation();
   return (
-    <ReactLenis root>
+    <>
       <Navbar />
       <main style={{ position: "relative", zIndex: 2 }}>
         <ErrorBoundary key={location.pathname}>
@@ -87,16 +87,18 @@ function AppContent() {
         </ErrorBoundary>
       </main>
       <Footer />
-    </ReactLenis>
+    </>
   );
 }
 
 export default function App() {
   return (
     <Router>
-      <TransitionProvider>
-        <AppContent />
-      </TransitionProvider>
+      <ReactLenis root>
+        <TransitionProvider>
+          <AppContent />
+        </TransitionProvider>
+      </ReactLenis>
     </Router>
   );
 }

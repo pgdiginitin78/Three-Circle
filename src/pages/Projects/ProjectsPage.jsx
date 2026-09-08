@@ -298,7 +298,6 @@ export default function ProjectsPage() {
 
   return (
     <div
-      id="all-projects"
       style={TOKENS}
       className="min-h-screen bg-[var(--paper)] font-body text-[var(--ink)]"
     >

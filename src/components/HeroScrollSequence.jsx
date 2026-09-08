@@ -78,7 +78,7 @@ export default function HeroScrollSequence({ triggerRef }) {
       images[0].onload = render;
     }
 
-    // Set up GSAP ScrollTrigger
+
     const st = gsap.to(seq, {
       frame: frameCount - 1,
       snap: "frame",
@@ -86,19 +86,18 @@ export default function HeroScrollSequence({ triggerRef }) {
       scrollTrigger: {
         trigger: triggerRef.current,
         start: "top top",
-        end: `+=${window.innerHeight * 2}`,
+        end: `+=${window.innerHeight * 4}`, 
         scrub: 0.5,
-        // pin: true  ← REMOVED: pin physically moves the element to position:fixed
-        //               and injects spacer divs outside React's control, causing the
-        //               Hero to stay visible after navigating away from the home page.
+        pin: true,
       },
       onUpdate: render,
     });
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      // Kill all ScrollTriggers to remove any lingering pinned elements / spacers
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (st.scrollTrigger) {
+        st.scrollTrigger.kill();
+      }
       st.kill();
     };
   }, [images, triggerRef]);

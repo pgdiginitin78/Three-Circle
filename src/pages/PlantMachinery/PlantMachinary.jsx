@@ -36,15 +36,13 @@ const fallbackImages = {
 export default function PlantMachinary() {
   useLenis();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const containerRef = useRef(null);
   const imgsRef = useRef([]);
   const categories = allMachineryData.flatMap((section) =>
-    section.data.categories.map((cat) => ({
+    section.data.categories.map((cat, catIdx) => ({
       ...cat,
+      sectionId: section.id,
+      isFirstInSection: catIdx === 0,
       sectionTitle: section.data.title,
     })),
   );
@@ -73,21 +71,22 @@ export default function PlantMachinary() {
             const currentImage = imgs[index];
             const nextImage = imgs[index + 1] ? imgs[index + 1] : null;
 
-            const sectionTimeline = gsap.timeline();
-
             if (nextImage) {
+              const sectionTimeline = gsap.timeline();
+              // Hold phase: keep current image 100% visible while category is active
+              sectionTimeline.to({}, { duration: 0.9 });
+              // Transition phase: smoothly wipe away current image to reveal next image
               sectionTimeline.to(
                 currentImage,
                 {
                   clipPath: "inset(0px 0px 100%)",
-                  duration: 1.5,
-                  ease: "none",
+                  duration: 0.6,
+                  ease: "power1.inOut",
                 },
-                0,
+                "+=0",
               );
+              mainTimeline.add(sectionTimeline);
             }
-
-            mainTimeline.add(sectionTimeline);
           });
         },
         "(max-width: 768px)": function () {
@@ -239,13 +238,14 @@ export default function PlantMachinary() {
         </div>
       </section>
 
-      <section id="construction" className=" bg-brand-white" ref={containerRef}>
+      <section id="machinery-fleet" className=" bg-brand-white" ref={containerRef}>
         <div className="max-w-[1580px] mx-auto px-4 sm:px-6 md:px-8">
           <div className="arch-section flex flex-col md:flex-row gap-4 md:gap-8 justify-between max-w-[1100px] 2xl:max-w-[1200px] mx-auto relative">
             <div className="arch__left contents md:block md:min-w-[250px] 2xl:max-w-[350px]">
               {categories.map((cat, i) => (
                 <div
-                  className="arch__info h-auto md:h-[100vh] flex flex-col justify-center max-w-[320px] 2xl:max-w-[450px] py-8 md:py-0"
+                  id={cat.isFirstInSection ? cat.sectionId : undefined}
+                  className="arch__info h-auto md:h-[100vh] flex flex-col justify-center max-w-[320px] 2xl:max-w-[450px] py-8 md:py-0 scroll-mt-24 md:scroll-mt-0"
                   key={i}
                   style={{ order: i * 2 }}
                 >

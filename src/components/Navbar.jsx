@@ -84,11 +84,11 @@ export default function Navbar() {
       subItems: [
         { label: "Equipment Overview", path: "/plant-machinery", target: "overview" },
         { label: "Construction Equipment", path: "/plant-machinery", target: "construction" },
-        { label: "Concrete Equipment", path: "/plant-machinery", target: "construction" },
-        { label: "Hauling & Transport", path: "/plant-machinery", target: "construction" },
-        { label: "Asphalt & Crushing", path: "/plant-machinery", target: "construction" },
-        { label: "Quality Control", path: "/plant-machinery", target: "construction" },
-        { label: "Tools & Accessories", path: "/plant-machinery", target: "construction" },
+        { label: "Concrete Equipment", path: "/plant-machinery", target: "concrete" },
+        { label: "Hauling & Transport", path: "/plant-machinery", target: "hauling" },
+        { label: "Asphalt & Crushing", path: "/plant-machinery", target: "asphalt" },
+        { label: "Quality Control", path: "/plant-machinery", target: "quality" },
+        { label: "Tools & Accessories", path: "/plant-machinery", target: "tools" },
       ],
     },
     {

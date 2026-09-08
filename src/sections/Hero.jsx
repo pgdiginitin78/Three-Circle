@@ -53,7 +53,7 @@ export default function Hero() {
             className="font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.35em] text-brand-gold uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
             variants={itemVariants}
           >
-            <span>3 Circles • Engineering • Infrastructure • Mining</span>
+            3 Circles • Engineering • Infrastructure • Mining
           </motion.span>
 
           <h1 className="font-display text-4xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-[0.96] tracking-tight text-white uppercase mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
@@ -63,7 +63,7 @@ export default function Hero() {
                   className={`inline-block ${index === 2 ? "shimmer-text" : "text-white"}`}
                   variants={lineVariants}
                 >
-                  <span>{line}</span>
+                  {line}
                 </motion.span>
               </span>
             ))}
@@ -73,8 +73,8 @@ export default function Hero() {
             className="text-xs sm:text-sm md:text-base text-white max-w-[500px] leading-relaxed mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
             variants={itemVariants}
           >
-            <span>Integrated civil construction, infrastructure, mining, crushing and
-            excavation solutions engineered for scale.</span>
+            Integrated civil construction, infrastructure, mining, crushing and
+            excavation solutions engineered for scale.
           </motion.p>
 
           <motion.div

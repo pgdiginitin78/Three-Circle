@@ -31,8 +31,17 @@ export const TransitionProvider = ({ children }) => {
     }
     const el = document.getElementById(target);
     if (el) {
-      if (lenisInstance) lenisInstance.scrollTo(el, { offset: -80, duration: 1.2 });
-      else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const isFullscreenDesktopSection =
+        (el.classList.contains('arch__info') || el.clientHeight >= window.innerHeight * 0.85) &&
+        window.innerWidth >= 769;
+      const offset = isFullscreenDesktopSection ? 0 : -80;
+
+      if (lenisInstance) {
+        lenisInstance.scrollTo(el, { offset, duration: 1.2 });
+      } else {
+        const targetY = el.getBoundingClientRect().top + window.scrollY + offset;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+      }
     }
   };
 
@@ -50,7 +59,9 @@ export const TransitionProvider = ({ children }) => {
 
     // Wait for React to finish rendering the new page, then scroll
     if (scrollTarget) {
-      setTimeout(() => scrollToTarget(scrollTarget), 250);
+      setTimeout(() => scrollToTarget(scrollTarget), 150);
+      setTimeout(() => scrollToTarget(scrollTarget), 400);
+      setTimeout(() => scrollToTarget(scrollTarget), 800);
     } else {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
