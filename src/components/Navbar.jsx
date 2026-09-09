@@ -123,11 +123,10 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 w-full z-[9999] flex items-center justify-between transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isScrolled
+        className={`fixed top-0 left-0 w-full z-[9999] flex items-center justify-between transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled
             ? "h-14 sm:h-18 px-4 sm:px-8 lg:px-12 bg-white/95 backdrop-blur-2xl border-b border-brand-darkblue/5 shadow-sm"
             : "h-16 sm:h-20 px-5 sm:px-10 lg:px-16 bg-white/90 backdrop-blur-xl border-b border-white/20 shadow-sm"
-        }`}
+          }`}
       >
         <button
           className="flex items-center cursor-pointer select-none hover:opacity-85 transition-opacity shrink-0"
@@ -152,33 +151,30 @@ export default function Navbar() {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <button
-                  className={`relative flex flex-col items-center justify-center gap-1 px-4 py-2 xl:px-5 rounded-full cursor-pointer select-none transition-all duration-300 ${
-                    isHoveredSubmenu ? "bg-brand-darkblue" : "hover:bg-brand-darkblue/5"
-                  }`}
+                  className={`relative flex flex-col items-center justify-center gap-1 px-4 py-2 xl:px-5 rounded-full cursor-pointer select-none transition-all duration-300 ${isHoveredSubmenu ? "bg-brand-darkblue" : "hover:bg-brand-darkblue/5"
+                    }`}
                   onClick={() => !item.subItems && handleNavClick(item.path, item.target)}
                 >
                   <span className="flex items-center gap-1.5">
                     <span
-                      className={`whitespace-nowrap font-display text-[12px] xl:text-[13px] font-bold tracking-wide transition-colors duration-300 ${
-                        active && !isHoveredSubmenu
+                      className={`whitespace-nowrap font-display text-[12px] xl:text-[13px] font-bold tracking-wide transition-colors duration-300 ${active && !isHoveredSubmenu
                           ? "text-brand-gold"
                           : isHoveredSubmenu
                             ? "text-white"
                             : "text-brand-darkblue group-hover:text-brand-darkblue/70"
-                      }`}
+                        }`}
                     >
                       {item.label}
                     </span>
                     {item.subItems && (
                       <svg
                         viewBox="0 0 10 6"
-                        className={`w-2.5 h-2.5 transition-all duration-300 ${
-                          active && !isHoveredSubmenu
+                        className={`w-2.5 h-2.5 transition-all duration-300 ${active && !isHoveredSubmenu
                             ? "text-brand-gold"
                             : isHoveredSubmenu
                               ? "text-white rotate-180"
                               : "text-brand-darkblue group-hover:text-brand-darkblue/70"
-                        }`}
+                          }`}
                         fill="none"
                       >
                         <path
@@ -192,13 +188,12 @@ export default function Navbar() {
                     )}
                   </span>
                   <span
-                    className={`absolute -bottom-2 h-0.5 rounded-full bg-brand-gold transition-all duration-300 ${
-                      active
+                    className={`absolute -bottom-2 h-0.5 rounded-full bg-brand-gold transition-all duration-300 ${active
                         ? "w-5 opacity-100"
                         : hoveredIndex === index
                           ? "w-5 opacity-60"
                           : "w-0 opacity-0"
-                    }`}
+                      }`}
                   />
                 </button>
 
@@ -286,11 +281,10 @@ export default function Navbar() {
                       className="border-b border-brand-darkblue/6"
                     >
                       <motion.button
-                        className={`w-full group flex items-center justify-between py-3 text-left cursor-pointer transition-colors duration-200 ${
-                          active
+                        className={`w-full group flex items-center justify-between py-3 text-left cursor-pointer transition-colors duration-200 ${active
                             ? "text-brand-gold"
                             : "text-text-secondary hover:text-text-primary"
-                        }`}
+                          }`}
                         onClick={() => {
                           if (item.subItems) {
                             setOpenSubMenu(isSubMenuOpen ? null : item.label);

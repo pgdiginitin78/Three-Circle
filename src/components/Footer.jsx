@@ -81,7 +81,7 @@ export default function Footer() {
       <FooterCanvas />
 
       <div className="relative z-10 w-full max-w-[1580px] mx-auto px-6 md:px-12 lg:px-16 pt-16 md:pt-24 pb-10">
-       
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-14 md:mb-16">
           <div className="flex flex-col gap-4">
             <button
@@ -89,10 +89,10 @@ export default function Footer() {
               onClick={() => navigateTo('/', 'hero')}
             >
               <div className="p-2 sm:p-2.5 rounded-lg bg-white/[0.40] backdrop-blur-md border border-white/15 group-hover:border-brand-gold/50 shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300">
-                <img 
-                  src={Logo} 
-                  alt="3 Circles Logo" 
-                  className="h-9 md:h-16 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(212,175,55,0.35)]" 
+                <img
+                  src={Logo}
+                  alt="3 Circles Logo"
+                  className="h-9 md:h-16 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(212,175,55,0.35)]"
                 />
               </div>
             </button>
