@@ -19,34 +19,6 @@ import Clients from "./pages/OurCompany/Clients";
 import PlantMachinary from "./pages/PlantMachinery/PlantMachinary";
 
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-  componentDidCatch(error, info) {
-    console.error("Page error caught by boundary:", error, info);
-  }
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "#0B1120", color: "#fff", fontFamily: "Outfit, sans-serif" }}>
-          <h2 style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "1rem" }}>Something went wrong</h2>
-          <button
-            onClick={() => { this.setState({ hasError: false }); window.location.href = "/"; }}
-            style={{ padding: "0.75rem 2rem", background: "#C9A84C", color: "#fff", border: "none", borderRadius: "999px", fontWeight: 700, cursor: "pointer", fontSize: "0.875rem" }}
-          >
-            Go to Home
-          </button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
 
 function AppContent() {
   const location = useLocation();
@@ -54,7 +26,7 @@ function AppContent() {
     <>
       <Navbar />
       <main style={{ position: "relative", zIndex: 2 }}>
-        <ErrorBoundary key={location.pathname}>
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
@@ -84,7 +56,6 @@ function AppContent() {
             {/* Catch-all 404 Route */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-        </ErrorBoundary>
       </main>
       <Footer />
     </>

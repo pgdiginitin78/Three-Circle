@@ -4,12 +4,6 @@ import BlueprintGrid from "./BlueprintGrid";
 import { FadeUpText, WordReveal } from "./AnimatedText";
 import ArchitecturalCanvas from "./ArchitecturalCanvas";
 
-class CanvasErrorBoundary extends React.Component {
-  constructor(props) { super(props); this.state = { failed: false }; }
-  static getDerivedStateFromError() { return { failed: true }; }
-  render() { return this.state.failed ? null : this.props.children; }
-}
-
 const narrativeSections = [
   {
     num: "01",
@@ -59,8 +53,11 @@ export default function AboutUs() {
     <div className="relative min-h-screen bg-bg-primary text-text-primary mx-auto selection:bg-brand-gold selection:text-white overflow-hidden">
       <BlueprintGrid />
 
-      <section id="overview" className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28 2xl:pt-60 2xl:pb-60 border-b border-brand-darkblue/[0.06] overflow-hidden">
-        <CanvasErrorBoundary><ArchitecturalCanvas /></CanvasErrorBoundary>
+      <section
+        id="overview"
+        className="relative pt-24 sm:pt-28 md:pt-32 lg:pt-36 xl:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28 2xl:pt-60 2xl:pb-60 border-b border-brand-darkblue/[0.06] overflow-hidden"
+      >
+        <ArchitecturalCanvas />
 
         <div className="w-full max-w-[1440px]  mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10">
           <div className="max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
@@ -124,7 +121,10 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section id="history" className="py-14 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 relative z-10">
+      <section
+        id="history"
+        className="py-14 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 relative z-10"
+      >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
           <div className="flex flex-col gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-32">
             {narrativeSections.map((item, idx) => (
@@ -171,7 +171,10 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section id="leadership" className="py-14 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 bg-bg-secondary border-t border-b border-brand-darkblue/[0.08] relative z-10">
+      <section
+        id="leadership"
+        className="py-14 sm:py-20 md:py-24 lg:py-28 xl:py-32 2xl:py-36 bg-bg-secondary border-t border-b border-brand-darkblue/[0.08] relative z-10"
+      >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-14 md:mb-16 lg:mb-20">
             <div>
@@ -259,33 +262,51 @@ export default function AboutUs() {
         </div>
       </section>
       {/* Safety & Quality anchor */}
-      <div id="safety" className="py-10 sm:py-16 md:py-20 relative z-10 border-t border-brand-darkblue/[0.06]">
+      <div
+        id="safety"
+        className="py-10 sm:py-16 md:py-20 relative z-10 border-t border-brand-darkblue/[0.06]"
+      >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
           <div className="flex items-center gap-3 mb-6">
             <span className="h-px w-8 bg-brand-gold" />
-            <span className="font-display text-[10px] font-extrabold tracking-[0.3em] text-brand-gold uppercase">Safety &amp; Quality</span>
+            <span className="font-display text-[10px] font-extrabold tracking-[0.3em] text-brand-gold uppercase">
+              Safety &amp; Quality
+            </span>
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-text-primary uppercase mb-6">
             Safety &amp; Quality Standards
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-text-secondary leading-relaxed max-w-3xl">
-            At 3 Circles, safety is not a checkbox — it is a culture. Every project is executed under strict quality management systems and health &amp; safety protocols, ensuring zero compromise on the well-being of our workforce and the integrity of every structure we build.
+            At 3 Circles, safety is not a checkbox — it is a culture. Every
+            project is executed under strict quality management systems and
+            health &amp; safety protocols, ensuring zero compromise on the
+            well-being of our workforce and the integrity of every structure we
+            build.
           </p>
         </div>
       </div>
 
       {/* Our Strength anchor */}
-      <div id="strength" className="py-10 sm:py-16 md:py-20 relative z-10 bg-bg-secondary border-t border-brand-darkblue/[0.06]">
+      <div
+        id="strength"
+        className="py-10 sm:py-16 md:py-20 relative z-10 bg-bg-secondary border-t border-brand-darkblue/[0.06]"
+      >
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
           <div className="flex items-center gap-3 mb-6">
             <span className="h-px w-8 bg-brand-gold" />
-            <span className="font-display text-[10px] font-extrabold tracking-[0.3em] text-brand-gold uppercase">Our Strength</span>
+            <span className="font-display text-[10px] font-extrabold tracking-[0.3em] text-brand-gold uppercase">
+              Our Strength
+            </span>
           </div>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-text-primary uppercase mb-6">
             Core Strengths
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-text-secondary leading-relaxed max-w-3xl">
-            With over 45 years of proven execution, 3 Circles brings unmatched technical expertise, financial stability, and a battle-hardened team capable of delivering large-scale government and private projects across civil engineering, mining, infrastructure, and heavy excavation.
+            With over 45 years of proven execution, 3 Circles brings unmatched
+            technical expertise, financial stability, and a battle-hardened team
+            capable of delivering large-scale government and private projects
+            across civil engineering, mining, infrastructure, and heavy
+            excavation.
           </p>
         </div>
       </div>

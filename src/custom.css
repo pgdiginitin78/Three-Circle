@@ -8,11 +8,17 @@
   100% { background-position: 200% center; }
 }
 
+@keyframes heroKenBurns {
+  0%   { transform: scale(1)    translateX(0%)    translateY(0%); }
+  100% { transform: scale(1.08) translateX(-1.5%) translateY(-1%); }
+}
+
 @keyframes border-beam {
   100% {
     offset-distance: 100%;
   }
 }
+
 
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }

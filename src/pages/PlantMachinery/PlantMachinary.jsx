@@ -120,7 +120,7 @@ export default function PlantMachinary() {
 
   return (
     <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)] font-body selection:bg-[var(--brass-bright)] selection:text-white">
-      <section id="overview" className=" relative pt-14 lg:pt-44 pb-16 lg:pb-24 overflow-hidden">
+      <section id="overview" className="relative pt-20 h-[95dvh] overflow-hidden">
         <div className="hidden md:block absolute inset-0 z-0 md:flex justify-end">
           <div className="relative w-full h-full">
             <img
@@ -142,12 +142,12 @@ export default function PlantMachinary() {
           </div>
         </div>
 
-        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+        <div className="max-w-[1580px] mx-auto px-4 sm:px-6 md:px-12 relative z-10 h-full flex items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-[60%] pt-8"
+            className="w-full lg:w-[60%]"
           >
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl   leading-tight mb-4 uppercase">
               <span className="text-brand-gold"> Our</span>

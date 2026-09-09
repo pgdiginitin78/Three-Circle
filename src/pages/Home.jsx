@@ -15,7 +15,7 @@ export default function Home() {
       <Services />
       <FeaturedProjects />
       <Projects />
-      <TransitionZone />
+      {/* <TransitionZone />   */}
       <Capabilities />
       <About />
     </>

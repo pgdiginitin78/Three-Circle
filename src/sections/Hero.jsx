@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useTransition } from "../components/PageTransition";
 import MagneticButton from "../components/MagneticButton";
 import { ArrowRight } from "../components/Icons";
-import HeroScrollSequence from "../components/HeroScrollSequence";
 
 const titleLines = ["Building What", "Moves The", "Future"];
 
@@ -36,8 +35,17 @@ export default function Hero() {
       id="hero"
       className="relative min-h-[92vh] lg:min-h-screen w-full flex items-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20 bg-brand-darkblue"
     >
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-        <HeroScrollSequence triggerRef={heroRef} />
+      {/* Static background image with CSS Ken Burns zoom — no GSAP pin involved */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <img
+          src="/assets/heroSection/ezgif-frame-001.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            animation: "heroKenBurns 18s ease-in-out infinite alternate",
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-darkblue/95 via-brand-darkblue/65 to-transparent w-full md:w-[78%] lg:w-[62%] z-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-darkblue/45 via-transparent to-brand-darkblue/75 z-10" />
       </div>
