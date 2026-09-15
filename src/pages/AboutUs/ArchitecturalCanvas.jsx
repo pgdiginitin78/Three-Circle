@@ -266,7 +266,7 @@ function Scene3D() {
     const maxScale = is2XL ? 1.45 : 1.15;
     const finalScale = Math.max(minScale, Math.min(maxScale, baseScale));
 
-    const posY = -vpH * 0.04;
+    const posY = -vpH * 0.14;
 
     const posX = isMobile ? 0 : Math.min(vpW * 0.23, is2XL ? 3.0 : 2.4);
 

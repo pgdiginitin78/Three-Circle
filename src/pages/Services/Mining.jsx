@@ -30,7 +30,7 @@ const headlineLines = ['Mining & Crushing', 'Services'];
 
 const services = [
   {
-    num: '01',
+ 
     title: 'Extraction, Drilling & Blasting',
     img: excavationImg,
     body: 'Our extraction, drilling and blasting services support projects involving rock and material removal. These activities require appropriate equipment, site coordination and controlled execution based on project requirements.',
@@ -46,11 +46,13 @@ const services = [
     objectPos: 'object-center',
   },
   {
-    num: '02',
+    
     title: 'Crushing Operations',
     img: miningImg,
     body: 'Our stone crushing and aggregate crushing services are designed for projects requiring efficient material processing. We undertake crushing operations to process supplied boulders into aggregate and crushed sand for construction and infrastructure applications.',
-    detail: 'Our crushing capabilities include 2-stage and 3-stage crushing operations, VSI crushing and aggregate processing. The company has undertaken crushing work involving the processing of client-supplied boulders into aggregate and sand through a 3-stage VSI crusher.',
+    detail: ['Our crushing capabilities include 2-stage and 3-stage crushing operations, VSI crushing and aggregate processing.',
+      'The company has undertaken crushing work involving the processing of client-supplied boulders into aggregate and sand through a 3-stage VSI crusher.'
+    ],
     tags: [
       'Stone Crushing',
       'Aggregate Crushing',
@@ -63,7 +65,7 @@ const services = [
     objectPos: 'object-center',
   },
   {
-    num: '03',
+  
     title: 'Transportation & Material Handling',
     img: infrastructureImg,
     body: 'Efficient transportation and material handling are essential to mining, crushing and infrastructure operations. 3 CIIRCLES provides material movement capabilities for aggregates, construction materials and excavated material.',
@@ -154,14 +156,6 @@ function FaqItem({ q, a, index }) {
 }
 
 export default function Mining() {
-  const [activeTab, setActiveTab] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % services.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [activeTab]);
   return (
     <div className="w-full">
       {/* HERO SECTION */}
@@ -230,10 +224,9 @@ export default function Mining() {
               {/* HEADING */}
               <motion.h2
                 variants={fadeUp}
-                className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-snug mb-5"
+                className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-snug mb-5"
               >
-                <span className="block mb-1.5">Mining &amp;</span>
-                <span className="block text-[#D4AF37]">Crushing Services</span>
+                Mining &amp; <span className="text-[#D4AF37]">Crushing Services</span>
               </motion.h2>
 
               {/* PARAGRAPHS */}
@@ -281,143 +274,140 @@ export default function Mining() {
         </div>
       </section>
 
-      {/* SERVICE SHOWCASE SECTION */}
-      <section id="services" className="bg-[#FAF8F5] border-b border-brand-darkblue/[0.07] py-10 md:py-16 overflow-hidden">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
-          {/* HEADER */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 'some' }}
-            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
-            className="mb-6 md:mb-8 text-center max-w-3xl mx-auto"
-          >
-            <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mb-2">
-              <span className="w-8 h-[2px] bg-[#D4AF37] inline-block" />
-              <span className="font-display font-extrabold uppercase text-brand-gold text-[9.5px] tracking-[0.38em]">
-                SPECIALIZED SOLUTIONS
-              </span>
-              <span className="w-8 h-[2px] bg-[#D4AF37] inline-block" />
-            </motion.div>
+      {/* SERVICE SHOWCASE SECTION - EXCLUSIVE MODERN DESIGN FOR MINING PAGE */}
+      <section id="services" className="bg-[#FAF8F5] border-b border-brand-darkblue/[0.07] py-10 md:py-14 overflow-hidden relative">
+        {/* Subtle background graphic accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-darkblue/5 rounded-full blur-3xl pointer-events-none" />
 
-            <motion.h2
-              variants={fadeUp}
-              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight"
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+          {/* SECTION HEADER */}
+          <div className="mb-6 md:mb-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 'some' }}
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}
+              className="max-w-2xl"
             >
-              Our Mining &amp; Crushing <span style={{ color: '#D4AF37' }}>Services</span>
-            </motion.h2>
-          </motion.div>
+              
+              <motion.h2
+                variants={fadeUp}
+                className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold uppercase tracking-tight text-brand-darkblue leading-tight"
+              >
+                OUR MINING &amp; CRUSHING <span className="text-[#D4AF37]">SERVICES</span>
+              </motion.h2>
+            </motion.div>
+          </div>
 
-          {/* INTERACTIVE NAVIGATION TABS */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6 md:mb-8">
-            {services.map((svc, i) => {
-              const isActive = activeTab === i;
+          {/* MODERN 3-CARD GRID ARCHITECTURE */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            {services.map((svc, idx) => {
+              const isFeatured = idx === 1; // Middle Crushing Operations card highlighted
               return (
-                <button
-                  key={svc.num}
-                  onClick={() => setActiveTab(i)}
-                  className={`group relative flex items-center gap-2.5 px-5 py-2.5 rounded-full border transition-all duration-300 transform hover:-translate-y-0.5 font-display text-xs font-extrabold uppercase tracking-wider cursor-pointer ${
-                    isActive
-                      ? 'bg-brand-darkblue text-white border-brand-darkblue shadow-md scale-102'
-                      : 'bg-white text-brand-darkblue/75 border-brand-darkblue/15 hover:border-brand-gold/60 hover:text-brand-darkblue shadow-sm'
+                <motion.div
+                  key={svc.title}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 'some' }}
+                  transition={{ duration: 0.65, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className={`group relative rounded-3xl overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-2 border ${
+                    isFeatured
+                      ? 'bg-brand-darkblue text-white border-brand-gold/40 shadow-2xl ring-1 ring-brand-gold/30'
+                      : 'bg-white text-brand-darkblue border-brand-darkblue/10 shadow-lg hover:shadow-xl'
                   }`}
                 >
-                  <span
-                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[9.5px] font-bold ${
-                      isActive
-                        ? 'bg-brand-gold text-brand-darkblue'
-                        : 'bg-brand-darkblue/10 text-brand-darkblue/60 group-hover:bg-brand-gold/20 group-hover:text-brand-darkblue'
-                    }`}
-                  >
-                    {svc.num}
-                  </span>
-                  <span>{svc.title}</span>
-                  {isActive && (
-                    <motion.div
-                      layoutId="activePill"
-                      className="absolute inset-0 rounded-full border-2 border-brand-gold pointer-events-none"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                  {/* IMAGE HEADER WITH GRADIENT OVERLAY */}
+                  <div className="relative h-40 sm:h-48 overflow-hidden">
+                    <img
+                      src={svc.img || miningImg}
+                      alt={svc.title}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-all duration-700 ease-out"
                     />
-                  )}
-                </button>
+                    <div className={`absolute inset-0 ${
+                      isFeatured
+                        ? 'bg-gradient-to-t from-brand-darkblue via-brand-darkblue/40 to-transparent'
+                        : 'bg-gradient-to-t from-white via-white/20 to-transparent'
+                    }`} />
+                    {isFeatured && (
+                      <div className="absolute top-4 right-4 z-10">
+                        
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CARD BODY CONTENT */}
+                  <div className="p-5 sm:p-5.5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3
+                        className={`font-display text-lg sm:text-xl font-extrabold uppercase tracking-tight mb-2.5 ${
+                          isFeatured || svc.title === 'Crushing Operations' ? 'text-white' : 'text-brand-darkblue'
+                        }`}
+                        style={isFeatured || svc.title === 'Crushing Operations' ? { color: '#ffffff' } : {}}
+                      >
+                        {svc.title}
+                      </h3>
+
+                      <p className={`font-body text-xs sm:text-[12.5px] leading-relaxed mb-3 ${
+                        isFeatured ? 'text-white/80' : 'text-brand-darkblue/75'
+                      }`}>
+                        {svc.body}
+                      </p>
+
+                      {Array.isArray(svc.detail) ? (
+                        <div className="space-y-2.5 mb-3">
+                          {svc.detail.map((d, i) => (
+                            <p
+                              key={i}
+                              className={`font-body text-xs sm:text-[12.5px] leading-relaxed ${
+                                isFeatured ? 'text-white/80' : 'text-brand-darkblue/75'
+                              }`}
+                            >
+                              {d}
+                            </p>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className={`font-body text-xs sm:text-[12.5px] leading-relaxed mb-3 ${
+                          isFeatured ? 'text-white/80' : 'text-brand-darkblue/75'
+                        }`}>
+                          {svc.detail}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* KEYWORD TAGS */}
+                    <div className="pt-1.5">
+                      <div className="flex flex-wrap gap-1.5">
+                        {svc.tags.slice(0, 5).map((tag) => (
+                          <span
+                            key={tag}
+                            className={`font-display text-[8px] font-bold uppercase tracking-[0.1em] rounded-full px-2.5 py-0.5 border transition-colors ${
+                              isFeatured
+                                ? 'bg-white/10 text-white border-white/15'
+                                : 'bg-brand-darkblue/[0.04] text-brand-darkblue/80 border-brand-darkblue/10'
+                            }`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
 
-          {/* DISPLAY SHOWCASE STAGE */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white border border-brand-darkblue/10 rounded-2xl md:rounded-3xl overflow-hidden shadow-lg"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                {/* LEFT IMAGE SHOWCASE */}
-                <div className="lg:col-span-5 relative min-h-[220px] lg:min-h-[340px] overflow-hidden group">
-                  <img
-                    src={services[activeTab].img || miningImg}
-                    alt={services[activeTab].title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darkblue/85 via-brand-darkblue/30 to-transparent" />
 
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <h4
-                      className="font-display text-lg sm:text-xl font-extrabold uppercase tracking-tight !text-white drop-shadow-md"
-                      style={{ color: '#ffffff' }}
-                    >
-                      {services[activeTab].title}
-                    </h4>
-                  </div>
-                </div>
-
-                {/* RIGHT DETAILED CONTENT */}
-                <div className="lg:col-span-7 p-6 sm:p-8 md:p-10 flex flex-col justify-between bg-white">
-                  <div className="pt-2 md:pt-3">
-                    <h3 className="font-display text-lg sm:text-xl lg:text-2xl font-extrabold uppercase tracking-tight text-brand-darkblue mb-4 md:mb-5">
-                      {services[activeTab].title}
-                    </h3>
-
-                    <p className="font-body text-[12px] sm:text-[13px] text-brand-darkblue/80 leading-relaxed mb-3.5">
-                      {services[activeTab].body}
-                    </p>
-
-                    <p className="font-body text-[12px] sm:text-[13px] text-brand-darkblue/80 leading-relaxed mb-3.5">
-                      {services[activeTab].detail}
-                    </p>
-                  </div>
-
-                  {/* SCOPE TAGS */}
-                  <div>
-                    <span className="block font-display text-[8.5px] font-extrabold uppercase tracking-[0.2em] text-brand-darkblue/45 mb-2">
-                      Scope Keywords &amp; Services
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {services[activeTab].tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="font-display text-[8px] sm:text-[8.5px] font-bold uppercase tracking-[0.12em] text-brand-darkblue/75 bg-brand-darkblue/[0.04] border border-brand-darkblue/10 rounded-full px-3 py-0.5 hover:border-brand-gold/50 hover:bg-brand-gold/10 hover:text-brand-darkblue transition-all duration-300 cursor-default"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
         </div>
       </section>
 
       {/* MINING & CRUSHING EXPERIENCE */}
-      <section className="relative bg-gradient-to-b from-[#F4F7FC]/80 via-white to-[#F4F7FC]/60 border-b border-brand-darkblue/[0.07] py-14 md:py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#F4F7FC]/80 via-white to-[#F4F7FC]/60 border-b border-brand-darkblue/[0.07] py-9 md:py-12 overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
           {/* HEADER AREA */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-0">
             <div className="lg:col-span-5">
               <motion.div
                 initial="hidden"
@@ -436,7 +426,7 @@ export default function Mining() {
                 </motion.div>
                 <motion.h2
                   variants={fadeUp}
-                  className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight"
+                  className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold uppercase tracking-tight text-brand-darkblue leading-tight"
                 >
                   Mining &amp; Crushing <span style={{ color: '#D4AF37' }}>Experience</span>
                 </motion.h2>
@@ -453,49 +443,7 @@ export default function Mining() {
             </div>
           </div>
 
-          {/* PROJECT CARDS GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {projectHighlights.map((proj, i) => (
-              <motion.div
-                key={proj.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 'some' }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative overflow-hidden rounded-2xl bg-white p-7 border border-brand-darkblue/10 shadow-sm hover:shadow-xl hover:border-brand-gold/50 transition-all duration-500 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-display text-xs font-extrabold tracking-[0.25em] text-brand-gold uppercase">
-                      {proj.num}
-                    </span>
-                    <span className="font-display text-[8.5px] font-bold uppercase tracking-[0.14em] text-brand-darkblue/60 bg-brand-darkblue/[0.05] border border-brand-darkblue/10 rounded-full px-3 py-1">
-                      {proj.tag}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-brand-darkblue leading-snug mb-3 group-hover:text-brand-gold transition-colors duration-300">
-                    {proj.label}
-                  </h3>
-                  <p className="font-body text-xs text-brand-darkblue/65 font-medium leading-relaxed">
-                    {proj.sub}
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-brand-darkblue/[0.07] flex items-center justify-between">
-                  <span className="font-display text-[10px] font-extrabold uppercase tracking-wider text-brand-darkblue/70 group-hover:text-brand-gold transition-colors duration-300">
-                    Infrastructure Portfolio
-                  </span>
-                  <svg
-                    className="w-4 h-4 text-brand-gold transform group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+
         </div>
       </section>
 

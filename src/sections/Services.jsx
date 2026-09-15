@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FadeUpText } from "../pages/AboutUs/AnimatedText";
 import SpotlightCard from "../components/SpotlightCard";
+import SectionTag from "../components/SectionTag";
 import { ArrowRight } from "../components/Icons";
 
 import buildingImg from "../assets/services/building.jpg";
@@ -60,23 +61,23 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative bg-bg-primary border-b border-border-color py-14 md:py-20 overflow-hidden"
+      className="relative bg-bg-primary border-b border-border-color pt-8 md:pt-12 pb-14 md:pb-20 overflow-hidden"
     >
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
         <div className="flex flex-col gap-4 mb-10 md:mb-14">
           <div>
             <FadeUpText>
-              <span className="font-display text-[9px] font-extrabold tracking-[0.35em] text-brand-gold uppercase block mb-2.5">
-                Comprehensive Expertise
-              </span>
+              <div className="mb-4 sm:mb-5">
+                <SectionTag text="Comprehensive Expertise" />
+              </div>
             </FadeUpText>
             <FadeUpText delay={0.05}>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary uppercase">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-text-primary uppercase">
                 Our Core Services
               </h2>
             </FadeUpText>
             <FadeUpText delay={0.1}>
-              <p className="text-xs sm:text-sm md:text-base text-text-secondary max-w-3xl leading-relaxed mt-2">
+              <p className="text-xs sm:text-sm md:text-base text-text-secondary max-w-3xl leading-relaxed mt-3.5 sm:mt-4">
                 Integrated engineering and heavy industrial capabilities
                 delivered with precision across the UAE and GCC.
               </p>
@@ -98,24 +99,51 @@ export default function Services() {
               }}
             >
               <SpotlightCard className="h-full flex flex-col bg-white border border-brand-darkblue/[0.07] rounded-sm overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-gold/40 transition-all duration-500 group">
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary">
-                  <div className="absolute inset-0 border border-brand-gold/20 m-3 pointer-events-none z-10 transition-all duration-500 group-hover:m-2 group-hover:border-brand-gold/50 rounded-sm" />
-                  <img
+                <motion.div
+                  initial={{ clipPath: "inset(0% 100% 0% 0%)" }}
+                  whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 2.8,
+                    delay: index * 0.3,
+                    ease: [0.25, 1, 0.35, 1],
+                  }}
+                  className="relative aspect-[16/10] w-full overflow-hidden bg-bg-tertiary"
+                >
+                  {/* Animated Gold Inner Border */}
+                  <div className="absolute inset-0 border border-brand-gold/30 m-3 pointer-events-none z-20 transition-all duration-500 group-hover:m-2 group-hover:border-brand-gold/70 group-hover:scale-[0.98] rounded-sm" />
+                  
+                  {/* Gloss Shine Sweep Animation on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none z-20" />
+
+                  {/* Animated Image with Hover Scale */}
+                  <motion.img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    initial={{ scale: 1.35 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 3.2,
+                      delay: index * 0.3,
+                      ease: [0.25, 1, 0.35, 1],
+                    }}
+                    className="w-full h-full object-cover contrast-[1.05] group-hover:scale-110 group-hover:contrast-110 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/70 via-black/25 to-transparent z-10" />
 
-                  <div className="absolute bottom-3.5 left-4 right-4 z-20">
-                    <span className="font-display text-[8px] font-bold tracking-[0.2em] text-brand-gold uppercase block mb-1">
+                  {/* Dark Gradient Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/35 to-transparent z-10" />
+
+                  {/* Text Container with Elevation Animation */}
+                  <div className="absolute bottom-3.5 left-4 right-4 z-20 transform transition-transform duration-300 ease-out group-hover:-translate-y-1">
+                    <span className="font-display text-[8px] font-bold tracking-[0.2em] !text-white/90 uppercase block mb-1 drop-shadow-sm">
                       {service.subtitle}
                     </span>
-                    <h3 className="font-display text-lg sm:text-xl font-extrabold tracking-tight text-white uppercase drop-shadow-md">
+                    <h3 className="font-display text-lg sm:text-xl font-extrabold tracking-tight !text-white uppercase drop-shadow-md">
                       {service.title}
                     </h3>
                   </div>
-                </div>
+                </motion.div>
 
                 <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between bg-white">
                   <div className="flex flex-col gap-2.5">

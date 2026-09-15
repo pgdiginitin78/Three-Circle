@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 @theme {
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
   --color-brand-orange: #E65C00;
-  --color-brand-darkblue: #0F172A;
+  --color-brand-darkblue: #000435;
   --color-brand-gold: #D4AF37;
   --color-brand-white: #FFFFFF;
 }
+
+@utility font-display {
+  font-family: var(--font-display, 'Outfit', sans-serif);
+}
+
+@utility font-body {
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+

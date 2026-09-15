@@ -3,8 +3,12 @@ import { motion } from "framer-motion";
 import { useTransition } from "../components/PageTransition";
 import MagneticButton from "../components/MagneticButton";
 import { ArrowRight } from "../components/Icons";
+import HeroScrollSequence from "../components/HeroScrollSequence";
 
-const titleLines = ["Building What", "Moves The", "Future"];
+const titleLines = [
+  { text: "Building What" },
+  { text: "Moves The ", highlight: "Future" },
+];
 
 const containerVariants = {
   hidden: {},
@@ -33,26 +37,17 @@ export default function Hero() {
     <section
       ref={heroRef}
       id="hero"
-      className="relative min-h-[92vh] lg:min-h-screen w-full flex items-center overflow-hidden pt-28 pb-16 md:pt-32 md:pb-20 bg-brand-darkblue"
+      className="relative min-h-[92vh] lg:min-h-screen w-full flex items-center overflow-hidden pt-32 pb-24 md:pt-36 md:pb-28 lg:pt-40 lg:pb-32 bg-brand-darkblue"
     >
-      {/* Static background image with CSS Ken Burns zoom — no GSAP pin involved */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-        <img
-          src="/assets/heroSection/ezgif-frame-001.jpg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            animation: "heroKenBurns 18s ease-in-out infinite alternate",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-darkblue/95 via-brand-darkblue/65 to-transparent w-full md:w-[78%] lg:w-[62%] z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-darkblue/45 via-transparent to-brand-darkblue/75 z-10" />
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <HeroScrollSequence triggerRef={heroRef} />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-darkblue/75 via-brand-darkblue/30 to-transparent w-full md:w-[70%] lg:w-[52%] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-darkblue/20 via-transparent to-brand-darkblue/40 z-10" />
       </div>
 
       <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 2xl:px-4 relative z-10">
         <motion.div
-          className="flex flex-col items-start max-w-2xl lg:max-w-3xl"
+          className="flex flex-col items-start max-w-2xl lg:max-w-3xl pt-2 pb-6 md:pb-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -64,14 +59,17 @@ export default function Hero() {
             3 Circles • Engineering • Infrastructure • Mining
           </motion.span>
 
-          <h1 className="font-display text-4xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-[0.96] tracking-tight text-white uppercase mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
-            {titleLines.map((line, index) => (
-              <span key={index} className="block overflow-hidden">
+          <h1 className="font-display text-[21px] sm:text-[27px] md:text-[34px] lg:text-[43px] font-extrabold leading-[1.2] tracking-tight text-white uppercase mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] flex flex-col gap-2 sm:gap-2 md:gap-2">
+            {titleLines.map((lineObj, index) => (
+              <span key={index} className="block overflow-hidden whitespace-nowrap">
                 <motion.span
-                  className={`inline-block ${index === 2 ? "shimmer-text" : "text-white"}`}
+                  className="inline-block text-white"
                   variants={lineVariants}
                 >
-                  {line}
+                  {lineObj.text}
+                  {lineObj.highlight && (
+                    <span className="shimmer-text">{lineObj.highlight}</span>
+                  )}
                 </motion.span>
               </span>
             ))}
@@ -90,18 +88,22 @@ export default function Hero() {
             variants={itemVariants}
           >
             <MagneticButton
-              className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 bg-brand-gold text-brand-darkblue border border-brand-gold rounded-full hover:bg-white hover:border-white hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-2"
+              className="uiverse-btn uiverse-btn-gold group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 rounded-full text-center shadow-xl flex items-center justify-center gap-2"
               onClick={() => navigateTo("/", "services")}
             >
-              <span>EXPLORE OUR SERVICES</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="flex items-center justify-center gap-2 w-full">
+                <span>EXPLORE OUR SERVICES</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
             </MagneticButton>
             <MagneticButton
-              className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 bg-white/95 backdrop-blur-md text-brand-darkblue border border-white rounded-full hover:bg-brand-gold hover:border-brand-gold hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-2"
+              className="uiverse-btn uiverse-btn-white group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 backdrop-blur-md rounded-full text-center shadow-xl flex items-center justify-center gap-2"
               onClick={() => navigateTo("/", "projects")}
             >
-              <span>VIEW OUR PROJECTS</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              <span className="flex items-center justify-center gap-2 w-full">
+                <span>VIEW OUR PROJECTS</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
             </MagneticButton>
           </motion.div>
         </motion.div>

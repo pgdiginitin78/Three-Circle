@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import excavationImg from '../../assets/services/excavation.jpg';
-import heroback from '../../assets/services/heroback.png';
+import heroback from '../../assets/services/excavationback.png';
 import infrastructureImg from '../../assets/services/infrastructure.jpg';
 import miningImg from '../../assets/services/mining.jpg';
 import ctaback from '../../assets/services/ctaback.png';
+import sitecleaingImg from '../../assets/services/siteclearing.png'
+import gradingImg from '../../assets/services/grading.png'
+import earthmovingImg from '../../assets/services/earthmoving.png'
 
 const containerVariants = {
   hidden: {},
@@ -32,9 +35,12 @@ const services = [
   {
     num: '01',
     title: 'Site Clearing',
-    img: excavationImg,
+    img: sitecleaingImg,
     body: 'Our site clearing services prepare construction and infrastructure sites for subsequent development activities.',
-    detail: 'Site clearing involves removing unwanted material, debris and other obstructions from designated work areas to create a suitable and accessible construction site. Our site preparation capabilities support building construction, infrastructure development and other civil construction activities.',
+    detail: [
+      'Site clearing involves removing unwanted material, debris and other obstructions from designated work areas to create a suitable and accessible construction site.',
+      'Our site preparation capabilities support building construction, infrastructure development and other civil construction activities.',
+    ],
     tags: [
       'Site Clearing',
       'Construction Site Preparation',
@@ -47,9 +53,11 @@ const services = [
   {
     num: '02',
     title: 'Grading',
-    img: infrastructureImg,
+    img: gradingImg,
     body: 'Our grading services help prepare land and construction sites according to required levels, slopes and surface profiles.',
-    detail: 'Grading is an important stage of site development and earthwork, particularly before building construction, road construction and infrastructure development. Our construction equipment and experienced teams enable efficient site grading, ground levelling and earthwork operations.',
+    detail: ['Grading is an important stage of site development and earthwork, particularly before building construction, road construction and infrastructure development.',
+      'Our construction equipment and experienced teams enable efficient site grading, ground levelling and earthwork operations.'
+    ],
     tags: [
       'Grading Services',
       'Site Grading',
@@ -63,9 +71,11 @@ const services = [
   {
     num: '03',
     title: 'Earth Moving & Disposal',
-    img: miningImg,
+    img: earthmovingImg,
     body: '3 CIIRCLES provides earth moving and disposal services for projects involving excavation, earth removal and movement of large quantities of soil and construction material.',
-    detail: 'Our capabilities include earth excavation, muck removal, material transportation and disposal, supported by hydraulic excavators, dump trucks and other hauling equipment. The company has also undertaken a Deep Excavation Project in Mumbai, involving excavation and muck disposal and specialised handling of excavation equipment.',
+    detail: ['Our capabilities include earth excavation, muck removal, material transportation and disposal, supported by hydraulic excavators, dump trucks and other hauling equipment.',
+    'The company has also undertaken a Deep Excavation Project in Mumbai, involving excavation and muck disposal and specialised handling of excavation equipment.',
+    ],
     tags: [
       'Earth Moving',
       'Earthwork Contractor',
@@ -169,7 +179,7 @@ export default function Excavation() {
   return (
     <div className="w-full">
       {/* HERO SECTION */}
-      <section className="relative min-h-[85vh] w-full flex items-center overflow-hidden">
+      <section className="relative min-h-[98vh] w-full flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={heroback}
@@ -192,22 +202,14 @@ export default function Excavation() {
               'linear-gradient(to bottom, rgba(15,23,42,0.22) 0%, transparent 30%, transparent 70%, rgba(15,23,42,0.38) 100%)',
           }}
         />
-        <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 pt-48 pb-24 md:pt-56 md:pb-32">
+        <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 pt-56 pb-32 md:pt-64 md:pb-40">
           <motion.div
             className="flex flex-col items-start max-w-3xl"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
-              <span style={{ display: 'inline-block', width: '32px', height: '2px', background: '#D4AF37' }} />
-              <span
-                className="font-display font-extrabold uppercase text-brand-gold"
-                style={{ fontSize: '10px', letterSpacing: '0.38em' }}
-              >
-                04 | EXCAVATION
-              </span>
-            </motion.div>
+
 
             <h1
               className="font-display font-extrabold uppercase leading-[1.18] tracking-tight text-white mb-4 flex flex-col gap-2"
@@ -319,18 +321,16 @@ export default function Excavation() {
                 <button
                   key={svc.num}
                   onClick={() => setActiveTab(i)}
-                  className={`group relative flex items-center gap-2.5 px-5 py-2.5 rounded-full border transition-all duration-300 transform hover:-translate-y-0.5 font-display text-xs font-extrabold uppercase tracking-wider cursor-pointer ${
-                    isActive
+                  className={`group relative flex items-center gap-2.5 px-5 py-2.5 rounded-full border transition-all duration-300 transform hover:-translate-y-0.5 font-display text-xs font-extrabold uppercase tracking-wider cursor-pointer ${isActive
                       ? 'bg-brand-darkblue text-white border-brand-darkblue shadow-md scale-102'
                       : 'bg-white text-brand-darkblue/75 border-brand-darkblue/15 hover:border-brand-gold/60 hover:text-brand-darkblue shadow-sm'
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[9.5px] font-bold ${
-                      isActive
+                    className={`w-5 h-5 rounded-full flex items-center justify-center text-[9.5px] font-bold ${isActive
                         ? 'bg-brand-gold text-brand-darkblue'
                         : 'bg-brand-darkblue/10 text-brand-darkblue/60 group-hover:bg-brand-gold/20 group-hover:text-brand-darkblue'
-                    }`}
+                      }`}
                   >
                     {svc.num}
                   </span>
@@ -388,16 +388,22 @@ export default function Excavation() {
                       {services[activeTab].body}
                     </p>
 
-                    <p className="font-body text-[12px] sm:text-[13px] text-brand-darkblue/80 leading-relaxed mb-3.5">
-                      {services[activeTab].detail}
-                    </p>
+                    {Array.isArray(services[activeTab].detail) ? (
+                      services[activeTab].detail.map((p, i) => (
+                        <p key={i} className="font-body text-[12px] sm:text-[13px] text-brand-darkblue/80 leading-relaxed mb-3.5">
+                          {p}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="font-body text-[12px] sm:text-[13px] text-brand-darkblue/80 leading-relaxed mb-3.5">
+                        {services[activeTab].detail}
+                      </p>
+                    )}
                   </div>
 
                   {/* SCOPE TAGS */}
                   <div>
-                    <span className="block font-display text-[8.5px] font-extrabold uppercase tracking-[0.2em] text-brand-darkblue/45 mb-2">
-                      Scope Keywords &amp; Services
-                    </span>
+                  
                     <div className="flex flex-wrap gap-1.5">
                       {services[activeTab].tags.map((tag) => (
                         <span
@@ -417,10 +423,10 @@ export default function Excavation() {
       </section>
 
       {/* EXCAVATION & EARTHWORK CAPABILITY */}
-      <section className="relative bg-gradient-to-b from-[#F4F7FC]/80 via-white to-[#F4F7FC]/60 border-b border-brand-darkblue/[0.07] py-14 md:py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#F4F7FC]/80 via-white to-[#F4F7FC]/60 border-b border-brand-darkblue/[0.07] py-9 md:py-12 overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
           {/* HEADER AREA */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-0">
             <div className="lg:col-span-5 pt-2 sm:pt-3 md:pt-4">
               <motion.div
                 initial="hidden"
@@ -439,70 +445,25 @@ export default function Excavation() {
                 </motion.div>
                 <motion.h2
                   variants={fadeUp}
-                  className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-snug"
+                  className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-bold uppercase tracking-tight text-brand-darkblue leading-tight"
                 >
-                  <span className="block mb-1.5 md:mb-2">Excavation &amp;</span>
-                  <span className="block">Earthwork <span style={{ color: '#D4AF37' }}>Capability</span></span>
+                  <span className="block mb-1">Excavation &amp; Earthwork</span>
+                  <span className="block" style={{ color: '#D4AF37' }}>Capability</span>
                 </motion.h2>
               </motion.div>
             </div>
 
-            <div className="lg:col-span-7 flex flex-col gap-3.5">
-              <p className="font-body text-xs sm:text-sm text-brand-darkblue/75 leading-relaxed">
+            <div className="lg:col-span-7 flex flex-col gap-3.5 pt-4 sm:pt-6 md:pt-8 lg:pt-9">
+              <p className="font-body text-sm sm:text-[15px] md:text-base text-brand-darkblue/75 leading-relaxed">
                 Our combination of excavation equipment, hauling equipment and experienced site personnel allows us to undertake excavation and earthwork requirements across different construction environments.
               </p>
-              <p className="font-body text-xs sm:text-sm text-brand-darkblue/70 leading-relaxed">
+              <p className="font-body text-sm sm:text-[15px] md:text-base text-brand-darkblue/70 leading-relaxed">
                 From initial site clearing and grading to deep excavation, earth movement and muck disposal, <strong className="font-bold text-brand-darkblue">3 CIIRCLES</strong> provides an integrated approach to excavation and site development.
               </p>
             </div>
           </div>
 
-          {/* PROJECT CARDS GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {projectHighlights.map((proj, i) => (
-              <motion.div
-                key={proj.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 'some' }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative overflow-hidden rounded-2xl bg-white p-7 border border-brand-darkblue/10 shadow-sm hover:shadow-xl hover:border-brand-gold/50 transition-all duration-500 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-display text-xs font-extrabold tracking-[0.25em] text-brand-gold uppercase">
-                      {proj.num}
-                    </span>
-                    <span className="font-display text-[8.5px] font-bold uppercase tracking-[0.14em] text-brand-darkblue/60 bg-brand-darkblue/[0.05] border border-brand-darkblue/10 rounded-full px-3 py-1">
-                      {proj.tag}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-brand-darkblue leading-snug mb-3 group-hover:text-brand-gold transition-colors duration-300">
-                    {proj.label}
-                  </h3>
-                  <p className="font-body text-xs text-brand-gold font-bold mb-2">
-                    {proj.sub}
-                  </p>
-                  <p className="font-body text-xs text-brand-darkblue/65 leading-relaxed">
-                    {proj.detail}
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-brand-darkblue/[0.07] flex items-center justify-between">
-                  <span className="font-display text-[10px] font-extrabold uppercase tracking-wider text-brand-darkblue/70 group-hover:text-brand-gold transition-colors duration-300">
-                    Excavation Expertise
-                  </span>
-                  <svg
-                    className="w-4 h-4 text-brand-gold transform group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+
         </div>
       </section>
 

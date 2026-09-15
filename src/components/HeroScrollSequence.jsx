@@ -78,48 +78,27 @@ export default function HeroScrollSequence({ triggerRef }) {
       images[0].onload = render;
     }
 
-
-    const triggerEl = triggerRef.current;
-
+    // Set up GSAP ScrollTrigger
     const st = gsap.to(seq, {
       frame: frameCount - 1,
       snap: "frame",
       ease: "none",
       scrollTrigger: {
-        trigger: triggerEl,
+        trigger: triggerRef.current,
         start: "top top",
-        end: `+=${window.innerHeight * 2}`,
+        end: `+=${window.innerHeight * 4}`, // Total scroll distance (4 screens height)
         scrub: 0.5,
-        // No pin:true — pinning causes the section to go position:fixed
-        // which bleeds into other pages on React SPA route changes.
+        pin: true,
       },
       onUpdate: render,
     });
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      // Kill this animation and all ScrollTriggers
-      st.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      // Manually revert any inline styles GSAP may have left on the trigger element
-      if (triggerEl) {
-        triggerEl.style.position = "";
-        triggerEl.style.top = "";
-        triggerEl.style.left = "";
-        triggerEl.style.width = "";
-        triggerEl.style.zIndex = "";
-        triggerEl.style.transform = "";
-        // Remove any GSAP-injected pin-spacer sibling
-        const spacer = triggerEl.previousElementSibling;
-        if (spacer && spacer.classList.contains("pin-spacer")) {
-          spacer.remove();
-        }
-        const spacerAfter = triggerEl.nextElementSibling;
-        if (spacerAfter && spacerAfter.classList.contains("pin-spacer")) {
-          spacerAfter.remove();
-        }
+      if (st.scrollTrigger) {
+        st.scrollTrigger.kill();
       }
-      ScrollTrigger.refresh();
+      st.kill();
     };
   }, [images, triggerRef]);
 

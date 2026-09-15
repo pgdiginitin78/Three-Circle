@@ -104,3 +104,86 @@ input, textarea, select { font-family: inherit; outline: none; }
 .hover\:border-text-primary:hover { border-color: var(--color-brand-darkblue) !important; }
 .hover\:border-accent-gold:hover  { border-color: var(--color-brand-gold) !important; }
 .focus\:border-accent-gold:focus  { border-color: var(--color-brand-gold) !important; }
+
+/* Uiverse.io Button Hover Effect (Theme Adapted) */
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.uiverse-btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.uiverse-btn::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 100%;
+  transition: all 0.4s ease-in-out;
+  z-index: 1;
+}
+
+.uiverse-btn:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+.uiverse-btn > * {
+  position: relative;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+}
+
+.uiverse-btn:hover > * {
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+/* Theme variations */
+.uiverse-btn-gold {
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-darkblue);
+  border: 1px solid var(--color-brand-gold);
+}
+
+.uiverse-btn-gold::after {
+  background-color: #ffffff;
+}
+
+.uiverse-btn-gold:hover {
+  color: var(--color-brand-darkblue);
+  border-color: #ffffff;
+}
+
+.uiverse-btn-white {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--color-brand-darkblue);
+  border: 1px solid #ffffff;
+}
+
+.uiverse-btn-white::after {
+  background-color: var(--color-brand-gold);
+}
+
+.uiverse-btn-white:hover {
+  color: var(--color-brand-darkblue);
+  border-color: var(--color-brand-gold);
+}
+

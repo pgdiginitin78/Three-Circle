@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import SectionTag from "../components/SectionTag";
 import { landmarkProjects, completedContracts } from "../data/completedProjectsData";
 
 function SvgLocation() {
@@ -52,7 +53,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full bg-white border-b border-brand-darkblue/[0.06] text-brand-darkblue py-16 sm:py-24 lg:py-28 overflow-hidden font-body"
+      className="relative w-full bg-white border-b border-brand-darkblue/[0.06] text-brand-darkblue pt-8 pb-8 sm:pt-10 sm:pb-12 lg:pt-12 lg:pb-14 overflow-hidden font-body"
     >
       <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
         
@@ -64,14 +65,11 @@ export default function Projects() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 mb-4">
-              <span className="w-2 h-2 rounded-full bg-brand-gold" />
-              <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-brand-gold uppercase">
-                Executed Track Record
-              </span>
+            <div className="mb-4 sm:mb-5">
+              <SectionTag text="Executed Track Record" />
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-brand-darkblue uppercase leading-tight m-0">
-              Completed <span className="text-brand-gold">Projects.</span>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-brand-darkblue uppercase leading-tight m-0">
+              Completed Projects
             </h2>
           </div>
 
