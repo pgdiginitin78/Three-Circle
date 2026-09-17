@@ -89,7 +89,7 @@ export default function ContactPage() {
           </FadeUpText>
 
           <FadeUpText delay={0.08}>
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-black text-brand-darkblue tracking-tight uppercase leading-[1.06] mb-4">
+            <h1 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-darkblue tracking-tight uppercase leading-[1.08] mb-4">
               Start A <span className="text-brand-gold">Conversation.</span>
             </h1>
           </FadeUpText>
@@ -156,7 +156,10 @@ export default function ContactPage() {
               <span className="font-display text-[10px] font-extrabold tracking-[0.2em] text-brand-gold uppercase">
                 Execution Readiness
               </span>
-              <h3 className="font-display text-base sm:text-lg font-bold uppercase tracking-tight text-white">
+              <h3
+                className="font-display text-base sm:text-lg font-bold uppercase tracking-tight text-white !text-white"
+                style={{ color: "#FFFFFF" }}
+              >
                 Fast-Track Commercial Response
               </h3>
               <p className="font-body text-xs text-white/75 leading-relaxed">

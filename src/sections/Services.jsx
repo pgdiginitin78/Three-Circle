@@ -63,7 +63,7 @@ export default function Services() {
       id="services"
       className="relative bg-bg-primary border-b border-border-color pt-8 md:pt-12 pb-14 md:pb-20 overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <div className="flex flex-col gap-4 mb-10 md:mb-14">
           <div>
             <FadeUpText>

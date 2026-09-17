@@ -3,14 +3,21 @@ import './index.css'
 import './custom.css'
 import App from './App.jsx'
 
-// ─── Fix: Chrome Translate / browser extensions can move DOM nodes out of
-// their parent, breaking React's virtual DOM reconciliation with a
+// ─── Fix: Browser extensions / GSAP pin-spacers can wrap or move DOM nodes out of
+// their direct parent, breaking React's virtual DOM reconciliation with a
 // "removeChild: The node to be removed is not a child" error.
-// This patch silently ignores that specific case so React doesn't crash.
+// This patch safely removes the node from its actual parent so it doesn't linger in the DOM.
 const _origRemoveChild = Node.prototype.removeChild;
 Node.prototype.removeChild = function (child) {
-  if (child.parentNode !== this) {
-    return child; // node was already moved by an extension — ignore safely
+  if (child && child.parentNode !== this) {
+    if (child.parentNode) {
+      try {
+        return child.parentNode.removeChild(child);
+      } catch {
+        return child;
+      }
+    }
+    return child;
   }
   return _origRemoveChild.call(this, child);
 };
@@ -18,7 +25,14 @@ Node.prototype.removeChild = function (child) {
 const _origInsertBefore = Node.prototype.insertBefore;
 Node.prototype.insertBefore = function (newNode, referenceNode) {
   if (referenceNode && referenceNode.parentNode !== this) {
-    return newNode; // same issue with insertBefore — ignore safely
+    if (referenceNode.parentNode) {
+      try {
+        return referenceNode.parentNode.insertBefore(newNode, referenceNode);
+      } catch {
+        return newNode;
+      }
+    }
+    return newNode;
   }
   return _origInsertBefore.call(this, newNode, referenceNode);
 };

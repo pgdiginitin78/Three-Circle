@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import buildingImg from '../../assets/services/building.jpg';
 import heroback from '../../assets/services/heroback.png';
 import rccworkImg from '../../assets/services/rccwork.png';
@@ -8,23 +10,25 @@ import claddingImg from '../../assets/services/cladding.png';
 import cooperSchoolImg from '../../assets/services/Cooper School.png';
 import anantUnivImg from '../../assets/services/Anantuniversity.png';
 import airportImg from '../../assets/services/mumbai airport.png';
-import ctaback from '../../assets/services/ctaback.png'
+import ctaback from '../../assets/services/ctaback.png';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.13 } },
+  visible: { transition: { staggerChildren: 0.22, delayChildren: 0.2 } },
 };
 const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 35, filter: 'blur(8px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] } },
 };
 const lineVariants = {
-  hidden: { y: '110%' },
-  visible: { y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: '100%', filter: 'blur(10px)' },
+  visible: { opacity: 1, y: '0%', filter: 'blur(0px)', transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } },
 };
 const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 32, filter: 'blur(6px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const capabilities = [
@@ -67,18 +71,18 @@ const faqs = [
 function FaqItem({ q, a, index }) {
   const [open, setOpen] = useState(false);
   return (
-    <motion.div variants={fadeUp} className="border-b border-brand-darkblue/10 last:border-b-0">
+    <motion.div variants={fadeUp} className="border-b border-white/12 last:border-b-0">
       <button onClick={() => setOpen(!open)} className="w-full flex items-start justify-between gap-4 py-5 text-left group">
         <div className="flex items-start gap-4">
           <span className="font-display text-[9px] font-extrabold tracking-[0.28em] text-brand-gold uppercase shrink-0 mt-0.5">{String(index + 1).padStart(2, '0')}</span>
-          <span className="font-display text-sm md:text-base font-bold text-brand-darkblue uppercase tracking-tight leading-snug group-hover:text-brand-gold transition-colors duration-200">{q}</span>
+          <span className="font-display text-sm md:text-base font-bold text-white uppercase tracking-tight leading-snug group-hover:text-brand-gold transition-colors duration-200">{q}</span>
         </div>
-        <span className="shrink-0 w-6 h-6 rounded-full border border-brand-darkblue/20 flex items-center justify-center text-brand-darkblue group-hover:border-brand-gold group-hover:text-brand-gold transition-all duration-200 mt-0.5 text-sm leading-none">{open ? '-' : '+'}</span>
+        <span className="shrink-0 w-6 h-6 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/90 group-hover:border-brand-gold group-hover:text-brand-gold transition-all duration-200 mt-0.5 text-sm leading-none">{open ? '-' : '+'}</span>
       </button>
       <AnimatePresence initial={false}>
         {open && (
           <motion.div key="ans" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden">
-            <p className="font-body text-sm text-brand-darkblue/65 leading-relaxed pb-5 pl-9">{a}</p>
+            <p className="font-body text-sm text-white/75 leading-relaxed pb-5 pl-9">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -87,39 +91,223 @@ function FaqItem({ q, a, index }) {
 }
 
 export default function Building() {
+  const introSectionRef = useRef(null);
+  const servicesSectionRef = useRef(null);
+  const projectSectionRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      // INTRO BLOCK GSAP TIMELINE (SLOW CINEMATIC ENTRANCE)
+      const introEl = introSectionRef.current;
+      if (introEl) {
+        const heading = introEl.querySelector('.gsap-intro-heading');
+        const paragraphs = introEl.querySelectorAll('.gsap-intro-p');
+        const imgFrame = introEl.querySelector('.gsap-intro-img-frame');
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: introEl,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        if (heading) {
+          tl.fromTo(
+            heading,
+            { opacity: 0, y: 55, filter: 'blur(16px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 2.6, ease: 'power2.out' },
+            0.1
+          );
+        }
+
+        if (paragraphs && paragraphs.length > 0) {
+          tl.fromTo(
+            paragraphs,
+            { opacity: 0, y: 40, filter: 'blur(12px)' },
+            {
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+              duration: 2.4,
+              stagger: 0.4,
+              ease: 'power2.out',
+            },
+            0.35
+          );
+        }
+
+        if (imgFrame) {
+          tl.fromTo(
+            imgFrame,
+            { opacity: 0, scale: 0.86, y: 70, rotate: -2, filter: 'blur(22px)' },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              rotate: 0,
+              filter: 'blur(0px)',
+              duration: 3.2,
+              ease: 'power2.out',
+            },
+            0.2
+          );
+        }
+      }
+
+      // SERVICE CARDS SECTION GSAP TIMELINE
+      const servicesEl = servicesSectionRef.current;
+      if (servicesEl) {
+        const title = servicesEl.querySelector('.gsap-svc-title');
+        const cards = servicesEl.querySelectorAll('.gsap-svc-card');
+
+        const stl = gsap.timeline({
+          scrollTrigger: {
+            trigger: servicesEl,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        if (title) {
+          stl.fromTo(
+            title,
+            { opacity: 0, y: 40, filter: 'blur(10px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.6, ease: 'power3.out' },
+            0
+          );
+        }
+
+        if (cards && cards.length > 0) {
+          stl.fromTo(
+            cards,
+            { opacity: 0, y: 50, scale: 0.93, filter: 'blur(10px)' },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: 'blur(0px)',
+              duration: 1.6,
+              stagger: 0.22,
+              ease: 'power3.out',
+            },
+            0.25
+          );
+        }
+      }
+
+      // PROJECT EXPERIENCE SECTION GSAP TIMELINE
+      const projectEl = projectSectionRef.current;
+      if (projectEl) {
+        const tag = projectEl.querySelector('.gsap-proj-tag');
+        const heading = projectEl.querySelector('.gsap-proj-heading');
+        const textElements = projectEl.querySelectorAll('.gsap-proj-text');
+        const cards = projectEl.querySelectorAll('.gsap-proj-card');
+
+        const ptl = gsap.timeline({
+          scrollTrigger: {
+            trigger: projectEl,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        if (tag) {
+          ptl.fromTo(
+            tag,
+            { opacity: 0, y: 20, filter: 'blur(6px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' },
+            0
+          );
+        }
+
+        if (heading) {
+          ptl.fromTo(
+            heading,
+            { opacity: 0, y: 40, filter: 'blur(10px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.8, ease: 'power3.out' },
+            0.15
+          );
+        }
+
+        if (textElements && textElements.length > 0) {
+          ptl.fromTo(
+            textElements,
+            { opacity: 0, y: 30, filter: 'blur(8px)' },
+            {
+              opacity: 1,
+              y: 0,
+              filter: 'blur(0px)',
+              duration: 1.6,
+              stagger: 0.2,
+              ease: 'power3.out',
+            },
+            0.3
+          );
+        }
+
+        if (cards && cards.length > 0) {
+          ptl.fromTo(
+            cards,
+            { opacity: 0, y: 55, scale: 0.92, filter: 'blur(12px)' },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: 'blur(0px)',
+              duration: 1.8,
+              stagger: 0.24,
+              ease: 'power3.out',
+            },
+            0.35
+          );
+        }
+      }
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <div className="w-full">
 
       {/* HERO */}
-      <section className="relative min-h-[60vh] w-full flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img src={heroback} alt="Building Construction" className="w-full h-full object-cover object-center scale-105" style={{ filter: 'brightness(0.62) contrast(1.05) saturate(0.85)' }} />
+      <section className="relative min-h-[82vh] sm:min-h-[85vh] w-full flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <motion.img
+            src={heroback}
+            alt="Building Construction"
+            initial={{ scale: 1.18, x: "0%", y: "-3.5%", rotate: 0, filter: "brightness(0.62) contrast(1.05)" }}
+            animate={{
+              x: ["0%", "3.5%", "0%", "-3.5%", "0%"],
+              y: ["-3.5%", "0%", "3.5%", "0%", "-3.5%"],
+              scale: [1.18, 1.24, 1.28, 1.24, 1.18],
+              rotate: [0, 1.2, 0, -1.2, 0],
+            }}
+            transition={{
+              duration: 24,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="w-full h-[130%] -top-[15%] relative object-cover object-center pointer-events-none"
+          />
         </div>
         <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(100deg, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.72) 42%, rgba(15,23,42,0.30) 68%, rgba(15,23,42,0.08) 100%)' }} />
         <div className="absolute inset-0 z-10" style={{ background: 'linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, transparent 30%, transparent 70%, rgba(15,23,42,0.55) 100%)' }} />
-        <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 pt-40 pb-16">
+        <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20 pt-52 pb-28 sm:pt-56 sm:pb-32">
           <motion.div className="flex flex-col items-start max-w-3xl" variants={containerVariants} initial="hidden" animate="visible">
             <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
               <span style={{ display: 'inline-block', width: '32px', height: '2px', background: '#D4AF37' }} />
               <span className="font-display font-extrabold uppercase text-brand-gold" style={{ fontSize: '10px', letterSpacing: '0.38em' }}>Services</span>
             </motion.div>
-            <h1 className="font-display font-extrabold uppercase leading-[0.94] tracking-tight text-white mb-8" style={{ fontSize: 'clamp(1.4rem, 2.8vw, 2.4rem)' }}>
+            <h1 className="font-display font-extrabold uppercase leading-tight md:leading-[1.12] tracking-tight text-white mb-8" style={{ fontSize: 'clamp(1.4rem, 2.8vw, 2.4rem)' }}>
               {headlineLines.map((line, i) => (
-                <span key={i} className="block overflow-hidden">
+                <span key={i} className={`block overflow-hidden ${i < headlineLines.length - 1 ? 'mb-1.5 sm:mb-2' : ''}`}>
                   <motion.span className={`inline-block ${i === headlineLines.length - 1 ? 'shimmer-text' : 'text-white'}`} variants={lineVariants}>{line}</motion.span>
                 </span>
               ))}
             </h1>
-            <motion.p variants={itemVariants} className="font-body text-white/80 leading-relaxed mb-4" style={{ fontSize: 'clamp(0.84rem, 1.25vw, 1.04rem)', maxWidth: '600px' }}>
-              At <span className="text-brand-gold font-semibold">3 CIIRCLES OPC P LTD</span>, we provide comprehensive civil construction services, infrastructure construction services, building construction services, mining and crushing services, and excavation services for a wide range of projects.
-            </motion.p>
-            <motion.p variants={itemVariants} className="font-body text-white/70 leading-relaxed mb-4" style={{ fontSize: 'clamp(0.82rem, 1.2vw, 0.97rem)', maxWidth: '600px' }}>
-              With a legacy in construction dating back to <span className="text-brand-gold font-semibold">1979</span>, 3 CIIRCLES has experience in executing government, institutional, industrial, infrastructure and commercial projects.
-            </motion.p>
-            <motion.p variants={itemVariants} className="font-body text-white/55 leading-relaxed mb-10" style={{ fontSize: 'clamp(0.82rem, 1.2vw, 0.97rem)', maxWidth: '600px' }}>
-              Our integrated approach combines experienced project teams, construction equipment, site management, quality systems and safety practices to deliver reliable civil construction solutions across project requirements.
-            </motion.p>
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mt-4">
               {capabilities.map((cap) => (
                 <span key={cap} className="font-display font-bold uppercase text-white/85 rounded-full px-4 py-1.5 hover:text-brand-gold transition-all duration-300 cursor-default" style={{ fontSize: '9px', letterSpacing: '0.18em', background: 'rgba(212,175,55,0.07)', border: '1px solid rgba(212,175,55,0.28)' }}>{cap}</span>
               ))}
@@ -133,86 +321,116 @@ export default function Building() {
      
      
       {/* INTRO BLOCK */}
-      <section className="bg-white border-b border-brand-darkblue/[0.07] py-14 md:py-18 overflow-hidden">
+      <section ref={introSectionRef} id="building-services" className="bg-white border-b border-brand-darkblue/[0.07] py-14 md:py-18 overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
             {/* LEFT CONTENT COLUMN */}
-            <motion.div
-              className="lg:col-span-6 flex flex-col items-start"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 'some' }}
-              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-            >
+            <div className="lg:col-span-6 flex flex-col items-start">
               {/* HEADING */}
-              <motion.h2
-                variants={fadeUp}
-                className="font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight mb-5"
-              >
-                Our Building<br />
-                <span className="text-[#D4AF37]">Construction</span> Services
-              </motion.h2>
+              <h2 className="gsap-intro-heading font-display text-2xl sm:text-3xl lg:text-[34px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight mb-5">
+                <span>Our Building</span>
+                <span className="block mt-1 sm:mt-1.5">Construction Services</span>
+              </h2>
 
               {/* PARAGRAPHS */}
-              <motion.div variants={fadeUp} className="space-y-3.5 font-body text-[13.5px] md:text-[14.5px] text-brand-darkblue/80 leading-relaxed mb-7">
-                <p>
+              <div className="space-y-3.5 font-body text-[13.5px] md:text-[14.5px] text-brand-darkblue/80 leading-relaxed mb-7">
+                <p className="gsap-intro-p">
                   <strong className="font-bold text-brand-darkblue">3 CIIRCLES</strong> provides reliable{' '}
                   <strong className="font-bold text-brand-darkblue">building construction services</strong> for institutional, commercial, industrial and large-scale development projects. Our building construction capabilities cover{' '}
                   <strong className="font-bold text-brand-darkblue">RCC works, MEP works, cladding and façade works</strong>, along with associated civil and architectural execution.
                 </p>
-                <p>
+                <p className="gsap-intro-p">
                   Our experience includes projects where the scope involved{' '}
                   <strong className="font-bold text-brand-darkblue">civil construction, interiors, MEP works, architectural works</strong> and{' '}
                   <strong className="font-bold text-brand-darkblue">façade works</strong>, enabling us to provide coordinated execution across different stages of building development.
                 </p>
-                <p>
+                <p className="gsap-intro-p">
                   From structural construction to building services and external finishes, our{' '}
                   <strong className="font-bold text-brand-darkblue">building construction solutions</strong> are planned around project requirements, site conditions, quality standards and execution schedules.
                 </p>
-              </motion.div>
+              </div>
 
 
-            </motion.div>
+            </div>
 
-            {/* RIGHT IMAGE */}
-            <motion.div
-              className="lg:col-span-6 relative"
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 'some' }}
-              transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {/* SOFT BACKDROP CONTAINER WITH CURVED CORNERS */}
-              <div className="relative rounded-[2.2rem] sm:rounded-[2.6rem] p-3 sm:p-3.5 bg-[#FBF8F1] border border-[#F2E8D5] shadow-sm">
-                {/* MAIN IMAGE */}
+            {/* RIGHT IMAGE WITH ANIME STYLING & SLOW GSAP ANIMATION */}
+            <div className="lg:col-span-6 relative">
+              {/* AMBIENT ANIME AURA GLOW BACKDROP */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-brand-gold/25 via-amber-400/15 to-brand-darkblue/25 rounded-[2.5rem] sm:rounded-[3rem] blur-xl opacity-70 animate-pulse pointer-events-none" />
+
+              {/* MAIN FRAME CONTAINER WITH AUTOMATIC SLOW FLOAT */}
+              <motion.div 
+                className="gsap-intro-img-frame relative rounded-[2.2rem] sm:rounded-[2.6rem] p-3 sm:p-3.5 bg-gradient-to-br from-[#FFFDF9] via-[#FBF8F1] to-[#F2E7D3] border border-amber-200/60 shadow-[0_20px_50px_rgba(15,23,42,0.12)]"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 7, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+              >
+                {/* INNER IMAGE CONTAINER WITH ANIME VIBRANCY FILTER & SHIMMER */}
                 <div className="relative overflow-hidden rounded-[1.8rem] sm:rounded-[2.2rem] h-[310px] sm:h-[370px] md:h-[415px] lg:h-[430px]">
-                  <img
+                  {/* MAIN IMAGE WITH VIBRANT ANIME EFFECT & SLOW PAN-ZOOM */}
+                  <motion.img
                     src={buildingImg}
                     alt="Building Construction Services"
                     className="w-full h-full object-cover shadow-inner"
-                    style={{ objectPosition: 'center 40%' }}
+                    style={{ 
+                      objectPosition: 'center 40%',
+                      filter: 'contrast(1.09) saturate(1.22) brightness(1.03) drop-shadow(0 4px 12px rgba(0,0,0,0.15))',
+                    }}
+                    animate={{
+                      scale: [1, 1.09, 1.03, 1],
+                      x: [0, -10, 6, 0],
+                      y: [0, -7, -4, 0],
+                      rotate: [0, 0.8, -0.6, 0],
+                    }}
+                    transition={{
+                      duration: 18,
+                      repeat: Infinity,
+                      repeatType: "mirror",
+                      ease: "easeInOut"
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darkblue/20 via-transparent to-transparent pointer-events-none" />
+
+                  {/* ANIME SHIMMER SWEEP OVERLAY */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 pointer-events-none"
+                    animate={{ x: ['-140%', '220%'] }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: 'easeInOut',
+                    }}
+                  />
+
+                  {/* GRADIENT SHADOW OVERLAYS FOR ANIME DEPTH */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-darkblue/40 via-transparent to-amber-500/10 pointer-events-none" />
+
+                  {/* FLOATING ANIME ACCENT BADGE */}
+                  <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 backdrop-blur-md bg-brand-darkblue/75 border border-brand-gold/40 px-3.5 py-1.5 rounded-full flex items-center gap-2 shadow-lg">
+                    <span className="w-2 h-2 rounded-full bg-brand-gold animate-ping" />
+                    <span className="font-display text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-white">
+                      Building Construction Services
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
           </div>
         </div>
       </section>
 
       {/* SERVICE CARDS */}
-      <section id="services" className="bg-[#FAF8F5] border-b border-brand-darkblue/[0.07] py-12 md:py-16">
+      <section ref={servicesSectionRef} id="services" className="bg-[#FAF8F5] border-b border-brand-darkblue/[0.07] py-12 md:py-16">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 'some' }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }} className="mb-8 md:mb-10">
-            <motion.h2 variants={fadeUp} className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight">
-              Our Building Construction <span style={{ color: '#D4AF37' }}>Services</span>
-            </motion.h2>
-          </motion.div>
+          <div className="mb-8 md:mb-10">
+            <h2 className="gsap-svc-title font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight">
+              Our Building Construction Services
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {services.map((svc, idx) => (
-              <motion.div key={svc.num} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 'some' }} transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }} className="group flex flex-col bg-white border border-brand-darkblue/10 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-gold/50 transition-all duration-500 transform hover:-translate-y-1">
+              <div key={svc.title} className="gsap-svc-card group flex flex-col bg-white border border-brand-darkblue/10 rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-gold/50 transition-all duration-500 transform hover:-translate-y-1.5">
                 <div className="relative h-52 sm:h-56 overflow-hidden">
                   <img src={svc.img || buildingImg} alt={svc.title} className={`w-full h-full object-cover ${svc.objectPos} group-hover:scale-105 transition-all duration-700`} />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-darkblue/75 via-brand-darkblue/25 to-transparent" />
@@ -223,7 +441,7 @@ export default function Building() {
                       {idx === 2 && <><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></>}
                     </svg>
                   </div>
-                  <span className="absolute top-3.5 right-3.5 font-display text-[9px] font-extrabold tracking-[0.25em] text-white bg-brand-darkblue/75 px-2.5 py-0.5 rounded-full backdrop-blur-sm border border-white/20">{svc.num}</span>
+                  <span className="absolute top-3.5 right-3.5 font-display text-[9px] font-extrabold tracking-[0.25em] text-white bg-brand-darkblue/75 px-2.5 py-0.5 rounded-full backdrop-blur-sm border border-white/20">0{idx + 1}</span>
                 </div>
                 <div className="flex flex-col flex-1 p-5 sm:p-6 bg-white transition-all duration-500">
                   <h3 className="font-display text-base sm:text-lg font-extrabold uppercase tracking-tight text-brand-darkblue mb-3 group-hover:text-brand-gold transition-colors duration-300">{svc.title}</h3>
@@ -235,7 +453,7 @@ export default function Building() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -243,28 +461,29 @@ export default function Building() {
 
 
       {/* PROJECT EXPERIENCE */}
-      <section className="relative bg-gradient-to-b from-[#F4F7FC]/80 via-white to-[#F4F7FC]/60 border-b border-brand-darkblue/[0.07] py-14 md:py-20 overflow-hidden">
+      <section ref={projectSectionRef} className="relative bg-gradient-to-b from-[#F4F7FC]/80 via-white to-[#F4F7FC]/60 border-b border-brand-darkblue/[0.07] py-14 md:py-20 overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
           
           {/* HEADER AREA */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12">
             <div className="lg:col-span-5">
-              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 'some' }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}>
-                <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
+              <div>
+                <div className="gsap-proj-tag flex items-center gap-3 mb-3">
                   <span style={{ display: 'inline-block', width: '28px', height: '2px', background: '#D4AF37' }} />
                   <span className="font-display font-extrabold uppercase text-brand-gold" style={{ fontSize: '9.5px', letterSpacing: '0.35em' }}>Project Experience</span>
-                </motion.div>
-                <motion.h2 variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight">
-                  Building a Better <span style={{ color: '#D4AF37' }}>Tomorrow</span>
-                </motion.h2>
-              </motion.div>
+                </div>
+                <h2 className="gsap-proj-heading font-display text-xl sm:text-2xl md:text-[30px] lg:text-[34px] font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight">
+                  <span>Building a Better</span>
+                  <span className="block mt-1 sm:mt-1.5">Tomorrow</span>
+                </h2>
+              </div>
             </div>
             
             <div className="lg:col-span-7 flex flex-col gap-3.5">
-              <p className="font-body text-xs sm:text-sm text-brand-darkblue/75 leading-relaxed">
+              <p className="gsap-proj-text font-body text-xs sm:text-sm text-brand-darkblue/75 leading-relaxed">
                 Our project experience includes <strong className="font-bold text-brand-darkblue">Maneckji Cooper School</strong> in Juhu, Mumbai, <strong className="font-bold text-brand-darkblue">Anant National University</strong> in Ahmedabad and projects for <strong className="font-bold text-brand-darkblue">Mumbai International Airport Limited</strong>, with documented scopes covering civil, interior, architectural, MEP and façade works.
               </p>
-              <p className="font-body text-xs sm:text-sm text-brand-darkblue/70 leading-relaxed">
+              <p className="gsap-proj-text font-body text-xs sm:text-sm text-brand-darkblue/70 leading-relaxed">
                 Whether it is institutional construction, commercial construction, industrial construction or large-scale building development, 3 CIIRCLES brings multidisciplinary civil construction capabilities to the project.
               </p>
             </div>
@@ -276,14 +495,10 @@ export default function Building() {
               { num: '01', label: 'Maneckji Cooper School', sub: 'Juhu, Mumbai', img: cooperSchoolImg },
               { num: '02', label: 'Anant National University', sub: 'Ahmedabad', img: anantUnivImg },
               { num: '03', label: 'Mumbai International Airport Limited', sub: 'Mumbai', img: airportImg },
-            ].map((proj, i) => (
-              <motion.div
+            ].map((proj) => (
+              <div
                 key={proj.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 'some' }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 h-64 sm:h-72 flex flex-col justify-end p-6 border border-black/5"
+                className="gsap-proj-card group relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 h-64 sm:h-72 flex flex-col justify-end p-6 border border-black/5 cursor-pointer transform hover:-translate-y-1.5"
               >
                 {/* Background Image */}
                 <img src={proj.img} alt={proj.label} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
@@ -303,7 +518,7 @@ export default function Building() {
                     <span className="font-body text-xs text-white/90 font-semibold drop-shadow-sm">{proj.sub}</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -311,19 +526,21 @@ export default function Building() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white border-b border-brand-darkblue/[0.07] py-16 md:py-20">
-        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 'some' }} variants={fadeUp} className="lg:w-96 shrink-0">
-              <div className="flex items-center gap-3 mb-4">
+      <section className="bg-brand-darkblue relative overflow-hidden border-b border-white/10 py-16 md:py-20">
+        {/* Subtle Ambient Radial Glow */}
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 'some' }} variants={fadeUp} className="lg:w-[440px] shrink-0">
+              <div className="flex items-center gap-3 mb-3">
                 <span style={{ display: 'inline-block', width: '28px', height: '2px', background: '#D4AF37' }} />
                 <span className="font-display font-extrabold uppercase text-brand-gold" style={{ fontSize: '9px', letterSpacing: '0.35em' }}>Frequently Asked Questions</span>
               </div>
-              <h2 className="font-display text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight mb-6">
-                <span className="block whitespace-nowrap">Building Construction</span>
-                <span style={{ color: '#D4AF37' }}>FAQs</span>
+              <h2 className="font-display text-lg sm:text-xl md:text-2xl lg:text-[25px] xl:text-[27px] font-extrabold uppercase tracking-tight text-white leading-tight whitespace-nowrap" style={{ color: '#FFFFFF' }}>
+                Building Construction FAQs
               </h2>
-           
             </motion.div>
             <motion.div className="flex-1" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 'some' }} variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }}>
               {faqs.map((faq, i) => (<FaqItem key={i} q={faq.q} a={faq.a} index={i} />))}
@@ -374,7 +591,7 @@ export default function Building() {
 
               {/* HEADING */}
               <motion.h2 variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-brand-darkblue leading-tight mb-6 md:mb-7">
-                Discuss Your <span style={{ color: '#D4AF37' }}>Project Requirements</span>
+                Discuss Your Project Requirements
               </motion.h2>
 
               {/* BUTTON */}

@@ -24,9 +24,9 @@ export const TransitionProvider = ({ children }) => {
 
   const scrollToTarget = (target) => {
     const lenisInstance = lenisRef.current;
-    if (!target) {
-      if (lenisInstance) lenisInstance.scrollTo(0, { duration: 0.8 });
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!target || target === 'hero' || target === 'overview') {
+      if (lenisInstance) lenisInstance.scrollTo(0, { immediate: true });
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
       return;
     }
     const el = document.getElementById(target);
@@ -37,7 +37,7 @@ export const TransitionProvider = ({ children }) => {
       const offset = isFullscreenDesktopSection ? 0 : -80;
 
       if (lenisInstance) {
-        lenisInstance.scrollTo(el, { offset, duration: 1.2 });
+        lenisInstance.scrollTo(el, { offset, duration: 1.0 });
       } else {
         const targetY = el.getBoundingClientRect().top + window.scrollY + offset;
         window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
@@ -54,16 +54,19 @@ export const TransitionProvider = ({ children }) => {
       return;
     }
 
-    // Navigate to new page first
+    // Immediately reset scroll to top before page change to avoid showing previous page scroll position
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    // Navigate to new page
     navigate(path);
 
-    // Wait for React to finish rendering the new page, then scroll
-    if (scrollTarget) {
+    // If navigating to a sub-section deeper on the page (not the hero/overview)
+    if (scrollTarget && scrollTarget !== 'hero' && scrollTarget !== 'overview') {
       setTimeout(() => scrollToTarget(scrollTarget), 150);
       setTimeout(() => scrollToTarget(scrollTarget), 400);
-      setTimeout(() => scrollToTarget(scrollTarget), 800);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   };
 

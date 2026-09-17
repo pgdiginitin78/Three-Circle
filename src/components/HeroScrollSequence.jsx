@@ -78,27 +78,33 @@ export default function HeroScrollSequence({ triggerRef }) {
       images[0].onload = render;
     }
 
-    // Set up GSAP ScrollTrigger
-    const st = gsap.to(seq, {
-      frame: frameCount - 1,
-      snap: "frame",
-      ease: "none",
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        start: "top top",
-        end: `+=${window.innerHeight * 4}`, // Total scroll distance (4 screens height)
-        scrub: 0.5,
-        pin: true,
-      },
-      onUpdate: render,
-    });
+    // Set up GSAP ScrollTrigger within a scoped context for clean revert on unmount
+    let st = null;
+    const ctx = gsap.context(() => {
+      st = gsap.to(seq, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+          id: "hero-scroll-trigger",
+          trigger: triggerRef.current,
+          start: "top top",
+          end: `+=${window.innerHeight * 4}`, // Total scroll distance (4 screens height)
+          scrub: 0.5,
+          pin: true,
+          pinSpacing: true,
+        },
+        onUpdate: render,
+      });
+    }, triggerRef);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (st.scrollTrigger) {
-        st.scrollTrigger.kill();
+      if (st && st.scrollTrigger) {
+        st.scrollTrigger.kill(true, true);
       }
-      st.kill();
+      ctx.revert();
+      ScrollTrigger.getById("hero-scroll-trigger")?.kill(true, true);
     };
   }, [images, triggerRef]);
 

@@ -11,13 +11,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Intro />
-      <Services />
-      <FeaturedProjects />
-      <Projects />
-      {/* <TransitionZone />   */}
       <Capabilities />
       <About />
+      <Services />
+      <Intro />
+      <FeaturedProjects />
+      <Projects />
     </>
   );
 }

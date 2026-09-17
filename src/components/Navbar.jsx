@@ -35,6 +35,7 @@ export default function Navbar() {
 
   const handleNavClick = (path, target) => {
     setIsDrawerOpen(false);
+    setHoveredIndex(null);
     navigateTo(path, target);
   };
 
@@ -59,7 +60,7 @@ export default function Navbar() {
       target: null,
       activePrefix: "/services",
       subItems: [
-        { label: "Building Industry", path: "/services/building", target: null },
+        { label: "Building Industry", path: "/services/building", target: "building-services" },
         { label: "Infrastructure", path: "/services/infrastructure", target: null },
         { label: "Mining & Crushing", path: "/services/mining", target: null },
         { label: "Excavation", path: "/services/excavation", target: null },
@@ -97,6 +98,7 @@ export default function Navbar() {
       target: null,
       activePrefix: "/our-company",
       subItems: [
+        { label: "Lexuraa (Dubai)", path: "/our-company/lexura", target: null },
         { label: "Achievements", path: "/our-company/achievements", target: null },
         { label: "Major Associates", path: "/our-company/associates", target: null },
         { label: "Our Clients", path: "/our-company/clients", target: null },
@@ -153,7 +155,7 @@ export default function Navbar() {
                 <button
                   className={`relative flex flex-col items-center justify-center gap-1 px-4 py-2 xl:px-5 rounded-full cursor-pointer select-none transition-all duration-300 ${isHoveredSubmenu ? "bg-brand-darkblue" : "hover:bg-brand-darkblue/5"
                     }`}
-                  onClick={() => !item.subItems && handleNavClick(item.path, item.target)}
+                  onClick={() => handleNavClick(item.path, item.target)}
                 >
                   <span className="flex items-center gap-1.5">
                     <span
@@ -221,10 +223,13 @@ export default function Navbar() {
           <span className="w-px h-6 bg-brand-darkblue/10" />
           <button
             onClick={() => handleNavClick("/contact", null)}
-            className="flex items-center gap-1.5 h-10 xl:h-11 px-5 xl:px-6 rounded-full bg-text-primary text-white font-display text-[11px] xl:text-[12px] font-bold tracking-wide cursor-pointer hover:bg-brand-gold transition-colors duration-200"
+            className="group relative inline-flex items-center gap-2 h-10 xl:h-11 px-5 xl:px-6 rounded-full bg-brand-darkblue text-white font-display text-[11px] xl:text-[12px] font-bold tracking-wide cursor-pointer overflow-hidden shadow-md shadow-brand-darkblue/10 hover:shadow-xl hover:shadow-brand-gold/20 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 ease-out border border-brand-darkblue/20 hover:border-brand-gold/50"
           >
-            Contact Us
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+            <span className="relative z-10 text-white group-hover:text-brand-darkblue transition-colors duration-300">
+              Contact Us
+            </span>
+            <ArrowRight className="relative z-10 w-3.5 h-3.5 text-white group-hover:text-brand-darkblue group-hover:translate-x-1 transition-all duration-300" />
           </button>
         </div>
         <button
@@ -344,10 +349,13 @@ export default function Navbar() {
 
                 <button
                   onClick={() => handleNavClick("/contact", null)}
-                  className="mt-5 flex items-center justify-center gap-2 h-12 rounded-xl bg-text-primary text-white font-display text-xs font-bold tracking-wide cursor-pointer hover:bg-brand-gold transition-colors duration-200"
+                  className="group relative mt-5 flex items-center justify-center gap-2 h-12 rounded-xl bg-brand-darkblue text-white font-display text-xs font-bold tracking-wide cursor-pointer overflow-hidden shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-brand-darkblue/20"
                 >
-                  Contact Us
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] via-[#F3E5AB] to-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out" />
+                  <span className="relative z-10 text-white group-hover:text-brand-darkblue transition-colors duration-300">
+                    Contact Us
+                  </span>
+                  <ArrowRight className="relative z-10 w-3.5 h-3.5 text-white group-hover:text-brand-darkblue group-hover:translate-x-1 transition-all duration-300" />
                 </button>
               </div>
 

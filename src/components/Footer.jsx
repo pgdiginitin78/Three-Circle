@@ -9,7 +9,7 @@ import { useTransition } from './PageTransition';
 
 const navLinks = [
   { label: 'HOME', path: '/', target: 'hero' },
-  { label: 'ABOUT', path: '/about-us', target: null },
+  { label: 'ABOUT', path: '/about', target: null },
   { label: 'SERVICES', path: '/', target: 'services' },
   { label: 'PROJECTS', path: '/projects', target: null },
   { label: 'CONTACT', path: '/contact', target: null },

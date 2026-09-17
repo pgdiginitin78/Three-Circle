@@ -1012,317 +1012,164 @@ export default function AboutUs() {
             </motion.div>
 
           </div>
-
-          {/* Bottom Content Grid (Left 4 Stat Cards Stack + Right Organizational Matrix Table) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          {/* 4 Stat Cards Horizontal Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             
-            {/* LEFT COLUMN: 4 Vertical Stat Cards Stack (4 Cols) */}
-            <div className="lg:col-span-4 flex flex-col justify-between gap-3 sm:gap-3.5">
-              
-              {/* Card 1 */}
-              <motion.div
-                initial={{ opacity: 0, x: -40, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden bg-gradient-to-r from-slate-50 via-white to-blue-50/40 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-3 group cursor-pointer"
-              >
-                {/* Left Pentagon/Chevron Icon Badge */}
-                <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
-                  <div className="absolute inset-0 bg-brand-gold rounded-xl transform rotate-12 scale-95 opacity-80 group-hover:rotate-45 group-hover:scale-110 transition-transform duration-500" />
-                  <div className="relative w-11 h-11 bg-[#000435] rounded-xl flex items-center justify-center text-white shadow-md border border-white/10 group-hover:bg-brand-gold group-hover:text-brand-darkblue transition-colors duration-300">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Middle Content */}
-                <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
-                  <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
-                    45+ YRS
-                  </h4>
-                  <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
-                    PROVEN TRACK RECORD
-                  </p>
-                  <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
-                </div>
-
-                {/* Right Side Arrow */}
-                <div className="flex items-center shrink-0 pl-2.5 border-l border-slate-200/70">
-                  <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </div>
-              </motion.div>
-
-              {/* Card 2 */}
-              <motion.div
-                initial={{ opacity: 0, x: -40, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden bg-gradient-to-r from-amber-50/50 via-white to-amber-50/30 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-4 sm:gap-5 group cursor-pointer"
-              >
-                {/* Left Gold Circle + Arc Ring Icon Badge */}
-                <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full border-2 border-brand-darkblue border-r-transparent border-b-transparent transform -rotate-45 group-hover:rotate-180 transition-transform duration-700" />
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#F5D061] to-[#E5B532] flex items-center justify-center text-brand-darkblue shadow-sm group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-5 h-5 text-brand-darkblue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Middle Content */}
-                <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
-                  <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
-                    60+
-                  </h4>
-                  <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
-                    FIELD &amp; TECHNICAL PERSONNEL
-                  </p>
-                  <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
-                </div>
-
-                {/* Right Side Arrow */}
-                <div className="flex items-center shrink-0 pl-2.5 border-l border-slate-200/70">
-                  <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </div>
-              </motion.div>
-
-              {/* Card 3 */}
-              <motion.div
-                initial={{ opacity: 0, x: -40, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden bg-gradient-to-r from-slate-100/60 via-white to-blue-50/30 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-4 sm:gap-5 group cursor-pointer"
-              >
-                {/* Left Hexagonal Navy Badge */}
-                <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
-                  <div className="w-10 h-10 bg-gradient-to-br from-[#000435] to-[#0A1145] rounded-xl border border-brand-gold/50 shadow-sm flex items-center justify-center text-white transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
-                    <div className="-rotate-45 group-hover:-rotate-[225deg] transition-transform duration-700">
-                      <svg className="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <circle cx="12" cy="12" r="3" />
-                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Middle Content */}
-                <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
-                  <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
-                    14
-                  </h4>
-                  <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
-                    SPECIALIZED DEPARTMENTS
-                  </p>
-                  <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
-                </div>
-
-                {/* Right Side Arrow */}
-                <div className="flex items-center shrink-0 pl-2.5 border-l border-slate-200/70">
-                  <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </div>
-              </motion.div>
-
-              {/* Card 4 */}
-              <motion.div
-                initial={{ opacity: 0, x: -40, filter: "blur(8px)" }}
-                whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden bg-gradient-to-r from-amber-50/40 via-white to-amber-100/20 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-4 sm:gap-5 group cursor-pointer"
-              >
-                {/* Left White Circle + Gold Arc Icon Badge */}
-                <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
-                  <div className="absolute inset-0 rounded-full border-2 border-brand-gold border-t-transparent border-l-transparent transform rotate-45 group-hover:rotate-225 transition-transform duration-700" />
-                  <div className="w-9 h-9 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-brand-darkblue group-hover:scale-110 transition-transform duration-300">
-                    <svg className="w-4.5 h-4.5 text-brand-darkblue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M18 20V10M12 20V4M6 20v-6" />
-                      <path d="M3 20h18" />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Middle Content */}
-                <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
-                  <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
-                    100%
-                  </h4>
-                  <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
-                    GOVERNMENT &amp; MNC TIER
-                  </p>
-                  <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
-                </div>
-
-                {/* Right Side Arrow */}
-                <div className="flex items-center shrink-0 pl-2.5 border-l border-slate-200/70">
-                  <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </div>
-              </motion.div>
-
-            </div>
-
-            {/* RIGHT COLUMN: OUR ORGANIZATIONAL STRUCTURE Grid Table (8 Cols) */}
+            {/* Card 1 */}
             <motion.div
-              initial={{ opacity: 0, y: 45, filter: "blur(12px)", scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 1.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-8 flex flex-col justify-between bg-white rounded-2xl p-4.5 sm:p-5 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-brand-gold/40 transition-all duration-500 relative"
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden bg-gradient-to-r from-slate-50 via-white to-blue-50/40 border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-3 group cursor-pointer"
             >
-              
-              {/* Header with Gold Dot & Vertical Line */}
-              <div className="flex items-center gap-3 mb-3.5 pb-2.5 border-b border-slate-100">
-                <div className="relative flex items-center justify-center">
-                  <div className="w-0.5 h-5 bg-slate-300" />
-                  <div className="absolute w-2.5 h-2.5 rounded-full bg-brand-gold shadow-xs" />
+              {/* Left Pentagon/Chevron Icon Badge */}
+              <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
+                <div className="absolute inset-0 bg-brand-gold rounded-xl transform rotate-12 scale-95 opacity-80 group-hover:rotate-45 group-hover:scale-110 transition-transform duration-500" />
+                <div className="relative w-11 h-11 bg-[#000435] rounded-xl flex items-center justify-center text-white shadow-md border border-white/10 group-hover:bg-brand-gold group-hover:text-brand-darkblue transition-colors duration-300">
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
                 </div>
-                <h3 className="font-display text-xs sm:text-sm font-black tracking-[0.18em] text-brand-darkblue uppercase">
-                  OUR ORGANIZATIONAL STRUCTURE
-                </h3>
               </div>
 
-              {/* 2-Column Department List */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
-                
-                {/* Column 1 */}
-                <div className="flex flex-col divide-y divide-slate-100">
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Project Co-ordinator
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      2
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      MEP Engineer
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      3
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Safety Officer
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      5
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Site Engineers
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      10
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Quality Engineers
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      3
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Accounts
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      2
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Admin
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      2
-                    </span>
-                  </div>
-                </div>
-
-                {/* Column 2 */}
-                <div className="flex flex-col divide-y divide-slate-100">
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Project Manager
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      2
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Project Incharge
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      4
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Surveyor
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      4
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Supervisor
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      12
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Billing Engineer
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      3
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Planning Engineer
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      2
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between py-1.5">
-                    <span className="font-display text-xs sm:text-xs font-semibold text-slate-700">
-                      Nurses / First-Aid
-                    </span>
-                    <span className="font-mono text-xs font-bold text-brand-darkblue bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 min-w-[28px] text-center">
-                      3
-                    </span>
-                  </div>
-                </div>
-
+              {/* Middle Content */}
+              <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
+                <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
+                  45+ YRS
+                </h4>
+                <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                  PROVEN TRACK RECORD
+                </p>
+                <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
               </div>
 
+              {/* Right Side Arrow */}
+              <div className="flex items-center shrink-0 pl-2 border-l border-slate-200/70">
+                <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Card 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden bg-gradient-to-r from-amber-50/50 via-white to-amber-50/30 border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-3 group cursor-pointer"
+            >
+              {/* Left Gold Circle + Arc Ring Icon Badge */}
+              <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full border-2 border-brand-darkblue border-r-transparent border-b-transparent transform -rotate-45 group-hover:rotate-180 transition-transform duration-700" />
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#F5D061] to-[#E5B532] flex items-center justify-center text-brand-darkblue shadow-sm group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-5 h-5 text-brand-darkblue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Middle Content */}
+              <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
+                <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
+                  60+
+                </h4>
+                <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                  FIELD &amp; TECHNICAL PERSONNEL
+                </p>
+                <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
+              </div>
+
+              {/* Right Side Arrow */}
+              <div className="flex items-center shrink-0 pl-2 border-l border-slate-200/70">
+                <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Card 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden bg-gradient-to-r from-slate-100/60 via-white to-blue-50/30 border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-3 group cursor-pointer"
+            >
+              {/* Left Hexagonal Navy Badge */}
+              <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-[#000435] to-[#0A1145] rounded-xl border border-brand-gold/50 shadow-sm flex items-center justify-center text-white transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-700">
+                  <div className="-rotate-45 group-hover:-rotate-[225deg] transition-transform duration-700">
+                    <svg className="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Middle Content */}
+              <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
+                <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
+                  14
+                </h4>
+                <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                  SPECIALIZED DEPARTMENTS
+                </p>
+                <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
+              </div>
+
+              {/* Right Side Arrow */}
+              <div className="flex items-center shrink-0 pl-2 border-l border-slate-200/70">
+                <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
+            </motion.div>
+
+            {/* Card 4 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden bg-gradient-to-r from-amber-50/40 via-white to-amber-100/20 border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-sm hover:shadow-lg hover:border-brand-gold/80 hover:-translate-y-1.5 transition-all duration-500 ease-out flex items-center justify-between gap-3 group cursor-pointer"
+            >
+              {/* Left White Circle + Gold Arc Icon Badge */}
+              <div className="relative shrink-0 w-11 h-11 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full border-2 border-brand-gold border-t-transparent border-l-transparent transform rotate-45 group-hover:rotate-225 transition-transform duration-700" />
+                <div className="w-9 h-9 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-brand-darkblue group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-4.5 h-4.5 text-brand-darkblue" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M18 20V10M12 20V4M6 20v-6" />
+                    <path d="M3 20h18" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Middle Content */}
+              <div className="flex-1 min-w-0 pl-2.5 sm:pl-3.5">
+                <h4 className="font-display text-lg sm:text-xl font-bold text-brand-darkblue uppercase tracking-tight mb-0.5">
+                  100%
+                </h4>
+                <p className="font-display text-[9.5px] sm:text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                  GOVERNMENT &amp; MNC TIER
+                </p>
+                <div className="w-6 group-hover:w-12 h-[2.5px] bg-brand-gold rounded-full transition-all duration-300" />
+              </div>
+
+              {/* Right Side Arrow */}
+              <div className="flex items-center shrink-0 pl-2 border-l border-slate-200/70">
+                <svg className="w-4 h-4 text-brand-gold group-hover:translate-x-1.5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
             </motion.div>
 
           </div>

@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionTag from "../../components/SectionTag";
-import { MapPin, FileText, ArrowRight } from "lucide-react";
 
 import mialAirsideRescueImg from "../../assets/ongoing-projects/mial-airside-rescue.jpg";
 import mialSecondaryFireStationImg from "../../assets/ongoing-projects/mial-secondary-fire-station.jpg";
@@ -15,430 +16,286 @@ gsap.registerPlugin(ScrollTrigger);
 const ongoingProjects = [
   {
     id: "01",
-    total: "/05",
     client: "MUMBAI INTERNATIONAL AIRPORT LIMITED",
     clientDetail: "Mumbai International Airport Limited",
     title: "AIRSIDE FIRE FIGHTING & RESCUE STATION",
-    scope:
-      "All civil, interiors, MEP and Façade works for high-readiness airport emergency operations.",
+    scope: "All civil, interiors, MEP and Façade works for high-readiness airport emergency operations.",
     badge: "ONGOING",
     image: mialAirsideRescueImg,
-    hasLink: false,
   },
   {
     id: "02",
-    total: "/05",
     client: "MUMBAI INTERNATIONAL AIRPORT LIMITED",
     clientDetail: "Mumbai International Airport Limited",
     title: "SECONDARY FIRE STATION",
-    scope:
-      "All civil, architectural and MEP work supporting secondary airport security response zones.",
+    scope: "All civil, architectural and MEP work supporting secondary airport security response zones.",
     badge: "ONGOING",
     image: mialSecondaryFireStationImg,
-    hasLink: true,
   },
   {
     id: "03",
-    total: "/05",
     client: "MUMBAI INTERNATIONAL AIRPORT LIMITED",
     clientDetail: "Mumbai International Airport Limited",
     title: "BOUNDARY WALL",
-    scope:
-      "All civil works and reinforced perimeter foundation securing airside demarcation boundaries.",
+    scope: "All civil works and reinforced perimeter foundation securing airside demarcation boundaries.",
     badge: "ONGOING",
     image: mialBoundaryWallImg,
-    hasLink: false,
   },
   {
     id: "04",
-    total: "/05",
     client: "LARSEN & TOUBRO",
     clientDetail: "Larsen & Toubro",
     title: "CRUSHING OF BOULDERS",
-    scope:
-      "Crushing of supplied boulders by client into Aggregate and Sand by a 3 Stage VSI Crusher.",
+    scope: "Crushing of supplied boulders by client into Aggregate and Sand by a 3 Stage VSI Crusher.",
     badge: "ONGOING",
     image: ltBoulderCrushingImg,
-    hasLink: true,
   },
   {
     id: "05",
-    total: "/05",
     client: "LARSEN & TOUBRO",
     clientDetail: "Larsen & Toubro",
     title: "SUPPLY OF AGGREGATE & SAND",
-    scope:
-      "Supply of high-quality aggregate and sand for construction and infrastructure projects.",
+    scope: "Supply of high-quality aggregate and sand for construction and infrastructure projects.",
     badge: "ONGOING",
     image: ltAggregateSandSupplyImg,
-    hasLink: false,
   },
 ];
 
 export default function FeaturedProjects() {
-  const containerRef = useRef(null);
-  const tagRef = useRef(null);
-  const titleRef = useRef(null);
-  const descRef = useRef(null);
-  const sideTextRef = useRef(null);
-  const cardsRef = useRef([]);
-  const imagesRef = useRef([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+  const sectionRef = useRef(null);
+  const headerRef = useRef(null);
 
+  const total = ongoingProjects.length;
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % total);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
+  };
+
+  // Automatic slide transition every 8 seconds for relaxed viewing
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % total);
+    }, 8000);
+    return () => clearInterval(timer);
+  }, [total]);
+
+  // Entrance animation for header
   useEffect(() => {
     let ctx = gsap.context(() => {
-      // 1. Header Entrance Animation Timeline
-      const headerTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      if (tagRef.current) {
-        headerTl.fromTo(
-          tagRef.current,
-          { opacity: 0, x: -25 },
-          { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }
-        );
-      }
-
-      if (titleRef.current) {
-        headerTl.fromTo(
-          titleRef.current,
-          { opacity: 0, y: 35, rotateX: -15 },
-          { opacity: 1, y: 0, rotateX: 0, duration: 0.7, ease: "power3.out" },
-          "-=0.3"
-        );
-      }
-
-      if (descRef.current) {
-        headerTl.fromTo(
-          descRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-          "-=0.4"
-        );
-      }
-
-      if (sideTextRef.current) {
-        headerTl.fromTo(
-          sideTextRef.current,
-          { opacity: 0, x: 20 },
-          { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" },
-          "-=0.4"
-        );
-      }
-
-      // 2. Staggered Card Entrance & Parallax Animations with ScrollTrigger
-      cardsRef.current.forEach((card, idx) => {
-        if (!card) return;
-
+      if (headerRef.current) {
         gsap.fromTo(
-          card,
-          { opacity: 0, y: 65, scale: 0.96 },
+          headerRef.current.children,
+          { opacity: 0, y: 40, filter: "blur(12px)" },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "power3.out",
+            filter: "blur(0px)",
+            duration: 2.2,
+            stagger: 0.3,
+            ease: "power2.out",
             scrollTrigger: {
-              trigger: card,
+              trigger: sectionRef.current,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              toggleActions: "play none none none",
             },
           }
         );
-
-        // Subtle Image Parallax on Scroll inside card
-        const imgEl = imagesRef.current[idx];
-        if (imgEl) {
-          gsap.to(imgEl, {
-            yPercent: -6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
-            },
-          });
-        }
-      });
-    }, containerRef);
+      }
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  // 3. Smooth 3D Interactive Mouse Physics on Card Hover
-  const handleMouseMove = (e, index) => {
-    const card = cardsRef.current[index];
-    if (!card || window.innerWidth < 1024) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    gsap.to(card, {
-      rotateY: (x / rect.width) * 5,
-      rotateX: -(y / rect.height) * 5,
-      scale: 1.01,
-      duration: 0.4,
-      ease: "power2.out",
-      transformPerspective: 1000,
-    });
+  // Touch & Swipe handling
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
   };
 
-  const handleMouseLeave = (index) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
 
-    gsap.to(card, {
-      rotateY: 0,
-      rotateX: 0,
-      scale: 1,
-      duration: 0.6,
-      ease: "power2.out",
-    });
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 50) {
+      handleNext();
+    } else if (distance < -50) {
+      handlePrev();
+    }
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+  };
+
+  // Calculate circular offset (-2, -1, 0, 1, 2)
+  const getOffset = (index) => {
+    let diff = index - currentIndex;
+    if (diff > Math.floor(total / 2)) diff -= total;
+    if (diff < -Math.floor(total / 2)) diff += total;
+    return diff;
   };
 
   return (
     <section
-      ref={containerRef}
+      ref={sectionRef}
       id="featured-projects"
-      className="relative w-full bg-bg-primary border-b border-border-color pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-10 lg:pb-12 overflow-hidden font-body"
+      className="relative w-full bg-slate-50/50 border-b border-slate-200/70 pt-14 sm:pt-17 lg:pt-20 pb-8 sm:pb-11 lg:pb-13 overflow-hidden font-body"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 lg:mb-10">
-          <div className="flex flex-col">
-            <div ref={tagRef} className="mb-3">
-              <SectionTag text="CURRENT DELIVERABLES" />
+      {/* Background Soft Curved Ambient Lighting Shapes matching reference image */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute -top-24 -right-24 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-3xl opacity-70" />
+        <div className="absolute top-1/3 -left-32 w-[550px] h-[550px] bg-slate-200/40 rounded-full blur-3xl opacity-60" />
+        <div className="absolute -bottom-24 right-1/4 w-[500px] h-[500px] bg-brand-gold/5 rounded-full blur-3xl opacity-50" />
+      </div>
+
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 relative z-10">
+        
+        {/* Top Header Section Left Aligned matching other sections */}
+        <div className="w-full flex flex-col items-start mb-6 sm:mb-8">
+          
+          {/* Main Header Content */}
+          <div ref={headerRef} className="flex flex-col items-start text-left max-w-3xl">
+            
+            {/* SectionTag Component */}
+            <div className="mb-2.5">
+              <SectionTag text="PROJECT SHOWCASE" />
             </div>
-            <h2
-              ref={titleRef}
-              className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-text-primary uppercase leading-tight"
-            >
+
+            {/* Main Title: OUR ONGOING PROJECTS */}
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[34px] font-extrabold tracking-tight text-brand-darkblue uppercase leading-none mt-1 mb-2.5">
               OUR ONGOING PROJECTS
             </h2>
-            <p
-              ref={descRef}
-              className="text-xs sm:text-sm md:text-base text-text-secondary max-w-2xl leading-relaxed mt-2.5"
-            >
+
+            {/* Subtitle */}
+            <p className="font-body text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl leading-relaxed">
               Building world-class structures with precision, safety and innovation across India and beyond.
             </p>
           </div>
+        </div>
 
-          <div
-            ref={sideTextRef}
-            className="hidden md:flex items-center gap-4 pl-6 border-l border-brand-gold/30 shrink-0"
+        {/* 3D Coverflow Slider Component matching reference image exactly without clipping */}
+        <div
+          className="relative w-full max-w-[1300px] mx-auto my-2 sm:my-3 select-none"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Navigation Arrows positioned on edges */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-1 sm:left-4 md:left-8 lg:left-12 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 rounded-full bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl border border-slate-100 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+            aria-label="Previous Slide"
           >
-            <span className="font-display text-xs font-bold tracking-[0.2em] text-text-secondary uppercase max-w-[130px] leading-snug">
-              STRUCTURES THAT BUILD TOMORROW
-            </span>
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-[2.5] group-hover:-translate-x-0.5 transition-transform" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="absolute right-1 sm:right-4 md:right-8 lg:right-12 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 md:w-13 md:h-13 rounded-full bg-white/95 backdrop-blur-sm shadow-xl hover:shadow-2xl border border-slate-100 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-white hover:scale-110 active:scale-95 transition-all duration-300 group cursor-pointer"
+            aria-label="Next Slide"
+          >
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-[2.5] group-hover:translate-x-0.5 transition-transform" />
+          </button>
+
+          {/* Slider Track with explicit vertical height matching landscape cards */}
+          <div className="relative w-full h-[200px] xs:h-[220px] sm:h-[290px] md:h-[340px] lg:h-[380px] flex items-center justify-center overflow-visible">
+            {ongoingProjects.map((project, index) => {
+              const offset = getOffset(index);
+              const isActive = offset === 0;
+              const isLeft = offset === -1;
+              const isRight = offset === 1;
+              const isVisible = isActive || isLeft || isRight;
+
+              if (!isVisible) return null;
+
+              return (
+                <motion.div
+                  key={project.id}
+                  onClick={() => {
+                    if (isLeft) handlePrev();
+                    if (isRight) handleNext();
+                  }}
+                  initial={false}
+                  animate={{
+                    x: offset === 0 ? "0%" : offset === -1 ? "-68%" : "68%",
+                    scale: isActive ? 1 : 0.88,
+                    opacity: isActive ? 1 : 0.65,
+                    zIndex: isActive ? 20 : 10,
+                    filter: isActive ? "blur(0px)" : "blur(1.2px)",
+                  }}
+                  transition={{
+                    duration: 1.4,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className={`absolute w-[82%] sm:w-[72%] md:w-[60%] lg:w-[52%] max-w-[640px] aspect-[16/9.5] rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 shadow-2xl transition-all duration-500 ${
+                    isActive ? "cursor-default shadow-slate-900/12" : "cursor-pointer hover:opacity-85"
+                  }`}
+                >
+                  {/* Full High-Res Background Image */}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover object-center contrast-[1.04] brightness-[1.02] transition-transform duration-1000 ease-out group-hover:scale-108"
+                  />
+
+                  {/* Dark gradient overlay at bottom for crystal-clear text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 via-55% to-transparent pointer-events-none z-10" />
+
+                  {/* Rich Text Overlay matching Second Image Content */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        exit={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+                        transition={{ duration: 1.0, delay: 0.2, ease: "power2.out" }}
+                        className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 md:bottom-5 md:left-5 z-20 max-w-[90%] sm:max-w-[420px] text-left flex flex-col gap-0.5 sm:gap-1"
+                      >
+                        {/* Gold Client Subtitle */}
+                        <span className="font-display text-[8.5px] sm:text-[9.5px] md:text-[10px] font-extrabold tracking-[0.16em] text-brand-gold uppercase drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]">
+                          {project.client}
+                        </span>
+
+                        {/* Main Project Title */}
+                        <h3
+                          className="font-display text-[11px] sm:text-sm md:text-lg font-black !text-white uppercase tracking-tight leading-snug drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+                          style={{ color: "#ffffff" }}
+                        >
+                          {project.title}
+                        </h3>
+
+                        {/* Client & Scope Details matching second image */}
+                        <div className="flex flex-col gap-0.5 pt-0.5 border-t border-white/20 mt-0.5">
+                          {/* Client Detail */}
+                          <div className="flex items-center gap-1.5 text-[9.5px] sm:text-[10.5px] md:text-xs font-medium text-white/90 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                            <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-brand-gold shrink-0 fill-brand-gold/30" />
+                            <span className="font-semibold text-brand-gold shrink-0">Client :</span>
+                            <span className="truncate text-white">{project.clientDetail}</span>
+                          </div>
+
+                          {/* Scope Detail */}
+                          <div className="flex items-start gap-1.5 text-[8.5px] sm:text-[9.5px] md:text-[11px] font-normal text-white/85 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] line-clamp-2">
+                            <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-brand-gold shrink-0 mt-0.5" />
+                            <span className="font-semibold text-brand-gold shrink-0">Scope :</span>
+                            <span className="leading-tight text-white/90">{project.scope}</span>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Project Cards Stack */}
-        <div className="flex flex-col gap-6 sm:gap-7 w-full">
-          {ongoingProjects.map((project, index) => {
-            const isEven = index % 2 === 1;
-
-            return (
-              <div
-                key={project.id}
-                ref={(el) => (cardsRef.current[index] = el)}
-                onMouseMove={(e) => handleMouseMove(e, index)}
-                onMouseLeave={() => handleMouseLeave(index)}
-                className="group w-full bg-white border border-brand-darkblue/[0.08] hover:border-brand-gold/50 rounded-2xl p-4 sm:p-5 lg:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(212,175,55,0.12)] transition-shadow duration-500 text-left overflow-hidden will-change-transform"
-              >
-                <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-5 lg:gap-7">
-                  {/* Left or Right Image Placement based on Alternating Index */}
-                  {!isEven ? (
-                    /* ODD ITEMS (01, 03, 05): Image on Left */
-                    <>
-                      {/* Exact Side Shape & Slanted Frame Container */}
-                      <div className="w-full lg:w-[46%] aspect-[16/9] shrink-0 relative flex items-center justify-center py-1.5 px-1">
-                        {/* Left Side Shape Structure (Translucent slanted wing) */}
-                        <div 
-                          className="absolute left-2.5 top-2.5 bottom-2.5 w-[24%] bg-gradient-to-r from-slate-100/90 via-slate-50/75 to-transparent border-y border-l border-brand-darkblue/10 rounded-l-xl pointer-events-none z-0 shadow-2xs"
-                          style={{
-                            transform: 'skewX(-10deg)',
-                            transformOrigin: 'center center'
-                          }}
-                        />
-
-                        {/* Right Side Shape Structure (Translucent slanted wing) */}
-                        <div 
-                          className="absolute right-2.5 top-2.5 bottom-2.5 w-[24%] bg-gradient-to-l from-slate-100/90 via-slate-50/75 to-transparent border-y border-r border-brand-darkblue/10 rounded-r-xl pointer-events-none z-0 shadow-2xs"
-                          style={{
-                            transform: 'skewX(-10deg)',
-                            transformOrigin: 'center center'
-                          }}
-                        />
-
-                        {/* Main Slanted Image Container with rounded corners */}
-                        <div 
-                          className="w-[90%] h-full relative z-10 rounded-2xl overflow-hidden shadow-lg border-2 border-white group-hover:shadow-xl transition-all duration-500"
-                          style={{
-                            transform: 'skewX(-10deg)',
-                            transformOrigin: 'center center'
-                          }}
-                        >
-                          {/* Un-skewed Image inside - zoomed out naturally to show full composition */}
-                          <div 
-                            className="w-full h-full relative overflow-hidden"
-                            style={{
-                              transform: 'skewX(10deg) scale(1.08)',
-                              transformOrigin: 'center center'
-                            }}
-                          >
-                            <img
-                              ref={(el) => (imagesRef.current[index] = el)}
-                              src={project.image}
-                              alt={project.title}
-                              className="w-full h-full object-cover contrast-[1.03] group-hover:scale-105 transition-transform duration-700 ease-out"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Content Details */}
-                      <div className="flex-1 flex flex-col justify-center gap-2.5 py-1">
-                        {/* ONGOING Badge above text matching website theme */}
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-gold font-display text-[9px] font-extrabold tracking-widest uppercase self-start mb-0.5 shadow-2xs">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
-                          <span>ONGOING</span>
-                        </div>
-
-                        <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] text-brand-gold uppercase">
-                          {project.client}
-                        </span>
-
-                        <h3 className="font-display text-lg sm:text-xl lg:text-[22px] font-black text-text-primary uppercase leading-snug tracking-tight group-hover:text-brand-gold transition-colors">
-                          {project.title}
-                        </h3>
-
-                        <div className="flex flex-col gap-2 pt-2 border-t border-brand-darkblue/[0.06] mt-1">
-                          <div className="flex items-start gap-2 text-xs sm:text-sm">
-                            <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                            <span className="font-semibold text-text-secondary shrink-0">Client :</span>
-                            <span className="font-medium text-text-primary">{project.clientDetail}</span>
-                          </div>
-
-                          <div className="flex items-start gap-2 text-xs sm:text-sm">
-                            <FileText className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                            <span className="font-semibold text-text-secondary shrink-0">Scope :</span>
-                            <span className="font-normal text-text-secondary leading-relaxed">{project.scope}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Action Button */}
-                      <div className="shrink-0 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-brand-darkblue/[0.08] pt-3 lg:pt-0 lg:pl-6">
-                        <div className="w-10 h-10 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:border-brand-gold group-hover:text-white transition-all duration-300 shadow-xs">
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    /* EVEN ITEMS (02, 04): Content on Left, Image on Right */
-                    <>
-                      {/* Content Details */}
-                      <div className="flex-1 flex flex-col justify-center gap-2.5 py-1 order-2 lg:order-1">
-                        {/* ONGOING Badge above text matching website theme */}
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-brand-gold font-display text-[9px] font-extrabold tracking-widest uppercase self-start mb-0.5 shadow-2xs">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
-                          <span>ONGOING</span>
-                        </div>
-
-                        <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] text-brand-gold uppercase">
-                          {project.client}
-                        </span>
-
-                        <h3 className="font-display text-lg sm:text-xl lg:text-[22px] font-black text-text-primary uppercase leading-snug tracking-tight group-hover:text-brand-gold transition-colors">
-                          {project.title}
-                        </h3>
-
-                        <div className="flex flex-col gap-2 pt-2 border-t border-brand-darkblue/[0.06] mt-1">
-                          <div className="flex items-start gap-2 text-xs sm:text-sm">
-                            <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                            <span className="font-semibold text-text-secondary shrink-0">Client :</span>
-                            <span className="font-medium text-text-primary">{project.clientDetail}</span>
-                          </div>
-
-                          <div className="flex items-start gap-2 text-xs sm:text-sm">
-                            <FileText className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                            <span className="font-semibold text-text-secondary shrink-0">Scope :</span>
-                            <span className="font-normal text-text-secondary leading-relaxed">{project.scope}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Exact Side Shape & Slanted Frame Container */}
-                      <div className="w-full lg:w-[46%] aspect-[16/9] shrink-0 relative flex items-center justify-center py-1.5 px-1 order-1 lg:order-2">
-                        {/* Left Side Shape Structure (Translucent slanted wing) */}
-                        <div 
-                          className="absolute left-2.5 top-2.5 bottom-2.5 w-[24%] bg-gradient-to-r from-slate-100/90 via-slate-50/75 to-transparent border-y border-l border-brand-darkblue/10 rounded-l-xl pointer-events-none z-0 shadow-2xs"
-                          style={{
-                            transform: 'skewX(-10deg)',
-                            transformOrigin: 'center center'
-                          }}
-                        />
-
-                        {/* Right Side Shape Structure (Translucent slanted wing) */}
-                        <div 
-                          className="absolute right-2.5 top-2.5 bottom-2.5 w-[24%] bg-gradient-to-l from-slate-100/90 via-slate-50/75 to-transparent border-y border-r border-brand-darkblue/10 rounded-r-xl pointer-events-none z-0 shadow-2xs"
-                          style={{
-                            transform: 'skewX(-10deg)',
-                            transformOrigin: 'center center'
-                          }}
-                        />
-
-                        {/* Main Slanted Image Container with rounded corners */}
-                        <div 
-                          className="w-[90%] h-full relative z-10 rounded-2xl overflow-hidden shadow-lg border-2 border-white group-hover:shadow-xl transition-all duration-500"
-                          style={{
-                            transform: 'skewX(-10deg)',
-                            transformOrigin: 'center center'
-                          }}
-                        >
-                          {/* Un-skewed Image inside - zoomed out naturally to show full composition */}
-                          <div 
-                            className="w-full h-full relative overflow-hidden"
-                            style={{
-                              transform: 'skewX(10deg) scale(1.08)',
-                              transformOrigin: 'center center'
-                            }}
-                          >
-                            <img
-                              ref={(el) => (imagesRef.current[index] = el)}
-                              src={project.image}
-                              alt={project.title}
-                              className="w-full h-full object-cover contrast-[1.03] group-hover:scale-105 transition-transform duration-700 ease-out"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Action Button */}
-                      <div className="shrink-0 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-brand-darkblue/[0.08] pt-3 lg:pt-0 lg:pl-6 order-3">
-                        <div className="w-10 h-10 rounded-full border border-brand-gold/40 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:border-brand-gold group-hover:text-white transition-all duration-300 shadow-xs">
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

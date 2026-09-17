@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FadeUpText } from "../pages/AboutUs/AnimatedText";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionTag from "../components/SectionTag";
-import { ArrowRight } from "../components/Icons";
-import aboutImg from '../assets/aboutsection.png'
+import aboutImg from '../assets/aboutsection.png';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const capabilitiesData = [
   {
@@ -125,13 +127,90 @@ export default function About() {
 
   const imgY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      const imgBox = el.querySelector(".gsap-about-img");
+      const tag = el.querySelector(".gsap-about-tag");
+      const title = el.querySelector(".gsap-about-title");
+      const desc = el.querySelector(".gsap-about-desc");
+      const caps = el.querySelectorAll(".gsap-about-cap");
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+        delay: 0.5,
+      });
+
+      if (imgBox) {
+        tl.fromTo(
+          imgBox,
+          { opacity: 0, x: -70, filter: "blur(18px)", scale: 0.92 },
+          { opacity: 1, x: 0, filter: "blur(0px)", scale: 1, duration: 3.0, ease: "power2.out" },
+          0.1
+        );
+      }
+
+      if (tag) {
+        tl.fromTo(
+          tag,
+          { opacity: 0, y: 35, filter: "blur(12px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 2.2, ease: "power2.out" },
+          0.4
+        );
+      }
+
+      if (title) {
+        tl.fromTo(
+          title,
+          { opacity: 0, y: 45, filter: "blur(16px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 2.8, ease: "power2.out" },
+          0.7
+        );
+      }
+
+      if (desc) {
+        tl.fromTo(
+          desc,
+          { opacity: 0, y: 35, filter: "blur(12px)" },
+          { opacity: 1, y: 0, filter: "blur(0px)", duration: 2.5, ease: "power2.out" },
+          1.2
+        );
+      }
+
+      if (caps && caps.length > 0) {
+        tl.fromTo(
+          caps,
+          { opacity: 0, y: 45, scale: 0.85, filter: "blur(12px)" },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 2.6,
+            stagger: 0.35,
+            ease: "power2.out",
+          },
+          1.6
+        );
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       ref={containerRef}
       id="about"
       className="relative pt-12 pb-6 md:pt-16 md:pb-8 bg-white border-b border-border-color overflow-hidden"
     >
-      {/* Decorative concentric background watermark (Three Circles brand motif) */}
+      {/* Decorative concentric background watermark */}
       <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-[550px] h-[550px] pointer-events-none opacity-30 z-0">
         <svg viewBox="0 0 200 200" fill="none" className="w-full h-full text-brand-darkblue/10">
           <circle cx="160" cy="100" r="90" stroke="currentColor" strokeWidth="0.5" />
@@ -141,18 +220,11 @@ export default function About() {
         </svg>
       </div>
 
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
 
-          {/* Left Column: Image Banner with Overlay Text */}
-          <motion.div
-            className="lg:col-span-5 relative w-full h-[320px] sm:h-[380px] lg:h-[430px] rounded-xs overflow-hidden shadow-2xl group border border-brand-darkblue/10"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Image with subtle parallax */}
+          {/* Left Column: Image Banner */}
+          <div className="gsap-about-img lg:col-span-5 relative w-full h-[260px] xs:h-[290px] sm:h-[340px] lg:h-[380px] mt-2.5 sm:mt-3 lg:mt-4 rounded-xs overflow-hidden shadow-2xl group border border-brand-darkblue/10">
             <motion.img
               src={aboutImg}
               alt="Civil Engineering Infrastructure"
@@ -160,10 +232,8 @@ export default function About() {
               className="w-full h-[115%] object-cover contrast-[1.05] group-hover:scale-105 transition-transform duration-1000 ease-out"
             />
 
-            {/* Gradient overlay for lower image readability */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none z-10" />
 
-            {/* Image Overlay Text at bottom-left */}
             <div className="absolute bottom-6 left-6 right-6 z-20 flex flex-col items-start">
               <div className="w-8 h-[3px] bg-brand-gold mb-3" />
               <p className="font-display text-xs sm:text-sm font-semibold tracking-[0.25em] text-white/95 uppercase leading-relaxed max-w-[220px]">
@@ -175,102 +245,89 @@ export default function About() {
               </p>
               <div className="w-12 h-[3px] bg-brand-gold mt-3" />
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Content Area */}
           <div className="lg:col-span-7 flex flex-col justify-center pt-3 sm:pt-4 lg:pt-5 pb-2 sm:pb-4">
 
             {/* Section Tag */}
-            <FadeUpText>
-              <div className="mb-4 mt-2 sm:mt-3">
-                <SectionTag text="ABOUT US" />
-              </div>
-            </FadeUpText>
+            <div className="gsap-about-tag mb-4 mt-2 sm:mt-3">
+              <SectionTag text="ABOUT US" />
+            </div>
 
             {/* Main Headline */}
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-bold tracking-tight uppercase mb-6 leading-tight whitespace-nowrap">
+            <h2 className="gsap-about-title font-display text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-bold tracking-tight uppercase mb-6 leading-tight sm:whitespace-nowrap">
               <span className="text-brand-darkblue">Engineering </span>
               <span className="text-brand-gold">With Purpose.</span>
             </h2>
 
             {/* Description Paragraph */}
-            <FadeUpText delay={0.1}>
-              <p className="font-body text-xs sm:text-sm md:text-[14px] text-text-secondary leading-relaxed mb-5 sm:mb-6 max-w-xl">
-                3 Circles delivers precision civil engineering and industrial
-                services. We provide fully integrated, large-scale capabilities
-                designed to support major development projects across building
-                construction, mining and crushing operations, public
-                infrastructure, and heavy excavation.
-              </p>
-            </FadeUpText>
+            <p className="gsap-about-desc font-body text-xs sm:text-sm md:text-[14px] text-text-secondary leading-relaxed mb-5 sm:mb-6 max-w-xl">
+              3 Circles delivers precision civil engineering and industrial
+              services. We provide fully integrated, large-scale capabilities
+              designed to support major development projects across building
+              construction, mining and crushing operations, public
+              infrastructure, and heavy excavation.
+            </p>
 
             {/* 4 Capabilities Grid Row */}
-            <FadeUpText delay={0.2}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 mt-1 sm:mt-2 pt-3 pb-2 sm:pt-4 sm:pb-2 border-y border-brand-darkblue/10 -mb-4 sm:-mb-5">
-                {capabilitiesData.map((cap, index) => (
-                  <div
-                    key={cap.title}
-                    className={`flex flex-col items-center text-center px-3 sm:px-5 ${index < capabilitiesData.length - 1 ? "sm:border-r sm:border-brand-darkblue/10" : ""
-                      }`}
-                  >
-                    {/* Circle Badge with Animated Moving & Blinking Gold Arc Border */}
-                    <div className="relative w-[54px] h-[54px] sm:w-[66px] sm:h-[66px] flex items-center justify-center mb-3 group hover:scale-105 transition-all duration-300">
-                      {/* SVG Dual-Tone Arc Border with Slow Continuous Rotation */}
-                      <motion.svg
-                        className="absolute inset-0 w-full h-full pointer-events-none"
-                        viewBox="0 0 100 100"
-                        animate={{ rotate: 360 }}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 mt-1 sm:mt-2 pt-3 pb-2 sm:pt-4 sm:pb-2 border-y border-brand-darkblue/10 -mb-4 sm:-mb-5">
+              {capabilitiesData.map((cap, index) => (
+                <div
+                  key={cap.title}
+                  className={`gsap-about-cap flex flex-col items-center text-center px-3 sm:px-5 ${index < capabilitiesData.length - 1 ? "sm:border-r sm:border-brand-darkblue/10" : ""
+                    }`}
+                >
+                  <div className="relative w-[54px] h-[54px] sm:w-[66px] sm:h-[66px] flex items-center justify-center mb-3 group hover:scale-105 transition-all duration-300">
+                    <motion.svg
+                      className="absolute inset-0 w-full h-full pointer-events-none"
+                      viewBox="0 0 100 100"
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 24,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="46"
+                        fill="none"
+                        stroke="#E2E8F0"
+                        strokeWidth="2.5"
+                      />
+                      <motion.circle
+                        cx="50"
+                        cy="50"
+                        r="46"
+                        fill="none"
+                        stroke="#D4AF37"
+                        strokeWidth="2.8"
+                        strokeDasharray="216.77 289"
+                        strokeDashoffset="0"
+                        strokeLinecap="round"
+                        animate={{ opacity: [0.6, 1, 0.6] }}
                         transition={{
-                          duration: 24,
+                          duration: 3.5,
                           repeat: Infinity,
-                          ease: "linear",
+                          delay: index * 0.5,
+                          ease: "easeInOut",
                         }}
-                      >
-                        {/* Base Full Circle in Light Grey */}
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="46"
-                          fill="none"
-                          stroke="#E2E8F0"
-                          strokeWidth="2.5"
-                        />
-                        {/* Moving & Blinking Gold Arc */}
-                        <motion.circle
-                          cx="50"
-                          cy="50"
-                          r="46"
-                          fill="none"
-                          stroke="#D4AF37"
-                          strokeWidth="2.8"
-                          strokeDasharray="216.77 289"
-                          strokeDashoffset="0"
-                          strokeLinecap="round"
-                          animate={{ opacity: [0.6, 1, 0.6] }}
-                          transition={{
-                            duration: 3.5,
-                            repeat: Infinity,
-                            delay: index * 0.5,
-                            ease: "easeInOut",
-                          }}
-                        />
-                      </motion.svg>
+                      />
+                    </motion.svg>
 
-                      {/* Inner White Badge Container */}
-                      <div className="w-[84%] h-[84%] rounded-full bg-white flex items-center justify-center shadow-xs border border-gray-100/60 z-10">
-                        {cap.icon}
-                      </div>
+                    <div className="w-[84%] h-[84%] rounded-full bg-white flex items-center justify-center shadow-xs border border-gray-100/60 z-10">
+                      {cap.icon}
                     </div>
-
-                    <span className="font-display text-[11px] sm:text-xs font-extrabold tracking-wider text-brand-darkblue uppercase leading-snug">
-                      {cap.title}
-                    </span>
                   </div>
-                ))}
-              </div>
-            </FadeUpText>
 
-
+                  <span className="font-display text-[11px] sm:text-xs font-extrabold tracking-wider text-brand-darkblue uppercase leading-snug">
+                    {cap.title}
+                  </span>
+                </div>
+              ))}
+            </div>
 
           </div>
 
