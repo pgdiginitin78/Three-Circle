@@ -8,6 +8,7 @@ import {
   MapPinIcon,
   ArrowRight,
 } from "../components/Icons";
+import SEO from "../components/SEO";
 
 const requirementOptions = [
   { value: "building", label: "Building Construction & Infrastructure" },
@@ -73,6 +74,12 @@ export default function ContactPage() {
 
   return (
     <section className="relative min-h-screen bg-brand-white text-brand-darkblue pt-28 sm:pt-36 lg:pt-40 pb-20 sm:pb-28 overflow-hidden font-body selection:bg-brand-gold selection:text-white">
+      <SEO
+        title="Contact Us | Tenders, Inquiries & Consultations"
+        description="Get in touch with 3 Ciircles for EPC contracts, civil infrastructure inquiries, tender submissions, and project consultations in India and the UAE."
+        keywords="Contact 3 Ciircles, infrastructure tenders, civil contractor contact, construction inquiry, Mumbai office, Dubai office"
+        canonical="/contact"
+      />
       {/* Background blueprint subtle mesh */}
       <BlueprintGrid className="opacity-40" />
 

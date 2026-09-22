@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import SectionTag from "../../components/SectionTag";
 import { allMachineryData } from "../../data/plantMachineryData";
+import SEO from "../../components/SEO";
 
 const fallbackImages = {
   "Hydraulic Excavators": "/images/machinery/HeroBannerMobile.png",
@@ -170,6 +171,12 @@ export default function PlantMachinary() {
 
   return (
     <div className="min-h-screen bg-[var(--paper)] text-[var(--ink)] font-body selection:bg-[var(--brass-bright)] selection:text-white">
+      <SEO
+        title="Plant & Heavy Machinery Fleet"
+        description="Explore 3 Ciircles heavy plant and machinery fleet: excavators, bulldozers, vibro rollers, motor graders, stone crushers, cranes, and concrete plants."
+        keywords="Plant and machinery, construction equipment, heavy excavators, bulldozers, motor graders, stone crushers, 3 Ciircles fleet"
+        canonical="/plant-machinery"
+      />
       <section id="overview" className="relative pt-20 h-[95dvh] overflow-hidden bg-[#070D1B]">
         {/* DESKTOP BACKGROUND HERO IMAGE WITH CINEMATIC MOVING ZOOM/PAN EFFECT */}
         <div className="hidden md:block absolute inset-0 z-0 opacity-90 pointer-events-none overflow-hidden">

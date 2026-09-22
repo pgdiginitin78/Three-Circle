@@ -7,6 +7,7 @@ import AchievementOne from "../../../public/images/achivements/AchievementOne.pn
 import AchievementTwo from "../../../public/images/achivements/AchievementTwo.png";
 import AchievementThree from "../../../public/images/achivements/AchievementThree.png";
 import AchievementFour from "../../../public/images/achivements/AchievementFour.png";
+import SEO from "../../components/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,6 +76,12 @@ export default function Achievements() {
 
   return (
     <div ref={sectionRef} className="pt-32 pb-24 px-6 md:px-12 min-h-screen bg-[#faf9f6] text-[#0f172a] relative overflow-hidden">
+      <SEO
+        title="Achievements & Recognition"
+        description="Milestones, excellence awards, and project achievements earned by 3 Ciircles in partnership with top industry leaders like Tata Projects and municipal authorities."
+        keywords="3 Ciircles achievements, construction excellence awards, quality conscious contractor, safety awards, Tata Projects subcontractor"
+        canonical="/our-company/achievements"
+      />
       {/* Decorative background shape */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#f0eee9] rounded-full blur-3xl opacity-50 -z-10 transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 

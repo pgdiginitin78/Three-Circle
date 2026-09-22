@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../../components/SEO';
 
 const clientImages = [
   { name: 'Cidco', img: '/images/ourClients/Cidco.png' },
@@ -22,6 +23,12 @@ const clientImages = [
 export default function Clients() {
   return (
     <div className="pt-32 pb-24 px-6 md:px-12 min-h-screen bg-[#faf9f6] relative overflow-hidden">
+      <SEO
+        title="Our Clients & Government Partners"
+        description="Trusted by India's foremost government agencies and corporate giants: Adani Airport, Reliance Industries, L&T, Tata Projects, JNPT, CIDCO, MSRDC, and MIDC."
+        keywords="3 Ciircles clients, government infrastructure contracts, Tata Projects, L&T, Adani Airport, Reliance Industries, CIDCO, MSRDC"
+        canonical="/our-company/clients"
+      />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#f0eee9] rounded-full blur-3xl opacity-50 -z-10 transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">

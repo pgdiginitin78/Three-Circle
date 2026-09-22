@@ -5,6 +5,7 @@ import ACCREDITATIONS from "../../../public/images/Associates/ACCREDITATIONS.png
 import ACCREDITATIONSOne from "../../../public/images/Associates/ACCREDITATIONSOne.jpeg";
 import ACCREDITATIONSTwo from "../../../public/images/Associates/ACCREDITATIONSTwo.jpeg";
 import ACCREDITATIONSThree from "../../../public/images/Associates/ACCREDITATIONSThree.jpeg";
+import SEO from "../../components/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,6 +56,12 @@ export default function Accreditations() {
       ref={sectionRef}
       className="pt-28 pb-24 px-6 md:px-12 min-h-screen bg-[#faf9f6] text-[#0f172a] relative overflow-hidden"
     >
+      <SEO
+        title="Accreditations & Certifications"
+        description="Official accreditations, statutory licenses, and quality compliance certificates held by 3 Ciircles for heavy infrastructure, civil construction, and mining."
+        keywords="3 Ciircles accreditations, ISO certifications, construction licenses, engineering compliance, civil registration"
+        canonical="/our-company/accreditations"
+      />
       <h1 className="text-center mb-10 text-2xl lg:text-4xl font-bold">
         ACCREDITATIONS
       </h1>

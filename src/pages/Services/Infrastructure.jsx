@@ -9,6 +9,7 @@ import bridgeImg from '../../assets/services/bridge.png';
 import roadsImg from '../../assets/services/roadsandhighway.png';
 import highriseImg from '../../assets/services/highrise.png';
 import logobackVideo from '../../assets/services/logoback.mp4';
+import SEO from '../../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -352,6 +353,12 @@ export default function Infrastructure() {
 
   return (
     <div className="w-full">
+      <SEO
+        title="Civil Infrastructure & Highways Construction"
+        description="End-to-end infrastructure construction solutions by 3 Ciircles. Roadways, bridges, expressways, flyovers, transit corridors, and heavy public infrastructure."
+        keywords="Infrastructure construction, bridge construction, road and highways, expressway contracting, civil infrastructure development, 3 Ciircles infrastructure"
+        canonical="/services/infrastructure"
+      />
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] w-full flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0 overflow-hidden">

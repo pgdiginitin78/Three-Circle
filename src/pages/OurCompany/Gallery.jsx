@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLenis } from "lenis/react";
 import SectionTag from "../../components/SectionTag";
+import SEO from "../../components/SEO";
 import galleryHeroImg from "../../assets/galleryhero.png";
 
 // Project assets from src/assets/Gallery
@@ -267,6 +268,12 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#0F172A] selection:bg-brand-gold selection:text-brand-darkblue">
+      <SEO
+        title="Project & Fleet Gallery"
+        description="Visual archive of 3 Ciircles heavy infrastructure projects, airport works at MIAL, deep excavations, structural engineering, and fleet operations."
+        keywords="3 Ciircles gallery, infrastructure project photos, construction site gallery, airport works photos, deep excavation pictures"
+        canonical="/our-company/gallery"
+      />
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[86vh] sm:min-h-[92vh] md:min-h-[96vh] lg:min-h-[100vh] flex flex-col justify-center pt-40 sm:pt-48 md:pt-52 pb-16 sm:pb-20 md:pb-24 bg-[#010634] text-white overflow-hidden">
         {/* Hero Background Image with Cinematic Pan/Zoom */}

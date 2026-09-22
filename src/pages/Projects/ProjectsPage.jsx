@@ -10,6 +10,7 @@ import {
 import projectHeroVideo from "../../assets/completed-projects/projecthero.mp4";
 import SectionTag from "../../components/SectionTag";
 import { ArrowRight } from "../../components/Icons";
+import SEO from "../../components/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -736,6 +737,12 @@ export default function ProjectsPage() {
       style={TOKENS}
       className="min-h-screen bg-[var(--paper)] font-body text-[var(--ink)]"
     >
+      <SEO
+        title="Landmark Projects & Executed Contracts"
+        description="Explore 3 Ciircles portfolio of landmark civil works, marine docks, highways, mass earthwork, and industrial infrastructure delivered with precision."
+        keywords="3 Ciircles projects, infrastructure contracts, civil construction portfolio, landmark engineering works, marine docks, highways, India"
+        canonical="/projects"
+      />
       <Hero reduced={reduced} />
 
       <LandmarkWorksSection />

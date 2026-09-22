@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ReactLenis } from "lenis/react";
 import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -95,12 +96,14 @@ function AppContent() {
 
 export default function App() {
   return (
-    <Router>
-      <ReactLenis root>
-        <TransitionProvider>
-          <AppContent />
-        </TransitionProvider>
-      </ReactLenis>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ReactLenis root>
+          <TransitionProvider>
+            <AppContent />
+          </TransitionProvider>
+        </ReactLenis>
+      </Router>
+    </HelmetProvider>
   );
 }

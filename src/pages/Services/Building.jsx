@@ -11,6 +11,7 @@ import cooperSchoolImg from '../../assets/services/Cooper School.png';
 import anantUnivImg from '../../assets/services/Anantuniversity.png';
 import airportImg from '../../assets/services/mumbai airport.png';
 import ctaback from '../../assets/services/ctaback.png';
+import SEO from '../../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -270,6 +271,12 @@ export default function Building() {
 
   return (
     <div className="w-full">
+      <SEO
+        title="Building Construction & Civil Works"
+        description="Comprehensive building and civil construction solutions by 3 Ciircles. Specializing in RCC works, MEP engineering, facade systems, and institutional structures."
+        keywords="Building construction, RCC works, MEP engineering, civil engineering services, commercial complexes, 3 Ciircles building"
+        canonical="/services/building"
+      />
 
       {/* HERO */}
       <section className="relative min-h-[82vh] sm:min-h-[85vh] w-full flex items-center overflow-hidden">

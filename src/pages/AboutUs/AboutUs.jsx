@@ -14,6 +14,7 @@ import buildingImg from "../../assets/services/building.jpg";
 import infrastructureImg from "../../assets/services/infrastructure.jpg";
 import bridgeImg from "../../assets/services/bridge.png";
 import StrategicAlliances from "./StrategicAlliances";
+import SEO from "../../components/SEO";
 
 const narrativeSections = [
   {
@@ -68,6 +69,12 @@ const directors = [
 export default function AboutUs() {
   return (
     <div className="relative min-h-screen bg-bg-primary text-text-primary mx-auto selection:bg-brand-gold selection:text-white overflow-hidden">
+      <SEO
+        title="About Us | Legacy, Leadership & Infrastructure Vision"
+        description="Learn about 3 Ciircles, our leadership under Mr. Sidharth Jaiswaal, over 50 years of family engineering legacy, safety benchmarks, and premier infrastructure contracting."
+        keywords="About 3 Ciircles, Three Circles company profile, construction leadership, civil engineering history, infrastructure excellence, India, UAE"
+        canonical="/about"
+      />
       <BlueprintGrid />
 
       <section

@@ -8,6 +8,7 @@ import excavationImg from '../../assets/services/excavation.jpg';
 import infrastructureImg from '../../assets/services/infrastructure.jpg';
 import ctaback from '../../assets/services/ctaback.png';
 import MiningHeroCanvas from '../../components/MiningHeroCanvas';
+import SEO from '../../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -322,6 +323,12 @@ export default function Mining() {
 
   return (
     <div className="w-full">
+      <SEO
+        title="Mining, Crushing & Extraction Services"
+        description="Controlled extraction, drilling, blasting, and aggregate crushing services by 3 Ciircles. Utilizing modern hydraulic rigs and specialized mining equipment."
+        keywords="Mining services, rock extraction, drilling and blasting, aggregate crushing, overburden removal, 3 Ciircles mining"
+        canonical="/services/mining"
+      />
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] w-full flex items-center overflow-hidden">
         {/* CONTINUOUS MOVING BACKGROUND IMAGE */}

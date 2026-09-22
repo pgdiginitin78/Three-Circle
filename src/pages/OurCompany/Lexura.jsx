@@ -25,6 +25,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTransition } from "../../components/PageTransition";
 import SectionTag from "../../components/SectionTag";
+import SEO from "../../components/SEO";
 import lexuraaHeroImg from "../../assets/lexuraahero.png";
 import lexuraaLogo from "../../assets/lexuraa_logo.jpg";
 import lexurabackImg from "../../assets/lexuraback.png";
@@ -241,6 +242,12 @@ export default function Lexura() {
 
   return (
     <div ref={pageRef} className="min-h-screen bg-[var(--paper)] text-[var(--ink)] font-body selection:bg-[var(--brass-bright)] selection:text-white">
+      <SEO
+        title="Lexuraa General Contracting LLC | UAE Operations"
+        description="Lexuraa General Contracting LLC, the international UAE subsidiary of 3 Ciircles, delivering civil engineering, infrastructure, and commercial excellence in Dubai and Abu Dhabi."
+        keywords="Lexuraa General Contracting LLC, 3 Ciircles UAE, Dubai civil contractor, Abu Dhabi infrastructure, UAE contracting, Gulf engineering"
+        canonical="/our-company/lexura"
+      />
       {/* 1. HERO SECTION (Left-aligned, reduced logo, website hero theme) */}
       <section className="relative min-h-[92vh] sm:min-h-[96vh] md:min-h-screen lg:min-h-[102vh] flex items-center justify-start overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-24 md:pt-40 md:pb-28">
         <div className="absolute inset-0 z-0">

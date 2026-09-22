@@ -14,6 +14,7 @@ import sitecleaingImg from '../../assets/services/siteclearing.png'
 import gradingImg from '../../assets/services/grading.png'
 import earthmovingImg from '../../assets/services/earthmoving.png';
 import ExcavationHeroCanvas from '../../components/ExcavationHeroCanvas';
+import SEO from '../../components/SEO';
 
 const containerVariants = {
   hidden: {},
@@ -341,6 +342,12 @@ export default function Excavation() {
 
   return (
     <div className="w-full">
+      <SEO
+        title="Heavy Excavation & Bulk Earthmoving Services"
+        description="Mass earthmoving, site grading, deep basement excavation, trenching, and ground leveling services by 3 Ciircles for major infrastructure developments."
+        keywords="Heavy excavation, bulk earthworks, site preparation, grading services, deep excavation, 3 Ciircles excavation"
+        canonical="/services/excavation"
+      />
       {/* HERO SECTION WITH THREE.JS ANIMATION LAYER */}
       <section className="relative min-h-[95vh] w-full flex items-center overflow-hidden">
         {/* CONTINUOUS MOVING BACKGROUND IMAGE */}

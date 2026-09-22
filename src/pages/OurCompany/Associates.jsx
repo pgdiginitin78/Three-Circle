@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import SEO from '../../components/SEO';
 
 const associates = [
   { name: 'Ambuja Cement', img: '/images/majorAssociates/AmbujaCement.png' },
@@ -18,6 +19,12 @@ const associates = [
 function Associates() {
   return (
     <div className="container mx-auto px-16 pt-28 pb-10 ">
+      <SEO
+        title="Major Associates & Material Partners"
+        description="Discover the tier-one material associates and industry leaders partnering with 3 Ciircles, including UltraTech Cement, Tata Steel, JSW, and Ambuja Cement."
+        keywords="3 Ciircles associates, construction partners, Tata Steel, UltraTech Cement, material suppliers, infrastructure associates"
+        canonical="/our-company/associates"
+      />
       <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Our Major Associates</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {associates.map((associate, index) => (
