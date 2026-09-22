@@ -85,7 +85,7 @@ export default function Hero() {
           <span
             className="gsap-hero-tag inline-block font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.35em] text-brand-gold uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
-            3 Circles • Engineering • Infrastructure • Mining
+            3 Ciircles • Engineering • Infrastructure • Mining
           </span>
 
           <h1 className="font-display text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] tracking-tight text-white uppercase mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
@@ -103,8 +103,7 @@ export default function Hero() {
           <p
             className="gsap-hero-desc text-xs sm:text-sm md:text-base text-white max-w-[500px] leading-relaxed mb-8 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
           >
-            Integrated civil construction, infrastructure, mining, crushing and
-            excavation solutions engineered for scale.
+            Integrated Civil Construction, Infrastructure, Mining, Crushing, And Excavation Solutions Engineered For Scale.
           </p>
 
           <div

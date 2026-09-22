@@ -96,7 +96,7 @@ export default function ContactPage() {
 
           <FadeUpText delay={0.14}>
             <p className="font-body text-sm sm:text-base md:text-lg text-brand-darkblue/70 leading-relaxed max-w-2xl">
-              Connect directly with 3 Circles for EPC delivery, civil
+              Connect directly with 3 Ciircles for EPC delivery, civil
               construction, aggregate supply, and turnkey infrastructure
               projects.
             </p>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                 </h4>
                 <p className="font-body text-xs text-brand-darkblue/70 mt-1">
                   Your inquiry has been received. A representative from 3
-                  Circles will connect with you shortly.
+                  Ciircles will connect with you shortly.
                 </p>
               </motion.div>
             )}

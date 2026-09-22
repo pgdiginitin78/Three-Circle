@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, FileText, ChevronLeft, ChevronRight } from "lucide-react";
 import SectionTag from "../../components/SectionTag";
 
-import mialAirsideRescueImg from "../../assets/ongoing-projects/mial-airside-rescue.jpg";
+import mialAirsideRescueImg from "../../assets/ongoing-projects/mial-airside-rescue.jpeg";
 import mialSecondaryFireStationImg from "../../assets/ongoing-projects/mial-secondary-fire-station.jpg";
-import mialBoundaryWallImg from "../../assets/ongoing-projects/mial-boundary-wall.jpg";
+import mialBoundaryWallImg from "../../assets/ongoing-projects/mial-boundary-wall.jpeg";
 import ltBoulderCrushingImg from "../../assets/ongoing-projects/lt-boulder-crushing.jpg";
 import ltAggregateSandSupplyImg from "../../assets/ongoing-projects/lt-aggregate-sand-supply.jpg";
 

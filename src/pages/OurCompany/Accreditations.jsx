@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ACCREDITATIONS from "../../../public/images/Associates/ACCREDITATIONS.png";
-import ACCREDITATIONSOne from "../../../public/images/Associates/ACCREDITATIONSOne.png";
-import ACCREDITATIONSTwo from "../../../public/images/Associates/ACCREDITATIONSTwo.png";
-import ACCREDITATIONSThree from "../../../public/images/Associates/ACCREDITATIONSThree.png";
+import ACCREDITATIONSOne from "../../../public/images/Associates/ACCREDITATIONSOne.jpeg";
+import ACCREDITATIONSTwo from "../../../public/images/Associates/ACCREDITATIONSTwo.jpeg";
+import ACCREDITATIONSThree from "../../../public/images/Associates/ACCREDITATIONSThree.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 

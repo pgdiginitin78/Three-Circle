@@ -1,6 +1,6 @@
-# 3 Circles — Engineering, Infrastructure & Mining
+# 3 Ciircles — Engineering, Infrastructure & Mining
 
-A modern, high-performance web experience built with React, Vite, Tailwind CSS, and Framer Motion for **3 Circles**, a premier civil engineering, infrastructure, and heavy industrial solutions contractor in the UAE and GCC.
+A modern, high-performance web experience built with React, Vite, Tailwind CSS, and Framer Motion for **3 Ciircles**, a premier civil engineering, infrastructure, and heavy industrial solutions contractor in the UAE and GCC.
 
 ## 🚀 Features
 

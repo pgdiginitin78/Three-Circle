@@ -13,6 +13,10 @@ const clientImages = [
   { name: 'PWD', img: '/images/ourClients/Pwd.png' },
   { name: 'Supreme', img: '/images/ourClients/Supreme.png' },
   { name: 'Tata Projects', img: '/images/ourClients/TataProjects.png' },
+  { name: 'Adani, Mumbai international airport', img: '/images/ourClients/adni logo.png' },
+  { name: 'JNPT Port', img: '/images/ourClients/jnpt.png', imgClass: 'scale-[1.6] md:scale-[1.75]' },
+  { name: 'APMC Vashi', img: '/images/ourClients/apmc.jpg', imgClass: 'scale-[1.55] md:scale-[1.7]' },
+  { name: 'Reliance Industries', img: '/images/ourClients/realanice.png' },
 ];
 
 export default function Clients() {
@@ -36,12 +40,12 @@ export default function Clients() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_10px_30px_rgba(15,23,42,0.03)] border border-[#f1f0ee] flex items-center justify-center transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] group"
+              className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_10px_30px_rgba(15,23,42,0.03)] border border-[#f1f0ee] flex items-center justify-center transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] group overflow-hidden"
             >
               <img
                 src={client.img}
                 alt={client.name}
-                className="h-16 md:h-20 w-auto object-contain "
+                className={`h-16 md:h-20 w-auto object-contain transition-transform duration-300 ${client.imgClass || ''}`}
               />
             </motion.div>
           ))}

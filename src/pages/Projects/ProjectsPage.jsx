@@ -463,17 +463,36 @@ function TimelineCard({ contract, index }) {
                 <span className="truncate">{contract.authority}</span>
               </div>
             )}
+
           </div>
         </div>
 
-        {/* Category Pill on Far Right */}
-        <div className="hidden sm:block shrink-0">
-          <span className="px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200/80 font-body text-[10px] font-bold text-slate-600 group-hover:bg-amber-100/60 group-hover:text-amber-900 group-hover:border-brand-gold/60 transition-colors shadow-xs">
+        {/* Category Pill and Value on Far Right */}
+        <div className="hidden sm:flex flex-col items-center justify-center gap-1.5 shrink-0 min-w-[100px]">
+          <span className="w-full text-center px-2.5 py-1 rounded-lg bg-slate-100 border border-slate-200/80 font-body text-[10px] font-bold text-slate-600 group-hover:bg-amber-100/60 group-hover:text-amber-900 group-hover:border-brand-gold/60 transition-colors shadow-xs">
             {contract.category || "Marine & Docks"}
           </span>
+
+          {contract.value && (
+            <div className="flex items-center justify-center gap-1 text-[11px] font-bold text-slate-700 tracking-tight leading-none mt-1.5">
+              <IconRupee className="text-brand-gold shrink-0 w-3 h-3" />
+              <span>{contract.value.replace(/\s*₹\s*$/, "")}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
+  );
+}
+
+function IconRupee({ className = "w-3.5 h-3.5 text-brand-gold shrink-0" }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 3h12" />
+      <path d="M6 8h12" />
+      <path d="M6 13l8.5 8" />
+      <path d="M6 13h3a4 4 0 0 0 0-8" />
+    </svg>
   );
 }
 

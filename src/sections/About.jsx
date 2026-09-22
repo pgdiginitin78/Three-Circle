@@ -263,11 +263,7 @@ export default function About() {
 
             {/* Description Paragraph */}
             <p className="gsap-about-desc font-body text-xs sm:text-sm md:text-[14px] text-text-secondary leading-relaxed mb-5 sm:mb-6 max-w-xl">
-              3 Circles delivers precision civil engineering and industrial
-              services. We provide fully integrated, large-scale capabilities
-              designed to support major development projects across building
-              construction, mining and crushing operations, public
-              infrastructure, and heavy excavation.
+             3 Ciircles Delivers Precision Civil Engineering And Industrial Services. We Provide Fully Integrated, Large-Scale Capabilities Designed To Support Major Development Projects Across Building Construction, Mining And Crushing Operations, Public Infrastructure, And Heavy Excavation.
             </p>
 
             {/* 4 Capabilities Grid Row */}

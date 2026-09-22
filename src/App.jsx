@@ -18,6 +18,7 @@ import Achievements from "./pages/OurCompany/Achievements";
 import Associates from "./pages/OurCompany/Associates";
 import Clients from "./pages/OurCompany/Clients";
 import Lexura from "./pages/OurCompany/Lexura";
+import Gallery from "./pages/OurCompany/Gallery";
 import PlantMachinary from "./pages/PlantMachinery/PlantMachinary";
 
 function AppContent() {
@@ -80,6 +81,8 @@ function AppContent() {
             <Route path="/our-company/associates" element={<Associates />} />
             <Route path="/our-company/clients" element={<Clients />} />
             <Route path="/our-company/accreditations" element={<Accreditations />} />
+            <Route path="/our-company/gallery" element={<Gallery />} />
+            <Route path="/gallery" element={<Navigate to="/our-company/gallery" replace />} />
 
             {/* Catch-all 404 Route */}
             <Route path="*" element={<Navigate to="/" replace />} />

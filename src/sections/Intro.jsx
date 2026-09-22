@@ -147,7 +147,7 @@ export default function Intro() {
             <div className="gsap-exp-tag flex items-center gap-2.5">
               <span className="w-7 h-[2px] bg-[#D4AF37]" />
               <span className="font-display text-[11px] sm:text-xs font-bold uppercase tracking-[0.35em] text-[#D4AF37]">
-                OUR EXPERTISE
+               OUR EXPERTISE
               </span>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function Intro() {
           </h2>
 
           <p className="gsap-exp-desc font-display text-sm sm:text-base md:text-[17px] font-medium text-white/85 leading-relaxed tracking-wide max-w-3xl">
-            3 Circles delivers integrated civil and infrastructure capabilities across building construction, mining and crushing, infrastructure development, and heavy earthwork excavation.
+            3 Ciircles delivers integrated civil and infrastructure capabilities across building construction, mining and crushing, infrastructure development, and heavy earthwork excavation.
           </p>
         </div>
 

@@ -14,7 +14,7 @@ const servicesData = [
   {
     num: "01",
     title: "BUILDING INDUSTRY",
-    subtitle: "Commercial & Highrise Civil Structures",
+    subtitle: "Commercial & High-Rise Civil Structures",
     items: [
       "RCC Works & Framework",
       "MEP Engineering & Systems",
@@ -39,8 +39,8 @@ const servicesData = [
     subtitle: "Public & Regional Transportation Works",
     items: [
       "Bridge & Overpass Construction",
-      "Roads & Highway Network Development",
-      "Highrise Deep Foundation Systems",
+      "Road & Highway Network Development",
+      "High-Rise Deep Foundation Systems",
     ],
     image: infrastructureImg,
   },
@@ -50,8 +50,8 @@ const servicesData = [
     subtitle: "Heavy Earthworks & Land Development",
     items: [
       "Site Clearing & Preparation",
-      "Precision Grading & Levelling",
-      "Bulk Earth Moving & Safe Disposal",
+      "Precision Grading & Leveling",
+      "Bulk Earthmoving & Safe Disposal",
     ],
     image: excavationImg,
   },
@@ -77,7 +77,7 @@ export default function Services() {
               </h2>
             </FadeUpText>
             <FadeUpText delay={0.1}>
-              <p className="text-xs sm:text-sm md:text-base text-text-secondary max-w-3xl leading-relaxed mt-3.5 sm:mt-4">
+              <p className="text-xs sm:text-sm md:text-base text-text-secondary max-w-4xl leading-relaxed mt-3.5 sm:mt-4">
                 Integrated engineering and heavy industrial capabilities
                 delivered with precision across the UAE and GCC.
               </p>

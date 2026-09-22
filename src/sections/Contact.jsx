@@ -144,7 +144,7 @@ const requirementOptions = [
 
 const metaItems = [
   { icon: MapPinIcon, label: "Headquarters", value: "xxxxxxx" },
-  { icon: MailIcon, label: "Email Enquiry", value: "info@3circles.ae" },
+  { icon: MailIcon, label: "Email Enquiry", value: "info@3ciircles.ae" },
   { icon: PhoneIcon, label: "Phone Call", value: "+971 4 333 3333" },
 ];
 
@@ -164,7 +164,7 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(
-      "Thank you. A representative from 3 Circles will reach out to you shortly.",
+      "Thank you. A representative from 3 Ciircles will reach out to you shortly.",
     );
     setFormData({
       name: "",

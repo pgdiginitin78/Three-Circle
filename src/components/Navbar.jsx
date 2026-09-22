@@ -52,6 +52,7 @@ export default function Navbar() {
         { label: "Leadership", path: "/about", target: "leadership" },
         { label: "Safety & Quality", path: "/about", target: "safety" },
         { label: "Our Strength", path: "/about", target: "strength" },
+        { label: "Strategic Alliances", path: "/about", target: "alliances" },
       ],
     },
     {
@@ -103,6 +104,7 @@ export default function Navbar() {
         { label: "Major Associates", path: "/our-company/associates", target: null },
         { label: "Our Clients", path: "/our-company/clients", target: null },
         { label: "Accreditations", path: "/our-company/accreditations", target: null },
+        { label: "Gallery", path: "/our-company/gallery", target: null },
       ],
     },
   ];
@@ -136,7 +138,7 @@ export default function Navbar() {
         >
           <img
             src={Logo}
-            alt="3 Circles Logo"
+            alt="3 Ciircles Logo"
             className="h-10 md:h-16 2xl:h-16 w-auto object-contain"
           />
         </button>
@@ -361,7 +363,7 @@ export default function Navbar() {
 
               <div className="pl-8 pr-6 pb-6 pt-4 border-t border-brand-darkblue/[0.06] flex items-center justify-between">
                 <span className="font-display text-[9px] font-bold tracking-[0.2em] text-brand-gold uppercase">
-                  3 Circles
+                  3 Ciircles
                 </span>
                 <span className="font-display text-[8px] font-medium tracking-[0.15em] text-text-secondary uppercase">
                   Engineering • Infrastructure

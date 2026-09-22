@@ -12,6 +12,7 @@ const navLinks = [
   { label: 'ABOUT', path: '/about', target: null },
   { label: 'SERVICES', path: '/', target: 'services' },
   { label: 'PROJECTS', path: '/projects', target: null },
+  { label: 'GALLERY', path: '/our-company/gallery', target: null },
   { label: 'CONTACT', path: '/contact', target: null },
 ];
 
@@ -91,7 +92,7 @@ export default function Footer() {
               <div className="p-2 sm:p-2.5 rounded-lg bg-white/[0.40] backdrop-blur-md border border-white/15 group-hover:border-brand-gold/50 shadow-[0_4px_20px_rgba(0,0,0,0.3)] transition-all duration-300">
                 <img
                   src={Logo}
-                  alt="3 Circles Logo"
+                  alt="3 Ciircles Logo"
                   className="h-9 md:h-16 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(212,175,55,0.35)]"
                 />
               </div>
@@ -155,7 +156,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <MailIcon className="w-3.5 h-3.5 text-brand-gold shrink-0" />
-                <span>info@3circles.ae</span>
+                <span>info@3ciircles.ae</span>
               </div>
             </div>
           </div>
@@ -163,7 +164,7 @@ export default function Footer() {
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-6 border-t border-white/10">
           <span className="font-display text-[9px] font-medium tracking-[0.15em] text-white/50 uppercase">
-            &copy; {new Date().getFullYear()} 3 CIRCLES OPC P LTD. ALL RIGHTS RESERVED.
+            &copy; {new Date().getFullYear()} 3 CIIRCLES OPC P LTD. ALL RIGHTS RESERVED.
           </span>
           <BackToTopButton />
         </div>

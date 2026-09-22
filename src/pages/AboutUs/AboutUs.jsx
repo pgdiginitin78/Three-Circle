@@ -13,6 +13,7 @@ import strengthImg from "../../assets/about/strength.png";
 import buildingImg from "../../assets/services/building.jpg";
 import infrastructureImg from "../../assets/services/infrastructure.jpg";
 import bridgeImg from "../../assets/services/bridge.png";
+import StrategicAlliances from "./StrategicAlliances";
 
 const narrativeSections = [
   {
@@ -22,7 +23,7 @@ const narrativeSections = [
     image: leadershipImg,
     slogan: ["EXPERIENCE", "BUILDS", "BETTER", "TOMORROW"],
     paragraphs: [
-      "At the helm of 3 CIRCLES OPC P LTD is Mr. Sidharth Jaiswal, a Civil Engineer with a Diploma and a Bachelor's degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, Mr. Vijay Jaiswal, Mr. Sidharth Jaiswal leads the company into a new era.",
+      "At the helm of 3 CIIRCLES OPC P LTD is Mr. Sidharth Jaiswaal, a Civil Engineer with a Diploma and a Bachelor's degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, Mr. Vijay Jaiswal, Mr. Sidharth Jaiswaal leads the company into a new era.",
     ],
   },
   {
@@ -32,7 +33,7 @@ const narrativeSections = [
     image: establishmentImg,
     slogan: ["FOUNDATIONAL", "ROLE IN", "NATION", "BUILDING"],
     paragraphs: [
-      "Founded in 1979, Three Circles Construction Company, now 3 CIRCLES OPC P LTD, specializes in executing government construction projects. The company has played a foundational role in the development of New Bombay and has actively contributed to nation-building. Engaging in notable projects like JNPT Port, Three Circles has collaborated with prestigious multinational companies such as HYUNDAI, MITSUI, XANON VERSATOP, KLOCKNER, and many more., showcasing both technical expertise and financial stability for high-value endeavors.",
+      "Founded in 1975, Three Circles Construction Company, now 3 CIIRCLES OPC P LTD, specializes in executing government construction projects. The company has played a foundational role in the development of New Bombay and has actively contributed to nation-building. Engaging in notable projects like JNPT Port, Three Circles has collaborated with prestigious multinational companies such as HYUNDAI, MITSUI, XANON VERSATOP, KLOCKNER, and many more., showcasing both technical expertise and financial stability for high-value endeavors.",
     ],
   },
   {
@@ -42,7 +43,7 @@ const narrativeSections = [
     image: transitionImg,
     slogan: ["SUSTAINED", "GROWTH &", "UNWAVERING", "LEGACY"],
     paragraphs: [
-      'In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become "3 CIRCLES OPC P LTD." This private limited entity, with Mr. Vijay Jaiswal as Director and Mr. Sidharth Jaiswal as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.',
+      'In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become "3 CIIRCLES OPC P LTD." This private limited entity, with Mr. Vijay Jaiswal as Director and Mr. Sidharth Jaiswaal as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.',
     ],
   },
 ];
@@ -56,7 +57,7 @@ const directors = [
     desc: "Guiding visionary direction with decades of pioneering execution across foundational government and infrastructure endeavors.",
   },
   {
-    name: "MR. SIDDHARTH JAISWAL",
+    name: "MR. SIDHARTH JAISWAAL",
     role: "Managing Director",
     image: "/directors/siddharth_portrait.png",
     period: "Strategic Direction",
@@ -109,7 +110,7 @@ export default function AboutUs() {
               className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-bold tracking-tight !text-white text-text-light uppercase leading-[1.1] mt-3 sm:mt-4 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-xl md:max-w-2xl"
               style={{ color: "#ffffff" }}
             >
-              The Evolution From Three Circles To 3 Circles OPC P LTD.
+              The Evolution From Three Ciircles To 3 Ciircles OPC P LTD.
             </motion.h1>
 
             {/* Metric Footer Row with Staggered Slow Fade */}
@@ -129,7 +130,7 @@ export default function AboutUs() {
                   transition={{ duration: 1.2, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
-                    1979
+                    1975
                   </span>
                   <span
                     className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] !text-white/90 uppercase"
@@ -145,7 +146,7 @@ export default function AboutUs() {
                   transition={{ duration: 1.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
-                    45+ YRS
+                    51+ YRS
                   </span>
                   <span
                     className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] !text-white/90 uppercase"
@@ -198,7 +199,7 @@ export default function AboutUs() {
                       {/* LEFT COLUMN: Header, Stats, 2x2 Feature Cards Grid, Explore Link */}
                       <div className="lg:col-span-7 xl:col-span-7 flex flex-col justify-between">
                         <div>
-                          
+
                           {/* Main Headline */}
                           <motion.h3
                             initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
@@ -219,7 +220,7 @@ export default function AboutUs() {
                             className="flex flex-col mb-4"
                           >
                             <p className="font-body text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal">
-                              Founded in 1979, Three Circles Construction Company, now 3 CIRCLES OPC P LTD, has built a reputation for delivering world-class construction solutions. The company specializes in end-to-end project execution, from conceptualization to handover, with a strong commitment to safety, quality and innovation.
+                              Founded in 1975, Three Circles Construction Company, now 3 CIIRCLES OPC P LTD, has built a reputation for delivering world-class construction solutions. The company specializes in end-to-end project execution, from conceptualization to handover, with a strong commitment to safety, quality and innovation.
                             </p>
                             <p className="font-body text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal mt-2">
                               With a skilled team and a legacy of trusted partnerships, we continue to contribute to iconic infrastructure and sustainable development across India and beyond.
@@ -234,7 +235,7 @@ export default function AboutUs() {
                             transition={{ duration: 1.4, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                             className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 mt-5 sm:mt-6"
                           >
-                            
+
                             {/* Card 1: Highlighted Dark Navy Card */}
                             <div className="bg-[#000435] text-white rounded-xl p-3.5 sm:p-4 shadow-md border border-brand-gold/30 hover:border-brand-gold hover:-translate-y-1.5 hover:shadow-[0_12px_30px_rgba(0,4,53,0.35)] transition-all duration-500 ease-out relative overflow-hidden group flex flex-col justify-between min-h-[122px] sm:min-h-[130px] cursor-pointer">
                               {/* Subtle Background Watermark */}
@@ -379,7 +380,7 @@ export default function AboutUs() {
                             alt="Three Circles Construction Site"
                             className="w-full h-full object-cover object-center contrast-[1.05] group-hover:scale-105 transition-transform duration-1000 ease-out"
                           />
-                          
+
                           {/* Ambient Dark Gradient Overlay */}
                           <div className="absolute inset-0 bg-gradient-to-t from-brand-darkblue/70 via-transparent to-black/20 pointer-events-none z-10" />
                         </div>
@@ -408,7 +409,7 @@ export default function AboutUs() {
                   >
                     {/* Full Page Section Cover with transition.png Background */}
                     <div className="relative w-full min-h-[340px] sm:min-h-[370px] lg:min-h-[400px] flex items-center py-6 sm:py-8 lg:py-10">
-                      
+
                       {/* Background Image: transition.png with ultra-slow cinematic zoom & blur reveal */}
                       <motion.img
                         src={transitionImg}
@@ -429,131 +430,131 @@ export default function AboutUs() {
                       {/* Content Container aligned with site grid */}
                       <div className="relative z-20 w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
-                        
-                        {/* LEFT COLUMN: Title & Description */}
-                        <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center h-full pr-0 lg:pr-6 py-2 sm:py-3">
-                          <div className="mt-1 sm:mt-2">
 
-                            {/* Headline */}
-                            <motion.h3 
-                              initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
-                              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 2.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                              className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-[34px] tracking-tight uppercase leading-[1.15] mb-4 sm:mb-5 lg:mb-6 !text-white" 
-                              style={{ fontFamily: "var(--font-display, 'Outfit', sans-serif)", color: "#ffffff" }}
-                            >
-                              TRANSITION &amp; CONTINUITY
-                            </motion.h3>
+                          {/* LEFT COLUMN: Title & Description */}
+                          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center h-full pr-0 lg:pr-6 py-2 sm:py-3">
+                            <div className="mt-1 sm:mt-2">
 
-                            {/* Description */}
-                            <motion.p 
-                              initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-                              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                              {/* Headline */}
+                              <motion.h3
+                                initial={{ opacity: 0, y: 25, filter: "blur(8px)" }}
+                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 2.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                className="font-display font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-[34px] tracking-tight uppercase leading-[1.15] mb-4 sm:mb-5 lg:mb-6 !text-white"
+                                style={{ fontFamily: "var(--font-display, 'Outfit', sans-serif)", color: "#ffffff" }}
+                              >
+                                TRANSITION &amp; CONTINUITY
+                              </motion.h3>
+
+                              {/* Description */}
+                              <motion.p
+                                initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 2.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                                className="font-body text-xs sm:text-sm md:text-[15px] text-white/85 leading-relaxed font-normal mb-0 max-w-xl mt-3 sm:mt-4"
+                                style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}
+                              >
+                                In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become <strong className="text-brand-gold font-semibold">&quot;3 CIIRCLES OPC P LTD.&quot;</strong> This private limited entity, with <span className="text-white font-medium">Mr. Vijay Jaiswal</span> as Director and <span className="text-white font-medium">Mr. Sidharth Jaiswaal</span> as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.
+                              </motion.p>
+
+                            </div>
+                          </div>
+
+                          {/* RIGHT COLUMN: Vertical Timeline Node Chain with Animated Connecting Line */}
+                          <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center gap-4 relative pl-4 lg:pl-10 border-t lg:border-t-0 lg:border-l border-white/15 pt-4 lg:pt-0">
+
+                            {/* Animated Vertical Line */}
+                            <motion.div
+                              initial={{ scaleY: 0 }}
+                              whileInView={{ scaleY: 1 }}
                               viewport={{ once: true }}
-                              transition={{ duration: 2.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                              className="font-body text-xs sm:text-sm md:text-[15px] text-white/85 leading-relaxed font-normal mb-0 max-w-xl mt-3 sm:mt-4" 
-                              style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}
+                              transition={{ duration: 2.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                              className="absolute left-4 lg:left-10 top-6 bottom-6 w-[2px] bg-gradient-to-b from-brand-gold via-brand-gold/50 to-transparent origin-top z-0 hidden"
+                            />
+
+                            {/* Node 1 */}
+                            <motion.div
+                              initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
+                              whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                              className="flex items-start gap-3.5 relative group cursor-default"
                             >
-                              In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become <strong className="text-brand-gold font-semibold">&quot;3 CIRCLES OPC P LTD.&quot;</strong> This private limited entity, with <span className="text-white font-medium">Mr. Vijay Jaiswal</span> as Director and <span className="text-white font-medium">Mr. Sidharth Jaiswal</span> as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.
-                            </motion.p>
+                              <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
+                              <div className="flex flex-col">
+                                <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
+                                  STRATEGIC TRANSITION
+                                </span>
+                                <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
+                                  A BOLDER DIRECTION
+                                </span>
+                              </div>
+                            </motion.div>
+
+                            {/* Node 2 */}
+                            <motion.div
+                              initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
+                              whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                              className="flex items-start gap-3.5 relative group cursor-default"
+                            >
+                              <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
+                              <div className="flex flex-col">
+                                <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
+                                  STRONGER FOUNDATION
+                                </span>
+                                <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
+                                  BUILT ON TRUST
+                                </span>
+                              </div>
+                            </motion.div>
+
+                            {/* Node 3 */}
+                            <motion.div
+                              initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
+                              whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                              className="flex items-start gap-3.5 relative group cursor-default"
+                            >
+                              <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
+                              <div className="flex flex-col">
+                                <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
+                                  CONTINUING THE LEGACY
+                                </span>
+                                <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
+                                  PEOPLE | PROJECTS | PURPOSE
+                                </span>
+                              </div>
+                            </motion.div>
+
+                            {/* Node 4 */}
+                            <motion.div
+                              initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
+                              whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                              className="flex items-start gap-3.5 relative group cursor-default"
+                            >
+                              <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
+                              <div className="flex flex-col">
+                                <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
+                                  A BRIGHTER TOMORROW
+                                </span>
+                                <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
+                                  SUSTAINABLE GROWTH
+                                </span>
+                              </div>
+                            </motion.div>
 
                           </div>
                         </div>
-
-                        {/* RIGHT COLUMN: Vertical Timeline Node Chain with Animated Connecting Line */}
-                        <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center gap-4 relative pl-4 lg:pl-10 border-t lg:border-t-0 lg:border-l border-white/15 pt-4 lg:pt-0">
-                          
-                          {/* Animated Vertical Line */}
-                          <motion.div
-                            initial={{ scaleY: 0 }}
-                            whileInView={{ scaleY: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 2.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="absolute left-4 lg:left-10 top-6 bottom-6 w-[2px] bg-gradient-to-b from-brand-gold via-brand-gold/50 to-transparent origin-top z-0 hidden"
-                          />
-
-                          {/* Node 1 */}
-                          <motion.div 
-                            initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
-                            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-start gap-3.5 relative group cursor-default"
-                          >
-                            <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
-                            <div className="flex flex-col">
-                              <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
-                                STRATEGIC TRANSITION
-                              </span>
-                              <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
-                                A BOLDER DIRECTION
-                              </span>
-                            </div>
-                          </motion.div>
-
-                          {/* Node 2 */}
-                          <motion.div 
-                            initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
-                            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-start gap-3.5 relative group cursor-default"
-                          >
-                            <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
-                            <div className="flex flex-col">
-                              <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
-                                STRONGER FOUNDATION
-                              </span>
-                              <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
-                                BUILT ON TRUST
-                              </span>
-                            </div>
-                          </motion.div>
-
-                          {/* Node 3 */}
-                          <motion.div 
-                            initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
-                            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-start gap-3.5 relative group cursor-default"
-                          >
-                            <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
-                            <div className="flex flex-col">
-                              <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
-                                CONTINUING THE LEGACY
-                              </span>
-                              <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
-                                PEOPLE | PROJECTS | PURPOSE
-                              </span>
-                            </div>
-                          </motion.div>
-
-                          {/* Node 4 */}
-                          <motion.div 
-                            initial={{ opacity: 0, x: 35, filter: "blur(6px)" }}
-                            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex items-start gap-3.5 relative group cursor-default"
-                          >
-                            <div className="relative z-10 w-3.5 h-3.5 rounded-full bg-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.9)] shrink-0 mt-0.5 group-hover:scale-130 transition-transform duration-300" />
-                            <div className="flex flex-col">
-                              <span className="font-display text-xs sm:text-[13px] font-extrabold tracking-wider text-white uppercase group-hover:text-brand-gold transition-colors duration-300">
-                                A BRIGHTER TOMORROW
-                              </span>
-                              <span className="font-display text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-white/70 uppercase mt-0.5">
-                                SUSTAINABLE GROWTH
-                              </span>
-                            </div>
-                          </motion.div>
-
-                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
                 );
               }
 
@@ -568,9 +569,8 @@ export default function AboutUs() {
                     delay: idx * 0.1,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className={`group relative w-full py-4 sm:py-6 md:py-7 overflow-hidden ${
-                    idx > 0 ? "border-t border-brand-darkblue/[0.08]" : ""
-                  }`}
+                  className={`group relative w-full py-4 sm:py-6 md:py-7 overflow-hidden ${idx > 0 ? "border-t border-brand-darkblue/[0.08]" : ""
+                    }`}
                 >
                   {/* Background Subtle Diagonal Stripes Accent */}
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_50%,rgba(212,175,55,0.03)_70%,transparent_90%)] pointer-events-none z-0" />
@@ -620,7 +620,7 @@ export default function AboutUs() {
                           transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
                           className="font-body text-xs sm:text-sm md:text-[15px] text-slate-600 leading-relaxed font-normal max-w-2xl"
                         >
-                          At the helm of <strong className="text-brand-darkblue font-semibold">&quot;3 CIRCLES OPC P LTD&quot;</strong> is <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswal</span>, a Civil Engineer with a Diploma and a Bachelor&apos;s degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, <span className="text-brand-darkblue font-semibold">Mr. Vijay Jaiswal</span>, Mr. Sidharth Jaiswal leads the company into a new era.
+                          At the helm of <strong className="text-brand-darkblue font-semibold">&quot;3 CIIRCLES OPC P LTD&quot;</strong> is <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span>, a Civil Engineer with a Diploma and a Bachelor&apos;s degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, <span className="text-brand-darkblue font-semibold">Mr. Vijay Jaiswal</span>, <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span> leads the company into a new era.
                         </motion.p>
                       </div>
                     </div>
@@ -682,7 +682,7 @@ export default function AboutUs() {
             </div>
             <div>
               <span className="font-mono text-[10px] sm:text-xs font-semibold text-text-secondary uppercase tracking-widest">
-                3 Circles OPC P LTD • Governance
+                3 Ciircles OPC P LTD • Governance
               </span>
             </div>
           </motion.div>
@@ -762,7 +762,7 @@ export default function AboutUs() {
 
                 <div className="pt-5 sm:pt-6 border-t border-brand-darkblue/[0.06] flex items-center justify-between">
                   <span className="font-display text-[8px] sm:text-[9px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] text-text-primary uppercase">
-                    3 Circles OPC P LTD
+                    3 Ciircles OPC P LTD
                   </span>
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-gold group-hover:scale-150 transition-transform duration-300" />
                 </div>
@@ -792,7 +792,7 @@ export default function AboutUs() {
         </div>
 
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10">
-          
+
           {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: 35, filter: "blur(10px)" }}
@@ -818,10 +818,10 @@ export default function AboutUs() {
 
           {/* Cards & Overlay Content Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch mb-0">
-            
+
             {/* 2 Glass Cards Container */}
             <div className="lg:col-span-8 xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-5">
-              
+
               {/* Card 1: Safety Policy */}
               <motion.div
                 initial={{ opacity: 0, y: 50, filter: "blur(10px)", scale: 0.96 }}
@@ -849,7 +849,7 @@ export default function AboutUs() {
 
                   {/* Paragraph Text */}
                   <p className="font-body text-xs sm:text-[12.5px] text-white/85 leading-relaxed font-normal mb-3.5">
-                  We 3 Circles, our commitment is to prioritize the Safety, Health, and Welfare of all employees, workers, and clients, aiming for a Safe, Zero Accident, and Environmentally friendly workplace. We emphasize effective utilization of natural resources as a top management priority. Managers are responsible for providing a secure working environment, tools, and equipment. All employees and workers share the responsibility for HSE, focusing on prevention and continual improvement.
+                    We 3 Ciircles, our commitment is to prioritize the Safety, Health, and Welfare of all employees, workers, and clients, aiming for a Safe, Zero Accident, and Environmentally friendly workplace. We emphasize effective utilization of natural resources as a top management priority. Managers are responsible for providing a secure working environment, tools, and equipment. All employees and workers share the responsibility for HSE, focusing on prevention and continual improvement.
                   </p>
                 </div>
 
@@ -894,7 +894,7 @@ export default function AboutUs() {
 
                   {/* Paragraph Text */}
                   <p className="font-body text-xs sm:text-[12.5px] text-white/85 leading-relaxed font-normal mb-3.5">
-                  We are dedicated to meeting customer expectations by delivering top-notch products and services promptly and within budget. We are committed to ongoing improvement in people, systems, processes, and technology to meet the current and future needs of our clients. We strive for continual quality enhancement in all our activities, embracing the latest techniques in Quality Management System and providing effective training to ensure our employees skills align with the evolving demands of our customers in the rapidly advancing technological landscape of India.
+                    We are dedicated to meeting customer expectations by delivering top-notch products and services promptly and within budget. We are committed to ongoing improvement in people, systems, processes, and technology to meet the current and future needs of our clients. We strive for continual quality enhancement in all our activities, embracing the latest techniques in Quality Management System and providing effective training to ensure our employees skills align with the evolving demands of our customers in the rapidly advancing technological landscape of India.
                   </p>
                 </div>
 
@@ -954,10 +954,10 @@ export default function AboutUs() {
         <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-brand-gold/10 blur-3xl pointer-events-none" />
 
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10">
-          
+
           {/* Top Header Row (Title & Hero Capsule) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mb-8 sm:mb-10">
-            
+
             {/* Left Header & Intro Column (7 Cols) */}
             <motion.div
               initial={{ opacity: 0, y: 35, filter: "blur(10px)" }}
@@ -977,7 +977,7 @@ export default function AboutUs() {
 
               {/* Paragraph Description */}
               <p className="font-body text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-xl mt-2.5 sm:mt-3 mb-0">
-                With over 45 years of proven execution, 3 Circles brings unmatched technical expertise, skilled manpower, and a future-ready team capable of delivering large-scale infrastructure and civil engineering projects across diverse domains.
+                With over 45 years of proven execution, 3 Ciircles brings unmatched technical expertise, skilled manpower, and a future-ready team capable of delivering large-scale infrastructure and civil engineering projects across diverse domains.
               </p>
             </motion.div>
 
@@ -1014,7 +1014,7 @@ export default function AboutUs() {
           </div>
           {/* 4 Stat Cards Horizontal Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            
+
             {/* Card 1 */}
             <motion.div
               initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
@@ -1176,6 +1176,9 @@ export default function AboutUs() {
 
         </div>
       </section>
+
+      {/* Strategic Alliances Section */}
+      <StrategicAlliances />
     </div>
   );
 }
