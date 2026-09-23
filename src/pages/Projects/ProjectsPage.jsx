@@ -233,7 +233,7 @@ function Hero({ reduced }) {
                 <StatCounter numericValue={stat.numericValue} isFormatted={stat.isFormatted} />
                 {stat.suffix}
               </span>
-              <span className="font-mono text-[clamp(0.68rem,0.8vw,0.78rem)] text-[rgba(245,242,234,0.5)]">
+              <span className="font-mono text-[clamp(0.68rem,0.8vw,0.78rem)] text-white sm:text-[rgba(245,242,234,0.5)]">
                 {stat.label}
               </span>
             </div>

@@ -88,7 +88,7 @@ export default function Hero() {
             3 Ciircles • Engineering • Infrastructure • Mining
           </span>
 
-          <h1 className="font-display text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] tracking-tight text-white uppercase mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
+          <h1 className="font-display text-[26px] min-[390px]:text-[28px] sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.12] tracking-tight text-white uppercase mb-6 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
             {titleLines.map((line, index) => (
               <span key={index} className="block overflow-hidden whitespace-nowrap">
                 <span
@@ -107,24 +107,24 @@ export default function Hero() {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto"
+            className="flex flex-row items-center gap-2 sm:gap-3.5 w-full sm:w-auto"
           >
-            <div className="gsap-hero-btn w-full sm:w-auto">
+            <div className="gsap-hero-btn flex-1 sm:flex-none">
               <MagneticButton
-                className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 bg-brand-gold text-brand-darkblue border border-brand-gold rounded-full hover:bg-white hover:border-white hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="group font-display text-[8px] sm:text-[10px] font-extrabold tracking-[0.06em] sm:tracking-[0.2em] py-2.5 px-3 sm:py-3.5 sm:px-7 bg-brand-gold text-brand-darkblue border border-brand-gold rounded-full hover:bg-white hover:border-white hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto whitespace-nowrap"
                 onClick={() => navigateTo("/", "services")}
               >
                 <span>EXPLORE OUR SERVICES</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-1 shrink-0" />
               </MagneticButton>
             </div>
-            <div className="gsap-hero-btn w-full sm:w-auto">
+            <div className="gsap-hero-btn flex-1 sm:flex-none">
               <MagneticButton
-                className="group font-display text-[9px] sm:text-[10px] font-extrabold tracking-[0.2em] py-3.5 px-7 bg-white/95 backdrop-blur-md text-brand-darkblue border border-white rounded-full hover:bg-brand-gold hover:border-brand-gold hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="group font-display text-[8px] sm:text-[10px] font-extrabold tracking-[0.06em] sm:tracking-[0.2em] py-2.5 px-3 sm:py-3.5 sm:px-7 bg-white/95 backdrop-blur-md text-brand-darkblue border border-white rounded-full hover:bg-brand-gold hover:border-brand-gold hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto whitespace-nowrap"
                 onClick={() => navigateTo("/", "projects")}
               >
                 <span>VIEW OUR PROJECTS</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-transform duration-300 group-hover:translate-x-1 shrink-0" />
               </MagneticButton>
             </div>
           </div>

@@ -404,8 +404,7 @@ export default function Infrastructure() {
            
 
             <h1
-              className="font-display font-extrabold uppercase leading-[1.18] tracking-tight text-white mb-4 flex flex-col gap-2"
-              style={{ fontSize: 'clamp(1.6rem, 3.2vw, 2.6rem)' }}
+              className="font-display font-extrabold uppercase leading-[1.12] sm:leading-[1.18] tracking-tight text-white mb-4 flex flex-col gap-1.5 sm:gap-2 text-[30px] min-[380px]:text-[34px] sm:text-3xl md:text-4xl lg:text-[42px]"
             >
               {headlineLines.map((line, i) => (
                 <span key={i} className="block overflow-hidden py-0.5">
@@ -708,7 +707,7 @@ export default function Infrastructure() {
         <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row gap-5 sm:gap-8 lg:gap-20">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -716,7 +715,7 @@ export default function Infrastructure() {
               variants={fadeUp}
               className="lg:w-[480px] shrink-0 lg:pt-[64px]"
             >
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white leading-tight mb-6 whitespace-nowrap" style={{ color: '#FFFFFF' }}>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-white leading-tight mb-1 sm:mb-6 whitespace-nowrap" style={{ color: '#FFFFFF' }}>
                 Infrastructure FAQs
               </h2>
             </motion.div>

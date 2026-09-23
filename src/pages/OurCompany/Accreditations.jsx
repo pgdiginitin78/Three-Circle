@@ -68,15 +68,20 @@ export default function Accreditations() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#f0eee9] rounded-full blur-3xl opacity-50 -z-10 transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto">
-        <div className="anim-item flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32 relative z-10">
-          <div className="lg:w-1/2">
-            <div className="flex items-start gap-6 mb-8">
-              <div className="h-[2px] w-16 bg-[#d2a34d] mt-5 shrink-0"></div>
-              <h1 className="text-4xl md:text-5xl lg:text-3xl font-serif font-bold tracking-wide uppercase text-[#0f172a] leading-tight">
-                Bureau of Civil Aviation Security
-              </h1>
+        <div className="anim-item flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mb-16 md:mb-32 relative z-10">
+          <div className="lg:w-1/2 text-center md:text-left">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6 mb-4 md:mb-8">
+              <div className="hidden md:block h-[2px] w-16 bg-[#d2a34d] mt-5 shrink-0"></div>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-3xl font-serif font-bold tracking-wide uppercase text-[#0f172a] leading-tight">
+                <span className="block md:inline">Bureau of Civil</span>{" "}
+                <span className="block md:inline">Aviation Security</span>
+              </h2>
             </div>
-            <p className="text-base 2xl:text-lg text-[#334155] leading-relaxed font-light pl-[88px]">
+            {/* Gold underline accent on mobile */}
+            <div className="flex justify-center md:hidden mb-6">
+              <div className="h-[2px] w-20 bg-gradient-to-r from-transparent via-[#d2a34d] to-transparent rounded-full"></div>
+            </div>
+            <p className="text-base 2xl:text-lg text-[#334155] leading-relaxed font-light md:pl-[88px] px-2 md:px-0">
               The{" "}
               <span className="font-medium text-[#0f172a]">
                 Bureau of Civil Aviation Security (BCAS)

@@ -8,6 +8,7 @@ import {
   MapPinIcon,
   ArrowRight,
 } from "../components/Icons";
+import SectionTag from "../components/SectionTag";
 import SEO from "../components/SEO";
 
 const requirementOptions = [
@@ -87,12 +88,7 @@ export default function ContactPage() {
         {/* Page Header Section */}
         <div className="max-w-3xl mb-12 sm:mb-16 lg:mb-20 text-left">
           <FadeUpText>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 mb-4">
-              <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-              <span className="font-display text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-brand-gold uppercase">
-                Direct Inquiries & Tenders
-              </span>
-            </div>
+            <SectionTag text="Direct Inquiries & Tenders" className="mb-4" />
           </FadeUpText>
 
           <FadeUpText delay={0.08}>

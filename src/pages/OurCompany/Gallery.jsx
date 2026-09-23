@@ -325,7 +325,7 @@ export default function Gallery() {
               />
             </div>
 
-            <h1 className="font-display text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] tracking-tight uppercase mb-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] whitespace-normal sm:whitespace-nowrap">
+            <h1 className="font-display text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.08] tracking-tight uppercase mb-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] whitespace-normal sm:whitespace-nowrap">
               <span className="text-white">PROJECT &amp; FLEET </span>
               <span className="shimmer-text">GALLERY.</span>
             </h1>

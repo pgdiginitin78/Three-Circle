@@ -88,14 +88,18 @@ export default function Achievements() {
       <div className="max-w-7xl mx-auto">
         
         {/* Main Introduction Section */}
-        <div className="achieve-card mb-24 max-w-4xl relative z-10">
-          <div className="flex items-center gap-6 mb-8">
-            <div className="h-[2px] w-16 bg-[#d2a34d]"></div>
+        <div className="achieve-card mb-16 md:mb-24 max-w-4xl relative z-10 text-center md:text-left mx-auto md:mx-0">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 mb-6 md:mb-8">
+            <div className="hidden md:block h-[2px] w-16 bg-[#d2a34d]"></div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold tracking-wide uppercase text-[#0f172a]">
               Achievements
             </h1>
           </div>
-          <p className="text-base md:text-lg lg:text-xl text-[#334155] leading-relaxed font-light pl-[88px]">
+          {/* Gold underline accent on mobile */}
+          <div className="flex justify-center md:hidden mb-5">
+            <div className="h-[2px] w-20 bg-gradient-to-r from-transparent via-[#d2a34d] to-transparent rounded-full"></div>
+          </div>
+          <p className="text-base md:text-lg lg:text-xl text-[#334155] leading-relaxed font-light md:pl-[88px] px-2 md:px-0">
             We've achieved remarkable milestones in partnership with Tata,
             setting new standards in quality and efficiency. Our commitment to
             excellence is evident in every project, showcasing a successful
@@ -104,7 +108,7 @@ export default function Achievements() {
         </div>
 
         {/* Featured Awards Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-32 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-12 md:mb-32 relative z-10">
           {awards.map((award, i) => (
             <div
               key={award.title}
@@ -150,7 +154,7 @@ export default function Achievements() {
             {gallery.map((img, i) => (
               <div
                 key={i}
-                className="gallery-item bg-white p-5 lg:p-8 rounded-xl shadow-[0_10px_30px_rgba(15,23,42,0.03)] border border-[#f1f0ee] flex items-center justify-center transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] group"
+                className={`gallery-item bg-white p-5 lg:p-8 rounded-xl shadow-[0_10px_30px_rgba(15,23,42,0.03)] border border-[#f1f0ee] flex items-center justify-center transition-shadow duration-500 hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] group${i === gallery.length - 1 && gallery.length % 2 !== 0 ? " col-span-2 sm:col-span-1 max-w-[calc(50%-8px)] sm:max-w-none mx-auto sm:mx-0 w-full" : ""}`}
               >
                 <img
                   src={img}

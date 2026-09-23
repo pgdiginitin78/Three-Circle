@@ -79,7 +79,7 @@ export default function AboutUs() {
 
       <section
         id="overview"
-        className="relative pt-28 sm:pt-32 md:pt-36 lg:pt-40 xl:pt-44 pb-10 sm:pb-12 md:pb-14 lg:pb-16 xl:pb-20 min-h-[440px] sm:min-h-[480px] flex flex-col justify-center overflow-hidden"
+        className="relative pt-32 sm:pt-32 md:pt-36 lg:pt-40 xl:pt-44 pb-10 sm:pb-12 md:pb-14 lg:pb-16 xl:pb-20 min-h-[580px] sm:min-h-[480px] flex flex-col justify-center overflow-hidden"
       >
         {/* Background Image Layer with Slow Cinematic Zoom & Fade */}
         <motion.div
@@ -97,31 +97,34 @@ export default function AboutUs() {
 
         <ArchitecturalCanvas />
 
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10">
-          <div className="max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl">
-            {/* Tag Reveal */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-4"
-            >
-              <SectionTag text="ABOUT US" />
-            </motion.div>
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 relative z-10 flex-1 flex flex-col">
+          <div className="max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl flex-1 flex flex-col justify-between sm:justify-center">
+            {/* Top Content Area */}
+            <div>
+              {/* Tag Reveal */}
+              <motion.div
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-4"
+              >
+                <SectionTag text="ABOUT US" />
+              </motion.div>
 
-            {/* Main Headline Reveal */}
-            <motion.h1
-              initial={{ opacity: 0, y: 35, filter: "blur(12px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-bold tracking-tight !text-white text-text-light uppercase leading-[1.1] mt-3 sm:mt-4 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-xl md:max-w-2xl"
-              style={{ color: "#ffffff" }}
-            >
-              The Evolution From Three Ciircles To 3 Ciircles OPC P LTD.
-            </motion.h1>
+              {/* Main Headline Reveal */}
+              <motion.h1
+                initial={{ opacity: 0, y: 35, filter: "blur(12px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 1.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[44px] font-bold tracking-tight !text-white text-text-light uppercase leading-[1.1] mt-3 sm:mt-4 mb-5 sm:mb-6 md:mb-8 max-w-full sm:max-w-xl md:max-w-2xl"
+                style={{ color: "#ffffff" }}
+              >
+                The Evolution From Three Ciircles To 3 Ciircles OPC P LTD.
+              </motion.h1>
+            </div>
 
-            {/* Metric Footer Row with Staggered Slow Fade */}
-            <div className="relative pt-6 sm:pt-7 md:pt-8">
+            {/* Metric Footer Row with Staggered Slow Fade - pinned to bottom on mobile in one line */}
+            <div className="relative pt-8 sm:pt-7 md:pt-8 mt-auto sm:mt-0">
               {/* Expanding Divider Line */}
               <motion.div
                 initial={{ scaleX: 0 }}
@@ -130,17 +133,17 @@ export default function AboutUs() {
                 className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-white/30 via-white/20 to-transparent origin-left"
               />
 
-              <div className="flex flex-wrap items-start gap-5 sm:gap-8 md:gap-10">
+              <div className="grid grid-cols-3 gap-2 sm:gap-8 md:gap-10 sm:flex sm:flex-wrap items-start">
                 <motion.div
                   initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
+                  <span className="font-mono text-sm min-[380px]:text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
                     1975
                   </span>
                   <span
-                    className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] !text-white/90 uppercase"
+                    className="font-display text-[7.5px] min-[380px]:text-[8.5px] sm:text-[9px] md:text-[10px] font-extrabold tracking-tight min-[380px]:tracking-normal sm:tracking-[0.2em] !text-white/90 uppercase leading-tight block"
                     style={{ color: "rgba(255, 255, 255, 0.9)" }}
                   >
                     Legacy Founded
@@ -152,11 +155,11 @@ export default function AboutUs() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
+                  <span className="font-mono text-sm min-[380px]:text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
                     51+ YRS
                   </span>
                   <span
-                    className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] !text-white/90 uppercase"
+                    className="font-display text-[7.5px] min-[380px]:text-[8.5px] sm:text-[9px] md:text-[10px] font-extrabold tracking-tight min-[380px]:tracking-normal sm:tracking-[0.2em] !text-white/90 uppercase leading-tight block"
                     style={{ color: "rgba(255, 255, 255, 0.9)" }}
                   >
                     Govt &amp; Infrastructure
@@ -168,11 +171,11 @@ export default function AboutUs() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="font-mono text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
+                  <span className="font-mono text-sm min-[380px]:text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-brand-gold block mb-1">
                     MNC Tier
                   </span>
                   <span
-                    className="font-display text-[8px] sm:text-[9px] md:text-[10px] font-extrabold tracking-[0.15em] sm:tracking-[0.2em] !text-white/90 uppercase"
+                    className="font-display text-[7.5px] min-[380px]:text-[8.5px] sm:text-[9px] md:text-[10px] font-extrabold tracking-tight min-[380px]:tracking-normal sm:tracking-[0.2em] !text-white/90 uppercase leading-tight block"
                     style={{ color: "rgba(255, 255, 255, 0.9)" }}
                   >
                     Global Partnerships
@@ -199,7 +202,7 @@ export default function AboutUs() {
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     viewport={{ once: true, amount: 0.15 }}
                     transition={{ duration: 1.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative w-full pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 my-4 sm:my-6 border-t border-brand-darkblue/[0.12] overflow-hidden"
+                    className="relative w-full pt-5 sm:pt-16 md:pt-20 pb-6 sm:pb-8 md:pb-10 my-2 sm:my-6 border-t border-brand-darkblue/[0.12] overflow-hidden"
                   >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
 
@@ -213,7 +216,7 @@ export default function AboutUs() {
                             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                             viewport={{ once: true }}
                             transition={{ duration: 1.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                            className="font-display text-lg sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[34px] font-extrabold tracking-tight text-brand-darkblue uppercase leading-tight mt-2 sm:mt-3 mb-4"
+                            className="font-display text-lg sm:text-2xl md:text-3xl lg:text-[32px] xl:text-[34px] font-extrabold tracking-tight text-brand-darkblue uppercase leading-tight mt-1 sm:mt-3 mb-3 sm:mb-4"
                           >
                             ESTABLISHMENT AND EXPERTISE
                           </motion.h3>
@@ -585,7 +588,7 @@ export default function AboutUs() {
                   <div className="grid grid-cols-1 md:grid-cols-12 items-stretch min-h-[200px] lg:min-h-[240px] relative z-10">
 
                     {/* Left Column: Image Display Banner with Image Anime Curtain Effect */}
-                    <div className="md:col-span-5 lg:col-span-4 relative w-full flex items-center justify-center p-2 sm:p-3">
+                    <div className="order-2 md:order-1 md:col-span-5 lg:col-span-4 relative w-full flex items-center justify-center p-2 sm:p-3">
                       <div className="relative w-full h-[190px] sm:h-[220px] md:h-[240px] lg:h-[260px] rounded-xs overflow-hidden shadow-lg border border-brand-darkblue/10 bg-white group-hover:shadow-xl group-hover:border-brand-gold/40 transition-all duration-500 group">
                         {/* Image Anime Curtain Reveal Overlay */}
                         <motion.div
@@ -608,7 +611,7 @@ export default function AboutUs() {
                     </div>
 
                     {/* Center Column: Title, Gold Bar & Paragraphs */}
-                    <div className="md:col-span-7 lg:col-span-6 p-4 sm:p-6 lg:py-3 lg:px-6 flex flex-col justify-center relative z-10">
+                    <div className="order-1 md:order-2 md:col-span-7 lg:col-span-8 p-4 sm:p-6 lg:py-3 lg:px-8 flex flex-col justify-center relative z-10">
                       <motion.h3
                         initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -625,39 +628,12 @@ export default function AboutUs() {
                           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                           viewport={{ once: true }}
                           transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                          className="font-body text-xs sm:text-sm md:text-[15px] text-slate-600 leading-relaxed font-normal max-w-2xl"
+                          className="font-body text-xs sm:text-sm md:text-[15px] text-slate-600 leading-relaxed font-normal max-w-3xl"
                         >
                           At the helm of <strong className="text-brand-darkblue font-semibold">&quot;3 CIIRCLES OPC P LTD&quot;</strong> is <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span>, a Civil Engineer with a Diploma and a Bachelor&apos;s degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, <span className="text-brand-darkblue font-semibold">Mr. Vijay Jaiswal</span>, <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span> leads the company into a new era.
                         </motion.p>
                       </div>
                     </div>
-
-                    {/* Right Column: Vertical Slogan Scribe (LG screens) */}
-                    <motion.div
-                      initial={{ opacity: 0, x: 25, filter: "blur(6px)" }}
-                      whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.4, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                      className="hidden lg:flex lg:col-span-2 items-center justify-center p-6 border-l border-brand-darkblue/[0.07] relative z-10 bg-slate-50/40"
-                    >
-                      {/* Top Right Corner Line Accent */}
-                      <div className="absolute top-0 right-0 w-12 h-12 pointer-events-none overflow-hidden">
-                        <div className="absolute top-0 right-0 w-px h-10 bg-brand-gold/40" />
-                        <div className="absolute top-0 right-0 h-px w-10 bg-brand-gold/40" />
-                      </div>
-
-                      <div className="flex flex-col items-start gap-1">
-                        {item.slogan.map((line, sIdx) => (
-                          <span
-                            key={sIdx}
-                            className="font-display text-[9.5px] xl:text-[10.5px] font-black tracking-[0.25em] text-brand-darkblue/80 uppercase leading-snug"
-                          >
-                            {line}
-                          </span>
-                        ))}
-                        <div className="w-8 h-[2.5px] bg-brand-gold mt-3" />
-                      </div>
-                    </motion.div>
 
                   </div>
                 </motion.div>
@@ -931,12 +907,18 @@ export default function AboutUs() {
             >
               <div className="flex flex-col items-start lg:items-end">
                 <div className="w-7 h-[2.5px] bg-brand-gold mb-2.5" />
-                <p className="font-display text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.2em] text-white leading-snug">
-                  SAFE<br />
-                  SUSTAINABLE<br />
-                  RESPONSIBLE<br />
-                  FOR <span className="text-brand-gold">A BRIGHTER</span><br />
-                  TOMORROW
+                <p className="font-display text-[9.5px] min-[380px]:text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-[0.1em] sm:tracking-[0.2em] text-white leading-snug">
+                  <span className="sm:hidden">
+                    SAFE • SUSTAINABLE • RESPONSIBLE<br />
+                    FOR <span className="text-brand-gold">A BRIGHTER</span> TOMORROW
+                  </span>
+                  <span className="hidden sm:inline">
+                    SAFE<br />
+                    SUSTAINABLE<br />
+                    RESPONSIBLE<br />
+                    FOR <span className="text-brand-gold">A BRIGHTER</span><br />
+                    TOMORROW
+                  </span>
                 </p>
               </div>
             </motion.div>

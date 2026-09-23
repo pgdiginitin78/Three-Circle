@@ -219,7 +219,7 @@ export default function StrategicAlliances() {
           className="mb-10 sm:mb-12"
         >
           {/* Eyebrow Section Tag */}
-          <div className="-mb-1 sm:-mb-2">
+          <div className="mb-2.5 sm:-mb-2">
             <SectionTag text="STRATEGIC COLLABORATION" />
           </div>
 

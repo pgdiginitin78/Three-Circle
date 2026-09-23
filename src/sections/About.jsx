@@ -208,7 +208,7 @@ export default function About() {
     <section
       ref={containerRef}
       id="about"
-      className="relative pt-12 pb-6 md:pt-16 md:pb-8 bg-white border-b border-border-color overflow-hidden"
+      className="relative pt-6 sm:pt-12 pb-6 md:pt-16 md:pb-8 bg-white border-b border-border-color overflow-hidden"
     >
       {/* Decorative concentric background watermark */}
       <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-[550px] h-[550px] pointer-events-none opacity-30 z-0">
@@ -221,10 +221,29 @@ export default function About() {
       </div>
 
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-x-14 lg:gap-y-6 items-center">
 
-          {/* Left Column: Image Banner */}
-          <div className="gsap-about-img lg:col-span-5 relative w-full h-[260px] xs:h-[290px] sm:h-[340px] lg:h-[380px] mt-2.5 sm:mt-3 lg:mt-4 rounded-xs overflow-hidden shadow-2xl group border border-brand-darkblue/10">
+          {/* Content Area: Tag, Headline, Paragraph (First on mobile, top right on desktop) */}
+          <div className="gsap-about-text order-1 lg:col-span-7 lg:col-start-6 lg:row-start-1 flex flex-col justify-center pt-0 sm:pt-4 lg:pt-0">
+            {/* Section Tag */}
+            <div className="gsap-about-tag mb-4 mt-0 sm:mt-2">
+              <SectionTag text="ABOUT US" />
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="gsap-about-title font-display text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-bold tracking-tight uppercase mb-4 sm:mb-6 leading-tight sm:whitespace-nowrap">
+              <span className="text-brand-darkblue">Engineering </span>
+              <span className="text-brand-gold">With Purpose.</span>
+            </h2>
+
+            {/* Description Paragraph */}
+            <p className="gsap-about-desc font-body text-xs sm:text-sm md:text-[14px] text-text-secondary leading-relaxed max-w-xl">
+             3 Ciircles Delivers Precision Civil Engineering And Industrial Services. We Provide Fully Integrated, Large-Scale Capabilities Designed To Support Major Development Projects Across Building Construction, Mining And Crushing Operations, Public Infrastructure, And Heavy Excavation.
+            </p>
+          </div>
+
+          {/* Image Banner (Second on mobile, left column spanning 2 rows on desktop) */}
+          <div className="gsap-about-img order-2 lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-2 relative w-full h-[260px] xs:h-[290px] sm:h-[340px] lg:h-[380px] self-center rounded-xs overflow-hidden shadow-2xl group border border-brand-darkblue/10">
             <motion.img
               src={aboutImg}
               alt="Civil Engineering Infrastructure"
@@ -247,27 +266,9 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: Content Area */}
-          <div className="lg:col-span-7 flex flex-col justify-center pt-3 sm:pt-4 lg:pt-5 pb-2 sm:pb-4">
-
-            {/* Section Tag */}
-            <div className="gsap-about-tag mb-4 mt-2 sm:mt-3">
-              <SectionTag text="ABOUT US" />
-            </div>
-
-            {/* Main Headline */}
-            <h2 className="gsap-about-title font-display text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-bold tracking-tight uppercase mb-6 leading-tight sm:whitespace-nowrap">
-              <span className="text-brand-darkblue">Engineering </span>
-              <span className="text-brand-gold">With Purpose.</span>
-            </h2>
-
-            {/* Description Paragraph */}
-            <p className="gsap-about-desc font-body text-xs sm:text-sm md:text-[14px] text-text-secondary leading-relaxed mb-5 sm:mb-6 max-w-xl">
-             3 Ciircles Delivers Precision Civil Engineering And Industrial Services. We Provide Fully Integrated, Large-Scale Capabilities Designed To Support Major Development Projects Across Building Construction, Mining And Crushing Operations, Public Infrastructure, And Heavy Excavation.
-            </p>
-
-            {/* 4 Capabilities Grid Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 mt-1 sm:mt-2 pt-3 pb-2 sm:pt-4 sm:pb-2 border-y border-brand-darkblue/10 -mb-4 sm:-mb-5">
+          {/* 4 Capabilities Grid Row (Third on mobile, bottom right on desktop) */}
+          <div className="order-3 lg:col-span-7 lg:col-start-6 lg:row-start-2 w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-0 pt-3 pb-2 sm:pt-4 sm:pb-2 border-y border-brand-darkblue/10">
               {capabilitiesData.map((cap, index) => (
                 <div
                   key={cap.title}
@@ -324,7 +325,6 @@ export default function About() {
                 </div>
               ))}
             </div>
-
           </div>
 
         </div>

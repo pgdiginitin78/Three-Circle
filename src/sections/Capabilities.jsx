@@ -115,7 +115,7 @@ export default function Capabilities() {
     <section
       id="capabilities"
       ref={containerRef}
-      className="relative bg-slate-50 border-b border-slate-200/80 pt-12 pb-10 sm:pt-14 sm:pb-12 md:pt-16 md:pb-14 overflow-hidden"
+      className="relative bg-slate-50 border-b border-slate-200/80 pt-12 pb-6 sm:pt-14 sm:pb-12 md:pt-16 md:pb-14 overflow-hidden"
     >
       {/* Capabilities Backdrop Image Layer with Slow Left to Right Motion */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
@@ -157,12 +157,12 @@ export default function Capabilities() {
             </div>
         </div>
 
-        {/* 4 Cards Horizontal Grid matching Reference Image */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        {/* 4 Cards Grid - 2 per line on mobile, 4 on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {capabilitiesData.map((item, index) => (
             <div
               key={item.id}
-              className="gsap-cap-card group relative h-[175px] sm:h-[195px] md:h-[210px] lg:h-[220px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border border-brand-gold/30 hover:border-brand-gold hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-end cursor-pointer bg-slate-900"
+              className="gsap-cap-card group relative h-[155px] min-[380px]:h-[175px] sm:h-[195px] md:h-[210px] lg:h-[220px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl border border-brand-gold/30 hover:border-brand-gold hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-end cursor-pointer bg-slate-900"
             >
               {/* Card Image Backdrop with Slow Zoom on Hover */}
               <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
@@ -174,25 +174,25 @@ export default function Capabilities() {
               </div>
 
               {/* Multi-Stage Dark Navy Ambient Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000435]/80 via-[#000435]/20 via-75% to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000435]/90 via-[#000435]/40 via-75% to-transparent pointer-events-none z-10" />
 
               {/* Gold Top Border Accent Line Reveal */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-gold via-[#F5D061] to-brand-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none" />
 
               {/* Bottom Content Area */}
-              <div className="relative z-20 p-3.5 sm:p-4 flex flex-col justify-end h-full drop-shadow-md">
+              <div className="relative z-20 p-2.5 sm:p-4 flex flex-col justify-end h-full drop-shadow-md">
                 
                 {/* Large Number Metric Ticker */}
-                <div className="font-display text-[30px] sm:text-[36px] lg:text-[38px] font-black text-white tracking-tight flex items-baseline select-none mb-0.5 leading-none">
+                <div className="font-display text-[22px] min-[380px]:text-[26px] sm:text-[36px] lg:text-[38px] font-black text-white tracking-tight flex items-baseline select-none mb-0.5 leading-none">
                   <NumberTicker value={item.value} delay={1.6 + index * 0.35} />
-                  <span className="text-brand-gold font-extrabold ml-0.5 text-2xl sm:text-3xl lg:text-3xl">
+                  <span className="text-brand-gold font-extrabold ml-0.5 text-lg min-[380px]:text-xl sm:text-3xl lg:text-3xl">
                     {item.suffix}
                   </span>
                 </div>
 
                 {/* Card Title Label */}
                 <h3
-                  className="font-display text-[11px] sm:text-xs md:text-[13px] font-black tracking-wider !text-white uppercase mb-0.5 leading-snug"
+                  className="font-display text-[9.5px] min-[380px]:text-[11px] sm:text-xs md:text-[13px] font-black tracking-wider !text-white uppercase mb-0.5 leading-snug"
                   style={{ color: "#ffffff" }}
                 >
                   {item.label}
@@ -200,7 +200,7 @@ export default function Capabilities() {
 
                 {/* Description Subtitle */}
                 <p
-                  className="font-body text-[10px] sm:text-[11px] !text-white/90 font-medium leading-tight pr-2"
+                  className="font-body text-[8.5px] min-[380px]:text-[10px] sm:text-[11px] !text-white/90 font-medium leading-tight pr-1 sm:pr-2"
                   style={{ color: "rgba(255, 255, 255, 0.9)" }}
                 >
                   {item.desc}

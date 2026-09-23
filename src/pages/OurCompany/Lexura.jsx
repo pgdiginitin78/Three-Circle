@@ -281,7 +281,7 @@ export default function Lexura() {
               <img
                 src={logoSrc}
                 alt="Lexuraa Eagle Emblem"
-                className="relative h-11 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_4px_16px_rgba(212,175,55,0.35)]"
+                className="relative h-16 sm:h-12 md:h-14 lg:h-16 w-auto object-contain drop-shadow-[0_4px_16px_rgba(212,175,55,0.35)]"
               />
             </div>
 
@@ -295,7 +295,7 @@ export default function Lexura() {
             </div>
 
             {/* Main Headline matching website hero theme */}
-            <h1 className="font-display text-xl sm:text-3xl md:text-4xl lg:text-[50px] font-medium tracking-tight uppercase leading-[1.08] mb-5 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+            <h1 className="font-display text-3xl sm:text-3xl md:text-4xl lg:text-[50px] font-medium tracking-tight uppercase leading-[1.08] mb-5 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
               <span className="block text-brand-gold">LEGACY</span>
               <span className="block text-white mt-1">BUILT TO LAST</span>
             </h1>

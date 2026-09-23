@@ -328,9 +328,9 @@ export default function Building() {
      
      
       {/* INTRO BLOCK */}
-      <section ref={introSectionRef} id="building-services" className="bg-white border-b border-brand-darkblue/[0.07] py-14 md:py-18 overflow-hidden">
+      <section ref={introSectionRef} id="building-services" className="bg-white border-b border-brand-darkblue/[0.07] pt-10 pb-6 sm:py-14 md:py-18 overflow-hidden">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-14 items-center">
             
             {/* LEFT CONTENT COLUMN */}
             <div className="lg:col-span-6 flex flex-col items-start">
@@ -341,7 +341,7 @@ export default function Building() {
               </h2>
 
               {/* PARAGRAPHS */}
-              <div className="space-y-3.5 font-body text-[13.5px] md:text-[14.5px] text-brand-darkblue/80 leading-relaxed mb-7">
+              <div className="space-y-3.5 font-body text-[13.5px] md:text-[14.5px] text-brand-darkblue/80 leading-relaxed mb-2 sm:mb-7">
                 <p className="gsap-intro-p">
                   <strong className="font-bold text-brand-darkblue">3 CIIRCLES</strong> provides reliable{' '}
                   <strong className="font-bold text-brand-darkblue">building construction services</strong> for institutional, commercial, industrial and large-scale development projects. Our building construction capabilities cover{' '}
@@ -428,7 +428,7 @@ export default function Building() {
       </section>
 
       {/* SERVICE CARDS */}
-      <section ref={servicesSectionRef} id="services" className="bg-[#FAF8F5] border-b border-brand-darkblue/[0.07] py-12 md:py-16">
+      <section ref={servicesSectionRef} id="services" className="bg-[#FAF8F5] border-b border-brand-darkblue/[0.07] pt-8 pb-12 sm:py-12 md:py-16">
         <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
           <div className="mb-8 md:mb-10">
             <h2 className="gsap-svc-title font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-brand-darkblue leading-tight">
@@ -557,18 +557,26 @@ export default function Building() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="relative w-full flex items-center overflow-hidden bg-[#FAF8F5] border-t border-brand-darkblue/10 py-14 md:py-18">
+      <section className="relative w-full flex items-center overflow-hidden bg-[#FAF8F5] border-t border-brand-darkblue/10 py-10 sm:py-14 md:py-18">
         {/* BACKGROUND IMAGE WITH OVERLAY */}
         <div className="absolute inset-0 z-0">
           <img
             src={ctaback}
             alt="Construction background"
-            className="w-full h-full object-cover object-center scale-105"
+            className="w-full h-full object-cover object-[80%_center] sm:object-center scale-105"
             style={{ filter: 'brightness(0.92) contrast(1.05)' }}
           />
-          {/* Light gradient from left to right */}
+          {/* Mobile Overlay: Solid crisp white on left, soft fade on right */}
           <div
-            className="absolute inset-0 z-10"
+            className="absolute inset-0 z-10 sm:hidden"
+            style={{
+              background:
+                'linear-gradient(90deg, #FFFFFF 0%, rgba(255,255,255,0.96) 50%, rgba(255,255,255,0.75) 80%, rgba(255,255,255,0.4) 100%)',
+            }}
+          />
+          {/* Desktop Overlay */}
+          <div
+            className="absolute inset-0 z-10 hidden sm:block"
             style={{
               background:
                 'linear-gradient(95deg, #FFFFFF 0%, rgba(255,255,255,0.96) 38%, rgba(255,255,255,0.65) 60%, rgba(255,255,255,0.15) 85%, transparent 100%)',
@@ -577,8 +585,8 @@ export default function Building() {
         </div>
 
         {/* CONTAINER CONTENT */}
-        <div className="relative z-20 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div className="relative z-20 w-full max-w-[1440px] mx-auto px-5 sm:px-6 md:px-12 lg:px-16">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8">
             
             {/* LEFT CONTENT */}
             <motion.div
@@ -586,26 +594,29 @@ export default function Building() {
               whileInView="visible"
               viewport={{ once: true, amount: 'some' }}
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-              className="max-w-2xl flex flex-col items-start"
+              className="max-w-full sm:max-w-2xl flex flex-col items-start"
             >
               {/* TAGLINE */}
-              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-2.5">
-                <span className="w-7 h-[2px] bg-[#D4AF37] inline-block" />
-                <span className="font-display font-extrabold uppercase text-[#D4AF37] text-[9.5px] tracking-[0.38em]">
+              <motion.div variants={fadeUp} className="flex items-center gap-2.5 sm:gap-3 mb-2 sm:mb-2.5">
+                <span className="w-6 sm:w-7 h-[2px] bg-[#D4AF37] inline-block" />
+                <span className="font-display font-extrabold uppercase text-[#D4AF37] text-[8.5px] sm:text-[9.5px] tracking-[0.28em] sm:tracking-[0.38em]">
                   LET'S BUILD TOGETHER
                 </span>
               </motion.div>
 
               {/* HEADING */}
-              <motion.h2 variants={fadeUp} className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-brand-darkblue leading-tight mb-6 md:mb-7">
+              <motion.h2
+                variants={fadeUp}
+                className="font-display text-[18px] min-[380px]:text-[20px] sm:text-3xl md:text-4xl font-extrabold tracking-tight text-brand-darkblue leading-[1.2] sm:leading-tight mb-4 sm:mb-6 md:mb-7 max-w-[280px] min-[380px]:max-w-[320px] sm:max-w-none"
+              >
                 Discuss Your Project Requirements
               </motion.h2>
 
               {/* BUTTON */}
-              <motion.div variants={fadeUp} className="mt-1">
+              <motion.div variants={fadeUp} className="mt-0.5 sm:mt-1">
                 <a
                   href="/contact"
-                  className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#E5A824] hover:bg-[#d69917] text-brand-darkblue font-display text-xs font-extrabold uppercase tracking-widest shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="group inline-flex items-center gap-2 sm:gap-2.5 px-6 py-2.5 sm:px-7 sm:py-3 rounded-full bg-[#E5A824] hover:bg-[#d69917] text-brand-darkblue font-display text-[11px] sm:text-xs font-extrabold uppercase tracking-wider sm:tracking-widest shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
                 >
                   <span>CONTACT US</span>
                   <svg
