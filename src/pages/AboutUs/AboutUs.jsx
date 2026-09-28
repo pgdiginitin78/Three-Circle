@@ -24,7 +24,7 @@ const narrativeSections = [
     image: leadershipImg,
     slogan: ["EXPERIENCE", "BUILDS", "BETTER", "TOMORROW"],
     paragraphs: [
-      "At the helm of 3 CIIRCLES OPC P LTD is Mr. Sidharth Jaiswaal, a Civil Engineer with a Diploma and a Bachelor's degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, Mr. Vijay Jaiswal, Mr. Sidharth Jaiswaal leads the company into a new era.",
+      "At the helm of 3 CIIRCLES OPC P LTD is Mr. Sidharth Jaiswaal, a Civil Engineer with a Diploma and a Bachelor's degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, Mr. Vijay Jaiswaal, Mr. Sidharth Jaiswaal leads the company into a new era.",
     ],
   },
   {
@@ -44,14 +44,14 @@ const narrativeSections = [
     image: transitionImg,
     slogan: ["SUSTAINED", "GROWTH &", "UNWAVERING", "LEGACY"],
     paragraphs: [
-      'In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become "3 CIIRCLES OPC P LTD." This private limited entity, with Mr. Vijay Jaiswal as Director and Mr. Sidharth Jaiswaal as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.',
+      'In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become "3 CIIRCLES OPC P LTD." This private limited entity, with Mr. Vijay Jaiswaal as Director and Mr. Sidharth Jaiswaal as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.',
     ],
   },
 ];
 
 const directors = [
   {
-    name: "MR. VIJAY JAISWAL",
+    name: "MR. VIJAY JAISWAAL",
     role: "Director",
     image: "/directors/vijay_portrait.png",
     period: "Foundational Leadership",
@@ -466,7 +466,7 @@ export default function AboutUs() {
                                 className="font-body text-xs sm:text-sm md:text-[15px] text-white/85 leading-relaxed font-normal mb-0 max-w-xl mt-3 sm:mt-4"
                                 style={{ fontFamily: "var(--font-body, 'Inter', sans-serif)" }}
                               >
-                                In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become <strong className="text-brand-gold font-semibold">&quot;3 CIIRCLES OPC P LTD.&quot;</strong> This private limited entity, with <span className="text-white font-medium">Mr. Vijay Jaiswal</span> as Director and <span className="text-white font-medium">Mr. Sidharth Jaiswaal</span> as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.
+                                In 2021, recognizing the importance of preserving its legacy, the company underwent a strategic transition to become <strong className="text-brand-gold font-semibold">&quot;3 CIIRCLES OPC P LTD.&quot;</strong> This private limited entity, with <span className="text-white font-medium">Mr. Vijay Jaiswaal</span> as Director and <span className="text-white font-medium">Mr. Sidharth Jaiswaal</span> as Managing Director, reflects a commitment to sustained growth and unwavering continuity in the construction industry.
                               </motion.p>
 
                             </div>
@@ -630,7 +630,7 @@ export default function AboutUs() {
                           transition={{ duration: 1.4, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
                           className="font-body text-xs sm:text-sm md:text-[15px] text-slate-600 leading-relaxed font-normal max-w-3xl"
                         >
-                          At the helm of <strong className="text-brand-darkblue font-semibold">&quot;3 CIIRCLES OPC P LTD&quot;</strong> is <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span>, a Civil Engineer with a Diploma and a Bachelor&apos;s degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, <span className="text-brand-darkblue font-semibold">Mr. Vijay Jaiswal</span>, <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span> leads the company into a new era.
+                          At the helm of <strong className="text-brand-darkblue font-semibold">&quot;3 CIIRCLES OPC P LTD&quot;</strong> is <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span>, a Civil Engineer with a Diploma and a Bachelor&apos;s degree from Mumbai University. With hands-on experience in the family construction business and adept management skills developed under the mentorship of his father, <span className="text-brand-darkblue font-semibold">Mr. Vijay Jaiswaal</span>, <span className="text-brand-darkblue font-semibold">Mr. Sidharth Jaiswaal</span> leads the company into a new era.
                         </motion.p>
                       </div>
                     </div>

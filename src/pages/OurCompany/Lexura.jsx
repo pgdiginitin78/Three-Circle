@@ -34,6 +34,7 @@ import svcBuildingImg from "../../assets/services/building.jpg";
 import svcInfraImg from "../../assets/services/infrastructure.jpg";
 import svcEarthImg from "../../assets/services/earthmoving.png";
 import svcMiningImg from "../../assets/services/mining.jpg";
+import svcMaterialImg from "../../assets/services/grading.png";
 import regionalBgImg from "../../assets/lexurabackground.png";
 import uaeHeroBg from "../../assets/uae_hero_bg.jpg";
 
@@ -209,6 +210,23 @@ export default function Lexura() {
       ],
       parentProof: "350 TPH VSI stone crushing plant, 300 TPH 3-stage plant, and 150 TPH 2-stage plant owned by parent enterprise.",
     },
+    {
+      id: "material",
+      number: "05",
+      category: "Material Movement & Logistics",
+      title: "Moving Materials, Powering Project Progress",
+      icon: <FaTruck className="w-8 h-8 text-brand-gold" />,
+      image: svcMaterialImg,
+      desc: "Efficient transportation and handling of construction materials, aggregates, and processed outputs across project sites and supply chains.",
+      points: [
+        "Bulk Material Transportation (Aggregates, Soil & Rock)",
+        "Intra-Site & Inter-Site Haulage Operations",
+        "Tipper, Trailer & Flatbed Fleet Deployment",
+        "Material Stockpiling & Site Storage Management",
+        "Supply Chain Coordination & Last-Mile Delivery",
+      ],
+      parentProof: "76 owned hauling units including dumpers and trailers documented in parent enterprise's equipment inventory.",
+    },
   ];
 
 
@@ -236,7 +254,7 @@ export default function Lexura() {
     { title: "KNOWLEDGE", text: "Deep experience accumulated across airports, dockyards, expressways, and high-rises." },
     { title: "BREADTH", text: "Comprehensive capabilities spanning construction, infrastructure, excavation, and crushing." },
     { title: "RESOURCES", text: "Direct access to 100+ owned heavy machinery units and technical engineering repository." },
-    { title: "FOCUS", text: "A business built specifically around the UAE and GCC project ecosystem." },
+    { title: "FOCUS", text: "A business built specifically around the UAE  project ecosystem." },
     { title: "AMBITION", text: "A long-term regional platform designed to grow across the Middle East." },
   ];
 
@@ -287,16 +305,16 @@ export default function Lexura() {
 
             {/* — A — Eyebrow Motif */}
             <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
-              <span className="h-[2px] w-8 sm:w-12 bg-brand-gold" />
-              <span className="font-display text-xs sm:text-sm md:text-base font-extrabold tracking-[0.35em] text-brand-gold uppercase">
+              <span className="h-[2px] w-8 sm:w-12 bg-[#f4c884]" />
+              <span className="font-display text-xs sm:text-sm md:text-base font-extrabold tracking-[0.35em] text-white uppercase">
                 A
               </span>
-              <span className="h-[2px] w-8 sm:w-12 bg-brand-gold" />
+              <span className="h-[2px] w-8 sm:w-12 bg-[#f4c884]" />
             </div>
 
             {/* Main Headline matching website hero theme */}
             <h1 className="font-display text-3xl sm:text-3xl md:text-4xl lg:text-[50px] font-medium tracking-tight uppercase leading-[1.08] mb-5 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-              <span className="block text-brand-gold">LEGACY</span>
+              <span className="block text-[#f4c884]">LEGACY</span>
               <span className="block text-white mt-1">BUILT TO LAST</span>
             </h1>
 
@@ -305,17 +323,32 @@ export default function Lexura() {
               <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-white">
                 PEOPLE
               </span>
-              <span className="text-brand-gold select-none font-bold">|</span>
+              <span className="text-[#f4c884] select-none font-bold">|</span>
               <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-white">
                 PROJECTS
               </span>
-              <span className="text-brand-gold select-none font-bold">|</span>
+              <span className="text-[#f4c884] select-none font-bold">|</span>
               <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-white">
                 PROGRESS
               </span>
-              <span className="text-brand-gold select-none font-bold">|</span>
+              <span className="text-[#f4c884] select-none font-bold">|</span>
               <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-white">
                 TOGETHER
+              </span>
+            </div>
+
+            {/* Connect | Build | Elevate tagline */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mt-3">
+              <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-[#f4c884]">
+                CONNECT
+              </span>
+              <span className="text-white/60 select-none font-bold">I</span>
+              <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-[#f4c884]">
+                BUILD
+              </span>
+              <span className="text-white/60 select-none font-bold">I</span>
+              <span className="font-display text-[10.5px] sm:text-xs md:text-sm font-bold tracking-[0.25em] uppercase text-[#f4c884]">
+                ELEVATE
               </span>
             </div>
           </motion.div>
@@ -515,24 +548,31 @@ export default function Lexura() {
                 viewport={{ once: true, amount: 0.12 }}
                 transition={{ duration: 1.5, delay: 0.1 + idx * 0.25, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -4, boxShadow: "0 20px 48px rgba(156,122,69,0.13)" }}
-                className="bg-[#FDFBF8] rounded-2xl border border-[#E5DACB] overflow-hidden flex flex-col sm:flex-row group transition-all duration-500 shadow-sm"
+                className={`bg-[#FDFBF8] rounded-2xl border border-[#E5DACB] overflow-hidden flex flex-col sm:flex-row group transition-all duration-500 shadow-sm${idx === services.length - 1 && services.length % 2 !== 0 ? " xl:col-span-2" : ""}`}
               >
                 {/* Left — Text Content */}
-                <div className="flex-1 p-5 sm:p-6 flex flex-col justify-between min-w-0">
-                  {/* Icon + Category */}
+                <div className={`flex-1 p-5 sm:p-6 flex flex-col justify-between min-w-0${idx === services.length - 1 && services.length % 2 !== 0 ? " xl:max-w-[60%]" : ""}`}>
+                  {/* Icon + Category + Number */}
                   <div>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-9 h-9 rounded-lg bg-[#684323] flex items-center justify-center shrink-0">
-                        {React.cloneElement(item.icon, { className: "w-5 h-5 text-[#D4AF37]" })}
+                        {React.cloneElement(item.icon, { className: "w-5 h-5 text-[#f4c884]" })}
                       </div>
                       <span className="font-display text-[10px] font-extrabold tracking-[0.28em] text-[#9C7A45] uppercase">
                         {item.category}
                       </span>
+                      <span className="ml-auto font-display text-[11px] font-bold text-[#D4C4A8]/60 tracking-widest">
+                        {item.number}
+                      </span>
                     </div>
 
-                    <h3 className="font-display text-xs sm:text-sm font-semibold uppercase tracking-tight text-[#3B291D] leading-snug mb-3 whitespace-nowrap overflow-hidden text-ellipsis">
+                    <h3 className="font-display text-xs sm:text-sm font-semibold uppercase tracking-tight text-[#3B291D] leading-snug mb-3">
                       {item.title}
                     </h3>
+
+                    <p className="font-body text-[11.5px] text-[#6B6056] leading-relaxed mb-3 max-w-lg">
+                      {item.desc}
+                    </p>
 
                     <div className="space-y-1.5 mb-4">
                       {item.points.map((pt, i) => (
@@ -554,7 +594,7 @@ export default function Lexura() {
                 </div>
 
                 {/* Right — Image */}
-                <div className="sm:w-44 md:w-52 shrink-0 overflow-hidden">
+                <div className={`shrink-0 overflow-hidden${idx === services.length - 1 && services.length % 2 !== 0 ? " sm:w-auto xl:flex-1" : " sm:w-44 md:w-52"}`}>
                   <motion.img
                     src={item.image}
                     alt={item.title}
