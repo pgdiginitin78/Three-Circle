@@ -105,7 +105,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:pl-8 lg:pl-20">
             <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-brand-gold uppercase mb-1">
               Navigation
             </span>
@@ -113,17 +113,17 @@ export default function Footer() {
               {navLinks.map(({ label, path, target }) => (
                 <button
                   key={label}
-                  className="group flex items-center gap-2 font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-brand-gold transition-colors duration-200 text-left w-max cursor-pointer"
+                  className="group flex items-center font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-brand-gold transition-colors duration-200 text-left w-max cursor-pointer"
                   onClick={() => navigateTo(path, target)}
                 >
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-brand-gold transition-all duration-200" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">{label}</span>
+                  <span className="w-0 group-hover:w-2.5 group-hover:mr-2 h-[1px] bg-brand-gold transition-all duration-200 shrink-0" />
+                  <span className="group-hover:translate-x-0.5 transition-transform duration-200">{label}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 md:pl-4 lg:pl-0">
             <span className="font-display text-[9px] font-extrabold tracking-[0.25em] text-brand-gold uppercase mb-1">
               Sectors
             </span>
@@ -131,11 +131,11 @@ export default function Footer() {
               {sectorLinks.map(({ label, path, target }) => (
                 <button
                   key={label}
-                  className="group flex items-center gap-2 font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-brand-gold transition-colors duration-200 text-left w-max cursor-pointer"
+                  className="group flex items-center font-display text-[11px] font-bold tracking-[0.16em] text-white/75 hover:text-brand-gold transition-colors duration-200 text-left w-max cursor-pointer"
                   onClick={() => navigateTo(path, target)}
                 >
-                  <span className="w-0 group-hover:w-2 h-[1px] bg-brand-gold transition-all duration-200" />
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">{label}</span>
+                  <span className="w-0 group-hover:w-2.5 group-hover:mr-2 h-[1px] bg-brand-gold transition-all duration-200 shrink-0" />
+                  <span className="group-hover:translate-x-0.5 transition-transform duration-200">{label}</span>
                 </button>
               ))}
             </div>
