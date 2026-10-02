@@ -24,7 +24,7 @@ const contactCards = [
     icon: MapPinIcon,
     label: "Corporate Office",
     title: "Headquarters",
-    details: "Mumbai, Maharashtra, India / Dubai, United Arab Emirates",
+    details: "",
   },
   {
     icon: MailIcon,
@@ -36,9 +36,9 @@ const contactCards = [
   {
     icon: PhoneIcon,
     label: "Telephone & Hotline",
-    title: "+91 22 0000 0000 / +971 4 000 0000",
+    title: "",
     details: "Mon – Sat, 9:00 AM – 6:30 PM (IST / GST)",
-    href: "tel:+912200000000",
+    href: "",
   },
 ];
 
@@ -92,8 +92,8 @@ export default function ContactPage() {
           </FadeUpText>
 
           <FadeUpText delay={0.08}>
-            <h1 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-darkblue tracking-tight uppercase leading-[1.08] mb-4">
-              Start A <span className="text-brand-gold">Conversation.</span>
+            <h1 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold text-brand-darkblue tracking-tight uppercase leading-[1.08] mb-4">
+              Start A Conversation
             </h1>
           </FadeUpText>
 
