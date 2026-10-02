@@ -111,7 +111,7 @@ export default function Hero() {
           >
             <div className="gsap-hero-btn flex-1 sm:flex-none">
               <MagneticButton
-                className="group font-display text-[8px] sm:text-[10px] font-extrabold tracking-[0.06em] sm:tracking-[0.2em] py-2.5 px-3 sm:py-3.5 sm:px-7 bg-brand-gold text-brand-darkblue border border-brand-gold rounded-full hover:bg-white hover:border-white hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto whitespace-nowrap"
+                className="group slice-btn slice-btn-gold font-display text-[8px] sm:text-[10px] font-extrabold tracking-[0.06em] sm:tracking-[0.2em] py-2.5 px-3 sm:py-3.5 sm:px-7 rounded-full text-center shadow-xl cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto whitespace-nowrap"
                 onClick={() => navigateTo("/", "services")}
               >
                 <span>EXPLORE OUR SERVICES</span>
@@ -120,7 +120,7 @@ export default function Hero() {
             </div>
             <div className="gsap-hero-btn flex-1 sm:flex-none">
               <MagneticButton
-                className="group font-display text-[8px] sm:text-[10px] font-extrabold tracking-[0.06em] sm:tracking-[0.2em] py-2.5 px-3 sm:py-3.5 sm:px-7 bg-white/95 backdrop-blur-md text-brand-darkblue border border-white rounded-full hover:bg-brand-gold hover:border-brand-gold hover:text-brand-darkblue transition-all duration-300 text-center shadow-xl cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto whitespace-nowrap"
+                className="group slice-btn slice-btn-white font-display text-[8px] sm:text-[10px] font-extrabold tracking-[0.06em] sm:tracking-[0.2em] py-2.5 px-3 sm:py-3.5 sm:px-7 rounded-full text-center shadow-xl cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 w-full sm:w-auto whitespace-nowrap backdrop-blur-md"
                 onClick={() => navigateTo("/", "projects")}
               >
                 <span>VIEW OUR PROJECTS</span>
